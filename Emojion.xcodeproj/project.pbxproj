@@ -1,0 +1,618 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F01D8742812D711004583E3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8732812D711004583E3 /* Character.swift */; };
+		2F01D8752812D711004583E3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8732812D711004583E3 /* Character.swift */; };
+		2F70FB4F2808484300D2A725 /* Emojion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3C2808484100D2A725 /* Emojion.xcdatamodeld */; };
+		2F70FB502808484300D2A725 /* Emojion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3C2808484100D2A725 /* Emojion.xcdatamodeld */; };
+		2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3E2808484100D2A725 /* EmojionApp.swift */; };
+		2F70FB522808484300D2A725 /* EmojionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3E2808484100D2A725 /* EmojionApp.swift */; };
+		2F70FB532808484300D2A725 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3F2808484100D2A725 /* ContentView.swift */; };
+		2F70FB542808484300D2A725 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3F2808484100D2A725 /* ContentView.swift */; };
+		2F70FB552808484300D2A725 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB402808484100D2A725 /* Persistence.swift */; };
+		2F70FB562808484300D2A725 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB402808484100D2A725 /* Persistence.swift */; };
+		2F70FB572808484300D2A725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F70FB412808484300D2A725 /* Assets.xcassets */; };
+		2F70FB582808484300D2A725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F70FB412808484300D2A725 /* Assets.xcassets */; };
+		2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB6128084B9100D2A725 /* AddEntryView.swift */; };
+		2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB6128084B9100D2A725 /* AddEntryView.swift */; };
+		2F70FB682808536E00D2A725 /* EntryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB672808536E00D2A725 /* EntryFormView.swift */; };
+		2F70FB692808536E00D2A725 /* EntryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB672808536E00D2A725 /* EntryFormView.swift */; };
+		2F70FB74280C7EE300D2A725 /* EntryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB73280C7EE300D2A725 /* EntryStore.swift */; };
+		2F70FB75280C7EE300D2A725 /* EntryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB73280C7EE300D2A725 /* EntryStore.swift */; };
+		2F70FB7A280C890E00D2A725 /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB79280C890E00D2A725 /* EntryDetailView.swift */; };
+		2F70FB7B280C890E00D2A725 /* EntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB79280C890E00D2A725 /* EntryDetailView.swift */; };
+		2F70FB7E280CD72600D2A725 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB7D280CD72600D2A725 /* UITextField.swift */; };
+		2F70FB7F280CD72600D2A725 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB7D280CD72600D2A725 /* UITextField.swift */; };
+		2F70FB81280D6FC600D2A725 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB80280D6FC600D2A725 /* String.swift */; };
+		2F70FB82280D6FC600D2A725 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB80280D6FC600D2A725 /* String.swift */; };
+		2F70FB84280D79DD00D2A725 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB83280D79DD00D2A725 /* EditEntryView.swift */; };
+		2F70FB85280D79DD00D2A725 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB83280D79DD00D2A725 /* EditEntryView.swift */; };
+		2F70FB87280D82CB00D2A725 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB86280D82CB00D2A725 /* Binding.swift */; };
+		2F70FB88280D82CB00D2A725 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB86280D82CB00D2A725 /* Binding.swift */; };
+		2F70FB8A280E011300D2A725 /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB89280E011300D2A725 /* EntryListView.swift */; };
+		2F70FB8B280E011300D2A725 /* EntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB89280E011300D2A725 /* EntryListView.swift */; };
+		2F70FB8D280E10FE00D2A725 /* EntryListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB8C280E10FE00D2A725 /* EntryListCardView.swift */; };
+		2F70FB8E280E10FE00D2A725 /* EntryListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB8C280E10FE00D2A725 /* EntryListCardView.swift */; };
+		2F70FB90280E141500D2A725 /* EntryDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB8F280E141500D2A725 /* EntryDetailsCardView.swift */; };
+		2F70FB91280E141500D2A725 /* EntryDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB8F280E141500D2A725 /* EntryDetailsCardView.swift */; };
+		2F70FB93280E224600D2A725 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB92280E224500D2A725 /* View.swift */; };
+		2F70FB94280E224600D2A725 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB92280E224500D2A725 /* View.swift */; };
+		2F70FB9A280F19A100D2A725 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB99280F19A100D2A725 /* StarRatingView.swift */; };
+		2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB99280F19A100D2A725 /* StarRatingView.swift */; };
+		2F70FB9D280F359D00D2A725 /* StarRatingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB9C280F359D00D2A725 /* StarRatingStore.swift */; };
+		2F70FB9E280F359D00D2A725 /* StarRatingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB9C280F359D00D2A725 /* StarRatingStore.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2F01D8732812D711004583E3 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		2F70FB3D2808484100D2A725 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
+		2F70FB3E2808484100D2A725 /* EmojionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojionApp.swift; sourceTree = "<group>"; };
+		2F70FB3F2808484100D2A725 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2F70FB402808484100D2A725 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		2F70FB412808484300D2A725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2F70FB462808484300D2A725 /* Emojion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F70FB4C2808484300D2A725 /* Emojion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F70FB4E2808484300D2A725 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		2F70FB6128084B9100D2A725 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
+		2F70FB672808536E00D2A725 /* EntryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormView.swift; sourceTree = "<group>"; };
+		2F70FB73280C7EE300D2A725 /* EntryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryStore.swift; sourceTree = "<group>"; };
+		2F70FB79280C890E00D2A725 /* EntryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailView.swift; sourceTree = "<group>"; };
+		2F70FB7D280CD72600D2A725 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		2F70FB80280D6FC600D2A725 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		2F70FB83280D79DD00D2A725 /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
+		2F70FB86280D82CB00D2A725 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
+		2F70FB89280E011300D2A725 /* EntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListView.swift; sourceTree = "<group>"; };
+		2F70FB8C280E10FE00D2A725 /* EntryListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListCardView.swift; sourceTree = "<group>"; };
+		2F70FB8F280E141500D2A725 /* EntryDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailsCardView.swift; sourceTree = "<group>"; };
+		2F70FB92280E224500D2A725 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		2F70FB99280F19A100D2A725 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
+		2F70FB9C280F359D00D2A725 /* StarRatingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingStore.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2F70FB432808484300D2A725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F70FB492808484300D2A725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F01D8762812D956004583E3 /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				2F70FB8C280E10FE00D2A725 /* EntryListCardView.swift */,
+				2F70FB8F280E141500D2A725 /* EntryDetailsCardView.swift */,
+				2F70FB672808536E00D2A725 /* EntryFormView.swift */,
+				2F70FB99280F19A100D2A725 /* StarRatingView.swift */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		2F70FB362808484100D2A725 = {
+			isa = PBXGroup;
+			children = (
+				2F70FB3E2808484100D2A725 /* EmojionApp.swift */,
+				2F70FB78280C85EF00D2A725 /* DataObject */,
+				2F70FB77280C85E000D2A725 /* ObservableObject */,
+				2F01D8762812D956004583E3 /* ViewComponents */,
+				2F70FB76280C85D800D2A725 /* View */,
+				2F70FB3B2808484100D2A725 /* Shared */,
+				2F70FB4D2808484300D2A725 /* macOS */,
+				2F70FB7C280CD70E00D2A725 /* Extensions */,
+				2F70FB95280EBDF600D2A725 /* Utilities */,
+				2F70FB472808484300D2A725 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2F70FB3B2808484100D2A725 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				2F70FB412808484300D2A725 /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2F70FB472808484300D2A725 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2F70FB462808484300D2A725 /* Emojion.app */,
+				2F70FB4C2808484300D2A725 /* Emojion.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2F70FB4D2808484300D2A725 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				2F70FB4E2808484300D2A725 /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		2F70FB76280C85D800D2A725 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2F70FB3F2808484100D2A725 /* ContentView.swift */,
+				2F70FB89280E011300D2A725 /* EntryListView.swift */,
+				2F70FB79280C890E00D2A725 /* EntryDetailView.swift */,
+				2F70FB6128084B9100D2A725 /* AddEntryView.swift */,
+				2F70FB83280D79DD00D2A725 /* EditEntryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2F70FB77280C85E000D2A725 /* ObservableObject */ = {
+			isa = PBXGroup;
+			children = (
+				2F70FB73280C7EE300D2A725 /* EntryStore.swift */,
+				2F70FB9C280F359D00D2A725 /* StarRatingStore.swift */,
+			);
+			path = ObservableObject;
+			sourceTree = "<group>";
+		};
+		2F70FB78280C85EF00D2A725 /* DataObject */ = {
+			isa = PBXGroup;
+			children = (
+				2F70FB3C2808484100D2A725 /* Emojion.xcdatamodeld */,
+				2F70FB402808484100D2A725 /* Persistence.swift */,
+			);
+			path = DataObject;
+			sourceTree = "<group>";
+		};
+		2F70FB7C280CD70E00D2A725 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2F70FB80280D6FC600D2A725 /* String.swift */,
+				2F70FB86280D82CB00D2A725 /* Binding.swift */,
+				2F70FB92280E224500D2A725 /* View.swift */,
+				2F01D8732812D711004583E3 /* Character.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2F70FB95280EBDF600D2A725 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2F70FB7D280CD72600D2A725 /* UITextField.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2F70FB452808484300D2A725 /* Emojion (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F70FB5B2808484300D2A725 /* Build configuration list for PBXNativeTarget "Emojion (iOS)" */;
+			buildPhases = (
+				2F70FB422808484300D2A725 /* Sources */,
+				2F70FB432808484300D2A725 /* Frameworks */,
+				2F70FB442808484300D2A725 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Emojion (iOS)";
+			productName = "Emojion (iOS)";
+			productReference = 2F70FB462808484300D2A725 /* Emojion.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2F70FB4B2808484300D2A725 /* Emojion (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F70FB5E2808484300D2A725 /* Build configuration list for PBXNativeTarget "Emojion (macOS)" */;
+			buildPhases = (
+				2F70FB482808484300D2A725 /* Sources */,
+				2F70FB492808484300D2A725 /* Frameworks */,
+				2F70FB4A2808484300D2A725 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Emojion (macOS)";
+			productName = "Emojion (macOS)";
+			productReference = 2F70FB4C2808484300D2A725 /* Emojion.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2F70FB372808484100D2A725 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					2F70FB452808484300D2A725 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					2F70FB4B2808484300D2A725 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 2F70FB3A2808484100D2A725 /* Build configuration list for PBXProject "Emojion" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2F70FB362808484100D2A725;
+			productRefGroup = 2F70FB472808484300D2A725 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2F70FB452808484300D2A725 /* Emojion (iOS) */,
+				2F70FB4B2808484300D2A725 /* Emojion (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2F70FB442808484300D2A725 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F70FB572808484300D2A725 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F70FB4A2808484300D2A725 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F70FB582808484300D2A725 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2F70FB422808484300D2A725 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F70FB9A280F19A100D2A725 /* StarRatingView.swift in Sources */,
+				2F70FB93280E224600D2A725 /* View.swift in Sources */,
+				2F70FB74280C7EE300D2A725 /* EntryStore.swift in Sources */,
+				2F70FB4F2808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
+				2F70FB81280D6FC600D2A725 /* String.swift in Sources */,
+				2F70FB7E280CD72600D2A725 /* UITextField.swift in Sources */,
+				2F70FB552808484300D2A725 /* Persistence.swift in Sources */,
+				2F01D8742812D711004583E3 /* Character.swift in Sources */,
+				2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */,
+				2F70FB532808484300D2A725 /* ContentView.swift in Sources */,
+				2F70FB8A280E011300D2A725 /* EntryListView.swift in Sources */,
+				2F70FB87280D82CB00D2A725 /* Binding.swift in Sources */,
+				2F70FB7A280C890E00D2A725 /* EntryDetailView.swift in Sources */,
+				2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */,
+				2F70FB90280E141500D2A725 /* EntryDetailsCardView.swift in Sources */,
+				2F70FB9D280F359D00D2A725 /* StarRatingStore.swift in Sources */,
+				2F70FB8D280E10FE00D2A725 /* EntryListCardView.swift in Sources */,
+				2F70FB682808536E00D2A725 /* EntryFormView.swift in Sources */,
+				2F70FB84280D79DD00D2A725 /* EditEntryView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F70FB482808484300D2A725 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */,
+				2F70FB94280E224600D2A725 /* View.swift in Sources */,
+				2F70FB75280C7EE300D2A725 /* EntryStore.swift in Sources */,
+				2F70FB502808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
+				2F70FB82280D6FC600D2A725 /* String.swift in Sources */,
+				2F70FB7F280CD72600D2A725 /* UITextField.swift in Sources */,
+				2F70FB562808484300D2A725 /* Persistence.swift in Sources */,
+				2F01D8752812D711004583E3 /* Character.swift in Sources */,
+				2F70FB522808484300D2A725 /* EmojionApp.swift in Sources */,
+				2F70FB542808484300D2A725 /* ContentView.swift in Sources */,
+				2F70FB8B280E011300D2A725 /* EntryListView.swift in Sources */,
+				2F70FB88280D82CB00D2A725 /* Binding.swift in Sources */,
+				2F70FB7B280C890E00D2A725 /* EntryDetailView.swift in Sources */,
+				2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */,
+				2F70FB91280E141500D2A725 /* EntryDetailsCardView.swift in Sources */,
+				2F70FB9E280F359D00D2A725 /* StarRatingStore.swift in Sources */,
+				2F70FB8E280E10FE00D2A725 /* EntryListCardView.swift in Sources */,
+				2F70FB692808536E00D2A725 /* EntryFormView.swift in Sources */,
+				2F70FB85280D79DD00D2A725 /* EditEntryView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2F70FB592808484300D2A725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2F70FB5A2808484300D2A725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		2F70FB5C2808484300D2A725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4UU7WP4CE;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
+				PRODUCT_NAME = Emojion;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2F70FB5D2808484300D2A725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4UU7WP4CE;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
+				PRODUCT_NAME = Emojion;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2F70FB5F2808484300D2A725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4UU7WP4CE;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
+				PRODUCT_NAME = Emojion;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2F70FB602808484300D2A725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L4UU7WP4CE;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
+				PRODUCT_NAME = Emojion;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2F70FB3A2808484100D2A725 /* Build configuration list for PBXProject "Emojion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F70FB592808484300D2A725 /* Debug */,
+				2F70FB5A2808484300D2A725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F70FB5B2808484300D2A725 /* Build configuration list for PBXNativeTarget "Emojion (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F70FB5C2808484300D2A725 /* Debug */,
+				2F70FB5D2808484300D2A725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F70FB5E2808484300D2A725 /* Build configuration list for PBXNativeTarget "Emojion (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F70FB5F2808484300D2A725 /* Debug */,
+				2F70FB602808484300D2A725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2F70FB3C2808484100D2A725 /* Emojion.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2F70FB3D2808484100D2A725 /* Shared.xcdatamodel */,
+			);
+			currentVersion = 2F70FB3D2808484100D2A725 /* Shared.xcdatamodel */;
+			path = Emojion.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2F70FB372808484100D2A725 /* Project object */;
+}
