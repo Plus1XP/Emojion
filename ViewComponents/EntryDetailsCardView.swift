@@ -10,8 +10,8 @@ import SwiftUI
 struct EntryDetailsCardView: View {
     @State var entry: Entry
     @State var hasUpdatedStarRating: Bool = false
-    var starFontSize: CGFloat = 25
     var emojionFontSize: CGFloat = 180
+    var starFontSize: CGFloat = 25
     
     private let itemFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -39,7 +39,6 @@ struct EntryDetailsCardView: View {
                 let emojionEmoji = (entry.emojion == "" || entry.emojion == nil ? "🫥" : entry.emojion)!.ToImage(fontSize: emojionFontSize)
                 Image(uiImage: emojionEmoji!)
 //                    .resizable()
-                // frame size is off to to image extension.
 //                    .frame(width: 200, height: 200)
                     .clipShape(Circle())
                     .overlay(
@@ -57,6 +56,8 @@ struct EntryDetailsCardView: View {
                 VStack {
                     if let feeling = entry.feeling {
                         Text(feeling)
+                            .font(.title2)
+                            .fontWeight(.medium)
                             .padding(.bottom)
                         StarRatingView($entry.rating, starFontSize)
                             .padding(.bottom)

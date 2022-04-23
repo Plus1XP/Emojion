@@ -9,8 +9,10 @@ import SwiftUI
 
 struct EntryListCardView: View {
     @State var entry: Entry
-    var starFontSize: CGFloat = 14.5
     var emojionFontSize: CGFloat = 55
+    var starFontSize: CGFloat = 18
+    var starSpacing: CGFloat = -1
+
     
     private let EntryDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -32,19 +34,14 @@ struct EntryListCardView: View {
                 }
             }
             HStack {
-                //Text((entry.emojion == "" ? "🫥" : entry.emojion)!)
-                //.font(.headline)
                 let emojionEmoji = (entry.emojion == "" || entry.emojion == nil ? "🫥" : entry.emojion)!.ToImage(fontSize: emojionFontSize)
                 Image(uiImage: emojionEmoji!)
 //                    .resizable()
-                // frame size is off to to image extension.
 //                    .frame(width: 50, height: 50)
                 Spacer()
                 VStack {
-//                    if let rating = entry.rating {
-//                        Text(entry.rating)
-//                    }
-                    StarRatingView($entry.rating, starFontSize)
+                    StarRatingView($entry.rating, starFontSize, starSpacing)
+//                        .border(.red)
                 }
                 Spacer()
             }
