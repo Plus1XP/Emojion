@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		2F01D8742812D711004583E3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8732812D711004583E3 /* Character.swift */; };
 		2F01D8752812D711004583E3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8732812D711004583E3 /* Character.swift */; };
+		2F01D8B128146142004583E3 /* FeelingFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B028146141004583E3 /* FeelingFinder.swift */; };
+		2F01D8B228146142004583E3 /* FeelingFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B028146141004583E3 /* FeelingFinder.swift */; };
+		2F01D8B42814697B004583E3 /* FeelingFinderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B32814697B004583E3 /* FeelingFinderView.swift */; };
+		2F01D8B52814697B004583E3 /* FeelingFinderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B32814697B004583E3 /* FeelingFinderView.swift */; };
+		2F01D8B7281477E5004583E3 /* FeelingFinderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */; };
+		2F01D8B8281477E5004583E3 /* FeelingFinderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */; };
 		2F70FB4F2808484300D2A725 /* Emojion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3C2808484100D2A725 /* Emojion.xcdatamodeld */; };
 		2F70FB502808484300D2A725 /* Emojion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3C2808484100D2A725 /* Emojion.xcdatamodeld */; };
 		2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3E2808484100D2A725 /* EmojionApp.swift */; };
@@ -51,6 +57,9 @@
 
 /* Begin PBXFileReference section */
 		2F01D8732812D711004583E3 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		2F01D8B028146141004583E3 /* FeelingFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingFinder.swift; sourceTree = "<group>"; };
+		2F01D8B32814697B004583E3 /* FeelingFinderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingFinderView.swift; sourceTree = "<group>"; };
+		2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingFinderStore.swift; sourceTree = "<group>"; };
 		2F70FB3D2808484100D2A725 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		2F70FB3E2808484100D2A725 /* EmojionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojionApp.swift; sourceTree = "<group>"; };
 		2F70FB3F2808484100D2A725 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +109,7 @@
 				2F70FB8F280E141500D2A725 /* EntryDetailsCardView.swift */,
 				2F70FB672808536E00D2A725 /* EntryFormView.swift */,
 				2F70FB99280F19A100D2A725 /* StarRatingView.swift */,
+				2F01D8B32814697B004583E3 /* FeelingFinderView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -162,6 +172,7 @@
 			children = (
 				2F70FB73280C7EE300D2A725 /* EntryStore.swift */,
 				2F70FB9C280F359D00D2A725 /* StarRatingStore.swift */,
+				2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -171,6 +182,7 @@
 			children = (
 				2F70FB3C2808484100D2A725 /* Emojion.xcdatamodeld */,
 				2F70FB402808484100D2A725 /* Persistence.swift */,
+				2F01D8B028146141004583E3 /* FeelingFinder.swift */,
 			);
 			path = DataObject;
 			sourceTree = "<group>";
@@ -292,10 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F01D8B7281477E5004583E3 /* FeelingFinderStore.swift in Sources */,
 				2F70FB9A280F19A100D2A725 /* StarRatingView.swift in Sources */,
+				2F01D8B128146142004583E3 /* FeelingFinder.swift in Sources */,
 				2F70FB93280E224600D2A725 /* View.swift in Sources */,
 				2F70FB74280C7EE300D2A725 /* EntryStore.swift in Sources */,
 				2F70FB4F2808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
+				2F01D8B42814697B004583E3 /* FeelingFinderView.swift in Sources */,
 				2F70FB81280D6FC600D2A725 /* String.swift in Sources */,
 				2F70FB7E280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB552808484300D2A725 /* Persistence.swift in Sources */,
@@ -318,10 +333,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F01D8B8281477E5004583E3 /* FeelingFinderStore.swift in Sources */,
 				2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */,
+				2F01D8B228146142004583E3 /* FeelingFinder.swift in Sources */,
 				2F70FB94280E224600D2A725 /* View.swift in Sources */,
 				2F70FB75280C7EE300D2A725 /* EntryStore.swift in Sources */,
 				2F70FB502808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
+				2F01D8B52814697B004583E3 /* FeelingFinderView.swift in Sources */,
 				2F70FB82280D6FC600D2A725 /* String.swift in Sources */,
 				2F70FB7F280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB562808484300D2A725 /* Persistence.swift in Sources */,

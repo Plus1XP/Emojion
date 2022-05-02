@@ -44,11 +44,17 @@ struct EntryFormView: View {
                 }
                 // Enum selection
                 HStack {
-                    Text("Feeling")
-                    Spacer()
-                    TextField("Describe Emojion", text: $feeling)
-                        .multilineTextAlignment(.trailing)
+//                    Text("Feeling")
+//                    Spacer()
+                    FeelingFinderView()
+//                    TextField("Describe Emojion", text: $feeling)
+//                        .multilineTextAlignment(.trailing)
                 }
+                
+//                HStack {
+//                    FeelingFinderView()
+//                }
+                
                 // Touch 5 Stars
                 HStack {
                     Text("Rating")
