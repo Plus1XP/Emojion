@@ -11,7 +11,6 @@ struct EntryListView: View {
     @ObservedObject var entryStore: EntryStore
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
-//    @State var _entry = Entry()
     
     var body: some View {
         List {

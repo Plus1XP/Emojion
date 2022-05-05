@@ -3,7 +3,7 @@
     <entity name="Entry" representedClassName="Entry" syncable="YES" codeGenerationType="class">
         <attribute name="emojion" optional="YES" attributeType="String"/>
         <attribute name="event" optional="YES" attributeType="String"/>
-        <attribute name="feeling" optional="YES" attributeType="String"/>
+        <attribute name="feeling" optional="YES" attributeType="Transformable" customClassName="[Int]"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="note" optional="YES" attributeType="String"/>
         <attribute name="rating" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>

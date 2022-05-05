@@ -27,7 +27,7 @@ class EntryStore: ObservableObject {
         }
     }
     
-    func addNewEntry(event: String, emojion: String, feeling: String, rating: Int64, note: String) {
+    func addNewEntry(event: String, emojion: String, feeling: [Int], rating: Int64, note: String) {
         let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
         newEntry.id = UUID()
         newEntry.timestamp = Date()

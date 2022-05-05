@@ -10,16 +10,20 @@ import SwiftUI
 struct AddEntryView: View {
     @Environment(\.presentationMode) var presentaionMode
     @ObservedObject var entryStore: EntryStore
+    @State var refreshView: Bool = false
     @State var event: String = ""
     @State var emojion: String = ""
-    @State var feeling: String = ""
+    @State var feeling: [Int] = [0,0,0]
     @State var rating: Int64 = 0
     @State var note: String = ""
         
     var body: some View {
         NavigationView {
             Form {
-                EntryFormView(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, note: $note)
+                EntryFormView(refreshView: $refreshView, event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, note: $note)
+                    .onChange(of: refreshView) { _ in
+                            debugPrint("AddEntryView: FeelingView Refreshed")
+                        }
             }
             .navigationTitle("New Emojion")
             .toolbar {
@@ -43,9 +47,9 @@ struct AddEntryView: View {
     }
 }
 
-struct AddEmojionView_Previews: PreviewProvider {
-    static var previews: some View {
-        let entryStore = EntryStore()
-        AddEntryView(entryStore: entryStore)
-    }
-}
+//struct AddEmojionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let entryStore = EntryStore()
+//        AddEntryView(entryStore: entryStore)
+//    }
+//}

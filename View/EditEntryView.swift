@@ -9,11 +9,18 @@ import SwiftUI
 
 struct EditEntryView: View {
     @ObservedObject var entryStore: EntryStore
-    @Binding var canShowEditEntryView: Bool
-    @Binding var entry: Entry
+    @State var refreshView: Bool = false
     @State var hasEntrySaved: Bool = false
     @State var originalStarRating: Int64 = 5
+    @Binding var canShowEditEntryView: Bool
+    @Binding var entry: Entry
 
+    init(entryStore: EntryStore, canShowEditEntryView: Binding<Bool>, entry: Binding<Entry>) {
+        self.entryStore = entryStore
+        _canShowEditEntryView = canShowEditEntryView
+        _entry = entry
+    }
+    
     private var updateRating: Binding<Int64> {
         Binding<Int64>(get: {
             return entry.rating
@@ -25,7 +32,10 @@ struct EditEntryView: View {
     var body: some View {
         NavigationView {
             Form {
-                EntryFormView(event: $entry.event.bound, emojion: $entry.emojion.bound, feeling: $entry.feeling.bound, rating: updateRating, note: $entry.note.bound)
+                EntryFormView(refreshView: $refreshView, event: $entry.event.bound, emojion: $entry.emojion.bound, feeling: $entry.feeling.bound, rating: updateRating, note: $entry.note.bound)
+                    .onChange(of: refreshView) { _ in
+                            debugPrint("EditEntryView: FeelingView Refreshed")
+                        }
                 HStack {
                     Spacer()
                     Button(
@@ -74,11 +84,11 @@ struct EditEntryView: View {
     }
 }
 
-struct EditEntryView_Previews: PreviewProvider {
-    static var previews: some View {
-        let entryStore = EntryStore()
-        let viewContext = PersistenceController.preview.container.viewContext
-        let entry = Entry(context: viewContext)
-        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), entry: .constant(entry))
-    }
-}
+//struct EditEntryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let entryStore = EntryStore()
+//        let viewContext = PersistenceController.preview.container.viewContext
+//        let entry = Entry(context: viewContext)
+//        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), entry: .constant(entry))
+//    }
+//}

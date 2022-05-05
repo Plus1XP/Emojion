@@ -13,7 +13,7 @@ struct EntryDetailView: View {
     @State var entry: Entry
     
     var body: some View {
-        EntryDetailsCardView(entry: entry)
+        EntryDetailsCardView(entry: $entry)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button { self.canShowEditEntryView.toggle() } label: {
@@ -28,22 +28,22 @@ struct EntryDetailView: View {
     }
 }
 
-struct EntryDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let entryStore = EntryStore()
-        let viewContext = PersistenceController.preview.container.viewContext
-        let entry = Entry(context: viewContext)
-        
-//        EntryDetailView(entryStore: entryStore, entry: entry)
-        
-        entry.id = UUID()
-        entry.timestamp = Date()
-        entry.event = "Public Speaking"
-        entry.emojion = "😬"
-        entry.feeling = "Nervous"
-        entry.rating = 3
-        entry.note = "Coffee helped anxeity"
-        
-        return EntryDetailView(entryStore: entryStore, entry: entry)
-    }
-}
+//struct EntryDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let entryStore = EntryStore()
+//        let viewContext = PersistenceController.preview.container.viewContext
+//        let entry = Entry(context: viewContext)
+//        
+////        EntryDetailView(entryStore: entryStore, entry: entry)
+//        
+//        entry.id = UUID()
+//        entry.timestamp = Date()
+//        entry.event = "Public Speaking"
+//        entry.emojion = "😬"
+//        entry.feeling = [0,0,0]
+//        entry.rating = 3
+//        entry.note = "Coffee helped anxeity"
+//        
+//        return EntryDetailView(entryStore: entryStore, entry: entry)
+//    }
+//}
