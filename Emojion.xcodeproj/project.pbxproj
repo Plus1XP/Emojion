@@ -53,6 +53,8 @@
 		2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB99280F19A100D2A725 /* StarRatingView.swift */; };
 		2F70FB9D280F359D00D2A725 /* StarRatingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB9C280F359D00D2A725 /* StarRatingStore.swift */; };
 		2F70FB9E280F359D00D2A725 /* StarRatingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB9C280F359D00D2A725 /* StarRatingStore.swift */; };
+		2FBDEB93282308B1003953C0 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB92282308B1003953C0 /* EntryController.swift */; };
+		2FBDEB94282308B1003953C0 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB92282308B1003953C0 /* EntryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,7 @@
 		2F70FB92280E224500D2A725 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		2F70FB99280F19A100D2A725 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		2F70FB9C280F359D00D2A725 /* StarRatingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingStore.swift; sourceTree = "<group>"; };
+		2FBDEB92282308B1003953C0 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,7 @@
 				2F70FB73280C7EE300D2A725 /* EntryStore.swift */,
 				2F70FB9C280F359D00D2A725 /* StarRatingStore.swift */,
 				2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */,
+				2FBDEB92282308B1003953C0 /* EntryController.swift */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -324,6 +328,7 @@
 				2F70FB90280E141500D2A725 /* EntryDetailsCardView.swift in Sources */,
 				2F70FB9D280F359D00D2A725 /* StarRatingStore.swift in Sources */,
 				2F70FB8D280E10FE00D2A725 /* EntryListCardView.swift in Sources */,
+				2FBDEB93282308B1003953C0 /* EntryController.swift in Sources */,
 				2F70FB682808536E00D2A725 /* EntryFormView.swift in Sources */,
 				2F70FB84280D79DD00D2A725 /* EditEntryView.swift in Sources */,
 			);
@@ -353,6 +358,7 @@
 				2F70FB91280E141500D2A725 /* EntryDetailsCardView.swift in Sources */,
 				2F70FB9E280F359D00D2A725 /* StarRatingStore.swift in Sources */,
 				2F70FB8E280E10FE00D2A725 /* EntryListCardView.swift in Sources */,
+				2FBDEB94282308B1003953C0 /* EntryController.swift in Sources */,
 				2F70FB692808536E00D2A725 /* EntryFormView.swift in Sources */,
 				2F70FB85280D79DD00D2A725 /* EditEntryView.swift in Sources */,
 			);

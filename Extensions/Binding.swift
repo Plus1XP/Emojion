@@ -25,3 +25,22 @@ extension Optional where Wrapped == String {
         }
     }
 }
+
+extension Optional where Wrapped == [Int] {
+    private var _bound: [Int]? {
+        get {
+            return self
+        }
+        set {
+            self = newValue
+        }
+    }
+    public var bound: [Int] {
+        get {
+            return _bound ?? [0,0,0]
+        }
+        set {
+            _bound = newValue.isEmpty ? nil : newValue
+        }
+    }
+}

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct EntryDetailsCardView: View {
-    @State var entry: Entry
+    @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
+    @Binding var entry: Entry
     @State var hasUpdatedStarRating: Bool = false
     var emojionFontSize: CGFloat = 180
     var starFontSize: CGFloat = 25
@@ -55,7 +56,7 @@ struct EntryDetailsCardView: View {
                 Spacer()
                 VStack {
                     if let feeling = entry.feeling {
-                        Text(feeling)
+                        Text(feelingFinderStore.GetTertiarySelectedFeelingName(feelingArray: feeling))
                             .font(.title2)
                             .fontWeight(.medium)
                             .padding(.bottom)
@@ -82,22 +83,22 @@ struct EntryDetailsCardView: View {
     }
 }
 
-struct EntryDetailsCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewContext = PersistenceController.preview.container.viewContext
-        let entry = Entry(context: viewContext)
-        
-//        EntryDetailsCardView(entry: entry)
-        
-        entry.id = UUID()
-        entry.timestamp = Date()
-        entry.event = "Public Speaking"
-        entry.emojion = "😬"
-        entry.feeling = "Nervous"
-        entry.rating = 3
-        entry.note = "Coffee helped anxeity"
-        
-        return EntryDetailsCardView(entry: entry)
-
-    }
-}
+//struct EntryDetailsCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let viewContext = PersistenceController.preview.container.viewContext
+//        let entry = Entry(context: viewContext)
+//
+////        EntryDetailsCardView(entry: entry)
+//
+//        entry.id = UUID()
+//        entry.timestamp = Date()
+//        entry.event = "Public Speaking"
+//        entry.emojion = "😬"
+//        entry.feeling = [0,0,0]
+//        entry.rating = 3
+//        entry.note = "Coffee helped anxeity"
+//
+//        return EntryDetailsCardView(entry: entry)
+//
+//    }
+//}

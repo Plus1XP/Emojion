@@ -9,18 +9,17 @@ import SwiftUI
 import Combine
 
 struct EntryFormView: View {
-    @Binding var event: String
-    @Binding var emojion : String
-    @Binding var feeling: String
-    @Binding var rating: Int64
-    @Binding var note: String
+    @State var hasUpdatedFeeling: Bool = false
     @State var hasUpdatedStarRating: Bool = false
     @State var canEditStarRating: Bool = true
+    @Binding var refreshView: Bool
+    @Binding var event: String
+    @Binding var emojion : String
+    @Binding var feeling: [Int]
+    @Binding var rating: Int64
+    @Binding var note: String
     var starFontSize: CGFloat = 15
 
-//    @State var emojiPlaceholder: String = emot2 == "" ? "Assign emoji" : emot2.isSingleEmoji ? emot2 : "\(Image(systemName: "exclamationmark.triangle.fill").foregroundColor(Color.red))"
-
-    
     var body: some View {
         Section(header: Text("Emojion Details")) {
             Group {
@@ -42,20 +41,18 @@ struct EntryFormView: View {
                             self.emojion = String(self.emojion.onlyEmoji().prefix(1))
                         })
                 }
-                // Enum selection
                 HStack {
 //                    Text("Feeling")
 //                    Spacer()
-                    FeelingFinderView()
+                    FeelingFinderView(feeling: $feeling)
+                        .onReceive(NotificationCenter.default
+                            .publisher(for: NSNotification.Name("RefreshFeelingView"))) { _ in
+                                debugPrint("EntryFormView: FeelingView Refreshed")
+                                refreshView.toggle()
+                            }
 //                    TextField("Describe Emojion", text: $feeling)
 //                        .multilineTextAlignment(.trailing)
                 }
-                
-//                HStack {
-//                    FeelingFinderView()
-//                }
-                
-                // Touch 5 Stars
                 HStack {
                     Text("Rating")
                     Spacer()
@@ -75,25 +72,25 @@ struct EntryFormView: View {
     }
 }
 
-struct EntryFormView_Previews: PreviewProvider {
-    static var previews: some View {
-//        EntryFormView(event: .constant("Interview"), emojion: .constant("😬"), feeling: .constant("Nervous"), rating: .constant("⭐️⭐️⭐️"), note: .constant("coffee helped with anxeity."))
-        
-        let viewContext = PersistenceController.preview.container.viewContext
-        let entry = Entry(context: viewContext)
-        
-//        EntryDetailView(entryStore: entryStore, entry: entry)
-        
-        entry.id = UUID()
-        entry.timestamp = Date()
-        entry.event = "Public Speaking"
-        entry.emojion = "😬"
-        entry.feeling = "Nervous"
-        entry.rating = 3
-        entry.note = "Coffee helped anxeity"
-        
-        return EntryFormView(event: .constant(entry.event!), emojion: .constant(entry.emojion!), feeling: .constant(entry.feeling!), rating: .constant(entry.rating), note: .constant(entry.note!))
-        
-        
-    }
-}
+//struct EntryFormView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        EntryFormView(event: .constant("Interview"), emojion: .constant("😬"), feeling: .constant("Nervous"), rating: .constant("⭐️⭐️⭐️"), note: .constant("coffee helped with anxeity."))
+//        
+//        let viewContext = PersistenceController.preview.container.viewContext
+//        let entry = Entry(context: viewContext)
+//        
+////        EntryDetailView(entryStore: entryStore, entry: entry)
+//        
+//        entry.id = UUID()
+//        entry.timestamp = Date()
+//        entry.event = "Public Speaking"
+//        entry.emojion = "😬"
+//        entry.feeling = [0,0,0]
+//        entry.rating = 3
+//        entry.note = "Coffee helped anxeity"
+//        
+//        return EntryFormView(event: .constant(entry.event!), emojion: .constant(entry.emojion!), feeling: .constant(entry.feeling!), rating: .constant(entry.rating), note: .constant(entry.note!))
+//        
+//        
+//    }
+//}
