@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct StarRatingView: View {
+    @State var refreshView: Bool = false
     @Binding var starRating : Int64
-    @Binding var hasUpdatedStarRating: Bool
     @Binding var canEditStarRating: Bool
     var starFontSize: CGFloat
     var starSpacing: CGFloat?
@@ -18,7 +18,6 @@ struct StarRatingView: View {
         self._starRating = starRating
         self.starFontSize = starFontSize
         self.starSpacing = nil
-        self._hasUpdatedStarRating = Binding.constant(false)
         self._canEditStarRating = Binding.constant(false)
     }
     
@@ -26,7 +25,6 @@ struct StarRatingView: View {
         self._starRating = starRating
         self.starFontSize = starFontSize
         self.starSpacing = starSpacing
-        self._hasUpdatedStarRating = Binding.constant(false)
         self._canEditStarRating = Binding.constant(false)
     }
     
@@ -34,18 +32,8 @@ struct StarRatingView: View {
         self._starRating = starRating
         self.starFontSize = starFontSize
         self.starSpacing = nil
-        self._hasUpdatedStarRating = Binding.constant(false)
         self._canEditStarRating = canEditStarRating
     }
-    
-    init(_ starRating: Binding<Int64>, _ starFontSize: CGFloat, _ hasUpdatedStarRating: Binding<Bool>, _ canEditStarRating: Binding<Bool>) {
-        self._starRating = starRating
-        self.starFontSize = starFontSize
-        self.starSpacing = nil
-        self._hasUpdatedStarRating = hasUpdatedStarRating
-        self._canEditStarRating = canEditStarRating
-    }
-
 
     var body: some View {
         HStack(spacing: starSpacing) {
@@ -58,7 +46,9 @@ struct StarRatingView: View {
                     .opacity(self.starRating >= Int64(star) ? 1.0 : 0.1)
                     .onTapGesture {
                         self.starRating = Int64(star)
-                        hasUpdatedStarRating.toggle()
+                        NotificationCenter.default.post(name: Notification.Name("RefreshStarRatingView"), object: nil)
+                        debugPrint("StarRatingView: StarRatingView Refreshed")
+                        refreshView.toggle()
                         debugPrint("Rating has changed: \(starRating + 1)")
                     }
             }

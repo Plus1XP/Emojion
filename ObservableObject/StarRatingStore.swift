@@ -29,4 +29,16 @@ class StarRatingStore: ObservableObject {
 //        rating = entry.rating
 //    }
     
+//        .onAppear {
+//            hasEntrySaved = false
+//            originalStarRating = updateRating.wrappedValue
+//            debugPrint("Backup star rating to \(originalStarRating + 1) from \(updateRating.wrappedValue + 1)")
+//        }
+//        .onDisappear {
+//            if !hasEntrySaved {
+//                updateRating.wrappedValue = originalStarRating
+//                debugPrint("Resore star rating to: \(updateRating.wrappedValue + 1) from \(originalStarRating + 1)")
+//            }
+//        }
+    
 }

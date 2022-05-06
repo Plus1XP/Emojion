@@ -14,27 +14,13 @@ struct EditEntryView: View {
     @State var originalStarRating: Int64 = 5
     @Binding var canShowEditEntryView: Bool
     @Binding var entry: Entry
-
-    init(entryStore: EntryStore, canShowEditEntryView: Binding<Bool>, entry: Binding<Entry>) {
-        self.entryStore = entryStore
-        _canShowEditEntryView = canShowEditEntryView
-        _entry = entry
-    }
-    
-    private var updateRating: Binding<Int64> {
-        Binding<Int64>(get: {
-            return entry.rating
-        }, set: {
-            entry.rating = $0
-        })
-    }
     
     var body: some View {
         NavigationView {
             Form {
-                EntryFormView(refreshView: $refreshView, event: $entry.event.bound, emojion: $entry.emojion.bound, feeling: $entry.feeling.bound, rating: updateRating, note: $entry.note.bound)
+                EntryFormView(refreshView: $refreshView, event: $entry.event.bound, emojion: $entry.emojion.bound, feeling: $entry.feeling.bound, rating: $entry.rating, note: $entry.note.bound)
                     .onChange(of: refreshView) { _ in
-                            debugPrint("EditEntryView: FeelingView Refreshed")
+                            debugPrint("EditEntryView: Feeling/Star View Refreshed")
                         }
                 HStack {
                     Spacer()
@@ -72,23 +58,28 @@ struct EditEntryView: View {
         }
         .onAppear {
             hasEntrySaved = false
-            originalStarRating = updateRating.wrappedValue
-            debugPrint("Backup star rating to \(originalStarRating + 1) from \(updateRating.wrappedValue + 1)")
+            MockDataObject.temp = MockDataObject.backupEntry(originalEntry: entry)
+            debugPrint("Original Entry Backup")
         }
         .onDisappear {
             if !hasEntrySaved {
-                updateRating.wrappedValue = originalStarRating
-                debugPrint("Resore star rating to: \(updateRating.wrappedValue + 1) from \(originalStarRating + 1)")
+                entry = MockDataObject.restoreEntry(originalEntry: entry, clonedEntry: MockDataObject.temp)
+                MockDataObject.temp = MockDataObject.empty
+                debugPrint("Original Entry Restore")
+            } else {
+                MockDataObject.temp = MockDataObject.empty
+                debugPrint("Backup Entry Clear")
             }
         }
     }
 }
 
-//struct EditEntryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let entryStore = EntryStore()
-//        let viewContext = PersistenceController.preview.container.viewContext
-//        let entry = Entry(context: viewContext)
-//        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), entry: .constant(entry))
-//    }
-//}
+struct EditEntryView_Previews: PreviewProvider {
+    static var previews: some View {
+        let entryStore = EntryStore()
+        let viewContext = PersistenceController.preview.container.viewContext
+        let entry = Entry(context: viewContext)
+        let mock = MockDataObject.restoreEntry(originalEntry: entry, clonedEntry: MockDataObject.entry)
+        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), entry: .constant(mock))
+    }
+}

@@ -83,22 +83,13 @@ struct EntryDetailsCardView: View {
     }
 }
 
-//struct EntryDetailsCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let viewContext = PersistenceController.preview.container.viewContext
-//        let entry = Entry(context: viewContext)
-//
-////        EntryDetailsCardView(entry: entry)
-//
-//        entry.id = UUID()
-//        entry.timestamp = Date()
-//        entry.event = "Public Speaking"
-//        entry.emojion = "😬"
-//        entry.feeling = [0,0,0]
-//        entry.rating = 3
-//        entry.note = "Coffee helped anxeity"
-//
-//        return EntryDetailsCardView(entry: entry)
-//
-//    }
-//}
+struct EntryDetailsCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewContext = PersistenceController.preview.container.viewContext
+        let entry = Entry(context: viewContext)
+        let mock = MockDataObject.restoreEntry(originalEntry: entry, clonedEntry: MockDataObject.entry)
+
+        return EntryDetailsCardView(entry: .constant(mock))
+
+    }
+}

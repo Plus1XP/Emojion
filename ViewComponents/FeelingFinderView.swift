@@ -71,8 +71,8 @@ struct FeelingFinderView: View {
     }
 }
 
-//struct FeelingFinderView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FeelingFinderView(feeling: .constant([0,0,0]), hasUpdatedFeeling: .constant(false))
-//    }
-//}
+struct FeelingFinderView_Previews: PreviewProvider {
+    static var previews: some View {
+        FeelingFinderView(feeling: .constant([2,2,0]))
+    }
+}

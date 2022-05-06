@@ -22,7 +22,7 @@ struct AddEntryView: View {
             Form {
                 EntryFormView(refreshView: $refreshView, event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, note: $note)
                     .onChange(of: refreshView) { _ in
-                            debugPrint("AddEntryView: FeelingView Refreshed")
+                            debugPrint("AddEntryView: Feeling/Star View Refreshed")
                         }
             }
             .navigationTitle("New Emojion")
@@ -47,9 +47,9 @@ struct AddEntryView: View {
     }
 }
 
-//struct AddEmojionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let entryStore = EntryStore()
-//        AddEntryView(entryStore: entryStore)
-//    }
-//}
+struct AddEmojionView_Previews: PreviewProvider {
+    static var previews: some View {
+        let entryStore = EntryStore()
+        AddEntryView(entryStore: entryStore)
+    }
+}

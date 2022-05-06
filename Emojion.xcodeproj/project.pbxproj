@@ -55,6 +55,8 @@
 		2F70FB9E280F359D00D2A725 /* StarRatingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB9C280F359D00D2A725 /* StarRatingStore.swift */; };
 		2FBDEB93282308B1003953C0 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB92282308B1003953C0 /* EntryController.swift */; };
 		2FBDEB94282308B1003953C0 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB92282308B1003953C0 /* EntryController.swift */; };
+		2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
+		2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,7 @@
 		2F70FB99280F19A100D2A725 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		2F70FB9C280F359D00D2A725 /* StarRatingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingStore.swift; sourceTree = "<group>"; };
 		2FBDEB92282308B1003953C0 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
+		2FBDEB952824A246003953C0 /* MockDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +190,7 @@
 				2F70FB3C2808484100D2A725 /* Emojion.xcdatamodeld */,
 				2F70FB402808484100D2A725 /* Persistence.swift */,
 				2F01D8B028146141004583E3 /* FeelingFinder.swift */,
+				2FBDEB952824A246003953C0 /* MockDataObject.swift */,
 			);
 			path = DataObject;
 			sourceTree = "<group>";
@@ -321,6 +325,7 @@
 				2F01D8742812D711004583E3 /* Character.swift in Sources */,
 				2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */,
 				2F70FB532808484300D2A725 /* ContentView.swift in Sources */,
+				2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */,
 				2F70FB8A280E011300D2A725 /* EntryListView.swift in Sources */,
 				2F70FB87280D82CB00D2A725 /* Binding.swift in Sources */,
 				2F70FB7A280C890E00D2A725 /* EntryDetailView.swift in Sources */,
@@ -351,6 +356,7 @@
 				2F01D8752812D711004583E3 /* Character.swift in Sources */,
 				2F70FB522808484300D2A725 /* EmojionApp.swift in Sources */,
 				2F70FB542808484300D2A725 /* ContentView.swift in Sources */,
+				2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */,
 				2F70FB8B280E011300D2A725 /* EntryListView.swift in Sources */,
 				2F70FB88280D82CB00D2A725 /* Binding.swift in Sources */,
 				2F70FB7B280C890E00D2A725 /* EntryDetailView.swift in Sources */,
