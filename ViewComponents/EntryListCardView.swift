@@ -14,7 +14,7 @@ struct EntryListCardView: View {
     var starFontSize: CGFloat = 18
     var starSpacing: CGFloat = -1
     
-    private let EntryDateFormatter: DateFormatter = {
+    private let entryDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
@@ -29,7 +29,7 @@ struct EntryListCardView: View {
                         .font(.headline)
                         .fontWeight(.semibold)
                     Spacer()
-                    Text(date, formatter: EntryDateFormatter)
+                    Text(date, formatter: entryDateFormatter)
                         .font(.footnote)
                 }
             }
@@ -47,7 +47,7 @@ struct EntryListCardView: View {
             }
             HStack {
                 if let feeling = entry.feeling {
-                    Text(feelingFinderStore.GetTertiarySelectedFeelingName(feelingArray: feeling))
+                    Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
                         .font(.subheadline)
                         .fontWeight(.medium)
                 }
@@ -58,42 +58,8 @@ struct EntryListCardView: View {
     }
 }
 
-//struct EntryListCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let viewContext = PersistenceController.preview.container.viewContext
-//        let entry = Entry(context: viewContext)
-//
-////        EntryListCardView(entry: entry)
-//
-//        entry.id = UUID()
-//        entry.timestamp = Date()
-//        entry.event = "Public Speaking"
-//        entry.emojion = "😬"
-//        entry.feeling = [0,0,0]
-//        entry.rating = 3
-//        entry.note = "Coffee helped anxeity"
-//
-//        return EntryListCardView(entry: entry)
-//
-////        static let newEntry = Entry(id: UUID(), timestamp: Date(), event: "Public Speaking", emojion: "😬", feeling: "Nervous", rating: "⭐️⭐️⭐️", note: "Coffee helped anxeity")
-//
-////        let ent: Entry =
-////        {
-////            let newEntry = Entry()
-////        newEntry.id = UUID()
-////        newEntry.timestamp = Date()
-////        newEntry.event = "Public Speaking"
-////        newEntry.emojion = "😬"
-////        newEntry.feeling = "Nervous"
-////        newEntry.rating = "⭐️⭐️⭐️"
-////        newEntry.note = "Coffee helped anxeity"
-////            return newEntry
-////        }()
-//
-////        Entry(id: UUID(), )
-//
-////        EntryListCardView(entry: entry)
-//
-////        EntryListCardView(entry: PersistenceController.preview.container.viewContext.registeredObjects.first(where: { $0 is Entry }) as! Entry)
-//    }
-//}
+struct EntryListCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        EntryListCardView(entry: Entry.MockEntry)
+    }
+}

@@ -41,13 +41,13 @@ struct EntryDetailsCardView: View {
                 Image(uiImage: emojionEmoji!)
 //                    .resizable()
 //                    .frame(width: 200, height: 200)
-                    .clipShape(Circle())
-                    .overlay(
-                        Circle()
-                            .stroke(lineWidth: 8)
-                            .foregroundColor(.gray)
-                    )
-                    .shadow(radius: 10)
+//                    .clipShape(Circle())
+//                    .overlay(
+//                        Circle()
+//                            .stroke(lineWidth: 8)
+//                            .foregroundColor(.gray)
+//                    )
+//                    .shadow(radius: 10)
                     .padding()
                 Spacer()
             }
@@ -56,7 +56,7 @@ struct EntryDetailsCardView: View {
                 Spacer()
                 VStack {
                     if let feeling = entry.feeling {
-                        Text(feelingFinderStore.GetTertiarySelectedFeelingName(feelingArray: feeling))
+                        Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
                             .font(.title2)
                             .fontWeight(.medium)
                             .padding(.bottom)
@@ -83,22 +83,8 @@ struct EntryDetailsCardView: View {
     }
 }
 
-//struct EntryDetailsCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let viewContext = PersistenceController.preview.container.viewContext
-//        let entry = Entry(context: viewContext)
-//
-////        EntryDetailsCardView(entry: entry)
-//
-//        entry.id = UUID()
-//        entry.timestamp = Date()
-//        entry.event = "Public Speaking"
-//        entry.emojion = "😬"
-//        entry.feeling = [0,0,0]
-//        entry.rating = 3
-//        entry.note = "Coffee helped anxeity"
-//
-//        return EntryDetailsCardView(entry: entry)
-//
-//    }
-//}
+struct EntryDetailsCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        return EntryDetailsCardView(entry: .constant(Entry.MockEntry))
+    }
+}

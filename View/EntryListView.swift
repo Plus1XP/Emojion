@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct EntryListView: View {
     @ObservedObject var entryStore: EntryStore
+    @State private var entry: Entry
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
+
+    init(entryStore: EntryStore) {
+        self.entryStore = entryStore
+        self.entry = Entry(context: PersistenceController.shared.container.viewContext)
+        PersistenceController.shared.container.viewContext.delete(entry)
+    }
     
     var body: some View {
         List {
@@ -28,13 +36,13 @@ struct EntryListView: View {
                     } label: {
                         Label("Delete", systemImage: "trash")
                     }
-//                    Button {
-//                        _entry = entry
-//                        self.canShowEditEntryView.toggle()
-//                    } label: {
-//                        Label("Edit", systemImage: "pencil")
-//                    }
-//                    .tint(.blue)
+                    Button {
+                        self.entry = entry
+                        self.canShowEditEntryView.toggle()
+                    } label: {
+                        Label("Edit", systemImage: "pencil")
+                    }
+                    .tint(.blue)
                 }
             }
             .onDelete(perform: entryStore.deleteEntry)
@@ -53,7 +61,7 @@ struct EntryListView: View {
             AddEntryView(entryStore: entryStore)
         }
         .sheet(isPresented: $canShowEditEntryView) {
-//            EditEntryView(entryStore: entryStore, canShowEditEntryView: $canShowEditEntryView, entry: $_entry)
+            EditEntryView(entryStore: entryStore, canShowEditEntryView: $canShowEditEntryView, entry: $entry)
         }
     }
 }

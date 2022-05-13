@@ -9,8 +9,6 @@ import SwiftUI
 import Combine
 
 struct EntryFormView: View {
-    @State var hasUpdatedFeeling: Bool = false
-    @State var hasUpdatedStarRating: Bool = false
     @State var canEditStarRating: Bool = true
     @Binding var refreshView: Bool
     @Binding var event: String
@@ -42,21 +40,30 @@ struct EntryFormView: View {
                         })
                 }
                 HStack {
-//                    Text("Feeling")
-//                    Spacer()
-                    FeelingFinderView(feeling: $feeling)
-                        .onReceive(NotificationCenter.default
-                            .publisher(for: NSNotification.Name("RefreshFeelingView"))) { _ in
-                                debugPrint("EntryFormView: FeelingView Refreshed")
-                                refreshView.toggle()
-                            }
-//                    TextField("Describe Emojion", text: $feeling)
-//                        .multilineTextAlignment(.trailing)
+                    VStack {
+                        HStack {
+                            Text("Feeling")
+                            Spacer()
+                        }
+                        HStack {
+                            FeelingFinderView(feeling: $feeling)
+                                .onReceive(NotificationCenter.default
+                                    .publisher(for: NSNotification.Name("RefreshFeelingView"))) { _ in
+                                        debugPrint("EntryFormView: FeelingView Refreshed")
+                                        refreshView.toggle()
+                                    }
+                        }
+                    }
                 }
                 HStack {
                     Text("Rating")
                     Spacer()
-                    StarRatingView($rating, starFontSize, $hasUpdatedStarRating, $canEditStarRating)
+                    StarRatingView($rating, starFontSize, $canEditStarRating)
+                        .onReceive(NotificationCenter.default
+                            .publisher(for: NSNotification.Name("RefreshStarRatingView"))) { _ in
+                                debugPrint("EntryFormView: StarRatingView Refreshed")
+                                refreshView.toggle()
+                            }
                 }
             }
         }
@@ -72,25 +79,8 @@ struct EntryFormView: View {
     }
 }
 
-//struct EntryFormView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        EntryFormView(event: .constant("Interview"), emojion: .constant("😬"), feeling: .constant("Nervous"), rating: .constant("⭐️⭐️⭐️"), note: .constant("coffee helped with anxeity."))
-//        
-//        let viewContext = PersistenceController.preview.container.viewContext
-//        let entry = Entry(context: viewContext)
-//        
-////        EntryDetailView(entryStore: entryStore, entry: entry)
-//        
-//        entry.id = UUID()
-//        entry.timestamp = Date()
-//        entry.event = "Public Speaking"
-//        entry.emojion = "😬"
-//        entry.feeling = [0,0,0]
-//        entry.rating = 3
-//        entry.note = "Coffee helped anxeity"
-//        
-//        return EntryFormView(event: .constant(entry.event!), emojion: .constant(entry.emojion!), feeling: .constant(entry.feeling!), rating: .constant(entry.rating), note: .constant(entry.note!))
-//        
-//        
-//    }
-//}
+struct EntryFormView_Previews: PreviewProvider {
+    static var previews: some View {
+        return EntryFormView(refreshView: .constant(false), event: .constant(Entry.MockEntry.event!), emojion: .constant(Entry.MockEntry.emojion!), feeling: .constant(Entry.MockEntry.feeling!), rating: .constant(Entry.MockEntry.rating), note: .constant(Entry.MockEntry.note!))
+    }
+}
