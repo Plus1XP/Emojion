@@ -13,6 +13,7 @@ struct EntryListView: View {
     @State private var entry: Entry
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
+    @State private var hasEntrySaved: Bool = false
 
     init(entryStore: EntryStore) {
         self.entryStore = entryStore
@@ -57,12 +58,19 @@ struct EntryListView: View {
                 }
             }
         }
+        .onAppear {
+            entryStore.fetchEntries()
+        }
         .sheet(isPresented: $canShowAddEntryView) {
             AddEntryView(entryStore: entryStore)
         }
-        .sheet(isPresented: $canShowEditEntryView) {
-            EditEntryView(entryStore: entryStore, canShowEditEntryView: $canShowEditEntryView, entry: $entry)
-        }
+        .sheet(isPresented: $canShowEditEntryView, onDismiss: {
+            if !hasEntrySaved {
+                entryStore.discardChanges()
+            }
+        }, content: {
+            EditEntryView(entryStore: entryStore, canShowEditEntryView: $canShowEditEntryView, hasEntrySaved: $hasEntrySaved, entry: $entry)
+        })
     }
 }
 

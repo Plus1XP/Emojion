@@ -9,12 +9,7 @@ import Foundation
 import CoreData
 
 class EntryStore: ObservableObject {
-    
     @Published var entries: [Entry] = []
-    
-    init() {
-        fetchEntries()
-    }
     
     func fetchEntries() {
         let request = NSFetchRequest<Entry>(entityName: "Entry")
@@ -52,6 +47,10 @@ class EntryStore: ObservableObject {
     func deleteEntry(offsets: IndexSet) {
         offsets.map { entries[$0] }.forEach(PersistenceController.shared.container.viewContext.delete)
         saveChanges()
+    }
+    
+    func discardChanges() {
+        PersistenceController.shared.container.viewContext.rollback()
     }
     
     func saveChanges() {

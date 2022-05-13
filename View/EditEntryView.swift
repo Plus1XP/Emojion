@@ -10,9 +10,9 @@ import SwiftUI
 struct EditEntryView: View {
     @ObservedObject var entryStore: EntryStore
     @State var refreshView: Bool = false
-    @State var hasEntrySaved: Bool = false
     @State var originalStarRating: Int64 = 5
     @Binding var canShowEditEntryView: Bool
+    @Binding var hasEntrySaved: Bool
     @Binding var entry: Entry
     
     var body: some View {
@@ -58,21 +58,6 @@ struct EditEntryView: View {
         }
         .onAppear {
             hasEntrySaved = false
-            MockDataObject.temp = MockDataObject.backupEntry(originalEntry: entry)
-//            Entry.TempEntry = Entry.backupEntry(originalEntry: entry)
-            debugPrint("Original Entry Backup")
-        }
-        .onDisappear {
-            if !hasEntrySaved {
-                entry = MockDataObject.restoreEntry(originalEntry: entry, clonedEntry: MockDataObject.temp)
-                MockDataObject.temp = MockDataObject.empty
-//                entry = Entry.restoreEntry(originalEntry: entry, clonedEntry: Entry.TempEntry)
-//                Entry.ClearTempEntry()
-                debugPrint("Original Entry Restore")
-            } else {
-                MockDataObject.temp = MockDataObject.empty
-                debugPrint("Backup Entry Clear")
-            }
         }
     }
 }
@@ -80,6 +65,6 @@ struct EditEntryView: View {
 struct EditEntryView_Previews: PreviewProvider {
     static var previews: some View {
         let entryStore = EntryStore()
-        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), entry: .constant(Entry.MockEntry))
+        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), hasEntrySaved: .constant(false), entry: .constant(Entry.MockEntry))
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct EntryDetailView: View {
     @ObservedObject var entryStore: EntryStore
     @State private var canShowEditEntryView: Bool = false
+    @State private var hasEntrySaved: Bool = false
     @State var entry: Entry
     
     var body: some View {
@@ -22,9 +23,13 @@ struct EntryDetailView: View {
                     }
                 }
             }
-            .sheet(isPresented: $canShowEditEntryView) {
-                EditEntryView(entryStore: entryStore, canShowEditEntryView: $canShowEditEntryView, entry: $entry)
-            }
+            .sheet(isPresented: $canShowEditEntryView, onDismiss: {
+                if !hasEntrySaved {
+                    entryStore.discardChanges()
+                }
+            }, content: {
+                EditEntryView(entryStore: entryStore, canShowEditEntryView: $canShowEditEntryView, hasEntrySaved: $hasEntrySaved, entry: $entry)
+            })
     }
 }
 

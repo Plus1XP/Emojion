@@ -18,9 +18,6 @@ struct ContentView: View {
         // This fixes navigationBarTitle LayoutConstraints issue
         .navigationViewStyle(.stack)
         .environmentObject(entryStore)
-//        .onAppear {
-//            entryStore.fetchEntries()
-//        }
     }
 }
 
