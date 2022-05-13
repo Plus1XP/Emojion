@@ -41,13 +41,13 @@ struct EntryDetailsCardView: View {
                 Image(uiImage: emojionEmoji!)
 //                    .resizable()
 //                    .frame(width: 200, height: 200)
-                    .clipShape(Circle())
-                    .overlay(
-                        Circle()
-                            .stroke(lineWidth: 8)
-                            .foregroundColor(.gray)
-                    )
-                    .shadow(radius: 10)
+//                    .clipShape(Circle())
+//                    .overlay(
+//                        Circle()
+//                            .stroke(lineWidth: 8)
+//                            .foregroundColor(.gray)
+//                    )
+//                    .shadow(radius: 10)
                     .padding()
                 Spacer()
             }
@@ -56,7 +56,7 @@ struct EntryDetailsCardView: View {
                 Spacer()
                 VStack {
                     if let feeling = entry.feeling {
-                        Text(feelingFinderStore.GetTertiarySelectedFeelingName(feelingArray: feeling))
+                        Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
                             .font(.title2)
                             .fontWeight(.medium)
                             .padding(.bottom)
@@ -85,11 +85,6 @@ struct EntryDetailsCardView: View {
 
 struct EntryDetailsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewContext = PersistenceController.preview.container.viewContext
-        let entry = Entry(context: viewContext)
-        let mock = MockDataObject.restoreEntry(originalEntry: entry, clonedEntry: MockDataObject.entry)
-
-        return EntryDetailsCardView(entry: .constant(mock))
-
+        return EntryDetailsCardView(entry: .constant(Entry.MockEntry))
     }
 }

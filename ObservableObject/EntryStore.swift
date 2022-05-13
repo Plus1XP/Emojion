@@ -40,9 +40,7 @@ class EntryStore: ObservableObject {
     }
     
     func updateEntry(entry: Entry) {
-//        let currentSurname = learner.surname ?? ""
-//        let newSurname = currentSurname + "!"
-//        learner.surname = newSurname
+//        entry.updated = Date()
         saveChanges()
     }
     

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StarRatingView: View {
     @State var refreshView: Bool = false
-    @Binding var starRating : Int64
+    @Binding var starRating: Int64
     @Binding var canEditStarRating: Bool
     var starFontSize: CGFloat
     var starSpacing: CGFloat?
@@ -60,7 +60,7 @@ struct StarRatingView: View {
 
 struct StarRatingView_Previews: PreviewProvider {
     static var previews: some View {
-        StarRatingView(.constant(3), 25)
+        StarRatingView(.constant(Entry.MockEntry.rating), 25)
     }
 }
 

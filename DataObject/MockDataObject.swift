@@ -16,10 +16,6 @@ struct MockDataObject: Identifiable {
     var rating: Int64
     var note: String
     
-//    init(id: UUID?, timestamp: Date?, event: String?, emojion: String?, feeling: [Int]?, rating: Int64?, note: String?) {
-//
-//    }
-    
     static let `entry` = Self(id: UUID(), timestamp: Date(), event: "Interview", emojion: "😬", feeling: [3,4,2], rating: 2, note: "Coffee calmed my nerves!")
     
     static let `empty` = Self(id: UUID(), timestamp: Date(), event: "", emojion: "", feeling: [0,0,0], rating: 0, note: "")

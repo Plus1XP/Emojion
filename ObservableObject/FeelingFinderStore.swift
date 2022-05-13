@@ -9,15 +9,6 @@ import Foundation
 import SwiftUI
 
 class FeelingFinderStore: ObservableObject {
-    
-//    @Published var feelingArray: [Int] = [2,2,0] {
-//        didSet {
-//            debugPrint("Were are in the didSet feeling array")
-//            NotificationCenter.default.post(name: Notification.Name("Feeling"), object: nil, userInfo: ["one":feelingArray])
-////            NotificationCenter.default.post(name: Notification.Name("Feeling"), object: nil)
-//        }
-//    }
-    
     @Published var feeling: [FeelingWheel] = [
         .init(name: "Angry", color: Color.red, secondaryFeelings: [
             FeelingWheel(name: "Aggressive", color: Color.red, tertiaryFeelings: [
@@ -122,7 +113,7 @@ class FeelingFinderStore: ObservableObject {
                 ]),
             FeelingWheel(name: "Content", color: Color.yellow, tertiaryFeelings: [
                 FeelingWheel(name: "Free", color: Color.yellow),
-                FeelingWheel(name: "joyful", color: Color.yellow)
+                FeelingWheel(name: "Joyful", color: Color.yellow)
                 ]),
             FeelingWheel(name: "Interested", color: Color.yellow, tertiaryFeelings: [
                 FeelingWheel(name: "Curious", color: Color.yellow),
@@ -199,8 +190,7 @@ class FeelingFinderStore: ObservableObject {
         ])
     ]
 
-    func ResetArrayChoices(originalArray: [Int], newArray: [Int]) -> [Int] {
-        let originalArray = originalArray
+    func resetArrayChoices(originalArray: [Int], newArray: [Int]) -> [Int] {
         var newArray = newArray
         
         if originalArray[0] != newArray[0] {
@@ -213,57 +203,75 @@ class FeelingFinderStore: ObservableObject {
         return newArray
     }
     
-    func GetSecondaryFeelingArray(feelingArray: [Int]) -> [FeelingWheel] {
-        var newSelection: [FeelingWheel] = [FeelingWheel(name: "", color: Color.white)]
-        for feel in feeling {
-            if feel.name == feeling[feelingArray[0]].name {
-                newSelection = feel.secondaryFeelings
+    func getSecondaryFeelingArray(feelingArray: [Int]) -> [FeelingWheel] {
+        var newSelection: [FeelingWheel] = [FeelingWheel(name: "", color: Color.primary)]
+        if !feelingArray.isEmpty {
+            for emotion in feeling {
+                if emotion.name == feeling[feelingArray[0]].name {
+                    newSelection = emotion.secondaryFeelings
+                }
             }
         }
         return newSelection
     }
 
-    func GetTertiaryFeelingArray(feelingArray: [Int]) -> [FeelingWheel] {
-        var newSelection: [FeelingWheel] = [FeelingWheel(name: "", color: Color.white)]
-        for feel in GetSecondaryFeelingArray(feelingArray: feelingArray) {
-            if feel.name == feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].name {
-                newSelection = feel.tertiaryFeelings
+    func getTertiaryFeelingArray(feelingArray: [Int]) -> [FeelingWheel] {
+        var newSelection: [FeelingWheel] = [FeelingWheel(name: "", color: Color.primary)]
+        if !feelingArray.isEmpty {
+            for emotion in getSecondaryFeelingArray(feelingArray: feelingArray) {
+                if emotion.name == feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].name {
+                    newSelection = emotion.tertiaryFeelings
+                }
             }
         }
         return newSelection
     }
 
-    func GetPrimarySelectedFeelingName(feelingArray: [Int]) -> String {
-        var feelingName = ""
-        
+    func getPrimarySelectedFeelingName(feelingArray: [Int]) -> String {
         if !feelingArray.isEmpty {
-            feelingName = feeling[feelingArray[0]].name
+            return feeling[feelingArray[0]].name.capitalized
+        } else {
+            return ""
         }
-        return feelingName
     }
 
-    func GetSecondarySelectedFeelingName(feelingArray: [Int]) -> String {
-        feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].name
-    }
-
-    func GetTertiarySelectedFeelingName(feelingArray: [Int]) -> String {
-        feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].tertiaryFeelings[feelingArray[2]].name
-    }
-
-    func GetPrimarySelectedFeelingColor(feelingArray: [Int]) -> Color {
-        var feelingColor = Color.primary
-        
+    func getSecondarySelectedFeelingName(feelingArray: [Int]) -> String {
         if !feelingArray.isEmpty {
-            feelingColor = feeling[feelingArray[0]].color
+            return feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].name.capitalized
+        } else {
+            return ""
         }
-        return feelingColor
     }
 
-    func GetSecondarySelectedFeelingColor(feelingArray: [Int]) -> Color {
-        feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].color
+    func getTertiarySelectedFeelingName(feelingArray: [Int]) -> String {
+        if !feelingArray.isEmpty {
+            return feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].tertiaryFeelings[feelingArray[2]].name.capitalized
+        } else {
+            return ""
+        }
     }
 
-    func GetTertiarySelectedFeelingColor(feelingArray: [Int]) -> Color {
-        feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].tertiaryFeelings[feelingArray[2]].color
+    func getPrimarySelectedFeelingColor(feelingArray: [Int]) -> Color {
+        if !feelingArray.isEmpty {
+            return feeling[feelingArray[0]].color
+        } else {
+            return Color.primary
+        }
+    }
+
+    func getSecondarySelectedFeelingColor(feelingArray: [Int]) -> Color {
+        if !feelingArray.isEmpty {
+            return feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].color
+        } else {
+            return Color.primary
+        }
+    }
+
+    func getTertiarySelectedFeelingColor(feelingArray: [Int]) -> Color {
+        if !feelingArray.isEmpty {
+            return feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].tertiaryFeelings[feelingArray[2]].color
+        } else {
+            return Color.primary
+        }
     }
 }

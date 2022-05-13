@@ -31,10 +31,6 @@ struct EntryDetailView: View {
 struct EntryDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let entryStore = EntryStore()
-        let viewContext = PersistenceController.preview.container.viewContext
-        let entry = Entry(context: viewContext)
-        let mock = MockDataObject.restoreEntry(originalEntry: entry, clonedEntry: MockDataObject.entry)
-        
-        return EntryDetailView(entryStore: entryStore, entry: mock)
+        EntryDetailView(entryStore: entryStore, entry: Entry.MockEntry)
     }
 }

@@ -40,16 +40,20 @@ struct EntryFormView: View {
                         })
                 }
                 HStack {
-//                    Text("Feeling")
-//                    Spacer()
-                    FeelingFinderView(feeling: $feeling)
-                        .onReceive(NotificationCenter.default
-                            .publisher(for: NSNotification.Name("RefreshFeelingView"))) { _ in
-                                debugPrint("EntryFormView: FeelingView Refreshed")
-                                refreshView.toggle()
-                            }
-//                    TextField("Describe Emojion", text: $feeling)
-//                        .multilineTextAlignment(.trailing)
+                    VStack {
+                        HStack {
+                            Text("Feeling")
+                            Spacer()
+                        }
+                        HStack {
+                            FeelingFinderView(feeling: $feeling)
+                                .onReceive(NotificationCenter.default
+                                    .publisher(for: NSNotification.Name("RefreshFeelingView"))) { _ in
+                                        debugPrint("EntryFormView: FeelingView Refreshed")
+                                        refreshView.toggle()
+                                    }
+                        }
+                    }
                 }
                 HStack {
                     Text("Rating")
@@ -76,13 +80,7 @@ struct EntryFormView: View {
 }
 
 struct EntryFormView_Previews: PreviewProvider {
-    static var previews: some View {    
-        let viewContext = PersistenceController.preview.container.viewContext
-        let entry = Entry(context: viewContext)
-        let mock = MockDataObject.restoreEntry(originalEntry: entry, clonedEntry: MockDataObject.entry)
-        
-        return EntryFormView(refreshView: .constant(false), event: .constant(mock.event!), emojion: .constant(mock.emojion!), feeling: .constant(mock.feeling!), rating: .constant(mock.rating), note: .constant(mock.note!))
-        
-        
+    static var previews: some View {
+        return EntryFormView(refreshView: .constant(false), event: .constant(Entry.MockEntry.event!), emojion: .constant(Entry.MockEntry.emojion!), feeling: .constant(Entry.MockEntry.feeling!), rating: .constant(Entry.MockEntry.rating), note: .constant(Entry.MockEntry.note!))
     }
 }

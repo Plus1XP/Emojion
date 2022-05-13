@@ -59,12 +59,15 @@ struct EditEntryView: View {
         .onAppear {
             hasEntrySaved = false
             MockDataObject.temp = MockDataObject.backupEntry(originalEntry: entry)
+//            Entry.TempEntry = Entry.backupEntry(originalEntry: entry)
             debugPrint("Original Entry Backup")
         }
         .onDisappear {
             if !hasEntrySaved {
                 entry = MockDataObject.restoreEntry(originalEntry: entry, clonedEntry: MockDataObject.temp)
                 MockDataObject.temp = MockDataObject.empty
+//                entry = Entry.restoreEntry(originalEntry: entry, clonedEntry: Entry.TempEntry)
+//                Entry.ClearTempEntry()
                 debugPrint("Original Entry Restore")
             } else {
                 MockDataObject.temp = MockDataObject.empty
@@ -77,9 +80,6 @@ struct EditEntryView: View {
 struct EditEntryView_Previews: PreviewProvider {
     static var previews: some View {
         let entryStore = EntryStore()
-        let viewContext = PersistenceController.preview.container.viewContext
-        let entry = Entry(context: viewContext)
-        let mock = MockDataObject.restoreEntry(originalEntry: entry, clonedEntry: MockDataObject.entry)
-        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), entry: .constant(mock))
+        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), entry: .constant(Entry.MockEntry))
     }
 }
