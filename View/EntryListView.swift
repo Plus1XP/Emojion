@@ -20,7 +20,7 @@ struct EntryListView: View {
         if searchQuery.isEmpty {
             return entryStore.entries
         } else {
-            return entryStore.entries.filter { $0.event!.lowercased().contains(searchQuery.lowercased()) }
+            return entryStore.entries.filter { $0.event!.localizedCaseInsensitiveContains(searchQuery) }
         }
     }
 
@@ -59,10 +59,13 @@ struct EntryListView: View {
         }
         .navigationTitle("Emojions")
         .searchable(text: $searchQuery, prompt: "Search Emojions") {
-            ForEach(searchResults, id: \.self) { result in
-                Text(result.event!).searchCompletion(result.event!)
-            }
+//            if searchQuery.count > 2 {
+//                ForEach(searchResults, id: \.self) { entry in
+//                    Text(entry.event!).searchCompletion(entry.event!)
+//                }
+//            }
         }
+        .disableAutocorrection(true)
         .toolbar {
             ToolbarItem {
                 Button(action: {
