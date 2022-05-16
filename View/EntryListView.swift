@@ -14,6 +14,7 @@ struct EntryListView: View {
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
     @State private var hasEntrySaved: Bool = false
+    @State private var searchQuery: String = ""
 
     init(entryStore: EntryStore) {
         self.entryStore = entryStore
@@ -23,7 +24,7 @@ struct EntryListView: View {
     
     var body: some View {
         List {
-            ForEach(entryStore.entries) { entry in
+            ForEach(searchQuery.isEmpty ? entryStore.entries : entryStore.entries.filter { $0.event!.lowercased().contains(searchQuery.lowercased())}, id: \.self) { entry in
                 Section {
                     NavigationLink(destination: EntryDetailView(entryStore: entryStore, entry: entry)) {
                         EntryListCardView(entry: entry)
@@ -49,6 +50,7 @@ struct EntryListView: View {
             .onDelete(perform: entryStore.deleteEntry)
         }
         .navigationTitle("Emojions")
+        .searchable(text: $searchQuery)
         .toolbar {
             ToolbarItem {
                 Button(action: {
