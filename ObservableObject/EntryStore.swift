@@ -9,7 +9,11 @@ import Foundation
 import CoreData
 
 class EntryStore: ObservableObject {
-    @Published var entries: [Entry] = []
+    @Published var entries: [Entry]
+    
+    init() {
+        self.entries = []
+    }
     
     func fetchEntries() {
         let request = NSFetchRequest<Entry>(entityName: "Entry")

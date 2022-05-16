@@ -12,6 +12,8 @@ struct FeelingFinderView: View {
     @State var refreshView: Bool = false
     @Binding var feeling: [Int]
     
+    // This computed property is needed to notify parent view of property change
+    // If remoed the parent view UI will not refresh.
     private var selectedFeeling: Binding<[Int]> {
         Binding<[Int]>(get: {
             return feeling

@@ -67,13 +67,15 @@ struct EntryFormView: View {
                 }
             }
         }
-        Section(header: Text("Note Details")) {
+        Section(header: Text("Additional Notes")) {
             HStack {
-                Text("Note")
-                Spacer()
-                TextField("Additional information", text: $note)
+                TextArea("What else would you like to add?", text: $note)
                     .disableAutocorrection(false)
-                    .multilineTextAlignment(.trailing)
+                    .onReceive(NotificationCenter.default
+                        .publisher(for: NSNotification.Name("RefreshNoteFieldView"))) { _ in
+                            debugPrint("EntryFormView: NoteFieldView Refreshed")
+                            refreshView.toggle()
+                        }
             }
         }
     }

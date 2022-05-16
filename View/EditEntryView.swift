@@ -15,13 +15,24 @@ struct EditEntryView: View {
     @Binding var hasEntrySaved: Bool
     @Binding var entry: Entry
     
+    // This computed property is needed to notify child view of property change
+    // If remoed the child view UI will not refresh.
+    private var entryNote: Binding<String?> {
+        Binding<String?>(get: {
+            return entry.note
+        }, set: {
+            NotificationCenter.default.post(name: Notification.Name("RefreshNoteFieldView"), object: nil)
+            entry.note = $0
+        })
+    }
+    
     var body: some View {
         NavigationView {
             Form {
-                EntryFormView(refreshView: $refreshView, event: $entry.event.bound, emojion: $entry.emojion.bound, feeling: $entry.feeling.bound, rating: $entry.rating, note: $entry.note.bound)
+                EntryFormView(refreshView: $refreshView, event: $entry.event.bound, emojion: $entry.emojion.bound, feeling: $entry.feeling.bound, rating: $entry.rating, note: entryNote.bound)
                     .onChange(of: refreshView) { _ in
-                            debugPrint("EditEntryView: Feeling/Star View Refreshed")
-                        }
+                        debugPrint("EditEntryView: EntryForm View Refreshed")
+                    }
                 HStack {
                     Spacer()
                     Button(

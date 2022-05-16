@@ -17,6 +17,8 @@
 		2F01D8B8281477E5004583E3 /* FeelingFinderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */; };
 		2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35F302282F178A0038D78B /* NSManagedObject.swift */; };
 		2F35F304282F178A0038D78B /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35F302282F178A0038D78B /* NSManagedObject.swift */; };
+		2F4F147228323D76008D74B0 /* UITextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4F147128323D76008D74B0 /* UITextEditor.swift */; };
+		2F4F147328323D76008D74B0 /* UITextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4F147128323D76008D74B0 /* UITextEditor.swift */; };
 		2F70FB4F2808484300D2A725 /* Emojion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3C2808484100D2A725 /* Emojion.xcdatamodeld */; };
 		2F70FB502808484300D2A725 /* Emojion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3C2808484100D2A725 /* Emojion.xcdatamodeld */; };
 		2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB3E2808484100D2A725 /* EmojionApp.swift */; };
@@ -65,6 +67,7 @@
 		2F01D8B32814697B004583E3 /* FeelingFinderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingFinderView.swift; sourceTree = "<group>"; };
 		2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingFinderStore.swift; sourceTree = "<group>"; };
 		2F35F302282F178A0038D78B /* NSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
+		2F4F147128323D76008D74B0 /* UITextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextEditor.swift; sourceTree = "<group>"; };
 		2F70FB3D2808484100D2A725 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		2F70FB3E2808484100D2A725 /* EmojionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojionApp.swift; sourceTree = "<group>"; };
 		2F70FB3F2808484100D2A725 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -210,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				2F70FB7D280CD72600D2A725 /* UITextField.swift */,
+				2F4F147128323D76008D74B0 /* UITextEditor.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -331,6 +335,7 @@
 				2F70FB87280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755EC282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7A280C890E00D2A725 /* EntryDetailView.swift in Sources */,
+				2F4F147228323D76008D74B0 /* UITextEditor.swift in Sources */,
 				2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB90280E141500D2A725 /* EntryDetailsCardView.swift in Sources */,
 				2F70FB8D280E10FE00D2A725 /* EntryListCardView.swift in Sources */,
@@ -362,6 +367,7 @@
 				2F70FB88280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755ED282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7B280C890E00D2A725 /* EntryDetailView.swift in Sources */,
+				2F4F147328323D76008D74B0 /* UITextEditor.swift in Sources */,
 				2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB91280E141500D2A725 /* EntryDetailsCardView.swift in Sources */,
 				2F70FB8E280E10FE00D2A725 /* EntryListCardView.swift in Sources */,

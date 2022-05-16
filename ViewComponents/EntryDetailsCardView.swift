@@ -69,9 +69,11 @@ struct EntryDetailsCardView: View {
             HStack {
                 Spacer()
                 VStack {
-                    if let note = entry.note {
-                        Text(note)
-                            .multilineTextAlignment(.leading)
+                    ScrollView {
+                        if let note = entry.note {
+                            Text(note)
+                                .multilineTextAlignment(.leading)
+                        }
                     }
                 }
                 Spacer()
