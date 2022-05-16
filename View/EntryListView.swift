@@ -15,6 +15,14 @@ struct EntryListView: View {
     @State private var canShowEditEntryView: Bool = false
     @State private var hasEntrySaved: Bool = false
     @State private var searchQuery: String = ""
+    
+    private var searchResults: [Entry] {
+        if searchQuery.isEmpty {
+            return entryStore.entries
+        } else {
+            return entryStore.entries.filter { $0.event!.lowercased().contains(searchQuery.lowercased()) }
+        }
+    }
 
     init(entryStore: EntryStore) {
         self.entryStore = entryStore
@@ -24,7 +32,7 @@ struct EntryListView: View {
     
     var body: some View {
         List {
-            ForEach(searchQuery.isEmpty ? entryStore.entries : entryStore.entries.filter { $0.event!.lowercased().contains(searchQuery.lowercased())}, id: \.self) { entry in
+            ForEach(searchResults, id: \.self) { entry in
                 Section {
                     NavigationLink(destination: EntryDetailView(entryStore: entryStore, entry: entry)) {
                         EntryListCardView(entry: entry)
@@ -50,7 +58,11 @@ struct EntryListView: View {
             .onDelete(perform: entryStore.deleteEntry)
         }
         .navigationTitle("Emojions")
-        .searchable(text: $searchQuery)
+        .searchable(text: $searchQuery, prompt: "Search Emojions") {
+            ForEach(searchResults, id: \.self) { result in
+                Text(result.event!).searchCompletion(result.event!)
+            }
+        }
         .toolbar {
             ToolbarItem {
                 Button(action: {
