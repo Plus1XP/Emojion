@@ -32,6 +32,7 @@ struct AddEntryView: View {
                         presentaionMode.wrappedValue.dismiss()
                     }) {
                         Label("Dismiss", systemImage: "xmark.circle")
+                            .foregroundColor(Color.red)
                     }
                  }
                  ToolbarItem(placement: .navigationBarTrailing) {
@@ -39,7 +40,8 @@ struct AddEntryView: View {
                          entryStore.addNewEntry(event: event, emojion: emojion, feeling: feeling, rating: rating, note: note)
                          presentaionMode.wrappedValue.dismiss()
                      }) {
-                         Label("Save", systemImage: "sdcard")
+                         Label("Save", systemImage: "checkmark.circle")
+                             .foregroundColor(Color.green)
                      }
                   }
               }
