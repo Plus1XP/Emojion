@@ -11,6 +11,11 @@ import CoreData
 class EntryStore: ObservableObject {
     @Published var entries: [Entry]
     
+    // Random Test Dates
+    let canUseTestDates: Bool = false
+    let calendar = Calendar(identifier: .gregorian)
+    let components = DateComponents(year: 2022, month: Int.random(in: 01...04), day: Int.random(in: 01...28))
+    
     init() {
         self.entries = []
     }
@@ -29,7 +34,7 @@ class EntryStore: ObservableObject {
     func addNewEntry(event: String, emojion: String, feeling: [Int], rating: Int64, note: String) {
         let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
         newEntry.id = UUID()
-        newEntry.timestamp = Date()
+        newEntry.timestamp = canUseTestDates ? calendar.date(from: components) : Date()
         newEntry.event = event
         newEntry.emojion = emojion
         newEntry.feeling = feeling
