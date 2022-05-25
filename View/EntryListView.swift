@@ -32,8 +32,9 @@ struct EntryListView: View {
             return entryStore.entries
         }
     }
-
+    
     init(entryStore: EntryStore) {
+//        UITableView.appearance().sectionFooterHeight = 0
         self.entryStore = entryStore
 //        self.entry = Entry(context: PersistenceController.shared.container.viewContext)
         PersistenceController.shared.container.viewContext.delete(entry)
@@ -66,7 +67,6 @@ struct EntryListView: View {
             }
             .onDelete(perform: entryStore.deleteEntry)
         }
-        .navigationTitle("Emojions")
         .searchable(text: $searchQuery, prompt: "Search Emojions") {
             if canAutoCompleteSearch && searchQuery.count > 2 {
                 ForEach(searchResults, id: \.self) { entry in
@@ -97,12 +97,11 @@ struct EntryListView: View {
                             searchDate = Date.now
                         }
                     }) {
-                        Label("Reset Calendar", systemImage: "xmark.circle.fill")
+                        Label("Reset Calendar", systemImage: "xmark")
                             .foregroundColor(Color.red)
                             .disabled(!isSearchingDate)
                             .opacity(isSearchingDate ? 1 : 0)
                     }
-
                 }
             }
         }
@@ -111,7 +110,7 @@ struct EntryListView: View {
                 Button(action: {
                     self.canShowAddEntryView.toggle()
                 }) {
-                    Label("Add Item", systemImage: "plus.circle")
+                    Label("Add Item", systemImage: "plus")
                 }
             }
         }

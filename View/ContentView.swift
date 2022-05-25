@@ -10,12 +10,31 @@ import CoreData
 
 struct ContentView: View {
     @StateObject private var entryStore = EntryStore()
+    @State private var selection = 0
     
     var body: some View {
-        NavigationView {
-            EntryListView(entryStore: entryStore)
+        TabView(selection: $selection) {
+            NavigationView {
+                EntryListView(entryStore: entryStore)
+                    .navigationTitle("Emojions")
+            }
+            .tabItem {
+                Image(systemName: "rectangle.stack")
+                Text("Card")
+            }
+            .tag(0)
+            NavigationView {
+                CalendarView(calendar: Calendar(identifier: .iso8601))
+                    .navigationTitle("Emojions")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem {
+                Image(systemName: "calendar")
+                Text("Calendar")
+            }
+            .tag(1)
         }
-        // This fixes navigationBarTitle LayoutConstraints issue
+        // This fixes navigationBarTitle LayoutConstraints issue for NavigationView
         .navigationViewStyle(.stack)
         .environmentObject(entryStore)
     }
