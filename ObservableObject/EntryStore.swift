@@ -31,6 +31,36 @@ class EntryStore: ObservableObject {
         }
     }
     
+    //    func fetchEntries() {
+    //        let request = NSFetchRequest<Entry>(entityName: "Entry")
+    //        let sort = NSSortDescriptor(key: "timestamp", ascending: false)
+    //                request.sortDescriptors = [sort]
+    //        do {
+    //            entries = try PersistenceController.shared.container.viewContext.fetch(request)
+    //        } catch {
+    //            print("Error fetching. \(error)")
+    //        }
+    //    }
+    //
+    //    static var PersonalResults: NSFetchRequest<TokenData> {
+    //        let request: NSFetchRequest<TokenData> = TokenData.fetchRequest()
+    //        request.predicate = NSPredicate(format: "displayGroup == %@", TokenGroupType.Personal.rawValue)
+    //        request.sortDescriptors = [NSSortDescriptor(key: "indexNumber", ascending: true)]
+    //
+    //        return request
+    //    }
+    //
+    //    @FetchRequest(
+    //        entity: Entry.entity(),
+    //        sortDescriptors: [NSSortDescriptor(key: "timestamp", ascending: false)],
+    //        animation: .default) var entries: FetchedResults<Entry>
+    
+//    _entries = FetchRequest<Entry>(sortDescriptors: [NSSortDescriptor(key: "timestamp", ascending: false)],
+//                                 predicate: NSPredicate(
+//                                    format: "timestamp >= %@ && timestamp <= %@",
+//                                    Calendar.current.startOfDay(for: date.wrappedValue) as CVarArg,
+//                                    Calendar.current.startOfDay(for: date.wrappedValue + 86400) as CVarArg))
+    
     func addNewEntry(event: String, emojion: String, feeling: [Int], rating: Int64, note: String) {
         let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
         newEntry.id = UUID()

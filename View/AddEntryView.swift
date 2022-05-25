@@ -31,7 +31,7 @@ struct AddEntryView: View {
                     Button(action: {
                         presentaionMode.wrappedValue.dismiss()
                     }) {
-                        Label("Dismiss", systemImage: "xmark.circle")
+                        Label("Dismiss", systemImage: "chevron.down")
                             .foregroundColor(Color.red)
                     }
                  }
@@ -40,7 +40,7 @@ struct AddEntryView: View {
                          entryStore.addNewEntry(event: event, emojion: emojion, feeling: feeling, rating: rating, note: note)
                          presentaionMode.wrappedValue.dismiss()
                      }) {
-                         Label("Save", systemImage: "checkmark.circle")
+                         Label("Save", systemImage: "checkmark")
                              .foregroundColor(Color.green)
                      }
                   }

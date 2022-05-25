@@ -53,7 +53,7 @@ struct EditEntryView: View {
                     Button(action: {
                         canShowEditEntryView.toggle()
                     }) {
-                        Label("Dismiss", systemImage: "xmark.circle")
+                        Label("Dismiss", systemImage: "chevron.down")
                             .foregroundColor(Color.red)
                     }
                 }
@@ -63,7 +63,7 @@ struct EditEntryView: View {
                         hasEntrySaved = true
                         canShowEditEntryView.toggle()
                     }) {
-                        Label("Save", systemImage: "checkmark.circle")
+                        Label("Save", systemImage: "checkmark")
                             .foregroundColor(Color.green)
                     }
                 }
