@@ -99,8 +99,27 @@ struct EntryListView: View {
                     }) {
                         Label("Reset Calendar", systemImage: "xmark")
                             .foregroundColor(Color.red)
-                            .disabled(!isSearchingDate)
-                            .opacity(isSearchingDate ? 1 : 0)
+//                            .disabled(!isSearchingDate)
+//                            .opacity(isSearchingDate ? 1 : 0)
+                    }
+                    .hidden(!isSearchingDate)
+                    Button(action: {
+                        entryStore.addMockEntries(numberOfEntries: 30)
+                    }) {
+                        Label("Create Entries", systemImage: "calendar.badge.plus")
+                            .foregroundStyle(.green, .white)
+                    }
+                    Button(action: {
+                        entryStore.deleteAllEntries()
+                    }) {
+                        Label("Delete Entries", systemImage: "calendar.badge.minus")
+                            .foregroundStyle(.red, .white)
+                    }
+                    Button(action: {
+                        entryStore.resetCoreData()
+                    }) {
+                        Label("Clear Database", systemImage: "externaldrive.badge.minus")
+                            .foregroundStyle(.red, .white)
                     }
                 }
             }

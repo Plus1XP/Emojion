@@ -11,10 +11,7 @@ import CoreData
 class EntryStore: ObservableObject {
     @Published var entries: [Entry]
     
-    // Random Test Dates
-    let canUseTestDates: Bool = false
-    let calendar = Calendar(identifier: .gregorian)
-    let components = DateComponents(year: 2022, month: Int.random(in: 01...04), day: Int.random(in: 01...28))
+    var wordList: [String] = ["sausage", "blubber", "pencil", "cloud", "moon", "water", "computer", "school", "network", "hammer", "walking", "violently", "mediocre", "literature", "chair", "two", "window", "cords", "musical", "zebra", "xylophone", "penguin", "home", "dog", "final", "ink", "teacher", "fun", "website", "banana", "uncle", "softly", "mega", "ten", "awesome", "attatch", "blue", "internet", "bottle", "tight", "zone", "tomato", "prison", "hydro", "cleaning", "telivision", "send", "frog", "cup", "book", "zooming", "falling", "evily", "gamer", "lid", "juice", "moniter", "captain", "bonding", "loudly", "thudding", "guitar", "shaving", "hair", "soccer", "water", "racket", "table", "late", "media", "desktop", "flipper", "club", "flying", "smooth", "monster", "purple", "guardian", "bold", "hyperlink", "presentation", "world", "national",   "comment", "element", "magic", "lion", "sand", "crust", "toast", "jam", "hunter", "forest", "foraging", "silently", "tawesomated", "joshing", "pong",]
     
     init() {
         self.entries = []
@@ -61,10 +58,25 @@ class EntryStore: ObservableObject {
 //                                    Calendar.current.startOfDay(for: date.wrappedValue) as CVarArg,
 //                                    Calendar.current.startOfDay(for: date.wrappedValue + 86400) as CVarArg))
     
+    func addMockEntries(numberOfEntries: Int) {        
+        for _ in 1...numberOfEntries {
+            let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
+            newEntry.id = generateUUID()
+            newEntry.timestamp = generateCalendarDate()
+            newEntry.event = generateEvent()
+            newEntry.emojion = generateEmoji()
+            newEntry.feeling = generateFeeling()
+            newEntry.rating = generateRating()
+            newEntry.note = generateNote()
+            saveChanges()
+        }
+        fetchEntries()
+    }
+    
     func addNewEntry(event: String, emojion: String, feeling: [Int], rating: Int64, note: String) {
         let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
         newEntry.id = UUID()
-        newEntry.timestamp = canUseTestDates ? calendar.date(from: components) : Date()
+        newEntry.timestamp = Date()
         newEntry.event = event
         newEntry.emojion = emojion
         newEntry.feeling = feeling
@@ -88,6 +100,31 @@ class EntryStore: ObservableObject {
         saveChanges()
     }
     
+    func deleteAllEntries() {
+        for entry in entries {
+            PersistenceController.shared.container.viewContext.delete(entry)
+        }
+        saveChanges()
+    }
+    
+    func resetCoreData() {
+          for i in 0...PersistenceController.shared.container.managedObjectModel.entities.count-1 {
+              let entity = PersistenceController.shared.container.managedObjectModel.entities[i]
+
+              do {
+                  let query = NSFetchRequest<NSFetchRequestResult>(entityName: entity.name!)
+                  let deleterequest = NSBatchDeleteRequest(fetchRequest: query)
+                  try PersistenceController.shared.container.viewContext.execute(deleterequest)
+                  try PersistenceController.shared.container.viewContext.save()
+
+              } catch let error as NSError {
+                  print("Error: \(error.localizedDescription)")
+                  abort()
+              }
+          }
+        fetchEntries()
+    }
+    
     func discardChanges() {
         PersistenceController.shared.container.viewContext.rollback()
     }
@@ -100,5 +137,44 @@ class EntryStore: ObservableObject {
             }
             self.fetchEntries()
         }
+    }
+    
+    func generateUUID() -> UUID {
+        return UUID()
+    }
+    
+    func generateCalendarDate() -> Date {
+        let calendar = Calendar(identifier: .iso8601)
+        let components = DateComponents(year: 2022, month: Int.random(in: 1...5), day: Int.random(in: 1...28), hour: Int.random(in: 1...23), minute: Int.random(in: 0...59))
+        return calendar.date(from: components).unsafelyUnwrapped
+    }
+    
+    func generateEvent() -> String {
+        return getRandomWord()
+    }
+    
+    func generateEmoji() -> String {
+        return String(UnicodeScalar(Array(0x1F600...0x1F637).randomElement()!)!)
+    }
+    
+    func generateFeeling() -> [Int] {
+        return [Int.random(in: 0...6), Int.random(in: 0...3), Int.random(in: 0...1)]
+    }
+    
+    func generateRating() -> Int64 {
+        return Int64.random(in: 0...4)
+    }
+    
+    func generateNote() -> String {
+        var note: String = ""
+        for _ in 1...Int.random(in: 5...30) {
+            note.append("\(getRandomWord()) ")
+        }
+        return note
+    }
+    
+    func getRandomWord() -> String {
+        let index: Int = Int.random(in: 0...97)
+        return wordList[index]
     }
 }
