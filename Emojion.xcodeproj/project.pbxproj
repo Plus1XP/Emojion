@@ -63,6 +63,10 @@
 		2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
 		2FC755EC282AA5EF008344CE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC755EB282AA5EF008344CE /* Entry.swift */; };
 		2FC755ED282AA5EF008344CE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC755EB282AA5EF008344CE /* Entry.swift */; };
+		2FF810EE284785DD0050E533 /* CalendarViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */; };
+		2FF810EF284785DD0050E533 /* CalendarViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */; };
+		2FF810F12847BFC00050E533 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF810F02847BFC00050E533 /* CalendarStore.swift */; };
+		2FF810F22847BFC00050E533 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF810F02847BFC00050E533 /* CalendarStore.swift */; };
 		2FFE3985283FD26900DFFA48 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE3984283FD26900DFFA48 /* SettingsView.swift */; };
 		2FFE3986283FD26900DFFA48 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE3984283FD26900DFFA48 /* SettingsView.swift */; };
 		2FFE398B28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */; };
@@ -101,6 +105,8 @@
 		2FAF0054283D68B10092E8DD /* CalendarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCardView.swift; sourceTree = "<group>"; };
 		2FBDEB952824A246003953C0 /* MockDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataObject.swift; sourceTree = "<group>"; };
 		2FC755EB282AA5EF008344CE /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewComponent.swift; sourceTree = "<group>"; };
+		2FF810F02847BFC00050E533 /* CalendarStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarStore.swift; sourceTree = "<group>"; };
 		2FFE3984283FD26900DFFA48 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +138,7 @@
 				2F70FB672808536E00D2A725 /* EntryFormView.swift */,
 				2F70FB99280F19A100D2A725 /* StarRatingView.swift */,
 				2F01D8B32814697B004583E3 /* FeelingFinderView.swift */,
+				2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -196,6 +203,7 @@
 			children = (
 				2F70FB73280C7EE300D2A725 /* EntryStore.swift */,
 				2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */,
+				2FF810F02847BFC00050E533 /* CalendarStore.swift */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -344,12 +352,14 @@
 				2F70FB7E280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB552808484300D2A725 /* Persistence.swift in Sources */,
 				2F01D8742812D711004583E3 /* Character.swift in Sources */,
+				2FF810EE284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */,
 				2FFE398B28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB532808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */,
 				2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */,
 				2F70FB8A280E011300D2A725 /* EntryListView.swift in Sources */,
+				2FF810F12847BFC00050E533 /* CalendarStore.swift in Sources */,
 				2F70FB87280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755EC282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7A280C890E00D2A725 /* EntryDetailView.swift in Sources */,
@@ -380,12 +390,14 @@
 				2F70FB7F280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB562808484300D2A725 /* Persistence.swift in Sources */,
 				2F01D8752812D711004583E3 /* Character.swift in Sources */,
+				2FF810EF284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2F70FB522808484300D2A725 /* EmojionApp.swift in Sources */,
 				2FFE398C28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB542808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F304282F178A0038D78B /* NSManagedObject.swift in Sources */,
 				2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */,
 				2F70FB8B280E011300D2A725 /* EntryListView.swift in Sources */,
+				2FF810F22847BFC00050E533 /* CalendarStore.swift in Sources */,
 				2F70FB88280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755ED282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7B280C890E00D2A725 /* EntryDetailView.swift in Sources */,

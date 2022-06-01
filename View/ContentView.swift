@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
     @StateObject private var entryStore = EntryStore()
+    @StateObject private var calendarStore = CalendarStore()
     @State private var selection = 0
     
     var body: some View {
@@ -24,7 +25,7 @@ struct ContentView: View {
             }
             .tag(0)
             NavigationView {
-                CalendarView(entryStore: entryStore, calendar: Calendar(identifier: .iso8601))
+                CalendarView(calendarStore: calendarStore, entryStore: entryStore, calendar: Calendar(identifier: .iso8601))
                     .navigationTitle("Emojions")
                     .navigationBarTitleDisplayMode(.inline)
             }
