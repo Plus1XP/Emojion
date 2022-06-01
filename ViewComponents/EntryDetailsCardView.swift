@@ -81,7 +81,7 @@ struct EntryDetailsCardView: View {
             .padding()
             Spacer()
         }
-        .navigationTitle(entry.event!)
+        .navigationTitle(entry.event ?? "")
     }
 }
 

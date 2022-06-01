@@ -24,7 +24,7 @@ struct ContentView: View {
             }
             .tag(0)
             NavigationView {
-                CalendarView(calendar: Calendar(identifier: .iso8601))
+                CalendarView(entryStore: entryStore, calendar: Calendar(identifier: .iso8601))
                     .navigationTitle("Emojions")
                     .navigationBarTitleDisplayMode(.inline)
             }

@@ -65,6 +65,8 @@
 		2FC755ED282AA5EF008344CE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC755EB282AA5EF008344CE /* Entry.swift */; };
 		2FFE3985283FD26900DFFA48 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE3984283FD26900DFFA48 /* SettingsView.swift */; };
 		2FFE3986283FD26900DFFA48 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE3984283FD26900DFFA48 /* SettingsView.swift */; };
+		2FFE398B28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */; };
+		2FFE398C28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +102,7 @@
 		2FBDEB952824A246003953C0 /* MockDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataObject.swift; sourceTree = "<group>"; };
 		2FC755EB282AA5EF008344CE /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		2FFE3984283FD26900DFFA48 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +229,7 @@
 			children = (
 				2F70FB7D280CD72600D2A725 /* UITextField.swift */,
 				2F4F147128323D76008D74B0 /* UITextEditor.swift */,
+				2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -341,6 +345,7 @@
 				2F70FB552808484300D2A725 /* Persistence.swift in Sources */,
 				2F01D8742812D711004583E3 /* Character.swift in Sources */,
 				2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */,
+				2FFE398B28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB532808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */,
 				2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */,
@@ -376,6 +381,7 @@
 				2F70FB562808484300D2A725 /* Persistence.swift in Sources */,
 				2F01D8752812D711004583E3 /* Character.swift in Sources */,
 				2F70FB522808484300D2A725 /* EmojionApp.swift in Sources */,
+				2FFE398C28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB542808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F304282F178A0038D78B /* NSManagedObject.swift in Sources */,
 				2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */,

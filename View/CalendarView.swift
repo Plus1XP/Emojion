@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CalendarView: View {
+    @ObservedObject var entryStore: EntryStore
     private let calendar: Calendar
     private let monthFormatter: DateFormatter
     private let dayFormatter: DateFormatter
@@ -17,9 +18,10 @@ struct CalendarView: View {
     @State private var selectedDate = Self.now
     private static var now = Date()
     
-    @FetchRequest(sortDescriptors: []) var entries: FetchedResults<Entry>
+//    @FetchRequest(sortDescriptors: []) var entries: FetchedResults<Entry>
     
-    init(calendar: Calendar) {
+    init(entryStore: EntryStore, calendar: Calendar) {
+        self.entryStore = entryStore
         self.calendar = calendar
         self.monthFormatter = DateFormatter(dateFormat: "MMMM YYYY", calendar: calendar)
         self.dayFormatter = DateFormatter(dateFormat: "d", calendar: calendar)
@@ -30,6 +32,7 @@ struct CalendarView: View {
     var body: some View {
         VStack {
             CalendarViewComponent(
+                entryStore: entryStore,
                 calendar: calendar,
                 date: $selectedDate,
                 content: { date in
@@ -152,7 +155,7 @@ struct CalendarView: View {
     
     func dateHasEvents(date: Date) -> Bool {
         
-        for entry in entries {
+        for entry in entryStore.entries {
             if calendar.isDate(date, inSameDayAs: entry.timestamp ?? Date()) {
                 return true
             }
@@ -162,12 +165,22 @@ struct CalendarView: View {
     }
     
     func numberOfEventsInDate(date: Date) -> Int {
+        let startTime = CACurrentMediaTime()
         var count: Int = 0
-        for entry in entries {
+        for entry in entryStore.entries {
             if calendar.isDate(date, inSameDayAs: entry.timestamp ?? Date()) {
                 count += 1
             }
         }
+        let endTime = CACurrentMediaTime()
+        print("Total Runtime: \(endTime - startTime) s")
+        
+//        var count: Int = 0
+//        for entry in entryStore.entries {
+//            if calendar.isDate(date, inSameDayAs: entry.timestamp ?? Date()) {
+//                count += 1
+//            }
+//        }
         return count
     }
 }
@@ -175,8 +188,8 @@ struct CalendarView: View {
 // MARK: - Component
 
 public struct CalendarViewComponent<Day: View, Header: View, Title: View, Trailing: View>: View {
-    //    @ObservedObject var entryStore: EntryStore
     @Environment(\.colorScheme) var colorScheme
+    @ObservedObject var entryStore: EntryStore
 
     // Injected dependencies
     private var calendar: Calendar
@@ -189,9 +202,15 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
     // Constants
     private let daysInWeek = 7
     
+    @State private var entry: Entry = Entry(context: PersistenceController.shared.container.viewContext)
+    @State private var canShowAddEntryView: Bool = false
+    @State private var canShowEditEntryView: Bool = false
+    @State private var hasEntrySaved: Bool = false
+    
     @FetchRequest var entries: FetchedResults<Entry>
     
-    public init(
+    init(
+        entryStore: EntryStore,
         calendar: Calendar,
         date: Binding<Date>,
         @ViewBuilder content: @escaping (Date) -> Day,
@@ -199,6 +218,7 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
         @ViewBuilder header: @escaping (Date) -> Header,
         @ViewBuilder title: @escaping (Date) -> Title
     ) {
+        self.entryStore = entryStore
         self.calendar = calendar
         self._date = date
         self.content = content
@@ -211,6 +231,8 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
                                         format: "timestamp >= %@ && timestamp <= %@",
                                         Calendar.current.startOfDay(for: date.wrappedValue) as CVarArg,
                                         Calendar.current.startOfDay(for: date.wrappedValue + 86400) as CVarArg))
+        
+        PersistenceController.shared.container.viewContext.delete(entry)
     }
     
     public var body: some View {
@@ -244,22 +266,51 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
             
             List(entries) { entry in
                 NavigationLink {
-//                    FixtureReadView(fixture: entry)
-//                    EntryDetailView(entryStore: entryStore, entry: entry)
+                    EntryDetailView(entryStore: entryStore, entry: entry)
                 } label: {
                     CalendarCardView(entry: entry)
                 }
-            }.listStyle(.plain)
+                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    Button(role: .destructive) {
+                        withAnimation {
+                            entryStore.deleteEntry(entry: entry)
+                        }
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
+                    Button {
+                        self.entry = entry
+                        self.canShowEditEntryView.toggle()
+                    } label: {
+                        Label("Edit", systemImage: "pencil")
+                    }
+                    .tint(.blue)
+                }
+            }
+            .listStyle(.plain)
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
-                    
+                    self.canShowAddEntryView.toggle()
                 }) {
                     Label("Add Item", systemImage: "plus")
                 }
             }
         }
+        .onAppear {
+//            entryStore.fetchEntries()
+        }
+        .sheet(isPresented: $canShowAddEntryView) {
+            AddEntryView(entryStore: entryStore)
+        }
+        .sheet(isPresented: $canShowEditEntryView, onDismiss: {
+            if !hasEntrySaved {
+                entryStore.discardChanges()
+            }
+        }, content: {
+            EditEntryView(entryStore: entryStore, canShowEditEntryView: $canShowEditEntryView, hasEntrySaved: $hasEntrySaved, entry: $entry)
+        })
     }
 }
 
@@ -341,7 +392,8 @@ private extension DateFormatter {
 #if DEBUG
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView(calendar: Calendar(identifier: .gregorian))
+        let entryStore = EntryStore()
+        CalendarView(entryStore: entryStore, calendar: Calendar(identifier: .iso8601))
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

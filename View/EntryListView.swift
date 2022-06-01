@@ -13,6 +13,7 @@ struct EntryListView: View {
     @State private var entry: Entry = Entry(context: PersistenceController.shared.container.viewContext)
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
+    @State private var canShowDebugMenu: Bool = false
     @State private var canAutoCompleteSearch: Bool = false
     @State private var canResetDate: Bool = false
     @State private var isSearchingDate: Bool = false
@@ -104,22 +105,34 @@ struct EntryListView: View {
                     }
                     .hidden(!isSearchingDate)
                     Button(action: {
-                        entryStore.addMockEntries(numberOfEntries: 30)
+                        canShowDebugMenu.toggle()
                     }) {
-                        Label("Create Entries", systemImage: "calendar.badge.plus")
-                            .foregroundStyle(.green, .white)
+                        Label("Create Entries", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
+                            .foregroundStyle(.white)
                     }
-                    Button(action: {
-                        entryStore.deleteAllEntries()
-                    }) {
-                        Label("Delete Entries", systemImage: "calendar.badge.minus")
-                            .foregroundStyle(.red, .white)
-                    }
-                    Button(action: {
-                        entryStore.resetCoreData()
-                    }) {
-                        Label("Clear Database", systemImage: "externaldrive.badge.minus")
-                            .foregroundStyle(.red, .white)
+                    .popover(isPresented: $canShowDebugMenu) {
+                        HStack {
+                            Button(action: {
+                                entryStore.addMockEntries(numberOfEntries: 30)
+                            }) {
+                                Label("", systemImage: "calendar.badge.plus")
+                                    .foregroundStyle(.green, .white)
+                            }
+                            Button(action: {
+                                entryStore.deleteAllEntries()
+                            }) {
+                                Label("", systemImage: "calendar.badge.minus")
+                                    .foregroundStyle(.red, .white)
+                            }
+                            Button(action: {
+                                entryStore.resetCoreData()
+                            }) {
+                                Label("", systemImage: "externaldrive.badge.minus")
+                                    .foregroundStyle(.red, .white)
+                            }
+                        }
+                        .padding()
+                        .background(.ultraThinMaterial)
                     }
                 }
             }

@@ -28,35 +28,29 @@ class EntryStore: ObservableObject {
         }
     }
     
-    //    func fetchEntries() {
-    //        let request = NSFetchRequest<Entry>(entityName: "Entry")
-    //        let sort = NSSortDescriptor(key: "timestamp", ascending: false)
-    //                request.sortDescriptors = [sort]
-    //        do {
-    //            entries = try PersistenceController.shared.container.viewContext.fetch(request)
-    //        } catch {
-    //            print("Error fetching. \(error)")
-    //        }
-    //    }
-    //
-    //    static var PersonalResults: NSFetchRequest<TokenData> {
-    //        let request: NSFetchRequest<TokenData> = TokenData.fetchRequest()
-    //        request.predicate = NSPredicate(format: "displayGroup == %@", TokenGroupType.Personal.rawValue)
-    //        request.sortDescriptors = [NSSortDescriptor(key: "indexNumber", ascending: true)]
-    //
-    //        return request
-    //    }
-    //
-    //    @FetchRequest(
-    //        entity: Entry.entity(),
-    //        sortDescriptors: [NSSortDescriptor(key: "timestamp", ascending: false)],
-    //        animation: .default) var entries: FetchedResults<Entry>
+    func fetchEntries2(_ sortDescriptor: NSSortDescriptor? = nil, _ predicate: NSPredicate? = nil) {
+        let request = NSFetchRequest<Entry>(entityName: "Entry")
+        if let sort = sortDescriptor {
+            request.sortDescriptors = [sort]
+
+        }
+        if let predicate1 = predicate {
+            request.predicate = predicate1
+        }
+        do {
+            entries = try PersistenceController.shared.container.viewContext.fetch(request)
+        } catch {
+            print("Error fetching. \(error)")
+        }
+    }
     
-//    _entries = FetchRequest<Entry>(sortDescriptors: [NSSortDescriptor(key: "timestamp", ascending: false)],
-//                                 predicate: NSPredicate(
-//                                    format: "timestamp >= %@ && timestamp <= %@",
-//                                    Calendar.current.startOfDay(for: date.wrappedValue) as CVarArg,
-//                                    Calendar.current.startOfDay(for: date.wrappedValue + 86400) as CVarArg))
+    func entiresWithinDateRangePredicate(date: Date) -> NSPredicate {
+        NSPredicate(format: "timestamp >= %@ && timestamp <= %@", Calendar.current.startOfDay(for: date) as CVarArg, Calendar.current.startOfDay(for: date + 86400) as CVarArg)
+    }
+    
+    func entiresDesendingSortDescriptor() -> NSSortDescriptor {
+        NSSortDescriptor(key: "timestamp", ascending: false)
+    }
     
     func addMockEntries(numberOfEntries: Int) {        
         for _ in 1...numberOfEntries {
@@ -144,8 +138,14 @@ class EntryStore: ObservableObject {
     }
     
     func generateCalendarDate() -> Date {
+        let year = Calendar.current.component(.year, from: Date())
+        let month = Calendar.current.component(.month, from: Date())
+        let day = Calendar.current.component(.day, from: Date())
+        let hour = Calendar.current.component(.hour, from: Date())
+        let minute = Calendar.current.component(.minute, from: Date())
+        let second = Calendar.current.component(.second, from: Date())
         let calendar = Calendar(identifier: .iso8601)
-        let components = DateComponents(year: 2022, month: Int.random(in: 1...5), day: Int.random(in: 1...28), hour: Int.random(in: 1...23), minute: Int.random(in: 0...59))
+        let components = DateComponents(year: year, month: Int.random(in: 1...month), day: Int.random(in: 1...day), hour: Int.random(in: 1...hour), minute: Int.random(in: 0...minute), second: Int.random(in: 0...second))
         return calendar.date(from: components).unsafelyUnwrapped
     }
     
