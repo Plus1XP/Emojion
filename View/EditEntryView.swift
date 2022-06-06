@@ -53,7 +53,8 @@ struct EditEntryView: View {
                     Button(action: {
                         canShowEditEntryView.toggle()
                     }) {
-                        Label("Dismiss", systemImage: "xmark.circle")
+                        Label("Dismiss", systemImage: "chevron.down")
+                            .foregroundColor(Color.red)
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -62,7 +63,8 @@ struct EditEntryView: View {
                         hasEntrySaved = true
                         canShowEditEntryView.toggle()
                     }) {
-                        Label("Save", systemImage: "sdcard")
+                        Label("Save", systemImage: "checkmark")
+                            .foregroundColor(Color.green)
                     }
                 }
             }

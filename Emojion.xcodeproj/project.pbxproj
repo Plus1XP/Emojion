@@ -15,6 +15,8 @@
 		2F01D8B52814697B004583E3 /* FeelingFinderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B32814697B004583E3 /* FeelingFinderView.swift */; };
 		2F01D8B7281477E5004583E3 /* FeelingFinderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */; };
 		2F01D8B8281477E5004583E3 /* FeelingFinderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */; };
+		2F20BB1E283BF856002512AB /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20BB1D283BF856002512AB /* CalendarView.swift */; };
+		2F20BB1F283BF856002512AB /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20BB1D283BF856002512AB /* CalendarView.swift */; };
 		2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35F302282F178A0038D78B /* NSManagedObject.swift */; };
 		2F35F304282F178A0038D78B /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35F302282F178A0038D78B /* NSManagedObject.swift */; };
 		2F4F147228323D76008D74B0 /* UITextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4F147128323D76008D74B0 /* UITextEditor.swift */; };
@@ -55,10 +57,20 @@
 		2F70FB94280E224600D2A725 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB92280E224500D2A725 /* View.swift */; };
 		2F70FB9A280F19A100D2A725 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB99280F19A100D2A725 /* StarRatingView.swift */; };
 		2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB99280F19A100D2A725 /* StarRatingView.swift */; };
+		2FAF0055283D68B10092E8DD /* CalendarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAF0054283D68B10092E8DD /* CalendarCardView.swift */; };
+		2FAF0056283D68B10092E8DD /* CalendarCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAF0054283D68B10092E8DD /* CalendarCardView.swift */; };
 		2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
 		2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
 		2FC755EC282AA5EF008344CE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC755EB282AA5EF008344CE /* Entry.swift */; };
 		2FC755ED282AA5EF008344CE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC755EB282AA5EF008344CE /* Entry.swift */; };
+		2FF810EE284785DD0050E533 /* CalendarViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */; };
+		2FF810EF284785DD0050E533 /* CalendarViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */; };
+		2FF810F12847BFC00050E533 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF810F02847BFC00050E533 /* CalendarStore.swift */; };
+		2FF810F22847BFC00050E533 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF810F02847BFC00050E533 /* CalendarStore.swift */; };
+		2FFE3985283FD26900DFFA48 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE3984283FD26900DFFA48 /* SettingsView.swift */; };
+		2FFE3986283FD26900DFFA48 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE3984283FD26900DFFA48 /* SettingsView.swift */; };
+		2FFE398B28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */; };
+		2FFE398C28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +78,7 @@
 		2F01D8B028146141004583E3 /* FeelingFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingFinder.swift; sourceTree = "<group>"; };
 		2F01D8B32814697B004583E3 /* FeelingFinderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingFinderView.swift; sourceTree = "<group>"; };
 		2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingFinderStore.swift; sourceTree = "<group>"; };
+		2F20BB1D283BF856002512AB /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		2F35F302282F178A0038D78B /* NSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
 		2F4F147128323D76008D74B0 /* UITextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextEditor.swift; sourceTree = "<group>"; };
 		2F70FB3D2808484100D2A725 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
@@ -89,8 +102,13 @@
 		2F70FB8F280E141500D2A725 /* EntryDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailsCardView.swift; sourceTree = "<group>"; };
 		2F70FB92280E224500D2A725 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		2F70FB99280F19A100D2A725 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
+		2FAF0054283D68B10092E8DD /* CalendarCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCardView.swift; sourceTree = "<group>"; };
 		2FBDEB952824A246003953C0 /* MockDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataObject.swift; sourceTree = "<group>"; };
 		2FC755EB282AA5EF008344CE /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewComponent.swift; sourceTree = "<group>"; };
+		2FF810F02847BFC00050E533 /* CalendarStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarStore.swift; sourceTree = "<group>"; };
+		2FFE3984283FD26900DFFA48 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +133,12 @@
 			isa = PBXGroup;
 			children = (
 				2F70FB8C280E10FE00D2A725 /* EntryListCardView.swift */,
+				2FAF0054283D68B10092E8DD /* CalendarCardView.swift */,
 				2F70FB8F280E141500D2A725 /* EntryDetailsCardView.swift */,
 				2F70FB672808536E00D2A725 /* EntryFormView.swift */,
 				2F70FB99280F19A100D2A725 /* StarRatingView.swift */,
 				2F01D8B32814697B004583E3 /* FeelingFinderView.swift */,
+				2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -169,9 +189,11 @@
 			children = (
 				2F70FB3F2808484100D2A725 /* ContentView.swift */,
 				2F70FB89280E011300D2A725 /* EntryListView.swift */,
+				2F20BB1D283BF856002512AB /* CalendarView.swift */,
 				2F70FB79280C890E00D2A725 /* EntryDetailView.swift */,
 				2F70FB6128084B9100D2A725 /* AddEntryView.swift */,
 				2F70FB83280D79DD00D2A725 /* EditEntryView.swift */,
+				2FFE3984283FD26900DFFA48 /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,6 +203,7 @@
 			children = (
 				2F70FB73280C7EE300D2A725 /* EntryStore.swift */,
 				2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */,
+				2FF810F02847BFC00050E533 /* CalendarStore.swift */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -214,6 +237,7 @@
 			children = (
 				2F70FB7D280CD72600D2A725 /* UITextField.swift */,
 				2F4F147128323D76008D74B0 /* UITextEditor.swift */,
+				2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -322,20 +346,26 @@
 				2F70FB93280E224600D2A725 /* View.swift in Sources */,
 				2F70FB74280C7EE300D2A725 /* EntryStore.swift in Sources */,
 				2F70FB4F2808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
+				2F20BB1E283BF856002512AB /* CalendarView.swift in Sources */,
 				2F01D8B42814697B004583E3 /* FeelingFinderView.swift in Sources */,
 				2F70FB81280D6FC600D2A725 /* String.swift in Sources */,
 				2F70FB7E280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB552808484300D2A725 /* Persistence.swift in Sources */,
 				2F01D8742812D711004583E3 /* Character.swift in Sources */,
+				2FF810EE284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */,
+				2FFE398B28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB532808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */,
 				2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */,
 				2F70FB8A280E011300D2A725 /* EntryListView.swift in Sources */,
+				2FF810F12847BFC00050E533 /* CalendarStore.swift in Sources */,
 				2F70FB87280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755EC282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7A280C890E00D2A725 /* EntryDetailView.swift in Sources */,
 				2F4F147228323D76008D74B0 /* UITextEditor.swift in Sources */,
+				2FFE3985283FD26900DFFA48 /* SettingsView.swift in Sources */,
+				2FAF0055283D68B10092E8DD /* CalendarCardView.swift in Sources */,
 				2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB90280E141500D2A725 /* EntryDetailsCardView.swift in Sources */,
 				2F70FB8D280E10FE00D2A725 /* EntryListCardView.swift in Sources */,
@@ -354,20 +384,26 @@
 				2F70FB94280E224600D2A725 /* View.swift in Sources */,
 				2F70FB75280C7EE300D2A725 /* EntryStore.swift in Sources */,
 				2F70FB502808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
+				2F20BB1F283BF856002512AB /* CalendarView.swift in Sources */,
 				2F01D8B52814697B004583E3 /* FeelingFinderView.swift in Sources */,
 				2F70FB82280D6FC600D2A725 /* String.swift in Sources */,
 				2F70FB7F280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB562808484300D2A725 /* Persistence.swift in Sources */,
 				2F01D8752812D711004583E3 /* Character.swift in Sources */,
+				2FF810EF284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2F70FB522808484300D2A725 /* EmojionApp.swift in Sources */,
+				2FFE398C28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB542808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F304282F178A0038D78B /* NSManagedObject.swift in Sources */,
 				2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */,
 				2F70FB8B280E011300D2A725 /* EntryListView.swift in Sources */,
+				2FF810F22847BFC00050E533 /* CalendarStore.swift in Sources */,
 				2F70FB88280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755ED282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7B280C890E00D2A725 /* EntryDetailView.swift in Sources */,
 				2F4F147328323D76008D74B0 /* UITextEditor.swift in Sources */,
+				2FFE3986283FD26900DFFA48 /* SettingsView.swift in Sources */,
+				2FAF0056283D68B10092E8DD /* CalendarCardView.swift in Sources */,
 				2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB91280E141500D2A725 /* EntryDetailsCardView.swift in Sources */,
 				2F70FB8E280E10FE00D2A725 /* EntryListCardView.swift in Sources */,
