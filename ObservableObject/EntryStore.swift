@@ -145,8 +145,20 @@ class EntryStore: ObservableObject {
         let minute = Calendar.current.component(.minute, from: Date())
         let second = Calendar.current.component(.second, from: Date())
         let calendar = Calendar(identifier: .iso8601)
-        let components = DateComponents(year: year, month: Int.random(in: 1...month), day: Int.random(in: 1...day), hour: Int.random(in: 1...hour), minute: Int.random(in: 0...minute), second: Int.random(in: 0...second))
+        
+        let randomMonth = Int.random(in: 1...month)
+        
+        let components = DateComponents(year: year, month: randomMonth, day: generateDayDate(currentDay: day, currentMonth: month, randomMonth: randomMonth), hour: Int.random(in: 1...hour), minute: Int.random(in: 0...minute), second: Int.random(in: 0...second))
         return calendar.date(from: components).unsafelyUnwrapped
+    }
+    
+    func generateDayDate(currentDay: Int, currentMonth: Int, randomMonth: Int) -> Int {
+        
+        if currentMonth == randomMonth {
+            return Int.random(in: 1...currentDay)
+        } else {
+            return Int.random(in: 1...28)
+        }
     }
     
     func generateEvent() -> String {
@@ -176,5 +188,79 @@ class EntryStore: ObservableObject {
     func getRandomWord() -> String {
         let index: Int = Int.random(in: 0...97)
         return wordList[index]
+    }
+    
+    func getPrimaryStats() -> [String: Int] {
+        var feelingDictionary: [String: Int] = ["Angry": 0, "Bad": 0, "Disgusted": 0, "Fearful": 0, "Happy": 0, "Sad": 0, "Surprised": 0]
+
+        for entry in entries {
+            if entry.feeling?.first == 0 {
+                feelingDictionary["Angry"]! += 1
+            }
+            if entry.feeling?.first == 1 {
+                feelingDictionary["Bad"]! += 1
+            }
+            if entry.feeling?.first == 2 {
+                feelingDictionary["Disgusting"]! += 1
+            }
+            if entry.feeling?.first == 3 {
+                feelingDictionary["Fearful"]! += 1
+            }
+            if entry.feeling?.first == 4 {
+                feelingDictionary["Happy"]! += 1
+            }
+            if entry.feeling?.first == 5 {
+                feelingDictionary["Sad"]! += 1
+            }
+            if entry.feeling?.first == 6 {
+                feelingDictionary["Surprised"]! += 1
+            }
+            
+        }
+        return feelingDictionary
+    }
+    
+    func getPrimaryStats() -> [(String, Int)] {
+        var feelingDictionary: [(String, Int)] = [("Angry", 0), ("Bad", 0), ("Disgusted", 0), ("Fearful", 0), ("Happy", 0), ("Sad", 0), ("Surprised", 0)]
+
+        for entry in entries {
+            if entry.feeling?.first == 0 {
+                feelingDictionary[0].1 += 1
+            }
+            if entry.feeling?.first == 1 {
+                feelingDictionary[1].1 += 1
+            }
+            if entry.feeling?.first == 2 {
+                feelingDictionary[2].1 += 1
+            }
+            if entry.feeling?.first == 3 {
+                feelingDictionary[3].1 += 1
+            }
+            if entry.feeling?.first == 4 {
+                feelingDictionary[4].1 += 1
+            }
+            if entry.feeling?.first == 5 {
+                feelingDictionary[5].1 += 1
+            }
+            if entry.feeling?.first == 6 {
+                feelingDictionary[6].1 += 1
+            }
+            
+        }
+        return feelingDictionary
+    }
+    
+    func getOldestEntryDate() -> String { 
+            let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedAscending}).first!.timestamp!
+            let dateformat = DateFormatter()
+                   dateformat.dateFormat = "d MMM yyyy"
+                   return dateformat.string(from: sortedDate)
+    }
+    
+    func getNewestEntryDate() -> String {
+            let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedDescending}).first!.timestamp!
+            let dateformat = DateFormatter()
+                   dateformat.dateFormat = "d MMM yyyy"
+                   return dateformat.string(from: sortedDate)
     }
 }

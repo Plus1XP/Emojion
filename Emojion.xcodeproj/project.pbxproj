@@ -15,6 +15,18 @@
 		2F01D8B52814697B004583E3 /* FeelingFinderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B32814697B004583E3 /* FeelingFinderView.swift */; };
 		2F01D8B7281477E5004583E3 /* FeelingFinderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */; };
 		2F01D8B8281477E5004583E3 /* FeelingFinderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */; };
+		2F135772284E0539006C07B2 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F135771284E0539006C07B2 /* ChartView.swift */; };
+		2F135773284E0539006C07B2 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F135771284E0539006C07B2 /* ChartView.swift */; };
+		2F135781284E19E0006C07B2 /* ChartHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F135780284E19E0006C07B2 /* ChartHelper.swift */; };
+		2F135782284E19E0006C07B2 /* ChartHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F135780284E19E0006C07B2 /* ChartHelper.swift */; };
+		2F135784284E2088006C07B2 /* BarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F135783284E2088006C07B2 /* BarChartCell.swift */; };
+		2F135785284E2088006C07B2 /* BarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F135783284E2088006C07B2 /* BarChartCell.swift */; };
+		2F135787284E20A9006C07B2 /* BarChartRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F135786284E20A9006C07B2 /* BarChartRow.swift */; };
+		2F135788284E20A9006C07B2 /* BarChartRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F135786284E20A9006C07B2 /* BarChartRow.swift */; };
+		2F13578A284E20BF006C07B2 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F135789284E20BF006C07B2 /* LabelView.swift */; };
+		2F13578B284E20BF006C07B2 /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F135789284E20BF006C07B2 /* LabelView.swift */; };
+		2F13578D284E20DA006C07B2 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F13578C284E20DA006C07B2 /* BarChartView.swift */; };
+		2F13578E284E20DA006C07B2 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F13578C284E20DA006C07B2 /* BarChartView.swift */; };
 		2F20BB1E283BF856002512AB /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20BB1D283BF856002512AB /* CalendarView.swift */; };
 		2F20BB1F283BF856002512AB /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20BB1D283BF856002512AB /* CalendarView.swift */; };
 		2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35F302282F178A0038D78B /* NSManagedObject.swift */; };
@@ -78,6 +90,12 @@
 		2F01D8B028146141004583E3 /* FeelingFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingFinder.swift; sourceTree = "<group>"; };
 		2F01D8B32814697B004583E3 /* FeelingFinderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingFinderView.swift; sourceTree = "<group>"; };
 		2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingFinderStore.swift; sourceTree = "<group>"; };
+		2F135771284E0539006C07B2 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		2F135780284E19E0006C07B2 /* ChartHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHelper.swift; sourceTree = "<group>"; };
+		2F135783284E2088006C07B2 /* BarChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartCell.swift; sourceTree = "<group>"; };
+		2F135786284E20A9006C07B2 /* BarChartRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartRow.swift; sourceTree = "<group>"; };
+		2F135789284E20BF006C07B2 /* LabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
+		2F13578C284E20DA006C07B2 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		2F20BB1D283BF856002512AB /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		2F35F302282F178A0038D78B /* NSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
 		2F4F147128323D76008D74B0 /* UITextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextEditor.swift; sourceTree = "<group>"; };
@@ -139,6 +157,11 @@
 				2F70FB99280F19A100D2A725 /* StarRatingView.swift */,
 				2F01D8B32814697B004583E3 /* FeelingFinderView.swift */,
 				2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */,
+				2F13578C284E20DA006C07B2 /* BarChartView.swift */,
+				2F135780284E19E0006C07B2 /* ChartHelper.swift */,
+				2F135783284E2088006C07B2 /* BarChartCell.swift */,
+				2F135786284E20A9006C07B2 /* BarChartRow.swift */,
+				2F135789284E20BF006C07B2 /* LabelView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -194,6 +217,7 @@
 				2F70FB6128084B9100D2A725 /* AddEntryView.swift */,
 				2F70FB83280D79DD00D2A725 /* EditEntryView.swift */,
 				2FFE3984283FD26900DFFA48 /* SettingsView.swift */,
+				2F135771284E0539006C07B2 /* ChartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -351,9 +375,13 @@
 				2F70FB81280D6FC600D2A725 /* String.swift in Sources */,
 				2F70FB7E280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB552808484300D2A725 /* Persistence.swift in Sources */,
+				2F13578D284E20DA006C07B2 /* BarChartView.swift in Sources */,
+				2F135781284E19E0006C07B2 /* ChartHelper.swift in Sources */,
 				2F01D8742812D711004583E3 /* Character.swift in Sources */,
 				2FF810EE284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */,
+				2F135784284E2088006C07B2 /* BarChartCell.swift in Sources */,
+				2F135787284E20A9006C07B2 /* BarChartRow.swift in Sources */,
 				2FFE398B28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB532808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */,
@@ -363,6 +391,8 @@
 				2F70FB87280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755EC282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7A280C890E00D2A725 /* EntryDetailView.swift in Sources */,
+				2F13578A284E20BF006C07B2 /* LabelView.swift in Sources */,
+				2F135772284E0539006C07B2 /* ChartView.swift in Sources */,
 				2F4F147228323D76008D74B0 /* UITextEditor.swift in Sources */,
 				2FFE3985283FD26900DFFA48 /* SettingsView.swift in Sources */,
 				2FAF0055283D68B10092E8DD /* CalendarCardView.swift in Sources */,
@@ -389,9 +419,13 @@
 				2F70FB82280D6FC600D2A725 /* String.swift in Sources */,
 				2F70FB7F280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB562808484300D2A725 /* Persistence.swift in Sources */,
+				2F13578E284E20DA006C07B2 /* BarChartView.swift in Sources */,
+				2F135782284E19E0006C07B2 /* ChartHelper.swift in Sources */,
 				2F01D8752812D711004583E3 /* Character.swift in Sources */,
 				2FF810EF284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2F70FB522808484300D2A725 /* EmojionApp.swift in Sources */,
+				2F135785284E2088006C07B2 /* BarChartCell.swift in Sources */,
+				2F135788284E20A9006C07B2 /* BarChartRow.swift in Sources */,
 				2FFE398C28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB542808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F304282F178A0038D78B /* NSManagedObject.swift in Sources */,
@@ -401,6 +435,8 @@
 				2F70FB88280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755ED282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7B280C890E00D2A725 /* EntryDetailView.swift in Sources */,
+				2F13578B284E20BF006C07B2 /* LabelView.swift in Sources */,
+				2F135773284E0539006C07B2 /* ChartView.swift in Sources */,
 				2F4F147328323D76008D74B0 /* UITextEditor.swift in Sources */,
 				2FFE3986283FD26900DFFA48 /* SettingsView.swift in Sources */,
 				2FAF0056283D68B10092E8DD /* CalendarCardView.swift in Sources */,
