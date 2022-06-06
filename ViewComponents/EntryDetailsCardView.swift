@@ -11,7 +11,7 @@ struct EntryDetailsCardView: View {
     @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
     @Binding var entry: Entry
     @State var hasUpdatedStarRating: Bool = false
-    var emojionFontSize: CGFloat = 180
+    var emojionFontSize: CGFloat = 160
     var starFontSize: CGFloat = 25
     
     private let itemFormatter: DateFormatter = {

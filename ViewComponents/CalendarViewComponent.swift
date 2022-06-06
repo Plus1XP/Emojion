@@ -90,6 +90,7 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
             List(entries) { entry in
                 NavigationLink {
                     EntryDetailView(entryStore: entryStore, entry: entry)
+                        .navigationBarTitleDisplayMode(.large)
                 } label: {
                     CalendarCardView(entry: entry)
                 }
