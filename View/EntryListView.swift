@@ -108,7 +108,7 @@ struct EntryListView: View {
                         canShowDebugMenu.toggle()
                     }) {
                         Label("Create Entries", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.primary)
                     }
                     .popover(isPresented: $canShowDebugMenu) {
                         HStack {

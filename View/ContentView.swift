@@ -35,6 +35,15 @@ struct ContentView: View {
             }
             .tag(1)
             NavigationView {
+                ChartView(entryStore: entryStore)
+                    .navigationTitle("Emojions")
+            }
+            .tabItem {
+                Image(systemName: "chart.bar.xaxis")
+                Text("Chart")
+            }
+            .tag(2)
+            NavigationView {
                 SettingsView(entryStore: entryStore)
                     .navigationTitle("Settings")
             }
@@ -42,7 +51,7 @@ struct ContentView: View {
                 Image(systemName: "gear")
                 Text("Settings")
             }
-            .tag(2)
+            .tag(3)
         }
         // This fixes navigationBarTitle LayoutConstraints issue for NavigationView
         .navigationViewStyle(.stack)
