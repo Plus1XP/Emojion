@@ -81,6 +81,9 @@ public struct BarChartView : View {
                     Spacer()
                     self.cornerImage
                         .imageScale(.large)
+                        .padding(5)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(10)
                         .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor : self.style.legendTextColor)
                 }
                 .zIndex(2)
@@ -105,9 +108,12 @@ public struct BarChartView : View {
         }
         // isFullWidth References Large not extraLarge!
         .frame(minWidth: self.formSize.width,
-               maxWidth: self.isFullWidth ? UIScreen.main.bounds.width / 1.05 : self.formSize.width,
+//               maxWidth: self.isFullWidth ? UIScreen.main.bounds.width / 1.05 : self.formSize.width,
+//                minHeight: self.formSize.height,
+//               maxHeight: self.isFullWidth ? UIScreen.main.bounds.height / 1.42 : self.formSize.height * 2.5)
+               maxWidth: self.isFullWidth ? .infinity : self.formSize.width,
                 minHeight: self.formSize.height,
-               maxHeight: self.isFullWidth ? UIScreen.main.bounds.height / 1.42 : self.formSize.height * 2.5)
+               maxHeight: self.isFullWidth ? .infinity : self.formSize.height * 2.5)
             .gesture(DragGesture()
                 .onChanged({ value in
                     self.touchLocation = value.location.x/self.formSize.width
