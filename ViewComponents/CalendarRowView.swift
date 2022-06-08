@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CalendarCardView: View {
+struct CalendarRowView: View {
     @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
     @State var entry: Entry
     var emojionFontSize: CGFloat = 50

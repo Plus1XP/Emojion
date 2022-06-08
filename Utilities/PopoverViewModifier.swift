@@ -24,23 +24,6 @@ struct PopoverViewModifier<PopoverContent>: ViewModifier where PopoverContent: V
     }
 }
 
-extension View {
-    func popover<Content>(
-        isPresented: Binding<Bool>,
-        onDismiss: (() -> Void)? = nil,
-        content: @escaping () -> Content
-    ) -> some View where Content: View {
-        ModifiedContent(
-            content: self,
-            modifier: PopoverViewModifier(
-                isPresented: isPresented,
-                onDismiss: onDismiss,
-                content: content
-            )
-        )
-    }
-}
-
 struct Popover<Content: View> : UIViewControllerRepresentable {
     @Binding var isPresented: Bool
     let onDismiss: (() -> Void)?

@@ -89,10 +89,10 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
             
             List(entries) { entry in
                 NavigationLink {
-                    EntryDetailView(entryStore: entryStore, entry: entry)
+                    EntryDetailsView(entryStore: entryStore, entry: entry)
                         .navigationBarTitleDisplayMode(.large)
                 } label: {
-                    CalendarCardView(entry: entry)
+                    CalendarRowView(entry: entry)
                 }
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                     Button(role: .destructive) {

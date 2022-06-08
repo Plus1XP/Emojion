@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct BarChartView : View {
+public struct BarChartViewComponent : View {
     @Environment(\.colorScheme) var colorScheme: ColorScheme
     private var data: ChartData
     public var title: String
@@ -88,7 +88,7 @@ public struct BarChartView : View {
                 }
                 .zIndex(2)
                 .padding()
-                BarChartRow(data: data.points.map{$0.1},
+                BarChartRowView(data: data.points.map{$0.1},
                             accentColor: self.colorScheme == .dark ? self.darkModeStyle.accentColor : self.style.accentColor,
                             gradient: self.colorScheme == .dark ? self.darkModeStyle.gradientColor : self.style.gradientColor,
                             touchLocation: self.$touchLocation)
@@ -98,7 +98,7 @@ public struct BarChartView : View {
                         .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor : self.style.legendTextColor)
                         .padding()
                 }else if (self.data.valuesGiven && self.getCurrentValue() != nil) {
-                    LabelView(arrowOffset: self.getArrowOffset(touchLocation: self.touchLocation),
+                    BarChartLabelView(arrowOffset: self.getArrowOffset(touchLocation: self.touchLocation),
                               title: .constant(self.getCurrentValue()!.0))
                         .offset(x: self.getLabelViewOffset(touchLocation: self.touchLocation), y: -6)
                         .foregroundColor(Color.primary)
@@ -169,7 +169,7 @@ public struct BarChartView : View {
 #if DEBUG
 struct BarChartView_Previews : PreviewProvider {
     static var previews: some View {
-        BarChartView(data: TestData.values ,
+        BarChartViewComponent(data: TestData.values ,
                      title: "Model 3 sales",
                      legend: "Quarterly",
                      valueSpecifier: "%.0f")

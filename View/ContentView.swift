@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct ContentView: View {
     @StateObject private var entryStore = EntryStore()
@@ -16,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selection) {
             NavigationView {
-                EntryListView(entryStore: entryStore)
+                CardView(entryStore: entryStore)
                     .navigationTitle("Emojions")
             }
             .tabItem {

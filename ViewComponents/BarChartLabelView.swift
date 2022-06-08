@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LabelView: View {
+struct BarChartLabelView: View {
     @Binding var arrowOffset: CGFloat
     @Binding var title:String
     var body: some View {
@@ -40,6 +40,6 @@ struct ArrowUp: Shape {
 
 struct LabelView_Previews: PreviewProvider {
     static var previews: some View {
-        LabelView(arrowOffset: .constant(0), title: .constant("Tesla model 3"))
+        BarChartLabelView(arrowOffset: .constant(0), title: .constant("Tesla model 3"))
     }
 }

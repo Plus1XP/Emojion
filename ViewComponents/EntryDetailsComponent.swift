@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EntryDetailsCardView: View {
+struct EntryDetailsComponent: View {
     @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
     @Binding var entry: Entry
     @State var hasUpdatedStarRating: Bool = false
@@ -87,6 +87,6 @@ struct EntryDetailsCardView: View {
 
 struct EntryDetailsCardView_Previews: PreviewProvider {
     static var previews: some View {
-        return EntryDetailsCardView(entry: .constant(Entry.MockEntry))
+        return EntryDetailsComponent(entry: .constant(Entry.MockEntry))
     }
 }

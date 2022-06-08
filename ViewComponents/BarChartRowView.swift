@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct BarChartRow : View {
+public struct BarChartRowView : View {
     var data: [Double]
     var accentColor: Color
     var gradient: GradientColor?
@@ -23,7 +23,7 @@ public struct BarChartRow : View {
         GeometryReader { geometry in
             HStack(alignment: .bottom, spacing: (geometry.frame(in: .local).width-22)/CGFloat(self.data.count * 3)){
                 ForEach(0..<self.data.count, id: \.self) { i in
-                    BarChartCell(value: self.normalizedValue(index: i),
+                    BarChartCellView(value: self.normalizedValue(index: i),
                                  index: i,
                                  width: Float(geometry.frame(in: .local).width - 22),
                                  numberOfDataPoints: self.data.count,
@@ -48,8 +48,8 @@ public struct BarChartRow : View {
 struct ChartRow_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            BarChartRow(data: [0], accentColor: Colors.OrangeStart, touchLocation: .constant(-1))
-            BarChartRow(data: [8,23,54,32,12,37,7], accentColor: Colors.OrangeStart, touchLocation: .constant(-1))
+            BarChartRowView(data: [0], accentColor: Colors.OrangeStart, touchLocation: .constant(-1))
+            BarChartRowView(data: [8,23,54,32,12,37,7], accentColor: Colors.OrangeStart, touchLocation: .constant(-1))
         }
     }
 }

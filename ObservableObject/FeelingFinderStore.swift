@@ -5,7 +5,6 @@
 //  Created by Plus1XP on 23/04/2022.
 //
 
-import Foundation
 import SwiftUI
 
 class FeelingFinderStore: ObservableObject {

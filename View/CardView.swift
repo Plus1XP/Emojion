@@ -6,9 +6,8 @@
 //
 
 import SwiftUI
-import CoreData
 
-struct EntryListView: View {
+struct CardView: View {
     @ObservedObject var entryStore: EntryStore
     @State private var entry: Entry = Entry(context: PersistenceController.shared.container.viewContext)
     @State private var canShowAddEntryView: Bool = false
@@ -45,8 +44,8 @@ struct EntryListView: View {
         List {
             ForEach(searchResults, id: \.self) { entry in
                 Section {
-                    NavigationLink(destination: EntryDetailView(entryStore: entryStore, entry: entry)) {
-                        EntryListCardView(entry: entry)
+                    NavigationLink(destination: EntryDetailsView(entryStore: entryStore, entry: entry)) {
+                        CardRowView(entry: entry)
                     }
                 }
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
@@ -165,6 +164,6 @@ struct EntryListView: View {
 struct EntryListView_Previews: PreviewProvider {
     static var previews: some View {
         let entryStore = EntryStore()
-        EntryListView(entryStore: entryStore)
+        CardView(entryStore: entryStore)
     }
 }

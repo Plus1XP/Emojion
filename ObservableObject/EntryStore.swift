@@ -5,7 +5,6 @@
 //  Created by Plus1XP on 17/04/2022.
 //
 
-import Foundation
 import CoreData
 
 class EntryStore: ObservableObject {
@@ -190,6 +189,20 @@ class EntryStore: ObservableObject {
         return wordList[index]
     }
     
+    func getOldestEntryDate() -> String {
+            let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedAscending}).first!.timestamp!
+            let dateformat = DateFormatter()
+                   dateformat.dateFormat = "d MMM yyyy"
+                   return dateformat.string(from: sortedDate)
+    }
+    
+    func getNewestEntryDate() -> String {
+            let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedDescending}).first!.timestamp!
+            let dateformat = DateFormatter()
+                   dateformat.dateFormat = "d MMM yyyy"
+                   return dateformat.string(from: sortedDate)
+    }
+    
     func getPrimaryStats() -> [String: Int] {
         var feelingDictionary: [String: Int] = ["Angry": 0, "Bad": 0, "Disgusted": 0, "Fearful": 0, "Happy": 0, "Sad": 0, "Surprised": 0]
 
@@ -248,19 +261,5 @@ class EntryStore: ObservableObject {
             
         }
         return feelingDictionary
-    }
-    
-    func getOldestEntryDate() -> String { 
-            let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedAscending}).first!.timestamp!
-            let dateformat = DateFormatter()
-                   dateformat.dateFormat = "d MMM yyyy"
-                   return dateformat.string(from: sortedDate)
-    }
-    
-    func getNewestEntryDate() -> String {
-            let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedDescending}).first!.timestamp!
-            let dateformat = DateFormatter()
-                   dateformat.dateFormat = "d MMM yyyy"
-                   return dateformat.string(from: sortedDate)
     }
 }

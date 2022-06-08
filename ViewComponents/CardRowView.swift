@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EntryListCardView: View {
+struct CardRowView: View {
     @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
     @State var entry: Entry
     var emojionFontSize: CGFloat = 55
@@ -36,12 +36,9 @@ struct EntryListCardView: View {
             HStack {
                 let emojionEmoji = (entry.emojion == "" || entry.emojion == nil ? "🫥" : entry.emojion)!.ToImage(fontSize: emojionFontSize)
                 Image(uiImage: emojionEmoji!)
-//                    .resizable()
-//                    .frame(width: 50, height: 50)
                 Spacer()
                 VStack {
                     StarRatingView($entry.rating, starFontSize, starSpacing)
-//                        .border(.red)
                 }
                 Spacer()
             }
@@ -60,6 +57,6 @@ struct EntryListCardView: View {
 
 struct EntryListCardView_Previews: PreviewProvider {
     static var previews: some View {
-        EntryListCardView(entry: Entry.MockEntry)
+        CardRowView(entry: Entry.MockEntry)
     }
 }

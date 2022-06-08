@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct EntryDetailView: View {
+struct EntryDetailsView: View {
     @ObservedObject var entryStore: EntryStore
     @State private var canShowEditEntryView: Bool = false
     @State private var hasEntrySaved: Bool = false
     @State var entry: Entry
     
     var body: some View {
-        EntryDetailsCardView(entry: $entry)
+        EntryDetailsComponent(entry: $entry)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button { self.canShowEditEntryView.toggle() } label: {
@@ -36,6 +36,6 @@ struct EntryDetailView: View {
 struct EntryDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let entryStore = EntryStore()
-        EntryDetailView(entryStore: entryStore, entry: Entry.MockEntry)
+        EntryDetailsView(entryStore: entryStore, entry: Entry.MockEntry)
     }
 }

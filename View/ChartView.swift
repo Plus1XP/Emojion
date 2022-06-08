@@ -12,8 +12,7 @@ struct ChartView: View {
 
     var body: some View {
         VStack {
-            //            BarChartView(data: ChartData(values: entryStore.getPrimaryStats()), title: "Emotions", legend: "All Time", form: ChartForm.extraLarge)
-            BarChartView(data: ChartData(values: entryStore.getPrimaryStats()), title: "Most used Emojions", legend: "\(entryStore.getOldestEntryDate()) to \(entryStore.getNewestEntryDate())", style: Styles.barChartStyleOrangeLight, form: ChartForm.extraLarge, dropShadow: false, cornerImage: Image(systemName: "hand.draw.fill"), valueSpecifier: "%.0f", animatedToBack: true)
+            BarChartViewComponent(data: ChartData(values: entryStore.getPrimaryStats()), title: "Most used Emojions", legend: "\(entryStore.getOldestEntryDate()) to \(entryStore.getNewestEntryDate())", style: Styles.barChartStyleOrangeLight, form: ChartForm.extraLarge, dropShadow: false, cornerImage: Image(systemName: "hand.draw.fill"), valueSpecifier: "%.0f", animatedToBack: true)
         }
         .padding()
     }

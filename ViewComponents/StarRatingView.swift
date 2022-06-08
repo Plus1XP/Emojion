@@ -40,9 +40,6 @@ struct StarRatingView: View {
             ForEach(0..<5) { star in
                 let starEmoji = "⭐️".ToImage(fontSize: starFontSize)
                 Image(uiImage: starEmoji!)
-//                    .resizable()
-//                    .frame(width: 25, height: 25)
-//                    .border(.green)
                     .opacity(self.starRating >= Int64(star) ? 1.0 : 0.1)
                     .onTapGesture {
                         self.starRating = Int64(star)
