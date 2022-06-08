@@ -1,37 +1,15 @@
-## Welcome to GitHub Pages
+# Emojion
 
-You can use the [editor on GitHub](https://github.com/Plus1XP/Emojion/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Log emotions with an emoji
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Emojions uses simple emojis to track your mood. Journaling your mood over time can help you improve your habits leading to increased happiness and well-being.
 
-### Markdown
+Emojion also features a feeling wheel to lock in on an exact emotion, with the ability to rate and experience and leave notes for reflection.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Emojion has a search function and a date picker. If you dont know what exactly your searching for, Emojion has a calendar view so you can browse through previous entries.
 
-```markdown
-Syntax highlighted code block
+Emojion also features a chart view, so you can see what emotions you've felt the most.
 
-# Header 1
-## Header 2
-### Header 3
+## Support or Contact
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Plus1XP/Emojion/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Having trouble with Emojion? Check out our [repository](https://github.com/Plus1XP/Emojion/) or [contact support](mailto:evlbrains@protonmail.ch) and we’ll help you sort it out.
