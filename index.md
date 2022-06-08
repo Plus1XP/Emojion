@@ -1,7 +1,5 @@
 # Emojion
 
-Log emotions with an emoji
-
 Emojions uses simple emojis to track your mood. Journaling your mood over time can help you improve your habits leading to increased happiness and well-being.
 
 Emojion also features a feeling wheel to lock in on an exact emotion, with the ability to rate and experience and leave notes for reflection.
