@@ -55,7 +55,7 @@ struct CardRowView: View {
     }
 }
 
-struct EntryListCardView_Previews: PreviewProvider {
+struct CardRowView_Previews: PreviewProvider {
     static var previews: some View {
         CardRowView(entry: Entry.MockEntry)
     }

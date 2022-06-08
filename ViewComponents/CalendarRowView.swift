@@ -62,8 +62,8 @@ struct CalendarRowView: View {
     }
 }
 
-struct CalendarCardView_Previews: PreviewProvider {
+struct CalendarRowView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarCardView(entry: Entry.MockEntry)
+        CalendarRowView(entry: Entry.MockEntry)
     }
 }

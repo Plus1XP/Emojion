@@ -38,7 +38,7 @@ struct ArrowUp: Shape {
     }
 }
 
-struct LabelView_Previews: PreviewProvider {
+struct BarChartLabelView_Previews: PreviewProvider {
     static var previews: some View {
         BarChartLabelView(arrowOffset: .constant(0), title: .constant("Tesla model 3"))
     }

@@ -161,7 +161,7 @@ struct CardView: View {
     }
 }
 
-struct EntryListView_Previews: PreviewProvider {
+struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         let entryStore = EntryStore()
         CardView(entryStore: entryStore)

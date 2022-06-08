@@ -35,7 +35,7 @@ public struct BarChartCellView : View {
 }
 
 #if DEBUG
-struct ChartCell_Previews : PreviewProvider {
+struct BarChartCellView_Previews : PreviewProvider {
     static var previews: some View {
         BarChartCellView(value: Double(0.75), width: 320, numberOfDataPoints: 12, accentColor: Colors.OrangeStart, gradient: nil, touchLocation: .constant(-1))
     }

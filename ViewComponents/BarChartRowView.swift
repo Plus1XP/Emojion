@@ -45,7 +45,7 @@ public struct BarChartRowView : View {
 }
 
 #if DEBUG
-struct ChartRow_Previews : PreviewProvider {
+struct BarChartRowView_Previews : PreviewProvider {
     static var previews: some View {
         Group {
             BarChartRowView(data: [0], accentColor: Colors.OrangeStart, touchLocation: .constant(-1))

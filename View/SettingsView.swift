@@ -75,6 +75,7 @@ struct SettingsView: View {
                                     .foregroundColor(.primary)
                             }
                         }
+                        .disabled(true)
                     }
                     HStack {
                         Button {

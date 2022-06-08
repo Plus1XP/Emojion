@@ -85,7 +85,7 @@ struct EntryDetailsComponent: View {
     }
 }
 
-struct EntryDetailsCardView_Previews: PreviewProvider {
+struct EntryDetailsComponent_Previews: PreviewProvider {
     static var previews: some View {
         return EntryDetailsComponent(entry: .constant(Entry.MockEntry))
     }

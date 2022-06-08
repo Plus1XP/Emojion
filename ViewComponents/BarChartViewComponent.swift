@@ -167,7 +167,7 @@ public struct BarChartViewComponent : View {
 }
 
 #if DEBUG
-struct BarChartView_Previews : PreviewProvider {
+struct BarChartViewComponent_Previews : PreviewProvider {
     static var previews: some View {
         BarChartViewComponent(data: TestData.values ,
                      title: "Model 3 sales",
