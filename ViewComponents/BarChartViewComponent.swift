@@ -60,15 +60,11 @@ public struct BarChartViewComponent : View {
                             .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
                     }else{
                         Text("\(self.currentValue, specifier: self.valueSpecifier)")
-//                            .frame(width: 50, height: 50)
-//                            .background(Color.red)
                             .font(.title3)
                             .fontWeight(.bold)
                             .padding(5)
                             .background(.ultraThinMaterial)
                             .cornerRadius(10)
-//                            .shadow(color: Color.primary, radius: 10)
-//                            .shadow(color: Color.primary, radius: 5)
                             .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
                     }
                     if(self.formSize == ChartForm.large && self.legend != nil && !showValue) {
