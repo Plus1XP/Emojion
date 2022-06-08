@@ -9,18 +9,15 @@ import SwiftUI
 import Combine
 
 struct EntryFormView: View {
+    @State var canEditStarRating: Bool = true
+    @Binding var refreshView: Bool
     @Binding var event: String
     @Binding var emojion : String
-    @Binding var feeling: String
+    @Binding var feeling: [Int]
     @Binding var rating: Int64
     @Binding var note: String
-    @State var hasUpdatedStarRating: Bool = false
-    @State var canEditStarRating: Bool = true
     var starFontSize: CGFloat = 15
 
-//    @State var emojiPlaceholder: String = emot2 == "" ? "Assign emoji" : emot2.isSingleEmoji ? emot2 : "\(Image(systemName: "exclamationmark.triangle.fill").foregroundColor(Color.red))"
-
-    
     var body: some View {
         Section(header: Text("Emojion Details")) {
             Group {
@@ -42,28 +39,43 @@ struct EntryFormView: View {
                             self.emojion = String(self.emojion.onlyEmoji().prefix(1))
                         })
                 }
-                // Enum selection
                 HStack {
-                    Text("Feeling")
-                    Spacer()
-                    TextField("Describe Emojion", text: $feeling)
-                        .multilineTextAlignment(.trailing)
+                    VStack {
+                        HStack {
+                            Text("Feeling")
+                            Spacer()
+                        }
+                        HStack {
+                            FeelingFinderView(feeling: $feeling)
+                                .onReceive(NotificationCenter.default
+                                    .publisher(for: NSNotification.Name("RefreshFeelingView"))) { _ in
+                                        debugPrint("EntryFormView: FeelingView Refreshed")
+                                        refreshView.toggle()
+                                    }
+                        }
+                    }
                 }
-                // Touch 5 Stars
                 HStack {
                     Text("Rating")
                     Spacer()
-                    StarRatingView($rating, starFontSize, $hasUpdatedStarRating, $canEditStarRating)
+                    StarRatingView($rating, starFontSize, $canEditStarRating)
+                        .onReceive(NotificationCenter.default
+                            .publisher(for: NSNotification.Name("RefreshStarRatingView"))) { _ in
+                                debugPrint("EntryFormView: StarRatingView Refreshed")
+                                refreshView.toggle()
+                            }
                 }
             }
         }
-        Section(header: Text("Note Details")) {
+        Section(header: Text("Additional Notes")) {
             HStack {
-                Text("Note")
-                Spacer()
-                TextField("Additional information", text: $note)
+                TextArea("What else would you like to add?", text: $note)
                     .disableAutocorrection(false)
-                    .multilineTextAlignment(.trailing)
+                    .onReceive(NotificationCenter.default
+                        .publisher(for: NSNotification.Name("RefreshNoteFieldView"))) { _ in
+                            debugPrint("EntryFormView: NoteFieldView Refreshed")
+                            refreshView.toggle()
+                        }
             }
         }
     }
@@ -71,23 +83,6 @@ struct EntryFormView: View {
 
 struct EntryFormView_Previews: PreviewProvider {
     static var previews: some View {
-//        EntryFormView(event: .constant("Interview"), emojion: .constant("😬"), feeling: .constant("Nervous"), rating: .constant("⭐️⭐️⭐️"), note: .constant("coffee helped with anxeity."))
-        
-        let viewContext = PersistenceController.preview.container.viewContext
-        let entry = Entry(context: viewContext)
-        
-//        EntryDetailView(entryStore: entryStore, entry: entry)
-        
-        entry.id = UUID()
-        entry.timestamp = Date()
-        entry.event = "Public Speaking"
-        entry.emojion = "😬"
-        entry.feeling = "Nervous"
-        entry.rating = 3
-        entry.note = "Coffee helped anxeity"
-        
-        return EntryFormView(event: .constant(entry.event!), emojion: .constant(entry.emojion!), feeling: .constant(entry.feeling!), rating: .constant(entry.rating), note: .constant(entry.note!))
-        
-        
+        return EntryFormView(refreshView: .constant(false), event: .constant(Entry.MockEntry.event!), emojion: .constant(Entry.MockEntry.emojion!), feeling: .constant(Entry.MockEntry.feeling!), rating: .constant(Entry.MockEntry.rating), note: .constant(Entry.MockEntry.note!))
     }
 }

@@ -8,6 +8,8 @@
 import UIKit
 
 extension String {
+    var isBlank: Bool { allSatisfy({ $0.isWhitespace }) }
+    
     var isSingleEmoji: Bool { count == 1 && containsEmoji }
     
     var containsEmoji: Bool { contains { $0.isEmoji } }

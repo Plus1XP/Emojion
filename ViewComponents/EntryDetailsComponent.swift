@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct EntryDetailsCardView: View {
-    @State var entry: Entry
+struct EntryDetailsComponent: View {
+    @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
+    @Binding var entry: Entry
     @State var hasUpdatedStarRating: Bool = false
+    var emojionFontSize: CGFloat = 160
     var starFontSize: CGFloat = 25
-    var emojionFontSize: CGFloat = 180
     
     private let itemFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -39,15 +40,14 @@ struct EntryDetailsCardView: View {
                 let emojionEmoji = (entry.emojion == "" || entry.emojion == nil ? "🫥" : entry.emojion)!.ToImage(fontSize: emojionFontSize)
                 Image(uiImage: emojionEmoji!)
 //                    .resizable()
-                // frame size is off to to image extension.
 //                    .frame(width: 200, height: 200)
-                    .clipShape(Circle())
-                    .overlay(
-                        Circle()
-                            .stroke(lineWidth: 8)
-                            .foregroundColor(.gray)
-                    )
-                    .shadow(radius: 10)
+//                    .clipShape(Circle())
+//                    .overlay(
+//                        Circle()
+//                            .stroke(lineWidth: 8)
+//                            .foregroundColor(.gray)
+//                    )
+//                    .shadow(radius: 10)
                     .padding()
                 Spacer()
             }
@@ -56,7 +56,9 @@ struct EntryDetailsCardView: View {
                 Spacer()
                 VStack {
                     if let feeling = entry.feeling {
-                        Text(feeling)
+                        Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
+                            .font(.title2)
+                            .fontWeight(.medium)
                             .padding(.bottom)
                         StarRatingView($entry.rating, starFontSize)
                             .padding(.bottom)
@@ -67,9 +69,11 @@ struct EntryDetailsCardView: View {
             HStack {
                 Spacer()
                 VStack {
-                    if let note = entry.note {
-                        Text(note)
-                            .multilineTextAlignment(.leading)
+                    ScrollView {
+                        if let note = entry.note {
+                            Text(note)
+                                .multilineTextAlignment(.leading)
+                        }
                     }
                 }
                 Spacer()
@@ -77,26 +81,12 @@ struct EntryDetailsCardView: View {
             .padding()
             Spacer()
         }
-        .navigationTitle(entry.event!)
+        .navigationTitle(entry.event ?? "")
     }
 }
 
-struct EntryDetailsCardView_Previews: PreviewProvider {
+struct EntryDetailsComponent_Previews: PreviewProvider {
     static var previews: some View {
-        let viewContext = PersistenceController.preview.container.viewContext
-        let entry = Entry(context: viewContext)
-        
-//        EntryDetailsCardView(entry: entry)
-        
-        entry.id = UUID()
-        entry.timestamp = Date()
-        entry.event = "Public Speaking"
-        entry.emojion = "😬"
-        entry.feeling = "Nervous"
-        entry.rating = 3
-        entry.note = "Coffee helped anxeity"
-        
-        return EntryDetailsCardView(entry: entry)
-
+        return EntryDetailsComponent(entry: .constant(Entry.MockEntry))
     }
 }

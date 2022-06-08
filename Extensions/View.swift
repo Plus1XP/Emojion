@@ -5,12 +5,30 @@
 //  Created by Plus1XP on 18/04/2022.
 //
 
-import Foundation
 import SwiftUI
 
 extension View {
+    func hidden(_ shouldHide: Bool) -> some View {
+        opacity(shouldHide ? 0 : 1)
+    }
+    
     func fillBackground(cornerRadius: CGFloat = 10) -> some View {
         return modifier(BackgroundColorModifier(cornerRadius: cornerRadius))
+    }
+    
+    func popover<Content>(
+        isPresented: Binding<Bool>,
+        onDismiss: (() -> Void)? = nil,
+        content: @escaping () -> Content
+    ) -> some View where Content: View {
+        ModifiedContent(
+            content: self,
+            modifier: PopoverViewModifier(
+                isPresented: isPresented,
+                onDismiss: onDismiss,
+                content: content
+            )
+        )
     }
 }
 

@@ -9,23 +9,30 @@ import SwiftUI
 
 struct EditEntryView: View {
     @ObservedObject var entryStore: EntryStore
-    @Binding var canShowEditEntryView: Bool
-    @Binding var entry: Entry
-    @State var hasEntrySaved: Bool = false
+    @State var refreshView: Bool = false
     @State var originalStarRating: Int64 = 5
-
-    private var updateRating: Binding<Int64> {
-        Binding<Int64>(get: {
-            return entry.rating
+    @Binding var canShowEditEntryView: Bool
+    @Binding var hasEntrySaved: Bool
+    @Binding var entry: Entry
+    
+    // This computed property is needed to notify child view of property change
+    // If remoed the child view UI will not refresh.
+    private var entryNote: Binding<String?> {
+        Binding<String?>(get: {
+            return entry.note
         }, set: {
-            entry.rating = $0
+            NotificationCenter.default.post(name: Notification.Name("RefreshNoteFieldView"), object: nil)
+            entry.note = $0
         })
     }
     
     var body: some View {
         NavigationView {
             Form {
-                EntryFormView(event: $entry.event.bound, emojion: $entry.emojion.bound, feeling: $entry.feeling.bound, rating: updateRating, note: $entry.note.bound)
+                EntryFormView(refreshView: $refreshView, event: $entry.event.bound, emojion: $entry.emojion.bound, feeling: $entry.feeling.bound, rating: $entry.rating, note: entryNote.bound)
+                    .onChange(of: refreshView) { _ in
+                        debugPrint("EditEntryView: EntryForm View Refreshed")
+                    }
                 HStack {
                     Spacer()
                     Button(
@@ -46,7 +53,8 @@ struct EditEntryView: View {
                     Button(action: {
                         canShowEditEntryView.toggle()
                     }) {
-                        Label("Dismiss", systemImage: "xmark.circle")
+                        Label("Dismiss", systemImage: "chevron.down")
+                            .foregroundColor(Color.red)
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -55,21 +63,14 @@ struct EditEntryView: View {
                         hasEntrySaved = true
                         canShowEditEntryView.toggle()
                     }) {
-                        Label("Save", systemImage: "sdcard")
+                        Label("Save", systemImage: "checkmark")
+                            .foregroundColor(Color.green)
                     }
                 }
             }
         }
         .onAppear {
             hasEntrySaved = false
-            originalStarRating = updateRating.wrappedValue
-            debugPrint("Backup star rating to \(originalStarRating + 1) from \(updateRating.wrappedValue + 1)")
-        }
-        .onDisappear {
-            if !hasEntrySaved {
-                updateRating.wrappedValue = originalStarRating
-                debugPrint("Resore star rating to: \(updateRating.wrappedValue + 1) from \(originalStarRating + 1)")
-            }
         }
     }
 }
@@ -77,8 +78,6 @@ struct EditEntryView: View {
 struct EditEntryView_Previews: PreviewProvider {
     static var previews: some View {
         let entryStore = EntryStore()
-        let viewContext = PersistenceController.preview.container.viewContext
-        let entry = Entry(context: viewContext)
-        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), entry: .constant(entry))
+        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), hasEntrySaved: .constant(false), entry: .constant(Entry.MockEntry))
     }
 }

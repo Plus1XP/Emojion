@@ -20,7 +20,7 @@ struct PersistenceController {
             newEntry.timestamp = Date()
             newEntry.event = "Public Speaking"
             newEntry.emojion = "😬"
-            newEntry.feeling = "Nervous"
+            newEntry.feeling = [0,0,0]
             newEntry.rating = 3
             newEntry.note = "Coffee helped anxeity"
         }

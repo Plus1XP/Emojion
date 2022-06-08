@@ -10,16 +10,20 @@ import SwiftUI
 struct AddEntryView: View {
     @Environment(\.presentationMode) var presentaionMode
     @ObservedObject var entryStore: EntryStore
+    @State var refreshView: Bool = false
     @State var event: String = ""
     @State var emojion: String = ""
-    @State var feeling: String = ""
+    @State var feeling: [Int] = [0,0,0]
     @State var rating: Int64 = 0
     @State var note: String = ""
         
     var body: some View {
         NavigationView {
             Form {
-                EntryFormView(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, note: $note)
+                EntryFormView(refreshView: $refreshView, event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, note: $note)
+                    .onChange(of: refreshView) { _ in
+                            debugPrint("AddEntryView: Feeling/Star View Refreshed")
+                        }
             }
             .navigationTitle("New Emojion")
             .toolbar {
@@ -27,7 +31,8 @@ struct AddEntryView: View {
                     Button(action: {
                         presentaionMode.wrappedValue.dismiss()
                     }) {
-                        Label("Dismiss", systemImage: "xmark.circle")
+                        Label("Dismiss", systemImage: "chevron.down")
+                            .foregroundColor(Color.red)
                     }
                  }
                  ToolbarItem(placement: .navigationBarTrailing) {
@@ -35,7 +40,8 @@ struct AddEntryView: View {
                          entryStore.addNewEntry(event: event, emojion: emojion, feeling: feeling, rating: rating, note: note)
                          presentaionMode.wrappedValue.dismiss()
                      }) {
-                         Label("Save", systemImage: "sdcard")
+                         Label("Save", systemImage: "checkmark")
+                             .foregroundColor(Color.green)
                      }
                   }
               }
