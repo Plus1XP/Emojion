@@ -102,6 +102,7 @@
 		2F20BB1D283BF856002512AB /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		2F35F302282F178A0038D78B /* NSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
 		2F4F147128323D76008D74B0 /* UITextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextEditor.swift; sourceTree = "<group>"; };
+		2F6393272858E1CF00BA2038 /* Emojion--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Emojion--iOS--Info.plist"; sourceTree = "<group>"; };
 		2F70FB3D2808484100D2A725 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		2F70FB3E2808484100D2A725 /* EmojionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojionApp.swift; sourceTree = "<group>"; };
 		2F70FB3F2808484100D2A725 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -181,6 +182,7 @@
 		2F70FB362808484100D2A725 = {
 			isa = PBXGroup;
 			children = (
+				2F6393272858E1CF00BA2038 /* Emojion--iOS--Info.plist */,
 				2F70FB3E2808484100D2A725 /* EmojionApp.swift */,
 				2F70FB78280C85EF00D2A725 /* DataObject */,
 				2F70FB77280C85E000D2A725 /* ObservableObject */,
@@ -584,6 +586,8 @@
 				DEVELOPMENT_TEAM = L4UU7WP4CE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Emojion--iOS--Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -615,6 +619,8 @@
 				DEVELOPMENT_TEAM = L4UU7WP4CE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Emojion--iOS--Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
