@@ -9,7 +9,7 @@ import CoreData
 
 class EntryStore: ObservableObject {
     @Published var entries: [Entry]
-    
+
     var wordList: [String] = ["sausage", "blubber", "pencil", "cloud", "moon", "water", "computer", "school", "network", "hammer", "walking", "violently", "mediocre", "literature", "chair", "two", "window", "cords", "musical", "zebra", "xylophone", "penguin", "home", "dog", "final", "ink", "teacher", "fun", "website", "banana", "uncle", "softly", "mega", "ten", "awesome", "attatch", "blue", "internet", "bottle", "tight", "zone", "tomato", "prison", "hydro", "cleaning", "telivision", "send", "frog", "cup", "book", "zooming", "falling", "evily", "gamer", "lid", "juice", "moniter", "captain", "bonding", "loudly", "thudding", "guitar", "shaving", "hair", "soccer", "water", "racket", "table", "late", "media", "desktop", "flipper", "club", "flying", "smooth", "monster", "purple", "guardian", "bold", "hyperlink", "presentation", "world", "national",   "comment", "element", "magic", "lion", "sand", "crust", "toast", "jam", "hunter", "forest", "foraging", "silently", "tawesomated", "joshing", "pong",]
     
     init() {
@@ -27,6 +27,16 @@ class EntryStore: ObservableObject {
         }
     }
     
+    func getSectionHeaders(entries: [Entry]) -> Dictionary <Date , [Entry]> {
+        let empty: [Date: [Entry]] = [:]
+         return entries.reduce(into: empty) { acc, cur in
+             let components = Calendar.current.dateComponents([.year, .month, .day], from: cur.timestamp!)
+             let date = Calendar.current.date(from: components)!
+             let existing = acc[date] ?? []
+             acc[date] = existing + [cur]
+         }
+    }
+   
     func fetchEntries2(_ sortDescriptor: NSSortDescriptor? = nil, _ predicate: NSPredicate? = nil) {
         let request = NSFetchRequest<Entry>(entityName: "Entry")
         if let sort = sortDescriptor {

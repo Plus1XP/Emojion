@@ -33,6 +33,12 @@ struct CardView: View {
         }
     }
     
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E d MMM yyyy"
+        return formatter
+    }()
+    
     init(entryStore: EntryStore) {
 //        UITableView.appearance().sectionFooterHeight = 0
         self.entryStore = entryStore
@@ -42,30 +48,37 @@ struct CardView: View {
     
     var body: some View {
         List {
-            ForEach(searchResults, id: \.self) { entry in
-                Section {
-                    NavigationLink(destination: EntryDetailsView(entryStore: entryStore, entry: entry)) {
-                        CardRowView(entry: entry)
-                    }
-                }
-                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                    Button(role: .destructive) {
-                        withAnimation {
-                            entryStore.deleteEntry(entry: entry)
+            ForEach(entryStore.getSectionHeaders(entries: searchResults).keys.sorted(by: { $0 > $1 }), id:\.self) { key in
+                if let entries = entryStore.getSectionHeaders(entries: searchResults)[key]!
+                {
+                    Section(header: Text("\(dateFormatter.string(from: key))")) {
+                        ForEach(entries, id: \.self){ entry in
+                            Section {
+                                NavigationLink(destination: EntryDetailsView(entryStore: entryStore, entry: entry)) {
+                                    CardRowView(entry: entry)
+                                }
+                            }
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                Button(role: .destructive) {
+                                    withAnimation {
+                                        entryStore.deleteEntry(entry: entry)
+                                    }
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                                Button {
+                                    self.entry = entry
+                                    self.canShowEditEntryView.toggle()
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
+                                }
+                                .tint(.blue)
+                            }
                         }
-                    } label: {
-                        Label("Delete", systemImage: "trash")
+                        .onDelete(perform: entryStore.deleteEntry)
                     }
-                    Button {
-                        self.entry = entry
-                        self.canShowEditEntryView.toggle()
-                    } label: {
-                        Label("Edit", systemImage: "pencil")
-                    }
-                    .tint(.blue)
                 }
             }
-            .onDelete(perform: entryStore.deleteEntry)
         }
         .searchable(text: $searchQuery, prompt: "Search Emojions") {
             if canAutoCompleteSearch && searchQuery.count > 2 {
@@ -146,6 +159,9 @@ struct CardView: View {
             }
         }
         .onAppear {
+            entryStore.fetchEntries()
+        }
+        .refreshable {
             entryStore.fetchEntries()
         }
         .sheet(isPresented: $canShowAddEntryView) {
