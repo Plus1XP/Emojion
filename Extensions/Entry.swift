@@ -16,7 +16,7 @@ extension Entry {
         mockEntry.timestamp = Date()
         mockEntry.event = "Interview"
         mockEntry.emojion = "😬"
-        mockEntry.feeling = [3,4,2]
+        mockEntry.feeling = [3,4,1]
         mockEntry.rating = 2
         mockEntry.note = "Coffee helped my anxeity"
         return mockEntry

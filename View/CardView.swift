@@ -125,7 +125,8 @@ struct CardView: View {
                     .popover(isPresented: $canShowDebugMenu) {
                         HStack {
                             Button(action: {
-                                entryStore.addMockEntries(numberOfEntries: 30)
+//                                entryStore.addRandomMockEntries(numberOfEntries: 30)
+                                entryStore.addTestFlightMockEntries()
                             }) {
                                 Label("", systemImage: "calendar.badge.plus")
                                     .foregroundStyle(.green, .white)
