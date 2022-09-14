@@ -13,7 +13,7 @@ struct SettingsView: View {
     @State var isIcloudEnabled: Bool = false
     
     // Fill in App ID when app is added to appstore connect!
-    let appID: String = ""
+    let appID: String = "1628565468"
     let mailURL: String = "mailto:evlbrains@protonmail.ch"
     let twitterURL: String = "https://twitter.com/evlbrains"
     let appURL: String = "https://apps.apple.com/us/app/id"
@@ -65,6 +65,7 @@ struct SettingsView: View {
                                     .foregroundColor(.primary)
                             }
                         }
+                        .disabled(true)
                     }
                     HStack {
                         Link(destination: URL(string: twitterURL)!) {

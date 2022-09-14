@@ -12,6 +12,8 @@ struct CardView: View {
     @State private var entry: Entry = Entry(context: PersistenceController.shared.container.viewContext)
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
+    // Disable once released
+    @State private var isDebugActive: Bool = true
     @State private var canShowDebugMenu: Bool = false
     @State private var canAutoCompleteSearch: Bool = false
     @State private var canResetDate: Bool = false
@@ -116,36 +118,44 @@ struct CardView: View {
 //                            .opacity(isSearchingDate ? 1 : 0)
                     }
                     .hidden(!isSearchingDate)
-                    Button(action: {
-                        canShowDebugMenu.toggle()
-                    }) {
-                        Label("Create Entries", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
-                            .foregroundStyle(.primary)
-                    }
-                    .popover(isPresented: $canShowDebugMenu) {
-                        HStack {
-                            Button(action: {
-//                                entryStore.addRandomMockEntries(numberOfEntries: 30)
-                                entryStore.addTestFlightMockEntries()
-                            }) {
-                                Label("", systemImage: "calendar.badge.plus")
-                                    .foregroundStyle(.green, .white)
-                            }
-                            Button(action: {
-                                entryStore.deleteAllEntries()
-                            }) {
-                                Label("", systemImage: "calendar.badge.minus")
-                                    .foregroundStyle(.red, .white)
-                            }
-                            Button(action: {
-                                entryStore.resetCoreData()
-                            }) {
-                                Label("", systemImage: "externaldrive.badge.minus")
-                                    .foregroundStyle(.red, .white)
-                            }
+                    // For Internal debugging
+                    if (isDebugActive) {
+                        Button(action: {
+                            canShowDebugMenu.toggle()
+                        }) {
+                            Label("Create Entries", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
+                                .foregroundStyle(.primary)
                         }
-                        .padding()
-                        .background(.ultraThinMaterial)
+                        .popover(isPresented: $canShowDebugMenu) {
+                            HStack {
+                                Button(action: {
+                                    entryStore.addTestFlightMockEntries()
+                                }) {
+                                    Label("", systemImage: "calendar.badge.exclamationmark")
+                                        .foregroundStyle(.blue, .white)
+                                }
+                                Button(action: {
+                                    entryStore.addRandomMockEntries(numberOfEntries: 30)
+                                }) {
+                                    Label("", systemImage: "calendar.badge.plus")
+                                        .foregroundStyle(.green, .white)
+                                }
+                                Button(action: {
+                                    entryStore.deleteAllEntries()
+                                }) {
+                                    Label("", systemImage: "calendar.badge.minus")
+                                        .foregroundStyle(.red, .white)
+                                }
+                                Button(action: {
+                                    entryStore.resetCoreData()
+                                }) {
+                                    Label("", systemImage: "externaldrive.badge.minus")
+                                        .foregroundStyle(.red, .white)
+                                }
+                            }
+                            .padding()
+                            .background(.ultraThinMaterial)
+                        }
                     }
                 }
             }
