@@ -237,18 +237,22 @@ class EntryStore: ObservableObject {
         return wordList[index]
     }
     
+//    Returns 1 Jan 2000 if timeStamp is nil
     func getOldestEntryDate() -> String {
-            let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedAscending}).first!.timestamp!
-            let dateformat = DateFormatter()
-                   dateformat.dateFormat = "d MMM yyyy"
-                   return dateformat.string(from: sortedDate)
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "d MMM yyyy"
+        guard let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedAscending}).first?.timestamp! else { return dateformat.date(from: "1 Jan 2000")!.description }
+        
+        return dateformat.string(from: sortedDate)
     }
     
+//    Returns 1 Jan 2000 if timeStamp is nil
     func getNewestEntryDate() -> String {
-            let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedDescending}).first!.timestamp!
-            let dateformat = DateFormatter()
-                   dateformat.dateFormat = "d MMM yyyy"
-                   return dateformat.string(from: sortedDate)
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "d MMM yyyy"
+        guard let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedDescending}).first?.timestamp! else { return dateformat.date(from: "1 Jan 2000")!.description }
+        
+        return dateformat.string(from: sortedDate)
     }
     
     func getPrimaryStats() -> [String: Int] {
