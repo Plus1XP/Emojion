@@ -16,7 +16,7 @@ struct SettingsView: View {
     let appName: String = "Emojion App"
     let appID: String = "1628565468"
     let mailURL: String = "mailto:evlbrains@protonmail.ch"
-    let supportURL: String = "https://plus1xp.github.io/emojion/"
+    let supportURL: String = "https://plus1xp.github.io/Emojion/"
     let githubURL: String = "https://github.com/Plus1XP"
     let appURL: String = "https://apps.apple.com/us/app/id"
     let reviewForwarder: String = "?action=write-review"
