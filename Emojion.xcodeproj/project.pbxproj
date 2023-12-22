@@ -61,6 +61,16 @@
 		2F70FB94280E224600D2A725 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB92280E224500D2A725 /* View.swift */; };
 		2F70FB9A280F19A100D2A725 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB99280F19A100D2A725 /* StarRatingView.swift */; };
 		2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB99280F19A100D2A725 /* StarRatingView.swift */; };
+		2FA30EDF2B34CAC100195CA4 /* BiometricService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */; };
+		2FA30EE02B34CAC100195CA4 /* BiometricService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */; };
+		2FA30EE22B34CAF400195CA4 /* BiometricStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EE12B34CAF400195CA4 /* BiometricStore.swift */; };
+		2FA30EE32B34CAF400195CA4 /* BiometricStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EE12B34CAF400195CA4 /* BiometricStore.swift */; };
+		2FA30EE52B34CB2300195CA4 /* SyncMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EE42B34CB2300195CA4 /* SyncMonitor.swift */; };
+		2FA30EE62B34CB2300195CA4 /* SyncMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EE42B34CB2300195CA4 /* SyncMonitor.swift */; };
+		2FA30EE92B34CFFF00195CA4 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EE82B34CFFF00195CA4 /* AuthenticationView.swift */; };
+		2FA30EEA2B34CFFF00195CA4 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EE82B34CFFF00195CA4 /* AuthenticationView.swift */; };
+		2FA30EEC2B34D03B00195CA4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EEB2B34D03B00195CA4 /* LoginView.swift */; };
+		2FA30EED2B34D03B00195CA4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EEB2B34D03B00195CA4 /* LoginView.swift */; };
 		2FAF0055283D68B10092E8DD /* CalendarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAF0054283D68B10092E8DD /* CalendarRowView.swift */; };
 		2FAF0056283D68B10092E8DD /* CalendarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAF0054283D68B10092E8DD /* CalendarRowView.swift */; };
 		2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
@@ -115,6 +125,12 @@
 		2F70FB8F280E141500D2A725 /* EntryDetailsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailsComponent.swift; sourceTree = "<group>"; };
 		2F70FB92280E224500D2A725 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		2F70FB99280F19A100D2A725 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
+		2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricService.swift; sourceTree = "<group>"; };
+		2FA30EE12B34CAF400195CA4 /* BiometricStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricStore.swift; sourceTree = "<group>"; };
+		2FA30EE42B34CB2300195CA4 /* SyncMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMonitor.swift; sourceTree = "<group>"; };
+		2FA30EE72B34CBE100195CA4 /* Emojion (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Emojion (iOS).entitlements"; sourceTree = "<group>"; };
+		2FA30EE82B34CFFF00195CA4 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		2FA30EEB2B34D03B00195CA4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2FAF0054283D68B10092E8DD /* CalendarRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRowView.swift; sourceTree = "<group>"; };
 		2FBDEB952824A246003953C0 /* MockDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataObject.swift; sourceTree = "<group>"; };
 		2FC755EB282AA5EF008344CE /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -173,6 +189,7 @@
 		2F70FB362808484100D2A725 = {
 			isa = PBXGroup;
 			children = (
+				2FA30EE72B34CBE100195CA4 /* Emojion (iOS).entitlements */,
 				2F6393272858E1CF00BA2038 /* Emojion--iOS--Info.plist */,
 				2F70FB3E2808484100D2A725 /* EmojionApp.swift */,
 				2F70FB78280C85EF00D2A725 /* DataObject */,
@@ -221,6 +238,8 @@
 				2F20BB1D283BF856002512AB /* CalendarView.swift */,
 				2F135771284E0539006C07B2 /* ChartView.swift */,
 				2FFE3984283FD26900DFFA48 /* SettingsView.swift */,
+				2FA30EE82B34CFFF00195CA4 /* AuthenticationView.swift */,
+				2FA30EEB2B34D03B00195CA4 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,6 +251,8 @@
 				2F01D8B6281477E5004583E3 /* FeelingFinderStore.swift */,
 				2FF810F02847BFC00050E533 /* CalendarStore.swift */,
 				2FCF6CA0295C90A400834252 /* ChartStore.swift */,
+				2FA30EE12B34CAF400195CA4 /* BiometricStore.swift */,
+				2FA30EE42B34CB2300195CA4 /* SyncMonitor.swift */,
 			);
 			path = ObservableObject;
 			sourceTree = "<group>";
@@ -244,6 +265,7 @@
 				2F01D8B028146141004583E3 /* FeelingFinder.swift */,
 				2FBDEB952824A246003953C0 /* MockDataObject.swift */,
 				2FCF6C9A295C8E8D00834252 /* FeelingStats.swift */,
+				2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */,
 			);
 			path = DataObject;
 			sourceTree = "<group>";
@@ -384,6 +406,7 @@
 				2F70FB552808484300D2A725 /* Persistence.swift in Sources */,
 				2F1357942850D2B4006C07B2 /* Color.swift in Sources */,
 				2F01D8742812D711004583E3 /* Character.swift in Sources */,
+				2FA30EE92B34CFFF00195CA4 /* AuthenticationView.swift in Sources */,
 				2FCF6CA1295C90A400834252 /* ChartStore.swift in Sources */,
 				2FF810EE284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */,
@@ -393,6 +416,7 @@
 				2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */,
 				2F70FB8A280E011300D2A725 /* CardView.swift in Sources */,
 				2FF810F12847BFC00050E533 /* CalendarStore.swift in Sources */,
+				2FA30EE52B34CB2300195CA4 /* SyncMonitor.swift in Sources */,
 				2F70FB87280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755EC282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7A280C890E00D2A725 /* EntryDetailsView.swift in Sources */,
@@ -401,10 +425,13 @@
 				2FFE3985283FD26900DFFA48 /* SettingsView.swift in Sources */,
 				2FCF6C9E295C8FAC00834252 /* StackedBarChartView.swift in Sources */,
 				2FAF0055283D68B10092E8DD /* CalendarRowView.swift in Sources */,
+				2FA30EDF2B34CAC100195CA4 /* BiometricService.swift in Sources */,
+				2FA30EE22B34CAF400195CA4 /* BiometricStore.swift in Sources */,
 				2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB90280E141500D2A725 /* EntryDetailsComponent.swift in Sources */,
 				2F70FB8D280E10FE00D2A725 /* CardRowView.swift in Sources */,
 				2F70FB682808536E00D2A725 /* EntryFormView.swift in Sources */,
+				2FA30EEC2B34D03B00195CA4 /* LoginView.swift in Sources */,
 				2F70FB84280D79DD00D2A725 /* EditEntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,6 +454,7 @@
 				2F70FB562808484300D2A725 /* Persistence.swift in Sources */,
 				2F1357952850D2B4006C07B2 /* Color.swift in Sources */,
 				2F01D8752812D711004583E3 /* Character.swift in Sources */,
+				2FA30EEA2B34CFFF00195CA4 /* AuthenticationView.swift in Sources */,
 				2FCF6CA2295C90A400834252 /* ChartStore.swift in Sources */,
 				2FF810EF284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2F70FB522808484300D2A725 /* EmojionApp.swift in Sources */,
@@ -436,6 +464,7 @@
 				2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */,
 				2F70FB8B280E011300D2A725 /* CardView.swift in Sources */,
 				2FF810F22847BFC00050E533 /* CalendarStore.swift in Sources */,
+				2FA30EE62B34CB2300195CA4 /* SyncMonitor.swift in Sources */,
 				2F70FB88280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755ED282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7B280C890E00D2A725 /* EntryDetailsView.swift in Sources */,
@@ -444,10 +473,13 @@
 				2FFE3986283FD26900DFFA48 /* SettingsView.swift in Sources */,
 				2FCF6C9F295C8FAC00834252 /* StackedBarChartView.swift in Sources */,
 				2FAF0056283D68B10092E8DD /* CalendarRowView.swift in Sources */,
+				2FA30EE02B34CAC100195CA4 /* BiometricService.swift in Sources */,
+				2FA30EE32B34CAF400195CA4 /* BiometricStore.swift in Sources */,
 				2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB91280E141500D2A725 /* EntryDetailsComponent.swift in Sources */,
 				2F70FB8E280E10FE00D2A725 /* CardRowView.swift in Sources */,
 				2F70FB692808536E00D2A725 /* EntryFormView.swift in Sources */,
+				2FA30EED2B34D03B00195CA4 /* LoginView.swift in Sources */,
 				2F70FB85280D79DD00D2A725 /* EditEntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,6 +601,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Emojion (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -577,18 +610,19 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Emojion--iOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Required to unlock app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
 				PRODUCT_NAME = Emojion;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -604,6 +638,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Emojion (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -612,18 +647,19 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Emojion--iOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Required to unlock app.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
 				PRODUCT_NAME = Emojion;
 				PROVISIONING_PROFILE_SPECIFIER = "";

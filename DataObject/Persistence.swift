@@ -6,6 +6,7 @@
 //
 
 import CoreData
+import CloudKit
 
 struct PersistenceController {
     static let shared = PersistenceController()
@@ -13,7 +14,6 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        
         for _ in 0..<10 {
             let newEntry = Entry(context: viewContext)
             newEntry.id = UUID()
@@ -72,5 +72,22 @@ struct PersistenceController {
                 completionHandler(error)
             }
         }
+    }
+    
+    func RemoveiCloudData(completion: @escaping (_ response: Bool) -> Void) {
+        // replace the identifier with your container identifier
+        let container = CKContainer(identifier: "iCloud.io.plus1xp.emojion")
+        let database = container.privateCloudDatabase
+        
+        // instruct iCloud to delete the whole zone (and all of its records)
+        database.delete(withRecordZoneID: .init(zoneName: "com.apple.coredata.cloudkit.zone"), completionHandler: { (zoneID, error) in
+            if let error = error {
+                completion(false)
+                debugPrint("error deleting zone: - \(error.localizedDescription)")
+            } else {
+                completion(true)
+                debugPrint("successfully deleted zone")
+            }
+        })
     }
 }

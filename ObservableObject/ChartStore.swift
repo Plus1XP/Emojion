@@ -15,7 +15,6 @@ class ChartStore: ObservableObject {
         chartData = [FeelingStats]()
         for entry in entryStore.entries {
             chartData.append(FeelingStats(color: getPrimarySelectedFeelingColor(feelingArray: entry.feeling!).description, type: getPrimarySelectedFeelingName(feelingArray: entry.feeling!), date: entry.timestamp!, count: 1))
-            debugPrint(entry.timestamp!)
         }
     }
     
@@ -23,7 +22,6 @@ class ChartStore: ObservableObject {
         var feelingDictionary: [FeelingStats] = [FeelingStats]()
         for entry in entryStore.entries {
             feelingDictionary.append(FeelingStats(color: getPrimarySelectedFeelingColor(feelingArray: entry.feeling!).description, type: getPrimarySelectedFeelingName(feelingArray: entry.feeling!), date: entry.timestamp!, count: 1))
-            debugPrint(entry.timestamp!)
         }
         return feelingDictionary
     }

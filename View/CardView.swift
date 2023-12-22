@@ -51,7 +51,8 @@ struct CardView: View {
     var body: some View {
         List {
             ForEach(entryStore.getSectionHeaders(entries: searchResults).keys.sorted(by: { $0 > $1 }), id:\.self) { key in
-                if let entries = entryStore.getSectionHeaders(entries: searchResults)[key]!
+                // Removed ! after [key] due to xcode 14.3 update
+                if let entries = entryStore.getSectionHeaders(entries: searchResults)[key]
                 {
                     Section(header: Text("\(dateFormatter.string(from: key))")) {
                         ForEach(entries, id: \.self){ entry in
@@ -114,8 +115,8 @@ struct CardView: View {
                     }) {
                         Label("Reset Calendar", systemImage: "xmark")
                             .foregroundColor(Color.red)
-//                            .disabled(!isSearchingDate)
-//                            .opacity(isSearchingDate ? 1 : 0)
+                            .disabled(!isSearchingDate)
+                            .opacity(isSearchingDate ? 1 : 0)
                     }
                     .hidden(!isSearchingDate)
                     // For Internal debugging
@@ -156,6 +157,8 @@ struct CardView: View {
                             .padding()
                             .background(.ultraThinMaterial)
                         }
+                        .disabled(true)
+                        .hidden()
                     }
                 }
             }
