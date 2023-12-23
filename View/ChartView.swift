@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct ChartView: View {
+    @ObservedObject var chartStore: ChartStore
     @ObservedObject var entryStore: EntryStore
-
+    
     var body: some View {
-        VStack {
-            BarChartViewComponent(data: ChartData(values: entryStore.getPrimaryStats()), title: "Most used Emojions", legend: "\(entryStore.getOldestEntryDate()) to \(entryStore.getNewestEntryDate())", style: Styles.barChartStyleOrangeLight, form: ChartForm.extraLarge, dropShadow: false, cornerImage: Image(systemName: "hand.draw.fill"), valueSpecifier: "%.0f", animatedToBack: true)
-        }
-        .padding()
+//    ToDo: Add multiple chart views
+        StackedBarChartView(chartStore: chartStore, entryStore: entryStore)
     }
 }
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
+        let chartStore = ChartStore()
         let entryStore = EntryStore()
-        ChartView(entryStore: entryStore)
+        ChartView(chartStore: chartStore, entryStore: entryStore)
     }
 }

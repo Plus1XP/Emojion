@@ -12,6 +12,8 @@ struct CardView: View {
     @State private var entry: Entry = Entry(context: PersistenceController.shared.container.viewContext)
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
+    // Disable once released
+    @State private var isDebugActive: Bool = true
     @State private var canShowDebugMenu: Bool = false
     @State private var canAutoCompleteSearch: Bool = false
     @State private var canResetDate: Bool = false
@@ -33,6 +35,12 @@ struct CardView: View {
         }
     }
     
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E d MMM yyyy"
+        return formatter
+    }()
+    
     init(entryStore: EntryStore) {
 //        UITableView.appearance().sectionFooterHeight = 0
         self.entryStore = entryStore
@@ -42,30 +50,38 @@ struct CardView: View {
     
     var body: some View {
         List {
-            ForEach(searchResults, id: \.self) { entry in
-                Section {
-                    NavigationLink(destination: EntryDetailsView(entryStore: entryStore, entry: entry)) {
-                        CardRowView(entry: entry)
-                    }
-                }
-                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                    Button(role: .destructive) {
-                        withAnimation {
-                            entryStore.deleteEntry(entry: entry)
+            ForEach(entryStore.getSectionHeaders(entries: searchResults).keys.sorted(by: { $0 > $1 }), id:\.self) { key in
+                // Removed ! after [key] due to xcode 14.3 update
+                if let entries = entryStore.getSectionHeaders(entries: searchResults)[key]
+                {
+                    Section(header: Text("\(dateFormatter.string(from: key))")) {
+                        ForEach(entries, id: \.self){ entry in
+                            Section {
+                                NavigationLink(destination: EntryDetailsView(entryStore: entryStore, entry: entry)) {
+                                    CardRowView(entry: entry)
+                                }
+                            }
+                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                Button(role: .destructive) {
+                                    withAnimation {
+                                        entryStore.deleteEntry(entry: entry)
+                                    }
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                                Button {
+                                    self.entry = entry
+                                    self.canShowEditEntryView.toggle()
+                                } label: {
+                                    Label("Edit", systemImage: "pencil")
+                                }
+                                .tint(.blue)
+                            }
                         }
-                    } label: {
-                        Label("Delete", systemImage: "trash")
+                        .onDelete(perform: entryStore.deleteEntry)
                     }
-                    Button {
-                        self.entry = entry
-                        self.canShowEditEntryView.toggle()
-                    } label: {
-                        Label("Edit", systemImage: "pencil")
-                    }
-                    .tint(.blue)
                 }
             }
-            .onDelete(perform: entryStore.deleteEntry)
         }
         .searchable(text: $searchQuery, prompt: "Search Emojions") {
             if canAutoCompleteSearch && searchQuery.count > 2 {
@@ -99,39 +115,50 @@ struct CardView: View {
                     }) {
                         Label("Reset Calendar", systemImage: "xmark")
                             .foregroundColor(Color.red)
-//                            .disabled(!isSearchingDate)
-//                            .opacity(isSearchingDate ? 1 : 0)
+                            .disabled(!isSearchingDate)
+                            .opacity(isSearchingDate ? 1 : 0)
                     }
                     .hidden(!isSearchingDate)
-                    Button(action: {
-                        canShowDebugMenu.toggle()
-                    }) {
-                        Label("Create Entries", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
-                            .foregroundStyle(.primary)
-                    }
-                    .popover(isPresented: $canShowDebugMenu) {
-                        HStack {
-                            Button(action: {
-                                entryStore.addMockEntries(numberOfEntries: 30)
-                            }) {
-                                Label("", systemImage: "calendar.badge.plus")
-                                    .foregroundStyle(.green, .white)
-                            }
-                            Button(action: {
-                                entryStore.deleteAllEntries()
-                            }) {
-                                Label("", systemImage: "calendar.badge.minus")
-                                    .foregroundStyle(.red, .white)
-                            }
-                            Button(action: {
-                                entryStore.resetCoreData()
-                            }) {
-                                Label("", systemImage: "externaldrive.badge.minus")
-                                    .foregroundStyle(.red, .white)
-                            }
+                    // For Internal debugging
+                    if (isDebugActive) {
+                        Button(action: {
+                            canShowDebugMenu.toggle()
+                        }) {
+                            Label("Create Entries", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
+                                .foregroundStyle(.primary)
                         }
-                        .padding()
-                        .background(.ultraThinMaterial)
+                        .popover(isPresented: $canShowDebugMenu) {
+                            HStack {
+                                Button(action: {
+                                    entryStore.addTestFlightMockEntries()
+                                }) {
+                                    Label("", systemImage: "calendar.badge.exclamationmark")
+                                        .foregroundStyle(.blue, .white)
+                                }
+                                Button(action: {
+                                    entryStore.addRandomMockEntries(numberOfEntries: 30)
+                                }) {
+                                    Label("", systemImage: "calendar.badge.plus")
+                                        .foregroundStyle(.green, .white)
+                                }
+                                Button(action: {
+                                    entryStore.deleteAllEntries()
+                                }) {
+                                    Label("", systemImage: "calendar.badge.minus")
+                                        .foregroundStyle(.red, .white)
+                                }
+                                Button(action: {
+                                    entryStore.resetCoreData()
+                                }) {
+                                    Label("", systemImage: "externaldrive.badge.minus")
+                                        .foregroundStyle(.red, .white)
+                                }
+                            }
+                            .padding()
+                            .background(.ultraThinMaterial)
+                        }
+                        .disabled(true)
+                        .hidden()
                     }
                 }
             }
@@ -146,6 +173,9 @@ struct CardView: View {
             }
         }
         .onAppear {
+            entryStore.fetchEntries()
+        }
+        .refreshable {
             entryStore.fetchEntries()
         }
         .sheet(isPresented: $canShowAddEntryView) {

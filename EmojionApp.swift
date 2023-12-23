@@ -13,7 +13,7 @@ struct EmojionApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AuthenticationView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

@@ -32,18 +32,17 @@ extension String {
 //    let imageBlack = "🤣".image(fontSize:100, bgColor:.black)
 //    let imageLong  = "🤣".image(fontSize:100, imageSize:CGSize(width:500,height:100))
     func ToImage(fontSize:CGFloat = 40, bgColor:UIColor = UIColor.clear, imageSize:CGSize? = nil) -> UIImage?
-        {
-            let font = UIFont.systemFont(ofSize: fontSize) // you can change your font size here
-            let attributes = [NSAttributedString.Key.font: font]
-            let imageSize = imageSize ?? self.size(withAttributes: attributes)
-
-            UIGraphicsBeginImageContextWithOptions(imageSize, false, 0) //  begin image context
-            bgColor.set()
-            let rect = CGRect(origin: CGPoint(), size: imageSize) // set rect size
-            UIRectFill(rect)
-            self.draw(at: CGPoint.zero, withAttributes: [.font: font]) // draw text within rect
-            let image = UIGraphicsGetImageFromCurrentImageContext() // create image from context
-            UIGraphicsEndImageContext() //  end image context
-            return image
-        }
+    {
+        let font = UIFont.systemFont(ofSize: fontSize) // you can change your font size here
+        let attributes = [NSAttributedString.Key.font: font]
+        let imageSize = imageSize ?? self.size(withAttributes: attributes)
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, 0) //  begin image context
+        bgColor.set()
+        let rect = CGRect(origin: CGPoint(), size: imageSize) // set rect size
+        UIRectFill(rect)
+        self.draw(at: CGPoint.zero, withAttributes: [.font: font]) // draw text within rect
+        let image = UIGraphicsGetImageFromCurrentImageContext() // create image from context
+        UIGraphicsEndImageContext() //  end image context
+        return image
+    }
 }

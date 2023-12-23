@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var entryStore = EntryStore()
     @StateObject private var calendarStore = CalendarStore()
+    @StateObject private var chartStore = ChartStore()
+    @ObservedObject var biometricStore: BiometricStore
     @State private var selection = 0
     
     var body: some View {
@@ -34,7 +36,7 @@ struct ContentView: View {
             }
             .tag(1)
             NavigationView {
-                ChartView(entryStore: entryStore)
+                ChartView(chartStore: chartStore, entryStore: entryStore)
                     .navigationTitle("Emojions")
             }
             .tabItem {
@@ -43,7 +45,7 @@ struct ContentView: View {
             }
             .tag(2)
             NavigationView {
-                SettingsView(entryStore: entryStore)
+                SettingsView(entryStore: entryStore, biometricStore: biometricStore)
                     .navigationTitle("Settings")
             }
             .tabItem {
@@ -60,9 +62,10 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let biometricStore = BiometricStore()
+        ContentView(biometricStore: biometricStore)
             .preferredColorScheme(.dark)
-        ContentView()
+        ContentView(biometricStore: biometricStore)
             .preferredColorScheme(.light)
     }
 }

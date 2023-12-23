@@ -9,7 +9,7 @@ import CoreData
 
 class EntryStore: ObservableObject {
     @Published var entries: [Entry]
-    
+
     var wordList: [String] = ["sausage", "blubber", "pencil", "cloud", "moon", "water", "computer", "school", "network", "hammer", "walking", "violently", "mediocre", "literature", "chair", "two", "window", "cords", "musical", "zebra", "xylophone", "penguin", "home", "dog", "final", "ink", "teacher", "fun", "website", "banana", "uncle", "softly", "mega", "ten", "awesome", "attatch", "blue", "internet", "bottle", "tight", "zone", "tomato", "prison", "hydro", "cleaning", "telivision", "send", "frog", "cup", "book", "zooming", "falling", "evily", "gamer", "lid", "juice", "moniter", "captain", "bonding", "loudly", "thudding", "guitar", "shaving", "hair", "soccer", "water", "racket", "table", "late", "media", "desktop", "flipper", "club", "flying", "smooth", "monster", "purple", "guardian", "bold", "hyperlink", "presentation", "world", "national",   "comment", "element", "magic", "lion", "sand", "crust", "toast", "jam", "hunter", "forest", "foraging", "silently", "tawesomated", "joshing", "pong",]
     
     init() {
@@ -27,6 +27,16 @@ class EntryStore: ObservableObject {
         }
     }
     
+    func getSectionHeaders(entries: [Entry]) -> Dictionary <Date , [Entry]> {
+        let empty: [Date: [Entry]] = [:]
+         return entries.reduce(into: empty) { acc, cur in
+             let components = Calendar.current.dateComponents([.year, .month, .day], from: cur.timestamp!)
+             let date = Calendar.current.date(from: components)!
+             let existing = acc[date] ?? []
+             acc[date] = existing + [cur]
+         }
+    }
+   
     func fetchEntries2(_ sortDescriptor: NSSortDescriptor? = nil, _ predicate: NSPredicate? = nil) {
         let request = NSFetchRequest<Entry>(entityName: "Entry")
         if let sort = sortDescriptor {
@@ -50,8 +60,34 @@ class EntryStore: ObservableObject {
     func entiresDesendingSortDescriptor() -> NSSortDescriptor {
         NSSortDescriptor(key: "timestamp", ascending: false)
     }
+
+    func addTestFlightMockEntries() -> Void {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy HH:mm"
+        
+        let year = Calendar.current.component(.year, from: Date())
+        let month = Calendar.current.component(.month, from: Date())
+        let day = Calendar.current.component(.day, from: Date())
+        
+        for i in 1...(day - 1) {
+            if i % 2 == 0 {
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 08:00")!, event: "Walk Dog", emojion: "😤", feeling: [0,1,0], rating: 1, note: "I love my dog but it was far to cold today.")
+            }
+            if i % 2 == 1 {
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 20:00")!, event: "Play Squash", emojion: "💪", feeling: [6,2,1], rating: 3, note: "Excercise makes me feel alive!")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 15:00")!, event: "Learn to Code", emojion: "🤓", feeling: [6,2,0], rating: 2, note: "I must succeed at all costs..")
+            }
+            if i % 3 == 0 {
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 18:00")!, event: "Dance Class", emojion: "🤭", feeling: [4,5,0], rating: 4, note: "learning the forbidden dance was exciting!")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 21:30")!, event: "Babysit", emojion: "🫠", feeling: [1,2,1], rating: 0, note: "Note to self, dont have kids.")
+            }
+        }
+        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 09:00")!, event: "comicon", emojion: "🤯", feeling: [6,0,1], rating: 0, note: "1 of a kind experience ruined by the smell...")
+        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 14:00")!, event: "Job Interview", emojion: "😬", feeling: [3,4,1], rating: 2, note: "Coffee helped my anxeity")
+        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 18:00")!, event: "Dinner Date", emojion: "🥰", feeling: [4,8,0], rating: 4, note: "Great way to end the day!")
+    }
     
-    func addMockEntries(numberOfEntries: Int) {        
+    func addRandomMockEntries(numberOfEntries: Int) {
         for _ in 1...numberOfEntries {
             let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
             newEntry.id = generateUUID()
@@ -64,6 +100,18 @@ class EntryStore: ObservableObject {
             saveChanges()
         }
         fetchEntries()
+    }
+    
+    func addNewEntry(date: Date, event: String, emojion: String, feeling: [Int], rating: Int64, note: String) {
+        let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
+        newEntry.id = UUID()
+        newEntry.timestamp = date
+        newEntry.event = event
+        newEntry.emojion = emojion
+        newEntry.feeling = feeling
+        newEntry.rating = rating
+        newEntry.note = note
+        saveChanges()
     }
     
     func addNewEntry(event: String, emojion: String, feeling: [Int], rating: Int64, note: String) {
@@ -189,18 +237,22 @@ class EntryStore: ObservableObject {
         return wordList[index]
     }
     
+//    Returns 1 Jan 2000 if timeStamp is nil
     func getOldestEntryDate() -> String {
-            let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedAscending}).first!.timestamp!
-            let dateformat = DateFormatter()
-                   dateformat.dateFormat = "d MMM yyyy"
-                   return dateformat.string(from: sortedDate)
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "d MMM yyyy"
+        guard let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedAscending}).first?.timestamp! else { return dateformat.date(from: "1 Jan 2000")!.description }
+        
+        return dateformat.string(from: sortedDate)
     }
     
+//    Returns 1 Jan 2000 if timeStamp is nil
     func getNewestEntryDate() -> String {
-            let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedDescending}).first!.timestamp!
-            let dateformat = DateFormatter()
-                   dateformat.dateFormat = "d MMM yyyy"
-                   return dateformat.string(from: sortedDate)
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "d MMM yyyy"
+        guard let sortedDate = entries.sorted(by: {$0.timestamp?.compare($1.timestamp!) == .orderedDescending}).first?.timestamp! else { return dateformat.date(from: "1 Jan 2000")!.description }
+        
+        return dateformat.string(from: sortedDate)
     }
     
     func getPrimaryStats() -> [String: Int] {
