@@ -13,7 +13,7 @@ struct CardView: View {
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
     // Disable once released
-    @State private var isDebugActive: Bool = true
+//    @State private var isDebugActive: Bool = true
     @State private var canShowDebugMenu: Bool = false
     @State private var canAutoCompleteSearch: Bool = false
     @State private var canResetDate: Bool = false
@@ -37,7 +37,7 @@ struct CardView: View {
     
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "E d MMM yyyy"
+        formatter.dateFormat = "EEEE"
         return formatter
     }()
     
@@ -58,9 +58,15 @@ struct CardView: View {
                         ForEach(entries, id: \.self){ entry in
                             Section {
                                 NavigationLink(destination: EntryDetailsView(entryStore: entryStore, entry: entry)) {
-                                    CardRowView(entry: entry)
+                                    HStack {
+                                        DateRowView(entry: entry)
+                                        CardRowView(entry: entry)
+                                    }
                                 }
                             }
+//                            .listStyle(.sidebar)
+                            .listRowSeparator(.hidden)
+                            .listRowInsets(EdgeInsets())
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button(role: .destructive) {
                                     withAnimation {
@@ -80,9 +86,17 @@ struct CardView: View {
                         }
                         .onDelete(perform: entryStore.deleteEntry)
                     }
+//                    .listStyle(.sidebar)
+
                 }
             }
+//            .listStyle(.sidebar)
+            .listRowBackground(
+                Rectangle()
+                     .fill(Color(.clear).opacity(1))
+                )
         }
+//        .listStyle(.sidebar)
         .searchable(text: $searchQuery, prompt: "Search Emojions") {
             if canAutoCompleteSearch && searchQuery.count > 2 {
                 ForEach(searchResults, id: \.self) { entry in
@@ -120,46 +134,44 @@ struct CardView: View {
                     }
                     .hidden(!isSearchingDate)
                     // For Internal debugging
-                    if (isDebugActive) {
-                        Button(action: {
-                            canShowDebugMenu.toggle()
-                        }) {
-                            Label("Create Entries", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
-                                .foregroundStyle(.primary)
-                        }
-                        .popover(isPresented: $canShowDebugMenu) {
-                            HStack {
-                                Button(action: {
-                                    entryStore.addTestFlightMockEntries()
-                                }) {
-                                    Label("", systemImage: "calendar.badge.exclamationmark")
-                                        .foregroundStyle(.blue, .white)
-                                }
-                                Button(action: {
-                                    entryStore.addRandomMockEntries(numberOfEntries: 30)
-                                }) {
-                                    Label("", systemImage: "calendar.badge.plus")
-                                        .foregroundStyle(.green, .white)
-                                }
-                                Button(action: {
-                                    entryStore.deleteAllEntries()
-                                }) {
-                                    Label("", systemImage: "calendar.badge.minus")
-                                        .foregroundStyle(.red, .white)
-                                }
-                                Button(action: {
-                                    entryStore.resetCoreData()
-                                }) {
-                                    Label("", systemImage: "externaldrive.badge.minus")
-                                        .foregroundStyle(.red, .white)
-                                }
-                            }
-                            .padding()
-                            .background(.ultraThinMaterial)
-                        }
-                        .disabled(true)
-                        .hidden()
+#if DEBUG
+                    Button(action: {
+                        canShowDebugMenu.toggle()
+                    }) {
+                        Label("Create Entries", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
+                            .foregroundStyle(.primary)
                     }
+                    .popover(isPresented: $canShowDebugMenu) {
+                        HStack {
+                            Button(action: {
+                                entryStore.addTestFlightMockEntries()
+                            }) {
+                                Label("", systemImage: "swift")
+                                    .foregroundStyle(.orange, .primary)
+                            }
+                            Button(action: {
+                                entryStore.addRandomMockEntries(numberOfEntries: 30)
+                            }) {
+                                Label("", systemImage: "calendar.badge.plus")
+                                    .foregroundStyle(.green, .primary)
+                            }
+                            Button(action: {
+                                entryStore.deleteAllEntries()
+                            }) {
+                                Label("", systemImage: "calendar.badge.minus")
+                                    .foregroundStyle(.red, .primary)
+                            }
+                            Button(action: {
+                                entryStore.resetCoreData()
+                            }) {
+                                Label("", systemImage: "xmark.icloud.fill")
+                                    .foregroundStyle(.white, .red)
+                            }
+                        }
+                        .padding()
+                        .background(.ultraThinMaterial)
+                    }
+#endif
                 }
             }
         }

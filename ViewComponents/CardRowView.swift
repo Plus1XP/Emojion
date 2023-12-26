@@ -8,51 +8,60 @@
 import SwiftUI
 
 struct CardRowView: View {
+    @Environment(\.colorScheme) private var colorScheme
     @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
     @State var entry: Entry
     var emojionFontSize: CGFloat = 55
     var starFontSize: CGFloat = 18
     var starSpacing: CGFloat = -1
     
-    private let entryDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter
-    }()
-    
     var body: some View {
-        VStack {
-            HStack {
-                if let event = entry.event, let date = entry.timestamp {
-                    Text(event)
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                    Spacer()
-                    Text(date, formatter: entryDateFormatter)
-                        .font(.footnote)
+        HStack {
+            VStack {
+                HStack {
+                    let emojionEmoji = (entry.emojion == "" || entry.emojion == nil ? "🫥" : entry.emojion)!.ToImage(fontSize: emojionFontSize)
+                    Image(uiImage: emojionEmoji!)
                 }
             }
-            HStack {
-                let emojionEmoji = (entry.emojion == "" || entry.emojion == nil ? "🫥" : entry.emojion)!.ToImage(fontSize: emojionFontSize)
-                Image(uiImage: emojionEmoji!)
-                Spacer()
-                VStack {
+            .padding(.trailing, 15)
+
+            VStack(alignment: .leading, content:  {
+                HStack {
+                    if let event = entry.event {
+                        Text(event)
+                            .font(.headline)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.primary)
+                    }
+                }
+                HStack {
                     StarRatingView($entry.rating, starFontSize, starSpacing)
+                        .padding(.top, -5)
+
                 }
-                Spacer()
-            }
-            HStack {
-                if let feeling = entry.feeling {
-                    Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
-                        .font(.subheadline)
-                        .fontWeight(.medium)
+                HStack {
+                    if let feeling = entry.feeling {
+                        Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
+                            .font(.subheadline)
+                            .fontWeight(.regular)
+                            .foregroundStyle(.primary)
+                    }
                 }
-                Spacer()
-            }
+            })
+            Spacer()
         }
-        .padding([.top, .bottom])
+        .padding()
+        .background(
+            Rectangle()
+                .fill(setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                 .cornerRadius(10.0)
+                 .padding([.top, .bottom], 3)
+            )
     }
+}
+
+private func setFieldBackgroundColor(colorScheme: ColorScheme) -> Color {
+    return colorScheme == .light ? Color(UIColor.systemBackground) : Color(UIColor.secondarySystemBackground)
 }
 
 struct CardRowView_Previews: PreviewProvider {
