@@ -8,85 +8,131 @@
 import SwiftUI
 
 struct EntryDetailsComponent: View {
-    @Binding var entry: Entry
-    @State var hasUpdatedStarRating: Bool = false
-    var emojionFontSize: CGFloat = 160
+    @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject var entryStore: EntryStore
     @EnvironmentObject var feelingFinderStore: FeelingFinderStore
+    var emojionFontSize: CGFloat = 125
     var starFontSize: CGFloat = 25
-    
-    private let itemFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter
-    }()
+    let sectionTitleColor: Color = Color.secondary
+    let index: Int
     
     var body: some View {
         VStack {
             HStack {
-                VStack {
-                    if let date = entry.timestamp {
-                        Text(date, formatter: itemFormatter)
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                            .padding(.leading)
-                    }
-                }
-                Spacer()
-            }
-            .padding(.bottom)
-            HStack {
-                Spacer()
-                let emojionEmoji = (entry.emojion == "" || entry.emojion == nil ? "🫥" : entry.emojion)!.ToImage(fontSize: emojionFontSize)
-                Image(uiImage: emojionEmoji!)
-//                    .resizable()
-//                    .frame(width: 200, height: 200)
-//                    .clipShape(Circle())
-//                    .overlay(
-//                        Circle()
-//                            .stroke(lineWidth: 8)
-//                            .foregroundColor(.gray)
-//                    )
-//                    .shadow(radius: 10)
-                    .padding()
-                Spacer()
-            }
-            .padding(.bottom)
-            HStack {
-                Spacer()
-                VStack {
-                    if let feeling = entry.feeling {
-                        Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
-                            .font(.title2)
-                            .fontWeight(.medium)
-                            .padding(.bottom)
-                        StarRatingView($entry.rating, starFontSize)
-                            .padding(.bottom)
-                    }
-                }
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                VStack {
-                    ScrollView {
-                        if let note = entry.note {
-                            Text(note)
-                                .multilineTextAlignment(.leading)
-                        }
-                    }
-                }
-                Spacer()
+                Text(entryStore.entries[index].event ?? "")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .allowsTightening(true)
             }
             .padding()
+            
+            HStack {
+                let emojionEmoji = (entryStore.entries[index].emojion == "" || entryStore.entries[index].emojion == nil ? "🫥" : entryStore.entries[index].emojion)!.ToImage(fontSize: emojionFontSize)
+                Image(uiImage: emojionEmoji!)
+                /*
+                    .resizable()
+                    .frame(width: 200, height: 200)
+                    .clipShape(Circle())
+                    .overlay(
+                        Circle()
+                            .stroke(lineWidth: 5)
+                            .foregroundColor(.gray)
+                    )
+                    .shadow(radius: 10)
+                    .padding()
+                 */
+                /*
+                    .background(
+                        Circle()
+                            .fill(setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                            .cornerRadius(10.0)
+                    )
+                 */
+            }
+            HStack {
+                if let feeling = entryStore.entries[index].feeling {
+                    Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
+                        .font(.headline)
+                        .fontWeight(.medium)
+                }
+            }
+            .padding(.top, -15)
+            .padding(.bottom)
+
+            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
+                Text("Experience")
+                    .font(.footnote)
+                    .textCase(nil)
+                    .foregroundStyle(self.sectionTitleColor)
+            })
+            HStack {
+                StarRatingView($entryStore.entries[index].rating, starFontSize)
+            }
+            .padding(.bottom)
+            
+            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
+                Text("Notes")
+                    .font(.footnote)
+                    .textCase(nil)
+                    .foregroundStyle(self.sectionTitleColor)
+            })
+            HStack {
+                ScrollView { // <-- add scroll around Text
+                    Text(entryStore.entries[index].note ?? "")
+                        .lineLimit(nil) // <-- tell Text to use as many lines as it needs (so no truncating)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading) // <-- tell Text to take the entire space available for ScrollView
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity) // <-- if needed, tell ScrollView to use the full size of its parent too
+            }
+            .padding()
+            .background(
+                Rectangle()
+                    .fill(setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                    .cornerRadius(10.0)
+            )
+            .padding(.leading)
+            .padding(.trailing)
+            .padding(.bottom)
+            
+            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
+                Text("Entry Date")
+                    .font(.footnote)
+                    .textCase(nil)
+                    .foregroundStyle(self.sectionTitleColor)
+            })
+            HStack {
+                if let date = entryStore.entries[index].timestamp {
+                    Text(date, formatter: Formatter.dateFormatter)
+                }
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(
+                Rectangle()
+                    .fill(setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                    .cornerRadius(10.0)
+            )
+            .padding(.leading)
+            .padding(.trailing)
+            .padding(.bottom)
             Spacer()
         }
-        .navigationTitle(entry.event ?? "")
+        .navigationTitle("Emojion Details")
+        .navigationBarTitleDisplayMode(.inline)
+        .background(setViewBackgroundColor(colorScheme: self.colorScheme))
     }
+}
+
+private func setFieldBackgroundColor(colorScheme: ColorScheme) -> Color {
+    return colorScheme == .light ? Color(UIColor.systemBackground) : Color(UIColor.secondarySystemBackground)
+}
+
+private func setViewBackgroundColor(colorScheme: ColorScheme) -> Color {
+    return colorScheme == .light ? Color(UIColor.secondarySystemBackground) : Color(UIColor.systemBackground)
 }
 
 struct EntryDetailsComponent_Previews: PreviewProvider {
     static var previews: some View {
-        return EntryDetailsComponent(entry: .constant(Entry.MockEntry))
+        return EntryDetailsComponent(index: 0)
     }
 }
