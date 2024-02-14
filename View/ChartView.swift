@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ChartView: View {
-    @ObservedObject var chartStore: ChartStore
-    @ObservedObject var entryStore: EntryStore
+    @EnvironmentObject var chartStore: ChartStore
+    @EnvironmentObject var entryStore: EntryStore
     
     var body: some View {
 //    ToDo: Add multiple chart views
@@ -19,8 +19,8 @@ struct ChartView: View {
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        let chartStore = ChartStore()
-        let entryStore = EntryStore()
-        ChartView(chartStore: chartStore, entryStore: entryStore)
+        ChartView()
+            .environmentObject(EntryStore())
+            .environmentObject(ChartStore())
     }
 }

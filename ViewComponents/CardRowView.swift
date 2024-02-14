@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CardRowView: View {
     @Environment(\.colorScheme) private var colorScheme
-    @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
     @State var entry: Entry
     var emojionFontSize: CGFloat = 55
+    @EnvironmentObject var feelingFinderStore: FeelingFinderStore
     var starFontSize: CGFloat = 18
     var starSpacing: CGFloat = -1
     

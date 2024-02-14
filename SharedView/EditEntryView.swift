@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct EditEntryView: View {
-    @ObservedObject var entryStore: EntryStore
     @State var refreshView: Bool = false
+    @EnvironmentObject var entryStore: EntryStore
     @State var originalStarRating: Int64 = 5
     @Binding var canShowEditEntryView: Bool
     @Binding var hasEntrySaved: Bool
@@ -77,7 +77,7 @@ struct EditEntryView: View {
 
 struct EditEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        let entryStore = EntryStore()
-        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), hasEntrySaved: .constant(false), entry: .constant(Entry.MockEntry))
+        EditEntryView(canShowEditEntryView: .constant(false), hasEntrySaved: .constant(false), index: .constant(0))
+            .environmentObject(EntryStore())
     }
 }

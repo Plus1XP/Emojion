@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DateRowView: View {
     @Environment(\.colorScheme) private var colorScheme
-    @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
     @State var entry: Entry
     
     private let entryDateFormatter: DateFormatter = {
@@ -37,6 +36,7 @@ struct DateRowView: View {
         return formatter
     }()
     
+    @EnvironmentObject var feelingFinderStore: FeelingFinderStore
     var body: some View {
         VStack {
             HStack {

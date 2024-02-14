@@ -9,8 +9,8 @@ import SwiftUI
 
 public struct CalendarViewComponent<Day: View, Header: View, Title: View, Trailing: View>: View {
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var calendarStore: CalendarStore
-    @ObservedObject var entryStore: EntryStore
+    @EnvironmentObject var calendarStore: CalendarStore
+    @EnvironmentObject var entryStore: EntryStore
 
     // Injected dependencies
     private var calendar: Calendar
@@ -31,8 +31,6 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
     @FetchRequest var entries: FetchedResults<Entry>
     
     init(
-        calendarStore: CalendarStore,
-        entryStore: EntryStore,
         calendar: Calendar,
         date: Binding<Date>,
         @ViewBuilder content: @escaping (Date) -> Day,
@@ -40,8 +38,6 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
         @ViewBuilder header: @escaping (Date) -> Header,
         @ViewBuilder title: @escaping (Date) -> Title
     ) {
-        self.calendarStore = calendarStore
-        self.entryStore = entryStore
         self.calendar = calendar
         self._date = date
         self.content = content
@@ -126,7 +122,7 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
 //            entryStore.fetchEntries()
         }
         .sheet(isPresented: $canShowAddEntryView) {
-            AddEntryView(entryStore: entryStore)
+            AddEntryView()
         }
         .sheet(isPresented: $canShowEditEntryView, onDismiss: {
             if !hasEntrySaved {

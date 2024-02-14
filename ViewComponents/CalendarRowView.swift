@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct CalendarRowView: View {
-    @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
     @State var entry: Entry
     var emojionFontSize: CGFloat = 50
     var starFontSize: CGFloat = 12
+    @EnvironmentObject var feelingFinderStore: FeelingFinderStore
     var starSpacing: CGFloat = -1
     
     private let entryDateFormatter: DateFormatter = {
@@ -65,5 +65,6 @@ struct CalendarRowView: View {
 struct CalendarRowView_Previews: PreviewProvider {
     static var previews: some View {
         CalendarRowView(entry: Entry.MockEntry)
+            .environmentObject(FeelingFinderStore())
     }
 }

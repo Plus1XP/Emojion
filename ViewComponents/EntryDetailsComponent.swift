@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct EntryDetailsComponent: View {
-    @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
     @Binding var entry: Entry
     @State var hasUpdatedStarRating: Bool = false
     var emojionFontSize: CGFloat = 160
+    @EnvironmentObject var feelingFinderStore: FeelingFinderStore
     var starFontSize: CGFloat = 25
     
     private let itemFormatter: DateFormatter = {

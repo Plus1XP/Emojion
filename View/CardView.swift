@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CardView: View {
-    @ObservedObject var entryStore: EntryStore
     @State private var entry: Entry = Entry(context: PersistenceController.shared.container.viewContext)
+    @EnvironmentObject var entryStore: EntryStore
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
     // Disable once released
@@ -191,7 +191,7 @@ struct CardView: View {
             entryStore.fetchEntries()
         }
         .sheet(isPresented: $canShowAddEntryView) {
-            AddEntryView(entryStore: entryStore)
+            AddEntryView()
         }
         .sheet(isPresented: $canShowEditEntryView, onDismiss: {
             if !hasEntrySaved {
@@ -205,7 +205,7 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        let entryStore = EntryStore()
-        CardView(entryStore: entryStore)
+        CardView()
+            .environmentObject(EntryStore())
     }
 }

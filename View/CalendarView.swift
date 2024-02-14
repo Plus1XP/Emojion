@@ -8,22 +8,18 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @ObservedObject var calendarStore: CalendarStore
-    @ObservedObject var entryStore: EntryStore
+    @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject var calendarStore: CalendarStore
+    @EnvironmentObject var entryStore: EntryStore
+    @State private var selectedDate = Self.now
     private let calendar: Calendar
     private let monthFormatter: DateFormatter
     private let dayFormatter: DateFormatter
     private let weekDayFormatter: DateFormatter
     private let fullFormatter: DateFormatter
-    
-    @State private var selectedDate = Self.now
     private static var now = Date()
-    
-    @FetchRequest(sortDescriptors: []) var entries: FetchedResults<Entry>
-    
-    init(calendarStore: CalendarStore, entryStore: EntryStore, calendar: Calendar) {
-        self.calendarStore = calendarStore
-        self.entryStore = entryStore
+        
+    init(calendar: Calendar) {
         self.calendar = calendar
         self.monthFormatter = DateFormatter(dateFormat: "MMMM YYYY", calendar: calendar)
         self.dayFormatter = DateFormatter(dateFormat: "d", calendar: calendar)
@@ -34,8 +30,6 @@ struct CalendarView: View {
     var body: some View {
         VStack {
             CalendarViewComponent(
-                calendarStore: calendarStore,
-                entryStore: entryStore,
                 calendar: calendar,
                 date: $selectedDate,
                 content: { date in
@@ -159,9 +153,9 @@ struct CalendarView: View {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        let calendarStore = CalendarStore()
-        let entryStore = EntryStore()
-        CalendarView(calendarStore: calendarStore, entryStore: entryStore, calendar: Calendar(identifier: .iso8601))
+        CalendarView(calendar: Calendar(identifier: .iso8601))
+            .environmentObject(EntryStore())
+            .environmentObject(CalendarStore())
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

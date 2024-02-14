@@ -71,6 +71,8 @@
 		2FA30EEA2B34CFFF00195CA4 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EE82B34CFFF00195CA4 /* AuthenticationView.swift */; };
 		2FA30EEC2B34D03B00195CA4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EEB2B34D03B00195CA4 /* LoginView.swift */; };
 		2FA30EED2B34D03B00195CA4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EEB2B34D03B00195CA4 /* LoginView.swift */; };
+		2FA93C042B38E69200A1F994 /* DateRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C032B38E69200A1F994 /* DateRowView.swift */; };
+		2FA93C052B38E69200A1F994 /* DateRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C032B38E69200A1F994 /* DateRowView.swift */; };
 		2FAF0055283D68B10092E8DD /* CalendarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAF0054283D68B10092E8DD /* CalendarRowView.swift */; };
 		2FAF0056283D68B10092E8DD /* CalendarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAF0054283D68B10092E8DD /* CalendarRowView.swift */; };
 		2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
@@ -131,6 +133,7 @@
 		2FA30EE72B34CBE100195CA4 /* Emojion (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Emojion (iOS).entitlements"; sourceTree = "<group>"; };
 		2FA30EE82B34CFFF00195CA4 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		2FA30EEB2B34D03B00195CA4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2FA93C032B38E69200A1F994 /* DateRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRowView.swift; sourceTree = "<group>"; };
 		2FAF0054283D68B10092E8DD /* CalendarRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRowView.swift; sourceTree = "<group>"; };
 		2FBDEB952824A246003953C0 /* MockDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataObject.swift; sourceTree = "<group>"; };
 		2FC755EB282AA5EF008344CE /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 		2F01D8762812D956004583E3 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
+				2FA93C032B38E69200A1F994 /* DateRowView.swift */,
 				2F70FB8C280E10FE00D2A725 /* CardRowView.swift */,
 				2FAF0054283D68B10092E8DD /* CalendarRowView.swift */,
 				2F70FB8F280E141500D2A725 /* EntryDetailsComponent.swift */,
@@ -397,6 +401,7 @@
 				2F70FB9A280F19A100D2A725 /* StarRatingView.swift in Sources */,
 				2F01D8B128146142004583E3 /* FeelingFinder.swift in Sources */,
 				2F70FB93280E224600D2A725 /* View.swift in Sources */,
+				2FA93C042B38E69200A1F994 /* DateRowView.swift in Sources */,
 				2F70FB74280C7EE300D2A725 /* EntryStore.swift in Sources */,
 				2F70FB4F2808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
 				2F20BB1E283BF856002512AB /* CalendarView.swift in Sources */,
@@ -445,6 +450,7 @@
 				2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */,
 				2F01D8B228146142004583E3 /* FeelingFinder.swift in Sources */,
 				2F70FB94280E224600D2A725 /* View.swift in Sources */,
+				2FA93C052B38E69200A1F994 /* DateRowView.swift in Sources */,
 				2F70FB75280C7EE300D2A725 /* EntryStore.swift in Sources */,
 				2F70FB502808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
 				2F20BB1F283BF856002512AB /* CalendarView.swift in Sources */,
