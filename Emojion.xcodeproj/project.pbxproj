@@ -21,6 +21,8 @@
 		2F1357952850D2B4006C07B2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1357932850D2B4006C07B2 /* Color.swift */; };
 		2F20BB1E283BF856002512AB /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20BB1D283BF856002512AB /* CalendarView.swift */; };
 		2F20BB1F283BF856002512AB /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20BB1D283BF856002512AB /* CalendarView.swift */; };
+		2F2B411E2B4D9C4600C94C90 /* MarqueText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B411D2B4D9C4600C94C90 /* MarqueText.swift */; };
+		2F2B411F2B4D9C4600C94C90 /* MarqueText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B411D2B4D9C4600C94C90 /* MarqueText.swift */; };
 		2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35F302282F178A0038D78B /* NSManagedObject.swift */; };
 		2F35F304282F178A0038D78B /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35F302282F178A0038D78B /* NSManagedObject.swift */; };
 		2F4F147228323D76008D74B0 /* UITextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4F147128323D76008D74B0 /* UITextEditor.swift */; };
@@ -73,6 +75,22 @@
 		2FA30EED2B34D03B00195CA4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EEB2B34D03B00195CA4 /* LoginView.swift */; };
 		2FA93C042B38E69200A1F994 /* DateRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C032B38E69200A1F994 /* DateRowView.swift */; };
 		2FA93C052B38E69200A1F994 /* DateRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C032B38E69200A1F994 /* DateRowView.swift */; };
+		2FA93C0D2B3B716400A1F994 /* ChartBarMarkXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */; };
+		2FA93C0E2B3B716400A1F994 /* ChartBarMarkXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */; };
+		2FA93C102B3B719700A1F994 /* ChartBarMarkXYView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */; };
+		2FA93C112B3B719700A1F994 /* ChartBarMarkXYView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */; };
+		2FA93C132B3B71B300A1F994 /* ChartBarMarkDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C122B3B71B300A1F994 /* ChartBarMarkDateView.swift */; };
+		2FA93C142B3B71B300A1F994 /* ChartBarMarkDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C122B3B71B300A1F994 /* ChartBarMarkDateView.swift */; };
+		2FA93C162B3B71D100A1F994 /* ChartLineMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */; };
+		2FA93C172B3B71D100A1F994 /* ChartLineMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */; };
+		2FA93C192B3B71DA00A1F994 /* ChartSectorMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */; };
+		2FA93C1A2B3B71DA00A1F994 /* ChartSectorMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */; };
+		2FA93C1C2B3B883B00A1F994 /* BubbleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C1B2B3B883B00A1F994 /* BubbleEffect.swift */; };
+		2FA93C1D2B3B883B00A1F994 /* BubbleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C1B2B3B883B00A1F994 /* BubbleEffect.swift */; };
+		2FA93C1F2B3B93E400A1F994 /* ChartStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C1E2B3B93E400A1F994 /* ChartStatsView.swift */; };
+		2FA93C202B3B93E400A1F994 /* ChartStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C1E2B3B93E400A1F994 /* ChartStatsView.swift */; };
+		2FA93C222B3F3AF000A1F994 /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C212B3F3AF000A1F994 /* WrappingHStack.swift */; };
+		2FA93C232B3F3AF000A1F994 /* WrappingHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C212B3F3AF000A1F994 /* WrappingHStack.swift */; };
 		2FAF0055283D68B10092E8DD /* CalendarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAF0054283D68B10092E8DD /* CalendarRowView.swift */; };
 		2FAF0056283D68B10092E8DD /* CalendarRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAF0054283D68B10092E8DD /* CalendarRowView.swift */; };
 		2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
@@ -105,6 +123,7 @@
 		2F135771284E0539006C07B2 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		2F1357932850D2B4006C07B2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2F20BB1D283BF856002512AB /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		2F2B411D2B4D9C4600C94C90 /* MarqueText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueText.swift; sourceTree = "<group>"; };
 		2F35F302282F178A0038D78B /* NSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
 		2F4F147128323D76008D74B0 /* UITextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextEditor.swift; sourceTree = "<group>"; };
 		2F6393272858E1CF00BA2038 /* Emojion--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Emojion--iOS--Info.plist"; sourceTree = "<group>"; };
@@ -136,6 +155,14 @@
 		2FA30EE82B34CFFF00195CA4 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		2FA30EEB2B34D03B00195CA4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2FA93C032B38E69200A1F994 /* DateRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRowView.swift; sourceTree = "<group>"; };
+		2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBarMarkXView.swift; sourceTree = "<group>"; };
+		2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBarMarkXYView.swift; sourceTree = "<group>"; };
+		2FA93C122B3B71B300A1F994 /* ChartBarMarkDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBarMarkDateView.swift; sourceTree = "<group>"; };
+		2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLineMarkView.swift; sourceTree = "<group>"; };
+		2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSectorMarkView.swift; sourceTree = "<group>"; };
+		2FA93C1B2B3B883B00A1F994 /* BubbleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleEffect.swift; sourceTree = "<group>"; };
+		2FA93C1E2B3B93E400A1F994 /* ChartStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartStatsView.swift; sourceTree = "<group>"; };
+		2FA93C212B3F3AF000A1F994 /* WrappingHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrappingHStack.swift; sourceTree = "<group>"; };
 		2FAF0054283D68B10092E8DD /* CalendarRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRowView.swift; sourceTree = "<group>"; };
 		2FBDEB952824A246003953C0 /* MockDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataObject.swift; sourceTree = "<group>"; };
 		2FC755EB282AA5EF008344CE /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -179,6 +206,12 @@
 				2F01D8B32814697B004583E3 /* FeelingFinderView.swift */,
 				2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */,
 				2FCF6C9D295C8FAC00834252 /* StackedBarChartView.swift */,
+				2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */,
+				2FA93C122B3B71B300A1F994 /* ChartBarMarkDateView.swift */,
+				2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */,
+				2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */,
+				2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */,
+				2FA93C1E2B3B93E400A1F994 /* ChartStatsView.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -298,6 +331,9 @@
 				2F70FB7D280CD72600D2A725 /* UITextField.swift */,
 				2F4F147128323D76008D74B0 /* UITextEditor.swift */,
 				2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */,
+				2FA93C1B2B3B883B00A1F994 /* BubbleEffect.swift */,
+				2FA93C212B3F3AF000A1F994 /* WrappingHStack.swift */,
+				2F2B411D2B4D9C4600C94C90 /* MarqueText.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -400,26 +436,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA93C192B3B71DA00A1F994 /* ChartSectorMarkView.swift in Sources */,
 				2FCF6C9B295C8E8D00834252 /* FeelingStats.swift in Sources */,
+				2FA93C102B3B719700A1F994 /* ChartBarMarkXYView.swift in Sources */,
 				2F01D8B7281477E5004583E3 /* FeelingFinderStore.swift in Sources */,
 				2F70FB9A280F19A100D2A725 /* StarRatingView.swift in Sources */,
 				2F01D8B128146142004583E3 /* FeelingFinder.swift in Sources */,
 				2F70FB93280E224600D2A725 /* View.swift in Sources */,
 				2FA93C042B38E69200A1F994 /* DateRowView.swift in Sources */,
+				2F2B411E2B4D9C4600C94C90 /* MarqueText.swift in Sources */,
 				2F70FB74280C7EE300D2A725 /* EntryStore.swift in Sources */,
 				2F70FB4F2808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
 				2F20BB1E283BF856002512AB /* CalendarView.swift in Sources */,
 				2F01D8B42814697B004583E3 /* FeelingFinderView.swift in Sources */,
+				2FA93C162B3B71D100A1F994 /* ChartLineMarkView.swift in Sources */,
 				2F70FB81280D6FC600D2A725 /* String.swift in Sources */,
 				2F70FB7E280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB552808484300D2A725 /* Persistence.swift in Sources */,
 				2F1357942850D2B4006C07B2 /* Color.swift in Sources */,
+				2FA93C0D2B3B716400A1F994 /* ChartBarMarkXView.swift in Sources */,
 				2F01D8742812D711004583E3 /* Character.swift in Sources */,
 				2FA30EE92B34CFFF00195CA4 /* AuthenticationView.swift in Sources */,
 				2FCF6CA1295C90A400834252 /* ChartStore.swift in Sources */,
 				2FF810EE284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2FDBE9042B4B1EF00088CAFE /* EntryStoreExtension.swift in Sources */,
 				2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */,
+				2FA93C222B3F3AF000A1F994 /* WrappingHStack.swift in Sources */,
 				2FFE398B28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB532808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */,
@@ -427,12 +469,14 @@
 				2F70FB8A280E011300D2A725 /* CardView.swift in Sources */,
 				2FF810F12847BFC00050E533 /* CalendarStore.swift in Sources */,
 				2FA30EE52B34CB2300195CA4 /* SyncMonitor.swift in Sources */,
+				2FA93C1F2B3B93E400A1F994 /* ChartStatsView.swift in Sources */,
 				2F70FB87280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755EC282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7A280C890E00D2A725 /* EntryDetailsView.swift in Sources */,
 				2F135772284E0539006C07B2 /* ChartView.swift in Sources */,
 				2F4F147228323D76008D74B0 /* UITextEditor.swift in Sources */,
 				2FFE3985283FD26900DFFA48 /* SettingsView.swift in Sources */,
+				2FA93C1C2B3B883B00A1F994 /* BubbleEffect.swift in Sources */,
 				2FCF6C9E295C8FAC00834252 /* StackedBarChartView.swift in Sources */,
 				2FAF0055283D68B10092E8DD /* CalendarRowView.swift in Sources */,
 				2FA30EDF2B34CAC100195CA4 /* BiometricService.swift in Sources */,
@@ -440,6 +484,7 @@
 				2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB90280E141500D2A725 /* EntryDetailsComponent.swift in Sources */,
 				2F70FB8D280E10FE00D2A725 /* CardRowView.swift in Sources */,
+				2FA93C132B3B71B300A1F994 /* ChartBarMarkDateView.swift in Sources */,
 				2F70FB682808536E00D2A725 /* EntryFormView.swift in Sources */,
 				2FA30EEC2B34D03B00195CA4 /* LoginView.swift in Sources */,
 				2F70FB84280D79DD00D2A725 /* EditEntryView.swift in Sources */,
@@ -450,26 +495,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA93C1A2B3B71DA00A1F994 /* ChartSectorMarkView.swift in Sources */,
 				2FCF6C9C295C8E8D00834252 /* FeelingStats.swift in Sources */,
+				2FA93C112B3B719700A1F994 /* ChartBarMarkXYView.swift in Sources */,
 				2F01D8B8281477E5004583E3 /* FeelingFinderStore.swift in Sources */,
 				2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */,
 				2F01D8B228146142004583E3 /* FeelingFinder.swift in Sources */,
 				2F70FB94280E224600D2A725 /* View.swift in Sources */,
 				2FA93C052B38E69200A1F994 /* DateRowView.swift in Sources */,
+				2F2B411F2B4D9C4600C94C90 /* MarqueText.swift in Sources */,
 				2F70FB75280C7EE300D2A725 /* EntryStore.swift in Sources */,
 				2F70FB502808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
 				2F20BB1F283BF856002512AB /* CalendarView.swift in Sources */,
 				2F01D8B52814697B004583E3 /* FeelingFinderView.swift in Sources */,
+				2FA93C172B3B71D100A1F994 /* ChartLineMarkView.swift in Sources */,
 				2F70FB82280D6FC600D2A725 /* String.swift in Sources */,
 				2F70FB7F280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB562808484300D2A725 /* Persistence.swift in Sources */,
 				2F1357952850D2B4006C07B2 /* Color.swift in Sources */,
+				2FA93C0E2B3B716400A1F994 /* ChartBarMarkXView.swift in Sources */,
 				2F01D8752812D711004583E3 /* Character.swift in Sources */,
 				2FA30EEA2B34CFFF00195CA4 /* AuthenticationView.swift in Sources */,
 				2FCF6CA2295C90A400834252 /* ChartStore.swift in Sources */,
 				2FF810EF284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2FDBE9052B4B1EF00088CAFE /* EntryStoreExtension.swift in Sources */,
 				2F70FB522808484300D2A725 /* EmojionApp.swift in Sources */,
+				2FA93C232B3F3AF000A1F994 /* WrappingHStack.swift in Sources */,
 				2FFE398C28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB542808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F304282F178A0038D78B /* NSManagedObject.swift in Sources */,
@@ -477,12 +528,14 @@
 				2F70FB8B280E011300D2A725 /* CardView.swift in Sources */,
 				2FF810F22847BFC00050E533 /* CalendarStore.swift in Sources */,
 				2FA30EE62B34CB2300195CA4 /* SyncMonitor.swift in Sources */,
+				2FA93C202B3B93E400A1F994 /* ChartStatsView.swift in Sources */,
 				2F70FB88280D82CB00D2A725 /* Binding.swift in Sources */,
 				2FC755ED282AA5EF008344CE /* Entry.swift in Sources */,
 				2F70FB7B280C890E00D2A725 /* EntryDetailsView.swift in Sources */,
 				2F135773284E0539006C07B2 /* ChartView.swift in Sources */,
 				2F4F147328323D76008D74B0 /* UITextEditor.swift in Sources */,
 				2FFE3986283FD26900DFFA48 /* SettingsView.swift in Sources */,
+				2FA93C1D2B3B883B00A1F994 /* BubbleEffect.swift in Sources */,
 				2FCF6C9F295C8FAC00834252 /* StackedBarChartView.swift in Sources */,
 				2FAF0056283D68B10092E8DD /* CalendarRowView.swift in Sources */,
 				2FA30EE02B34CAC100195CA4 /* BiometricService.swift in Sources */,
@@ -490,6 +543,7 @@
 				2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB91280E141500D2A725 /* EntryDetailsComponent.swift in Sources */,
 				2F70FB8E280E10FE00D2A725 /* CardRowView.swift in Sources */,
+				2FA93C142B3B71B300A1F994 /* ChartBarMarkDateView.swift in Sources */,
 				2F70FB692808536E00D2A725 /* EntryFormView.swift in Sources */,
 				2FA30EED2B34D03B00195CA4 /* LoginView.swift in Sources */,
 				2F70FB85280D79DD00D2A725 /* EditEntryView.swift in Sources */,
