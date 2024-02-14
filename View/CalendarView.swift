@@ -36,40 +36,59 @@ struct CalendarView: View {
                     ZStack {
                         Button(action: { selectedDate = date }) {
                             Text(dayFormatter.string(from: date))
-                                .padding(6)
+                                .padding(5)
                                 // Added to make selection sizes equal on all numbers.
                                 .frame(width: 33, height: 33)
-                                .foregroundColor(calendar.isDateInToday(date) ? Color.white : .primary)
-                                .background(
-                                    calendar.isDateInToday(date) ? Color.red
-                                    : calendar.isDate(date, inSameDayAs: selectedDate) ? .blue
-                                    : .clear
+                                .fontWeight(
+                                    calendar.isDateInToday(date) ?
+                                        .bold : calendar.isDate(date, inSameDayAs: selectedDate) ?
+                                        .bold : .regular
                                 )
-                                .cornerRadius(7)
+                                .foregroundColor(
+                                    calendar.isDateInToday(date) ?
+                                    calendar.isDate(date, inSameDayAs: selectedDate) ?
+                                        .white : .red : 
+                                    calendar.isDate(date, inSameDayAs: selectedDate) ?
+                                    colorScheme == .light ? .white : .black : 
+                                        colorScheme == .light ? .black : .white
+                                )
+                                .background(
+                                    calendar.isDateInToday(date) ? 
+                                    calendar.isDate(date, inSameDayAs: selectedDate) ?
+                                        .red : .clear :
+                                        calendar.isDate(date, inSameDayAs: selectedDate) ?
+                                    colorScheme == .light ? .black : .white : 
+                                            .clear
+                                )
+                                .clipShape(.circle)
+//
                         }
                         
                         if (calendarStore.numberOfEventsInDate(entries: entryStore.entries, calendar: calendar, date: date) >= 2) {
                             Circle()
                                 .size(CGSize(width: 5, height: 5))
                                 .foregroundColor(Color.green)
+//                                .shadow(color: colorScheme == .light ? .gray : .white, radius: 1)
                                 .offset(x: CGFloat(17),
-                                        y: CGFloat(33))
+                                        y: CGFloat(34))
                         }
                         
                         if (calendarStore.numberOfEventsInDate(entries: entryStore.entries, calendar: calendar, date: date) >= 1) {
                             Circle()
                                 .size(CGSize(width: 5, height: 5))
                                 .foregroundColor(Color.green)
+//                                .shadow(color: colorScheme == .light ? .gray : .white, radius: 1)
                                 .offset(x: CGFloat(24),
-                                        y: CGFloat(33))
+                                        y: CGFloat(34))
                         }
                         
                         if (calendarStore.numberOfEventsInDate(entries: entryStore.entries, calendar: calendar, date: date) >= 3) {
                             Circle()
                                 .size(CGSize(width: 5, height: 5))
                                 .foregroundColor(Color.green)
+//                                .shadow(color: colorScheme == .light ? .gray : .white, radius: 1)
                                 .offset(x: CGFloat(31),
-                                        y: CGFloat(33))
+                                        y: CGFloat(34))
                         }
                     }
                 },
@@ -100,7 +119,6 @@ struct CalendarView: View {
                                 icon: {
                                     Image(systemName: "chevron.left")
                                         .font(.title2)
-                                    
                                 }
                             )
                             .labelStyle(IconOnlyLabelStyle())
@@ -137,7 +155,6 @@ struct CalendarView: View {
                                 icon: {
                                     Image(systemName: "chevron.right")
                                         .font(.title2)
-                                    
                                 }
                             )
                             .labelStyle(IconOnlyLabelStyle())
@@ -148,6 +165,7 @@ struct CalendarView: View {
             )
             .equatable()
         }
+        .background(colorScheme == .light ? Color(UIColor.secondarySystemBackground) : Color(UIColor.systemBackground))
     }
 }
 
