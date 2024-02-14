@@ -21,12 +21,12 @@ struct ContentView: View {
             }
             .tabItem {
                 Image(systemName: "rectangle.stack")
-                Text("Card")
+                Text("Emojions")
             }
             .tag(0)
             NavigationView {
-                    .navigationTitle("Emojions")
                 CalendarView(calendar: Calendar(identifier: .iso8601))
+                    .navigationTitle("Calendar")
                     .navigationBarTitleDisplayMode(.inline)
             }
             .tabItem {
@@ -35,12 +35,12 @@ struct ContentView: View {
             }
             .tag(1)
             NavigationView {
-                    .navigationTitle("Emojions")
                 ChartView()
+                    .navigationTitle("Insights")
             }
             .tabItem {
                 Image(systemName: "chart.bar.xaxis")
-                Text("Chart")
+                Text("Insights")
             }
             .tag(2)
             NavigationView {
