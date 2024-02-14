@@ -8,63 +8,78 @@
 import SwiftUI
 
 struct CalendarRowView: View {
-    @State var entry: Entry
-    var emojionFontSize: CGFloat = 50
-    var starFontSize: CGFloat = 12
+    @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject var entryStore: EntryStore
     @EnvironmentObject var feelingFinderStore: FeelingFinderStore
+    var emojionFontSize: CGFloat = 55
+    var starFontSize: CGFloat = 18
     var starSpacing: CGFloat = -1
     
-    private let entryDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter
-    }()
-    
+    let index: Int
+
     var body: some View {
-        HStack {
-            HStack {
-                let emojionEmoji = (entry.emojion == "" || entry.emojion == nil ? "🫥" : entry.emojion)!.ToImage(fontSize: emojionFontSize)
+        HStack(spacing: 0) {
+            VStack(alignment: .center, content: {
+                let emojionEmoji = (entryStore.entries[index].emojion == "" || entryStore.entries[index].emojion == nil ? "🫥" : entryStore.entries[index].emojion)!.ToImage(fontSize: emojionFontSize)
                 Image(uiImage: emojionEmoji!)
-            }
-            .padding(.trailing)
-            HStack {
-                VStack(alignment: .leading) {
-                    Spacer()
-                    if let event = entry.event {
-                        Text(event)
-                            .font(.headline)
-                            .fontWeight(.semibold)
+                if let feeling = entryStore.entries[index].feeling {
+                    Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .allowsTightening(true)
+                        .scaledToFit()
+                        .minimumScaleFactor(0.9)
+                }
+            })
+            .frame(maxWidth: "Out of Control".widthOfString(usingFont: UIFont.systemFont(ofSize: 14)))
+            HStack(alignment: .top) {
+                VStack() {
+                    HStack() {
+                        if let event = entryStore.entries[index].event {
+                            Text(event)
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .allowsTightening(true)
+                                .lineLimit(2)
+                        }
+                        Spacer()
                     }
-                    Spacer()
-                    StarRatingView($entry.rating, starFontSize, starSpacing)
-                    Spacer()
+                    HStack() {
+                        Spacer()
+                        StarRatingView($entryStore.entries[index].rating, starFontSize, starSpacing)
+                        Spacer()
+                    }
                 }
             }
-            Spacer()
+            .padding([.leading, .trailing], 20)
+        }
+        .padding(10)
+        .background(
+            Rectangle()
+                .fill(colorScheme == .light ? Color(UIColor.systemBackground) : Color(UIColor.secondarySystemBackground))
+                .cornerRadius(10.0)
+        )
+        .overlay(alignment: .topTrailing) {
+                Image(systemName: "note.text")
+                .foregroundColor(entryStore.entries[index].note == "" ? .clear : .primary)
+                    .padding([.top, .trailing], 10)
+        }
+        .overlay(alignment: .bottomTrailing) {
             HStack {
-                VStack(alignment: .trailing) {
-                    Spacer()
-                    if let date = entry.timestamp {
-                        Text(date, formatter: entryDateFormatter)
-                            .font(.footnote)
-                    }
-                    Spacer()
-                    if let feeling = entry.feeling {
-                        Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
-                            .font(.subheadline)
-                            .fontWeight(.medium)
-                        
-                    }
-                    Spacer()
+                if let date = entryStore.entries[index].timestamp {
+                    Text(date, formatter: Formatter.shortTimeFormat)
+                        .font(.footnote)
                 }
             }
+            .padding([.bottom, .trailing], 10)
+
         }
     }
 }
 
 struct CalendarRowView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarRowView(entry: Entry.MockEntry)
+        CalendarRowView(index: 0)
             .environmentObject(FeelingFinderStore())
     }
 }
