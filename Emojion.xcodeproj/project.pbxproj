@@ -75,6 +75,10 @@
 		2FA30EED2B34D03B00195CA4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EEB2B34D03B00195CA4 /* LoginView.swift */; };
 		2FA93C042B38E69200A1F994 /* DateRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C032B38E69200A1F994 /* DateRowView.swift */; };
 		2FA93C052B38E69200A1F994 /* DateRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C032B38E69200A1F994 /* DateRowView.swift */; };
+		2FA93C072B38FCC100A1F994 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C062B38FCC100A1F994 /* Date.swift */; };
+		2FA93C082B38FCC100A1F994 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C062B38FCC100A1F994 /* Date.swift */; };
+		2FA93C0A2B3A1DB500A1F994 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C092B3A1DB500A1F994 /* Sequence.swift */; };
+		2FA93C0B2B3A1DB500A1F994 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C092B3A1DB500A1F994 /* Sequence.swift */; };
 		2FA93C0D2B3B716400A1F994 /* ChartBarMarkXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */; };
 		2FA93C0E2B3B716400A1F994 /* ChartBarMarkXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */; };
 		2FA93C102B3B719700A1F994 /* ChartBarMarkXYView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */; };
@@ -105,6 +109,8 @@
 		2FCF6CA2295C90A400834252 /* ChartStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF6CA0295C90A400834252 /* ChartStore.swift */; };
 		2FDBE9042B4B1EF00088CAFE /* EntryStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE9032B4B1EF00088CAFE /* EntryStoreExtension.swift */; };
 		2FDBE9052B4B1EF00088CAFE /* EntryStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE9032B4B1EF00088CAFE /* EntryStoreExtension.swift */; };
+		2FDBE9072B4B212A0088CAFE /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE9062B4B212A0088CAFE /* Formatter.swift */; };
+		2FDBE9082B4B212A0088CAFE /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE9062B4B212A0088CAFE /* Formatter.swift */; };
 		2FF810EE284785DD0050E533 /* CalendarViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */; };
 		2FF810EF284785DD0050E533 /* CalendarViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */; };
 		2FF810F12847BFC00050E533 /* CalendarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF810F02847BFC00050E533 /* CalendarStore.swift */; };
@@ -155,6 +161,8 @@
 		2FA30EE82B34CFFF00195CA4 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		2FA30EEB2B34D03B00195CA4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2FA93C032B38E69200A1F994 /* DateRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRowView.swift; sourceTree = "<group>"; };
+		2FA93C062B38FCC100A1F994 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		2FA93C092B3A1DB500A1F994 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBarMarkXView.swift; sourceTree = "<group>"; };
 		2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBarMarkXYView.swift; sourceTree = "<group>"; };
 		2FA93C122B3B71B300A1F994 /* ChartBarMarkDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBarMarkDateView.swift; sourceTree = "<group>"; };
@@ -170,6 +178,7 @@
 		2FCF6C9D295C8FAC00834252 /* StackedBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedBarChartView.swift; sourceTree = "<group>"; };
 		2FCF6CA0295C90A400834252 /* ChartStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartStore.swift; sourceTree = "<group>"; };
 		2FDBE9032B4B1EF00088CAFE /* EntryStoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryStoreExtension.swift; sourceTree = "<group>"; };
+		2FDBE9062B4B212A0088CAFE /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewComponent.swift; sourceTree = "<group>"; };
 		2FF810F02847BFC00050E533 /* CalendarStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarStore.swift; sourceTree = "<group>"; };
 		2FFE3984283FD26900DFFA48 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -320,7 +329,10 @@
 				2FC755EB282AA5EF008344CE /* Entry.swift */,
 				2F35F302282F178A0038D78B /* NSManagedObject.swift */,
 				2F1357932850D2B4006C07B2 /* Color.swift */,
+				2FA93C062B38FCC100A1F994 /* Date.swift */,
+				2FA93C092B3A1DB500A1F994 /* Sequence.swift */,
 				2FDBE9032B4B1EF00088CAFE /* EntryStoreExtension.swift */,
+				2FDBE9062B4B212A0088CAFE /* Formatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -444,6 +456,7 @@
 				2F01D8B128146142004583E3 /* FeelingFinder.swift in Sources */,
 				2F70FB93280E224600D2A725 /* View.swift in Sources */,
 				2FA93C042B38E69200A1F994 /* DateRowView.swift in Sources */,
+				2FA93C0A2B3A1DB500A1F994 /* Sequence.swift in Sources */,
 				2F2B411E2B4D9C4600C94C90 /* MarqueText.swift in Sources */,
 				2F70FB74280C7EE300D2A725 /* EntryStore.swift in Sources */,
 				2F70FB4F2808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
@@ -459,12 +472,14 @@
 				2FA30EE92B34CFFF00195CA4 /* AuthenticationView.swift in Sources */,
 				2FCF6CA1295C90A400834252 /* ChartStore.swift in Sources */,
 				2FF810EE284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
+				2FA93C072B38FCC100A1F994 /* Date.swift in Sources */,
 				2FDBE9042B4B1EF00088CAFE /* EntryStoreExtension.swift in Sources */,
 				2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */,
 				2FA93C222B3F3AF000A1F994 /* WrappingHStack.swift in Sources */,
 				2FFE398B28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB532808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */,
+				2FDBE9072B4B212A0088CAFE /* Formatter.swift in Sources */,
 				2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */,
 				2F70FB8A280E011300D2A725 /* CardView.swift in Sources */,
 				2FF810F12847BFC00050E533 /* CalendarStore.swift in Sources */,
@@ -503,6 +518,7 @@
 				2F01D8B228146142004583E3 /* FeelingFinder.swift in Sources */,
 				2F70FB94280E224600D2A725 /* View.swift in Sources */,
 				2FA93C052B38E69200A1F994 /* DateRowView.swift in Sources */,
+				2FA93C0B2B3A1DB500A1F994 /* Sequence.swift in Sources */,
 				2F2B411F2B4D9C4600C94C90 /* MarqueText.swift in Sources */,
 				2F70FB75280C7EE300D2A725 /* EntryStore.swift in Sources */,
 				2F70FB502808484300D2A725 /* Emojion.xcdatamodeld in Sources */,
@@ -518,12 +534,14 @@
 				2FA30EEA2B34CFFF00195CA4 /* AuthenticationView.swift in Sources */,
 				2FCF6CA2295C90A400834252 /* ChartStore.swift in Sources */,
 				2FF810EF284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
+				2FA93C082B38FCC100A1F994 /* Date.swift in Sources */,
 				2FDBE9052B4B1EF00088CAFE /* EntryStoreExtension.swift in Sources */,
 				2F70FB522808484300D2A725 /* EmojionApp.swift in Sources */,
 				2FA93C232B3F3AF000A1F994 /* WrappingHStack.swift in Sources */,
 				2FFE398C28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB542808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F304282F178A0038D78B /* NSManagedObject.swift in Sources */,
+				2FDBE9082B4B212A0088CAFE /* Formatter.swift in Sources */,
 				2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */,
 				2F70FB8B280E011300D2A725 /* CardView.swift in Sources */,
 				2FF810F22847BFC00050E533 /* CalendarStore.swift in Sources */,
