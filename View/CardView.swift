@@ -11,9 +11,8 @@ struct CardView: View {
     @EnvironmentObject var entryStore: EntryStore
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
-    // Disable once released
-//    @State private var isDebugActive: Bool = true
     @State private var canShowDebugMenu: Bool = false
+    @State var canShowDebugContent: Bool = true
     @State private var canAutoCompleteSearch: Bool = false
     @State private var canResetDate: Bool = false
     @State private var hasEntrySaved: Bool = false
@@ -111,7 +110,10 @@ struct CardView: View {
                     // For Internal debugging
 #if DEBUG
                     Button(action: {
-                        canShowDebugMenu.toggle()
+                        self.canShowDebugMenu.toggle()
+                        // Added to hide view and stop crashing on index out of bounds,
+                        // When content is deleted from subview.
+                        self.canShowDebugContent.toggle()
                     }) {
                         Label("Create Entries", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
                             .foregroundStyle(.primary)
