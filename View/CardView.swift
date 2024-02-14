@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CardView: View {
-    @State private var entry: Entry = Entry(context: PersistenceController.shared.container.viewContext)
     @EnvironmentObject var entryStore: EntryStore
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
@@ -17,66 +16,46 @@ struct CardView: View {
     @State private var canShowDebugMenu: Bool = false
     @State private var canAutoCompleteSearch: Bool = false
     @State private var canResetDate: Bool = false
-    @State private var isSearchingDate: Bool = false
     @State private var hasEntrySaved: Bool = false
-    @State private var searchQuery: String = ""
-    @State private var searchDate: Date = Date.now
     @State private var calendarId: UUID = UUID()
-    
-    private var searchResults: [Entry] {
-        if !searchQuery.isEmpty {
-            return entryStore.entries.filter { $0.event!.localizedCaseInsensitiveContains(searchQuery) }
-        }
-        if isSearchingDate {
-            return entryStore.entries.filter { Calendar.current.dateComponents([.year, .month, .day], from: $0.timestamp!) == Calendar.current.dateComponents([.year, .month, .day], from: searchDate) }
-        }
-        else {
-            return entryStore.entries
-        }
-    }
-    
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE"
-        return formatter
-    }()
-    
-    init(entryStore: EntryStore) {
-//        UITableView.appearance().sectionFooterHeight = 0
-        self.entryStore = entryStore
-//        self.entry = Entry(context: PersistenceController.shared.container.viewContext)
-        PersistenceController.shared.container.viewContext.delete(entry)
-    }
+    @State var index: Int = 0
     
     var body: some View {
-        List {
-            ForEach(entryStore.getSectionHeaders(entries: searchResults).keys.sorted(by: { $0 > $1 }), id:\.self) { key in
+        List(selection: $entryStore.entrySelection) {
+            ForEach(entryStore.getSectionHeadersFromSearchResults().keys.sorted(by: { $0 > $1 }), id: \.self) { key in
                 // Removed ! after [key] due to xcode 14.3 update
-                if let entries = entryStore.getSectionHeaders(entries: searchResults)[key]
+                if let entries = entryStore.getSectionHeadersFromSearchResults()[key]
                 {
-                    Section(header: Text("\(dateFormatter.string(from: key))")) {
+                    Section(header: Text("\(Formatter.longDayFormat.string(from: key))")) {
                         ForEach(entries, id: \.self){ entry in
                             Section {
-                                NavigationLink(destination: EntryDetailsView(entryStore: entryStore, entry: entry)) {
-                                    HStack {
-                                        DateRowView(entry: entry)
-                                        CardRowView(entry: entry)
+                                // This Hack removes the Details Disclosure chevron from list view.
+                                ZStack {
+                                    HStack(alignment: .top) {
+                                        if canShowDebugContent {
+                                            DateRowView(index: entryStore.entries.firstIndex(of: entry)!)
+                                            CardRowView(index: entryStore.entries.firstIndex(of: entry)!)
+                                        }
                                     }
+                                    NavigationLink(destination: EntryDetailsView(index: entryStore.entries.firstIndex(of: entry)!)) {
+                                        EmptyView()
+                                    }
+                                    .opacity(0)
                                 }
                             }
-//                            .listStyle(.sidebar)
                             .listRowSeparator(.hidden)
-                            .listRowInsets(EdgeInsets())
+//                            .listRowInsets(EdgeInsets())
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button(role: .destructive) {
                                     withAnimation {
-                                        entryStore.deleteEntry(entry: entry)
+                                        entryStore.deleteEntry(index: index)
                                     }
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
                                 Button {
-                                    self.entry = entry
+                                    self.index = entryStore.entries.firstIndex(of: entry)!
                                     self.canShowEditEntryView.toggle()
                                 } label: {
                                     Label("Edit", systemImage: "pencil")
@@ -86,20 +65,16 @@ struct CardView: View {
                         }
                         .onDelete(perform: entryStore.deleteEntry)
                     }
-//                    .listStyle(.sidebar)
-
                 }
             }
-//            .listStyle(.sidebar)
             .listRowBackground(
                 Rectangle()
-                     .fill(Color(.clear).opacity(1))
-                )
+                    .fill(Color(.clear).opacity(1))
+            )
         }
-//        .listStyle(.sidebar)
-        .searchable(text: $searchQuery, prompt: "Search Emojions") {
-            if canAutoCompleteSearch && searchQuery.count > 2 {
-                ForEach(searchResults, id: \.self) { entry in
+        .searchable(text: $entryStore.searchText, prompt: "Search Emojions") {
+            if canAutoCompleteSearch && entryStore.searchText.count > 2 {
+                ForEach(entryStore.searchResults, id: \.self) { entry in
                     Text(entry.event!).searchCompletion(entry.event!)
                 }
             }
@@ -108,31 +83,31 @@ struct CardView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 HStack {
-                    DatePicker("Please enter a date", selection: $searchDate, displayedComponents: .date)
+                    DatePicker("Please enter a date", selection: $entryStore.searchDate, displayedComponents: .date)
                         .labelsHidden()
                         .id(calendarId)
                         // Needed to close calendar picker after selection
-                        .onChange(of: Calendar.current.component(.day, from: searchDate)) { _ in
+                        .onChange(of: Calendar.current.component(.day, from: entryStore.searchDate)) { _ in
                             calendarId = UUID()
                             if !canResetDate {
-                                isSearchingDate = true
+                                entryStore.isSearchingDate = true
                             } else {
                                 canResetDate = false
                             }
                         }
                     Button(action: {
-                        if isSearchingDate {
-                            isSearchingDate = false
+                        if entryStore.isSearchingDate {
+                            entryStore.isSearchingDate = false
                             canResetDate = true
-                            searchDate = Date.now
+                            entryStore.searchDate = Date.now
                         }
                     }) {
                         Label("Reset Calendar", systemImage: "xmark")
                             .foregroundColor(Color.red)
-                            .disabled(!isSearchingDate)
-                            .opacity(isSearchingDate ? 1 : 0)
+                            .disabled(!entryStore.isSearchingDate)
+                            .opacity(entryStore.isSearchingDate ? 1 : 0)
                     }
-                    .hidden(!isSearchingDate)
+                    .hidden(!entryStore.isSearchingDate)
                     // For Internal debugging
 #if DEBUG
                     Button(action: {
@@ -198,7 +173,7 @@ struct CardView: View {
                 entryStore.discardChanges()
             }
         }, content: {
-            EditEntryView(entryStore: entryStore, canShowEditEntryView: $canShowEditEntryView, hasEntrySaved: $hasEntrySaved, entry: $entry)
+            EditEntryView(canShowEditEntryView: $canShowEditEntryView, hasEntrySaved: $hasEntrySaved, index: $index)
         })
     }
 }
