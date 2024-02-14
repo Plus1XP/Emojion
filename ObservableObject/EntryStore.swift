@@ -1,11 +1,12 @@
 //
-//  EStore.swift
+//  EntryStore.swift
 //  Emojion
 //
 //  Created by Plus1XP on 17/04/2022.
 //
 
 import CoreData
+import SwiftUI
 
 class EntryStore: ObservableObject {
     @Published var entries: [Entry]
@@ -60,47 +61,6 @@ class EntryStore: ObservableObject {
     func entiresDesendingSortDescriptor() -> NSSortDescriptor {
         NSSortDescriptor(key: "timestamp", ascending: false)
     }
-
-    func addTestFlightMockEntries() -> Void {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy HH:mm"
-        
-        let year = Calendar.current.component(.year, from: Date())
-        let month = Calendar.current.component(.month, from: Date())
-        let day = Calendar.current.component(.day, from: Date())
-        
-        for i in 1...(day - 1) {
-            if i % 2 == 0 {
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 08:00")!, event: "Walk Dog", emojion: "😤", feeling: [0,1,0], rating: 1, note: "I love my dog but it was far to cold today.")
-            }
-            if i % 2 == 1 {
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 20:00")!, event: "Play Squash", emojion: "💪", feeling: [6,2,1], rating: 3, note: "Excercise makes me feel alive!")
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 15:00")!, event: "Learn to Code", emojion: "🤓", feeling: [6,2,0], rating: 2, note: "I must succeed at all costs..")
-            }
-            if i % 3 == 0 {
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 18:00")!, event: "Dance Class", emojion: "🤭", feeling: [4,5,0], rating: 4, note: "learning the forbidden dance was exciting!")
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 21:30")!, event: "Babysit", emojion: "🫠", feeling: [1,2,1], rating: 0, note: "Note to self, dont have kids.")
-            }
-        }
-        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 09:00")!, event: "comicon", emojion: "🤯", feeling: [6,0,1], rating: 0, note: "1 of a kind experience ruined by the smell...")
-        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 14:00")!, event: "Job Interview", emojion: "😬", feeling: [3,4,1], rating: 2, note: "Coffee helped my anxeity")
-        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 18:00")!, event: "Dinner Date", emojion: "🥰", feeling: [4,8,0], rating: 4, note: "Great way to end the day!")
-    }
-    
-    func addRandomMockEntries(numberOfEntries: Int) {
-        for _ in 1...numberOfEntries {
-            let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
-            newEntry.id = generateUUID()
-            newEntry.timestamp = generateCalendarDate()
-            newEntry.event = generateEvent()
-            newEntry.emojion = generateEmoji()
-            newEntry.feeling = generateFeeling()
-            newEntry.rating = generateRating()
-            newEntry.note = generateNote()
-            saveChanges()
-        }
-        fetchEntries()
-    }
     
     func addNewEntry(date: Date, event: String, emojion: String, feeling: [Int], rating: Int64, note: String) {
         let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
@@ -133,6 +93,11 @@ class EntryStore: ObservableObject {
     
     func deleteEntry(entry: Entry) {
         PersistenceController.shared.container.viewContext.delete(entry)
+        saveChanges()
+    }
+    
+    func deleteEntry(index: Int) {
+        PersistenceController.shared.container.viewContext.delete(entries[index])
         saveChanges()
     }
     
@@ -178,63 +143,6 @@ class EntryStore: ObservableObject {
             }
             self.fetchEntries()
         }
-    }
-    
-    func generateUUID() -> UUID {
-        return UUID()
-    }
-    
-    func generateCalendarDate() -> Date {
-        let year = Calendar.current.component(.year, from: Date())
-        let month = Calendar.current.component(.month, from: Date())
-        let day = Calendar.current.component(.day, from: Date())
-        let hour = Calendar.current.component(.hour, from: Date())
-        let minute = Calendar.current.component(.minute, from: Date())
-        let second = Calendar.current.component(.second, from: Date())
-        let calendar = Calendar(identifier: .iso8601)
-        
-        let randomMonth = Int.random(in: 1...month)
-        
-        let components = DateComponents(year: year, month: randomMonth, day: generateDayDate(currentDay: day, currentMonth: month, randomMonth: randomMonth), hour: Int.random(in: 1...hour), minute: Int.random(in: 0...minute), second: Int.random(in: 0...second))
-        return calendar.date(from: components).unsafelyUnwrapped
-    }
-    
-    func generateDayDate(currentDay: Int, currentMonth: Int, randomMonth: Int) -> Int {
-        
-        if currentMonth == randomMonth {
-            return Int.random(in: 1...currentDay)
-        } else {
-            return Int.random(in: 1...28)
-        }
-    }
-    
-    func generateEvent() -> String {
-        return getRandomWord()
-    }
-    
-    func generateEmoji() -> String {
-        return String(UnicodeScalar(Array(0x1F600...0x1F637).randomElement()!)!)
-    }
-    
-    func generateFeeling() -> [Int] {
-        return [Int.random(in: 0...6), Int.random(in: 0...3), Int.random(in: 0...1)]
-    }
-    
-    func generateRating() -> Int64 {
-        return Int64.random(in: 0...4)
-    }
-    
-    func generateNote() -> String {
-        var note: String = ""
-        for _ in 1...Int.random(in: 5...30) {
-            note.append("\(getRandomWord()) ")
-        }
-        return note
-    }
-    
-    func getRandomWord() -> String {
-        let index: Int = Int.random(in: 0...97)
-        return wordList[index]
     }
     
 //    Returns 1 Jan 2000 if timeStamp is nil
@@ -285,7 +193,7 @@ class EntryStore: ObservableObject {
         return feelingDictionary
     }
     
-    func getPrimaryStats() -> [(String, Int)] {
+    func getPrimaryStats2() -> [(String, Int)] {
         var feelingDictionary: [(String, Int)] = [("Angry", 0), ("Bad", 0), ("Disgusted", 0), ("Fearful", 0), ("Happy", 0), ("Sad", 0), ("Surprised", 0)]
 
         for entry in entries {
@@ -314,4 +222,72 @@ class EntryStore: ObservableObject {
         }
         return feelingDictionary
     }
+    
+//    func getPrimaryStats3() -> [FeelingData]{
+//        var chartData = [FeelingData]()
+////        var feelingDictionary: [(String, Int)] = [("Angry", 0), ("Bad", 0), ("Disgusted", 0), ("Fearful", 0), ("Happy", 0), ("Sad", 0), ("Surprised", 0)]
+//        var count0 = 0
+//        var count1 = 0
+//        var count2 = 0
+//        var count3 = 0
+//        var count4 = 0
+//        var count5 = 0
+//        var count6 = 0
+//
+//        for entry in entries {
+//            if entry.feeling?.first == 0 {
+//                count0 += 1
+//                chartData.removeAll(where: { $0.type == "Angry"})
+//                chartData.append(FeelingData(type: "Angry", count: count0, color: Color.red, date: [entry.timestamp!]))
+//            }
+//            if entry.feeling?.first == 1 {
+//                count1 += 1
+//                chartData.removeAll(where: { $0.type == "Bad"})
+//                chartData.append(FeelingData(type: "Bad", count: count1, color: Color.green, date: [entry.timestamp!]))
+//            }
+//            if entry.feeling?.first == 2 {
+//                count2 += 1
+//                chartData.removeAll(where: { $0.type == "Disgusted"})
+//                chartData.append(FeelingData(type: "Disgusted", count: count2, color: Color.gray, date: [entry.timestamp!]))
+//            }
+//            if entry.feeling?.first == 3 {
+//                count3 += 1
+//                chartData.removeAll(where: { $0.type == "Fearful"})
+//                chartData.append(FeelingData(type: "Fearful", count: count3, color: Color.orange, date: [entry.timestamp!]))
+//            }
+//            if entry.feeling?.first == 4 {
+//                count4 += 1
+//                chartData.removeAll(where: { $0.type == "Happy"})
+//                chartData.append(FeelingData(type: "Happy", count: count4, color: Color.yellow, date: [entry.timestamp!]))
+//            }
+//            if entry.feeling?.first == 5 {
+//                count5 += 1
+//                chartData.removeAll(where: { $0.type == "Sad"})
+//                chartData.append(FeelingData(type: "Sad", count: count5, color: Color.blue, date: [entry.timestamp!]))
+//            }
+//            if entry.feeling?.first == 6 {
+//                count6 += 1
+//                chartData.removeAll(where: { $0.type == "Surprised"})
+//                chartData.append(FeelingData(type: "Surprised", count: count6, color: Color.purple, date: [entry.timestamp!]))
+//            }
+//            
+//        }
+//        return chartData.sorted()
+//    }
+    
+//    func getPrimarySelectedFeelingName(feelingArray: [Int]) -> String {
+//        if !feelingArray.isEmpty {
+//            return feelingFinderStore.feeling[feelingArray[0]].name.capitalized
+//        } else {
+//            return ""
+//        }
+//    }
+//
+//    func getPrimarySelectedFeelingColor(feelingArray: [Int]) -> Color {
+//        if !feelingArray.isEmpty {
+//            return feelingFinderStore.feeling[feelingArray[0]].color
+//        } else {
+//            return Color.primary
+//        }
+//    }
 }
