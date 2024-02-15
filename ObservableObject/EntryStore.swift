@@ -226,7 +226,7 @@ class EntryStore: ObservableObject {
         return feelingDictionary
     }
     
-    func getPrimaryStats2() -> [(String, Int)] {
+    func getPrimaryStats() -> [(String, Int)] {
         var feelingDictionary: [(String, Int)] = [("Angry", 0), ("Bad", 0), ("Disgusted", 0), ("Fearful", 0), ("Happy", 0), ("Sad", 0), ("Surprised", 0)]
 
         for entry in entries {
@@ -251,76 +251,7 @@ class EntryStore: ObservableObject {
             if entry.feeling?.first == 6 {
                 feelingDictionary[6].1 += 1
             }
-            
         }
         return feelingDictionary
     }
-    
-//    func getPrimaryStats3() -> [FeelingData]{
-//        var chartData = [FeelingData]()
-////        var feelingDictionary: [(String, Int)] = [("Angry", 0), ("Bad", 0), ("Disgusted", 0), ("Fearful", 0), ("Happy", 0), ("Sad", 0), ("Surprised", 0)]
-//        var count0 = 0
-//        var count1 = 0
-//        var count2 = 0
-//        var count3 = 0
-//        var count4 = 0
-//        var count5 = 0
-//        var count6 = 0
-//
-//        for entry in entries {
-//            if entry.feeling?.first == 0 {
-//                count0 += 1
-//                chartData.removeAll(where: { $0.type == "Angry"})
-//                chartData.append(FeelingData(type: "Angry", count: count0, color: Color.red, date: [entry.timestamp!]))
-//            }
-//            if entry.feeling?.first == 1 {
-//                count1 += 1
-//                chartData.removeAll(where: { $0.type == "Bad"})
-//                chartData.append(FeelingData(type: "Bad", count: count1, color: Color.green, date: [entry.timestamp!]))
-//            }
-//            if entry.feeling?.first == 2 {
-//                count2 += 1
-//                chartData.removeAll(where: { $0.type == "Disgusted"})
-//                chartData.append(FeelingData(type: "Disgusted", count: count2, color: Color.gray, date: [entry.timestamp!]))
-//            }
-//            if entry.feeling?.first == 3 {
-//                count3 += 1
-//                chartData.removeAll(where: { $0.type == "Fearful"})
-//                chartData.append(FeelingData(type: "Fearful", count: count3, color: Color.orange, date: [entry.timestamp!]))
-//            }
-//            if entry.feeling?.first == 4 {
-//                count4 += 1
-//                chartData.removeAll(where: { $0.type == "Happy"})
-//                chartData.append(FeelingData(type: "Happy", count: count4, color: Color.yellow, date: [entry.timestamp!]))
-//            }
-//            if entry.feeling?.first == 5 {
-//                count5 += 1
-//                chartData.removeAll(where: { $0.type == "Sad"})
-//                chartData.append(FeelingData(type: "Sad", count: count5, color: Color.blue, date: [entry.timestamp!]))
-//            }
-//            if entry.feeling?.first == 6 {
-//                count6 += 1
-//                chartData.removeAll(where: { $0.type == "Surprised"})
-//                chartData.append(FeelingData(type: "Surprised", count: count6, color: Color.purple, date: [entry.timestamp!]))
-//            }
-//            
-//        }
-//        return chartData.sorted()
-//    }
-    
-//    func getPrimarySelectedFeelingName(feelingArray: [Int]) -> String {
-//        if !feelingArray.isEmpty {
-//            return feelingFinderStore.feeling[feelingArray[0]].name.capitalized
-//        } else {
-//            return ""
-//        }
-//    }
-//
-//    func getPrimarySelectedFeelingColor(feelingArray: [Int]) -> Color {
-//        if !feelingArray.isEmpty {
-//            return feelingFinderStore.feeling[feelingArray[0]].color
-//        } else {
-//            return Color.primary
-//        }
-//    }
 }

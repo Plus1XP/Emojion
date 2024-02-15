@@ -212,7 +212,6 @@ class ChartStore: ObservableObject {
         return result
     }
     
-    // Rename to return blahblah
     func getPrimarySelectedFeelingName(feelingArray: [Int]) -> String {
         if !feelingArray.isEmpty {
             return feelingFinderStore.feeling[feelingArray[0]].name.capitalized
