@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct EntryDetailsView: View {
-    @ObservedObject var entryStore: EntryStore
+    @EnvironmentObject var entryStore: EntryStore
     @State private var canShowEditEntryView: Bool = false
     @State private var hasEntrySaved: Bool = false
-    @State var entry: Entry
+    @State var index: Int
     
     var body: some View {
-        EntryDetailsComponent(entry: $entry)
+        EntryDetailsComponent(index: index)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button { self.canShowEditEntryView.toggle() } label: {
@@ -28,14 +28,14 @@ struct EntryDetailsView: View {
                     entryStore.discardChanges()
                 }
             }, content: {
-                EditEntryView(entryStore: entryStore, canShowEditEntryView: $canShowEditEntryView, hasEntrySaved: $hasEntrySaved, entry: $entry)
+                EditEntryView(canShowEditEntryView: $canShowEditEntryView, hasEntrySaved: $hasEntrySaved, index: $index)
             })
     }
 }
 
 struct EntryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        let entryStore = EntryStore()
-        EntryDetailsView(entryStore: entryStore, entry: Entry.MockEntry)
+        EntryDetailsView(index: 0)
+            .environmentObject(EntryStore())
     }
 }

@@ -8,26 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var entryStore = EntryStore()
-    @StateObject private var calendarStore = CalendarStore()
-    @StateObject private var chartStore = ChartStore()
-    @ObservedObject var biometricStore: BiometricStore
+    @EnvironmentObject private var entryStore: EntryStore
+    @EnvironmentObject private var calendarStore: CalendarStore
+    @EnvironmentObject private var chartStore: ChartStore
     @State private var selection = 0
     
     var body: some View {
         TabView(selection: $selection) {
             NavigationView {
-                CardView(entryStore: entryStore)
+                CardView()
                     .navigationTitle("Emojions")
             }
             .tabItem {
                 Image(systemName: "rectangle.stack")
-                Text("Card")
+                Text("Emojions")
             }
             .tag(0)
             NavigationView {
-                CalendarView(calendarStore: calendarStore, entryStore: entryStore, calendar: Calendar(identifier: .iso8601))
-                    .navigationTitle("Emojions")
+                CalendarView(calendar: Calendar(identifier: .iso8601))
+                    .navigationTitle("Calendar")
                     .navigationBarTitleDisplayMode(.inline)
             }
             .tabItem {
@@ -36,16 +35,16 @@ struct ContentView: View {
             }
             .tag(1)
             NavigationView {
-                ChartView(chartStore: chartStore, entryStore: entryStore)
-                    .navigationTitle("Emojions")
+                ChartView()
+                    .navigationTitle("Insights")
             }
             .tabItem {
                 Image(systemName: "chart.bar.xaxis")
-                Text("Chart")
+                Text("Insights")
             }
             .tag(2)
             NavigationView {
-                SettingsView(entryStore: entryStore, biometricStore: biometricStore)
+                SettingsView()
                     .navigationTitle("Settings")
             }
             .tabItem {
@@ -62,10 +61,15 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let biometricStore = BiometricStore()
-        ContentView(biometricStore: biometricStore)
+        ContentView()
+            .environmentObject(EntryStore())
+            .environmentObject(CalendarStore())
+            .environmentObject(ChartStore())
             .preferredColorScheme(.dark)
-        ContentView(biometricStore: biometricStore)
+        ContentView()
+            .environmentObject(EntryStore())
+            .environmentObject(CalendarStore())
+            .environmentObject(ChartStore())
             .preferredColorScheme(.light)
     }
 }

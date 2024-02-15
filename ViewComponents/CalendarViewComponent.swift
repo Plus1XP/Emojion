@@ -9,8 +9,8 @@ import SwiftUI
 
 public struct CalendarViewComponent<Day: View, Header: View, Title: View, Trailing: View>: View {
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var calendarStore: CalendarStore
-    @ObservedObject var entryStore: EntryStore
+    @EnvironmentObject var calendarStore: CalendarStore
+    @EnvironmentObject var entryStore: EntryStore
 
     // Injected dependencies
     private var calendar: Calendar
@@ -22,17 +22,14 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
     
     // Constants
     private let daysInWeek = 7
-    
-    @State private var entry: Entry = Entry(context: PersistenceController.shared.container.viewContext)
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
     @State private var hasEntrySaved: Bool = false
+    @State var index: Int = 0
     
     @FetchRequest var entries: FetchedResults<Entry>
     
     init(
-        calendarStore: CalendarStore,
-        entryStore: EntryStore,
         calendar: Calendar,
         date: Binding<Date>,
         @ViewBuilder content: @escaping (Date) -> Day,
@@ -40,8 +37,6 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
         @ViewBuilder header: @escaping (Date) -> Header,
         @ViewBuilder title: @escaping (Date) -> Title
     ) {
-        self.calendarStore = calendarStore
-        self.entryStore = entryStore
         self.calendar = calendar
         self._date = date
         self.content = content
@@ -50,12 +45,10 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
         self.title = title
         
         _entries = FetchRequest<Entry>(sortDescriptors: [NSSortDescriptor(key: "timestamp", ascending: false)],
-                                     predicate: NSPredicate(
+                                       predicate: NSPredicate(
                                         format: "timestamp >= %@ && timestamp <= %@",
                                         Calendar.current.startOfDay(for: date.wrappedValue) as CVarArg,
                                         Calendar.current.startOfDay(for: date.wrappedValue + 86400) as CVarArg))
-        
-        PersistenceController.shared.container.viewContext.delete(entry)
     }
     
     public var body: some View {
@@ -63,17 +56,12 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
         let days = makeDays()
         
         VStack {
-            
             Section(header: title(month)) { }
-            
             VStack {
-                
                 LazyVGrid(columns: Array(repeating: GridItem(), count: daysInWeek)) {
                     ForEach(days.prefix(daysInWeek), id: \.self, content: header)
                 }
-                
                 Divider()
-                
                 LazyVGrid(columns: Array(repeating: GridItem(), count: daysInWeek)) {
                     ForEach(days, id: \.self) { date in
                         if calendar.isDate(date, equalTo: month, toGranularity: .month) {
@@ -85,30 +73,38 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
                 }
             }
             .frame(height: days.count == 42 ? 300 : 270)
-            .shadow(color: colorScheme == .dark ? .white.opacity(0.4) : .black.opacity(0.35), radius: 5)
-            
-            List(entries) { entry in
-                NavigationLink {
-                    EntryDetailsView(entryStore: entryStore, entry: entry)
-                        .navigationBarTitleDisplayMode(.large)
-                } label: {
-                    CalendarRowView(entry: entry)
-                }
-                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                    Button(role: .destructive) {
-                        withAnimation {
-                            entryStore.deleteEntry(entry: entry)
+//            .shadow(color: colorScheme == .dark ? .white.opacity(0.4) : .black.opacity(0.35), radius: 5)
+            List(selection: $entryStore.entrySelection) {
+                ForEach(entries, id: \.self) { entry in
+                    // This Hack removes the Details Disclosure chevron from list view.
+                    ZStack {
+                        CalendarRowView(index: entryStore.entries.firstIndex(of: entry)!)
+                        NavigationLink(destination: EntryDetailsView(index: entryStore.entries.firstIndex(of: entry)!)) {
+                            EmptyView()
+                        }.opacity(0)
+                    }
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 20, bottom: 5, trailing: 20))
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button(role: .destructive) {
+                            withAnimation {
+                                entryStore.deleteEntry(index: entryStore.entries.firstIndex(of: entry)!)
+                            }
+                        } label: {
+                            Label("Delete", systemImage: "trash")
                         }
-                    } label: {
-                        Label("Delete", systemImage: "trash")
+                        Button {
+                            index = entryStore.entries.firstIndex(of: entry)!
+                                self.canShowEditEntryView.toggle()
+                        } label: {
+                            Label("Edit", systemImage: "pencil")
+                        }
+                        .tint(.blue)
                     }
-                    Button {
-                        self.entry = entry
-                        self.canShowEditEntryView.toggle()
-                    } label: {
-                        Label("Edit", systemImage: "pencil")
-                    }
-                    .tint(.blue)
+                    .listRowBackground(
+                        Rectangle()
+                            .fill(Color.setViewBackgroundColor(colorScheme: colorScheme))
+                    )
                 }
             }
             .listStyle(.plain)
@@ -124,16 +120,21 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
         }
         .onAppear {
 //            entryStore.fetchEntries()
+            // Makes calendar not load green dots etc.
+//            entryStore.fetchEntriesCalendar(date: $date)
+        }
+        .refreshable {
+//            entryStore.fetchEntriesCalendar(date: $date)
         }
         .sheet(isPresented: $canShowAddEntryView) {
-            AddEntryView(entryStore: entryStore)
+            AddEntryView()
         }
         .sheet(isPresented: $canShowEditEntryView, onDismiss: {
             if !hasEntrySaved {
                 entryStore.discardChanges()
             }
         }, content: {
-            EditEntryView(entryStore: entryStore, canShowEditEntryView: $canShowEditEntryView, hasEntrySaved: $hasEntrySaved, entry: $entry)
+            EditEntryView(canShowEditEntryView: $canShowEditEntryView, hasEntrySaved: $hasEntrySaved, index: $index)
         })
     }
 }

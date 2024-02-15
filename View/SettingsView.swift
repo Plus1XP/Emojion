@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @ObservedObject var entryStore: EntryStore
-    @ObservedObject var biometricStore: BiometricStore
+    @EnvironmentObject var entryStore: EntryStore
+    @EnvironmentObject var biometricStore: BiometricStore
     @ObservedObject var syncMonitor: SyncMonitor = SyncMonitor.shared
     @State var canShowSyncError: Bool = false
     // Fill in App ID when app is added to appstore connect!
@@ -223,8 +223,8 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        let entryStore = EntryStore()
-        let biometricStore = BiometricStore()
-        SettingsView(entryStore: entryStore, biometricStore: biometricStore)
+        SettingsView()
+            .environmentObject(EntryStore())
+            .environmentObject(BiometricStore())
     }
 }
