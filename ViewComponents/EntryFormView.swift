@@ -79,10 +79,6 @@ struct EntryFormView: View {
     }
 }
 
-private func setFieldBackgroundColor(colorScheme: ColorScheme) -> Color {
-    return colorScheme == .light ? Color(UIColor.systemBackground) : Color(UIColor.secondarySystemBackground)
-}
-
 struct EntryFormView_Previews: PreviewProvider {
     static var previews: some View {
         return EntryFormView(event: .constant(Entry.MockEntry.event!), emojion: .constant(Entry.MockEntry.emojion!), feeling: .constant(Entry.MockEntry.feeling!), rating: .constant(Entry.MockEntry.rating), note: .constant(Entry.MockEntry.note!))

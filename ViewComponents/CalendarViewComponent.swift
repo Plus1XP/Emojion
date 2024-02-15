@@ -103,7 +103,7 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
                     }
                     .listRowBackground(
                         Rectangle()
-                            .fill(colorScheme == .light ? Color(UIColor.secondarySystemBackground) : Color(UIColor.systemBackground))
+                            .fill(Color.setViewBackgroundColor(colorScheme: colorScheme))
                     )
                 }
             }

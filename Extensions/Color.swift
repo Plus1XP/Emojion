@@ -25,4 +25,12 @@ extension Color {
         }
         self.init(red: Double(r) / 255, green: Double(g) / 255, blue: Double(b) / 255)
     }
+    
+    static func setFieldBackgroundColor(colorScheme: ColorScheme) -> Color {
+        return colorScheme == .light ? Color(UIColor.systemBackground) : Color(UIColor.secondarySystemBackground)
+    }
+
+    static func setViewBackgroundColor(colorScheme: ColorScheme) -> Color {
+        return colorScheme == .light ? Color(UIColor.secondarySystemBackground) : Color(UIColor.systemBackground)
+    }
 }

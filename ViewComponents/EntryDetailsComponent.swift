@@ -87,7 +87,7 @@ struct EntryDetailsComponent: View {
             .padding()
             .background(
                 Rectangle()
-                    .fill(setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                    .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
                     .cornerRadius(10.0)
             )
             .padding(.leading)
@@ -109,7 +109,7 @@ struct EntryDetailsComponent: View {
             .frame(maxWidth: .infinity)
             .background(
                 Rectangle()
-                    .fill(setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                    .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
                     .cornerRadius(10.0)
             )
             .padding(.leading)
@@ -119,16 +119,8 @@ struct EntryDetailsComponent: View {
         }
         .navigationTitle("Emojion Details")
         .navigationBarTitleDisplayMode(.inline)
-        .background(setViewBackgroundColor(colorScheme: self.colorScheme))
+        .background(Color.setViewBackgroundColor(colorScheme: self.colorScheme))
     }
-}
-
-private func setFieldBackgroundColor(colorScheme: ColorScheme) -> Color {
-    return colorScheme == .light ? Color(UIColor.systemBackground) : Color(UIColor.secondarySystemBackground)
-}
-
-private func setViewBackgroundColor(colorScheme: ColorScheme) -> Color {
-    return colorScheme == .light ? Color(UIColor.secondarySystemBackground) : Color(UIColor.systemBackground)
 }
 
 struct EntryDetailsComponent_Previews: PreviewProvider {

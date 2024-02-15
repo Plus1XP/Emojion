@@ -64,7 +64,7 @@ struct CardRowView: View {
         .padding(10)
         .background(
             Rectangle()
-                .fill(setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
                 .cornerRadius(10.0)
                 .padding([.top, .bottom], 3)
         )
@@ -76,10 +76,6 @@ struct CardRowView: View {
             }
         }
     }
-}
-
-private func setFieldBackgroundColor(colorScheme: ColorScheme) -> Color {
-    return colorScheme == .light ? Color(UIColor.systemBackground) : Color(UIColor.secondarySystemBackground)
 }
 
 struct CardRowView_Previews: PreviewProvider {

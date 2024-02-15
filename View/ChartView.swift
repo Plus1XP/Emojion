@@ -13,8 +13,6 @@ struct ChartView: View {
     @EnvironmentObject var entryStore: EntryStore
     @State private var selection = 1
     
-    @State var replay: Bool = true
-
     var body: some View {
 //    ToDo: Add multiple chart views
 //        StackedBarChartView(chartStore: chartStore, entryStore: entryStore)
@@ -65,7 +63,7 @@ struct ChartView: View {
         .refreshable {
             chartStore.fetchAll(entries: entryStore.entries)
         }
-        .background(colorScheme == .light ? Color(UIColor.secondarySystemBackground) : Color(UIColor.systemBackground))
+        .background(Color.setViewBackgroundColor(colorScheme: colorScheme))
     }
 }
 

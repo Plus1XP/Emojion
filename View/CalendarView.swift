@@ -165,7 +165,7 @@ struct CalendarView: View {
             )
             .equatable()
         }
-        .background(colorScheme == .light ? Color(UIColor.secondarySystemBackground) : Color(UIColor.systemBackground))
+        .background(Color.setViewBackgroundColor(colorScheme: colorScheme))
     }
 }
 
