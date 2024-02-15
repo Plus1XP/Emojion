@@ -12,7 +12,6 @@ struct CardView: View {
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
     @State private var canShowDebugMenu: Bool = false
-    @State var canShowDebugContent: Bool = true
     @State private var canAutoCompleteSearch: Bool = false
     @State private var canResetDate: Bool = false
     @State private var hasEntrySaved: Bool = false
@@ -21,55 +20,57 @@ struct CardView: View {
     
     var body: some View {
         List(selection: $entryStore.entrySelection) {
-            ForEach(entryStore.getSectionHeadersFromSearchResults().keys.sorted(by: { $0 > $1 }), id: \.self) { key in
-                // Removed ! after [key] due to xcode 14.3 update
-                if let entries = entryStore.getSectionHeadersFromSearchResults()[key]
-                {
-                    Section(header: Text("\(Formatter.longDayFormat.string(from: key))")) {
-                        ForEach(entries, id: \.self){ entry in
-                            Section {
-                                // This Hack removes the Details Disclosure chevron from list view.
-                                ZStack {
-                                    HStack(alignment: .top) {
-                                        if canShowDebugContent {
-                                            DateRowView(index: entryStore.entries.firstIndex(of: entry)!)
-                                            CardRowView(index: entryStore.entries.firstIndex(of: entry)!)
+            if entryStore.entries.isEmpty {
+                ContentUnavailableView("How are you feeling?...", systemImage: "ellipsis.message")
+            } else {
+                ForEach(entryStore.getSectionHeadersFromSearchResults().keys.sorted(by: { $0 > $1 }), id: \.self) { key in
+                    // Removed ! after [key] due to xcode 14.3 update
+                    if let entries = entryStore.getSectionHeadersFromSearchResults()[key]
+                    {
+                        Section(header: Text("\(Formatter.longDayFormat.string(from: key))")) {
+                            ForEach(entries, id: \.self){ entry in
+                                Section {
+                                    // This Hack removes the Details Disclosure chevron from list view.
+                                    ZStack {
+                                        HStack(alignment: .top) {
+                                                DateRowView(index: entryStore.entries.firstIndex(of: entry)!)
+                                                CardRowView(index: entryStore.entries.firstIndex(of: entry)!)
                                         }
+                                        NavigationLink(destination: EntryDetailsView(index: entryStore.entries.firstIndex(of: entry)!)) {
+                                            EmptyView()
+                                        }
+                                        .opacity(0)
                                     }
-                                    NavigationLink(destination: EntryDetailsView(index: entryStore.entries.firstIndex(of: entry)!)) {
-                                        EmptyView()
+                                }
+                                .listRowSeparator(.hidden)
+//                              .listRowInsets(EdgeInsets())
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button(role: .destructive) {
+                                        withAnimation {
+                                            entryStore.deleteEntry(index: index)
+                                        }
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
                                     }
-                                    .opacity(0)
+                                    Button {
+                                        self.index = entryStore.entries.firstIndex(of: entry)!
+                                        self.canShowEditEntryView.toggle()
+                                    } label: {
+                                        Label("Edit", systemImage: "pencil")
+                                    }
+                                    .tint(.blue)
                                 }
                             }
-                            .listRowSeparator(.hidden)
-//                            .listRowInsets(EdgeInsets())
-                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                Button(role: .destructive) {
-                                    withAnimation {
-                                        entryStore.deleteEntry(index: index)
-                                    }
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                                Button {
-                                    self.index = entryStore.entries.firstIndex(of: entry)!
-                                    self.canShowEditEntryView.toggle()
-                                } label: {
-                                    Label("Edit", systemImage: "pencil")
-                                }
-                                .tint(.blue)
-                            }
+                            .onDelete(perform: entryStore.deleteEntry)
                         }
-                        .onDelete(perform: entryStore.deleteEntry)
                     }
                 }
+                .listRowBackground(
+                    Rectangle()
+                        .fill(Color(.clear).opacity(1))
+                )
             }
-            .listRowBackground(
-                Rectangle()
-                    .fill(Color(.clear).opacity(1))
-            )
         }
         .searchable(text: $entryStore.searchText, prompt: "Search Emojions") {
             if canAutoCompleteSearch && entryStore.searchText.count > 2 {
@@ -80,8 +81,7 @@ struct CardView: View {
         }
         .disableAutocorrection(true)
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                HStack {
+            ToolbarItemGroup(placement: .navigationBarLeading) {
                     DatePicker("Please enter a date", selection: $entryStore.searchDate, displayedComponents: .date)
                         .labelsHidden()
                         .id(calendarId)
@@ -94,28 +94,22 @@ struct CardView: View {
                                 canResetDate = false
                             }
                         }
+                if entryStore.isSearchingDate {
                     Button(action: {
-                        if entryStore.isSearchingDate {
                             entryStore.isSearchingDate = false
                             canResetDate = true
                             entryStore.searchDate = Date.now
-                        }
                     }) {
                         Label("Reset Calendar", systemImage: "xmark")
-                            .foregroundColor(Color.red)
-                            .disabled(!entryStore.isSearchingDate)
-                            .opacity(entryStore.isSearchingDate ? 1 : 0)
+                            .foregroundStyle(.red, .primary)
                     }
-                    .hidden(!entryStore.isSearchingDate)
+                }
                     // For Internal debugging
 #if DEBUG
                     Button(action: {
                         self.canShowDebugMenu.toggle()
-                        // Added to hide view and stop crashing on index out of bounds,
-                        // When content is deleted from subview.
-                        self.canShowDebugContent.toggle()
                     }) {
-                        Label("Create Entries", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
+                        Label("Show Debug Menu", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
                             .foregroundStyle(.primary)
                     }
                     .popover(isPresented: $canShowDebugMenu) {
@@ -145,11 +139,12 @@ struct CardView: View {
                                     .foregroundStyle(.white, .red)
                             }
                         }
+                        .presentationCompactAdaptation(.popover)
+                        .frame(minWidth: 100, maxHeight: 50)
                         .padding()
                         .background(.ultraThinMaterial)
                     }
 #endif
-                }
             }
         }
         .toolbar {
