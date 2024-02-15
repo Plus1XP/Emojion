@@ -16,32 +16,36 @@ struct DateRowView: View {
     var body: some View {
         VStack {
             HStack {
-                // TODO: Guard let for index & if let for entries
-                // Might fix index out of bunds?
-                if let date = entryStore.entries[index].timestamp {
-                    Text(date, formatter: Formatter.mediumMonthFormatter)
-                        .textCase(.uppercase)
-                        .font(.callout)
-                        .fontWeight(.bold)
-                        .foregroundStyle(.red)
+                if entryStore.entries.indices.contains(index) {
+                    if let date = entryStore.entries[index].timestamp {
+                        Text(date, formatter: Formatter.mediumMonthFormatter)
+                            .textCase(.uppercase)
+                            .font(.callout)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.red)
+                    }
                 }
             }
             HStack {
-                if let date = entryStore.entries[index].timestamp {
-                    Text(date, formatter: Formatter.shortDayFormat)
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundStyle(.primary)
+                if entryStore.entries.indices.contains(index) {
+                    if let date = entryStore.entries[index].timestamp {
+                        Text(date, formatter: Formatter.shortDayFormat)
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.primary)
+                    }
                 }
             }
             HStack {
-                if let date = entryStore.entries[index].timestamp {
-                    Text(date, formatter: Formatter.shortTimeFormat)
-                        .font(.footnote)
-                        .allowsTightening(true)
-                        .scaledToFit()
-                        .minimumScaleFactor(0.8)
-                        .foregroundStyle(.primary)
+                if entryStore.entries.indices.contains(index) {
+                    if let date = entryStore.entries[index].timestamp {
+                        Text(date, formatter: Formatter.shortTimeFormat)
+                            .font(.footnote)
+                            .allowsTightening(true)
+                            .scaledToFit()
+                            .minimumScaleFactor(0.8)
+                            .foregroundStyle(.primary)
+                    }
                 }
             }
         }

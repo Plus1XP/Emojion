@@ -19,6 +19,7 @@ enum BiometricType {
     case none
     case touchID
     case faceID
+    case opticID
     case unknown
 }
 
@@ -123,6 +124,8 @@ class BiometricService {
             return .touchID
         case .faceID:
             return .faceID
+        case .opticID:
+            return .opticID
         @unknown default:
             return .unknown
         }

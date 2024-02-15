@@ -20,38 +20,45 @@ struct CardRowView: View {
         HStack {
                 VStack {
                     HStack {
-                        if let emojionEmoji = (entryStore.entries[index].emojion == "" || entryStore.entries[index].emojion == nil ? "🫥" : entryStore.entries[index].emojion)!.ToImage(fontSize: emojionFontSize) {
-                            Image(uiImage: emojionEmoji)
+                        if entryStore.entries.indices.contains(index) {
+                            if let emojionEmoji = (entryStore.entries[index].emojion == "" || entryStore.entries[index].emojion == nil ? "🫥" : entryStore.entries[index].emojion)!.ToImage(fontSize: emojionFontSize) {
+                                Image(uiImage: emojionEmoji)
+                            }
                         }
-                        
                     }
                     HStack {
-                        if let feeling = entryStore.entries[index].feeling {
-                            Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
-                                .font(.footnote)
-                                .fontWeight(.medium)
-                                .foregroundStyle(.primary)
-                                .allowsTightening(true)
-                                .scaledToFit()
-                                .minimumScaleFactor(0.8)
+                        if entryStore.entries.indices.contains(index) {
+                            if let feeling = entryStore.entries[index].feeling {
+                                Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
+                                    .font(.footnote)
+                                    .fontWeight(.medium)
+                                    .foregroundStyle(.primary)
+                                    .allowsTightening(true)
+                                    .scaledToFit()
+                                    .minimumScaleFactor(0.8)
+                            }
                         }
                     }
                 }
                 .frame(maxWidth: "Out of Control".widthOfString(usingFont: UIFont.systemFont(ofSize: 12)))//
                 VStack(alignment: .leading, content:  {
                     HStack {
-                        if let event = entryStore.entries[index].event {
-                            Text(event)
-                                .font(.callout)
-                                .fontWeight(.medium)
-                                .lineLimit(2)
-                                .foregroundStyle(.primary)
+                        if entryStore.entries.indices.contains(index) {
+                            if let event = entryStore.entries[index].event {
+                                Text(event)
+                                    .font(.callout)
+                                    .fontWeight(.medium)
+                                    .lineLimit(2)
+                                    .foregroundStyle(.primary)
+                            }
                         }
                     }
                     HStack {
                         Spacer()
-                        StarRatingView(Binding(get: {entryStore.entries[index].rating}, set: {entryStore.entries[index].rating = $0}), starFontSize, starSpacing)
-                            .padding(.top, -5)
+                        if entryStore.entries.indices.contains(index) {
+                            StarRatingView(Binding(get: {entryStore.entries[index].rating}, set: {entryStore.entries[index].rating = $0}), starFontSize, starSpacing)
+                                .padding(.top, -5)
+                        }
                         Spacer()
                     }
                     
@@ -69,10 +76,12 @@ struct CardRowView: View {
                 .padding([.top, .bottom], 3)
         )
         .overlay(alignment: .topTrailing) {
-            if let note = entryStore.entries[index].note {
-                Image(systemName: "note.text")
-                    .foregroundColor(note == "" ? .clear : .primary)
-                    .padding([.top, .trailing], 10)
+            if entryStore.entries.indices.contains(index) {
+                if let note = entryStore.entries[index].note {
+                    Image(systemName: "note.text")
+                        .foregroundColor(note == "" ? .clear : .primary)
+                        .padding([.top, .trailing], 10)
+                }
             }
         }
     }
