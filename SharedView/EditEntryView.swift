@@ -8,36 +8,21 @@
 import SwiftUI
 
 struct EditEntryView: View {
-    @ObservedObject var entryStore: EntryStore
-    @State var refreshView: Bool = false
+    @EnvironmentObject var entryStore: EntryStore
     @State var originalStarRating: Int64 = 5
     @Binding var canShowEditEntryView: Bool
     @Binding var hasEntrySaved: Bool
-    @Binding var entry: Entry
-    
-    // This computed property is needed to notify child view of property change
-    // If remoed the child view UI will not refresh.
-    private var entryNote: Binding<String?> {
-        Binding<String?>(get: {
-            return entry.note
-        }, set: {
-            NotificationCenter.default.post(name: Notification.Name("RefreshNoteFieldView"), object: nil)
-            entry.note = $0
-        })
-    }
+    @Binding var index: Int
     
     var body: some View {
         NavigationView {
             Form {
-                EntryFormView(refreshView: $refreshView, event: $entry.event.bound, emojion: $entry.emojion.bound, feeling: $entry.feeling.bound, rating: $entry.rating, note: entryNote.bound)
-                    .onChange(of: refreshView) { _ in
-                        debugPrint("EditEntryView: EntryForm View Refreshed")
-                    }
+                EntryFormView(event: Binding(get: {entryStore.entries[index].event ?? ""}, set: {entryStore.entries[index].event = $0}) , emojion: Binding(get: {entryStore.entries[index].emojion ?? ""}, set: {entryStore.entries[index].emojion = $0}), feeling: Binding(get: {entryStore.entries[index].feeling ?? [0,0,0]}, set: {entryStore.entries[index].feeling = $0}), rating: $entryStore.entries[index].rating, note: Binding(get: {entryStore.entries[index].note ?? ""}, set: {entryStore.entries[index].note = $0}))
                 HStack {
                     Spacer()
                     Button(
                         action: {
-                            entryStore.deleteEntry(entry: entry)
+                            entryStore.deleteEntry(index: index)
                             canShowEditEntryView.toggle()
                         },
                         label: {
@@ -59,7 +44,7 @@ struct EditEntryView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        entryStore.updateEntry(entry: entry)
+                        entryStore.updateEntry(entry: entryStore.entries[index])
                         hasEntrySaved = true
                         canShowEditEntryView.toggle()
                     }) {
@@ -77,7 +62,7 @@ struct EditEntryView: View {
 
 struct EditEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        let entryStore = EntryStore()
-        EditEntryView(entryStore: entryStore, canShowEditEntryView: .constant(false), hasEntrySaved: .constant(false), entry: .constant(Entry.MockEntry))
+        EditEntryView(canShowEditEntryView: .constant(false), hasEntrySaved: .constant(false), index: .constant(0))
+            .environmentObject(EntryStore())
     }
 }

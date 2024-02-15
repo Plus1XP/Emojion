@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FeelingFinderView: View {
-    @ObservedObject var feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
+    @EnvironmentObject var feelingFinderStore: FeelingFinderStore
     @State var refreshView: Bool = false
     @Binding var feeling: [Int]
     

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var biometricStore: BiometricStore
+    @EnvironmentObject var biometricStore: BiometricStore
 
     var body: some View {
         Button(action: {
@@ -33,6 +33,7 @@ struct LoginView: View {
 }
 
 #Preview {
-    let biometricStore = BiometricStore()
-    return LoginView(biometricStore: biometricStore)
+    LoginView()
+        .environmentObject(BiometricStore())
+
 }

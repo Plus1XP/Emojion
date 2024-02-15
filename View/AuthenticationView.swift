@@ -9,14 +9,14 @@ import SwiftUI
 import CoreData
 
 struct AuthenticationView: View {
-    @StateObject private var biometricStore = BiometricStore()
+    @EnvironmentObject var biometricStore: BiometricStore
 
     var body: some View {
         ZStack {
             if self.biometricStore.isFaceidEnabled && self.biometricStore.isAppLocked {
-                LoginView(biometricStore: biometricStore)
+                LoginView()
             } else {
-                ContentView(biometricStore: biometricStore)
+                ContentView()
             }
         }
         .onAppear {

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct StarRatingView: View {
-    @State var refreshView: Bool = false
     @Binding var starRating: Int64
     @Binding var canEditStarRating: Bool
     var starFontSize: CGFloat
@@ -43,9 +42,6 @@ struct StarRatingView: View {
                     .opacity(self.starRating >= Int64(star) ? 1.0 : 0.1)
                     .onTapGesture {
                         self.starRating = Int64(star)
-                        NotificationCenter.default.post(name: Notification.Name("RefreshStarRatingView"), object: nil)
-                        debugPrint("StarRatingView: StarRatingView Refreshed")
-                        refreshView.toggle()
                         debugPrint("Rating has changed: \(starRating + 1)")
                     }
             }
