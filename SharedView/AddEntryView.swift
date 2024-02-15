@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AddEntryView: View {
     @Environment(\.presentationMode) var presentaionMode
-    @State var refreshView: Bool = false
     @EnvironmentObject var entryStore: EntryStore
     @State var event: String = ""
     @State var emojion: String = ""
@@ -20,10 +19,7 @@ struct AddEntryView: View {
     var body: some View {
         NavigationView {
             Form {
-                EntryFormView(refreshView: $refreshView, event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, note: $note)
-                    .onChange(of: refreshView) { _ in
-                            debugPrint("AddEntryView: Feeling/Star View Refreshed")
-                        }
+                EntryFormView(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, note: $note)
             }
             .navigationTitle("New Emojion")
             .toolbar {
