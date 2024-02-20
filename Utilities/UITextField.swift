@@ -13,7 +13,38 @@ struct EmojiPicker: UIViewRepresentable {
     @Binding var emoji: String
     var placeholder: String = ""
     var textAlignment: NSTextAlignment = .left
-    var isEmoji: Bool = true
+//    var isEmoji: Bool = true
+    var fontStyle: UIFont.TextStyle = .body
+    var fontSize: CGFloat = 16
+    
+    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment) {
+        self._emoji = emoji
+        self.placeholder = placeholder
+        self.textAlignment = textAlignment
+    }
+    
+//    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment, isEmoji: Bool) {
+//        self._emoji = emoji
+//        self.placeholder = placeholder
+//        self.textAlignment = textAlignment
+//        self.isEmoji = isEmoji
+//    }
+    
+    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment, /*isEmoji: Bool,*/ fontStyle: UIFont.TextStyle) {
+        self._emoji = emoji
+        self.placeholder = placeholder
+        self.textAlignment = textAlignment
+//        self.isEmoji = isEmoji
+        self.fontStyle = fontStyle
+    }
+    
+    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment, /*isEmoji: Bool,*/ fontSize: CGFloat) {
+        self._emoji = emoji
+        self.placeholder = placeholder
+        self.textAlignment = textAlignment
+//        self.isEmoji = isEmoji
+        self.fontSize = fontSize
+    }
     
     func makeUIView(context: UIViewRepresentableContext<EmojiPicker>) -> EmojiUITextField {
         let textField = EmojiUITextField(frame: .zero)
@@ -23,6 +54,8 @@ struct EmojiPicker: UIViewRepresentable {
         textField.autocorrectionType = .no
         textField.returnKeyType = .done
         textField.textAlignment = textAlignment
+        textField.font = UIFont.preferredFont(forTextStyle: fontStyle)
+        textField.font = UIFont.systemFont(ofSize: fontSize)
         textField.tintColor = .clear
         return textField
     }

@@ -57,8 +57,8 @@
 		2F70FB8B280E011300D2A725 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB89280E011300D2A725 /* CardView.swift */; };
 		2F70FB8D280E10FE00D2A725 /* CardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB8C280E10FE00D2A725 /* CardRowView.swift */; };
 		2F70FB8E280E10FE00D2A725 /* CardRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB8C280E10FE00D2A725 /* CardRowView.swift */; };
-		2F70FB90280E141500D2A725 /* EntryDetailsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB8F280E141500D2A725 /* EntryDetailsComponent.swift */; };
-		2F70FB91280E141500D2A725 /* EntryDetailsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB8F280E141500D2A725 /* EntryDetailsComponent.swift */; };
+		2F70FB90280E141500D2A725 /* EditDetailsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB8F280E141500D2A725 /* EditDetailsComponent.swift */; };
+		2F70FB91280E141500D2A725 /* EditDetailsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB8F280E141500D2A725 /* EditDetailsComponent.swift */; };
 		2F70FB93280E224600D2A725 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB92280E224500D2A725 /* View.swift */; };
 		2F70FB94280E224600D2A725 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB92280E224500D2A725 /* View.swift */; };
 		2F70FB9A280F19A100D2A725 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB99280F19A100D2A725 /* StarRatingView.swift */; };
@@ -151,7 +151,7 @@
 		2F70FB86280D82CB00D2A725 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		2F70FB89280E011300D2A725 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2F70FB8C280E10FE00D2A725 /* CardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRowView.swift; sourceTree = "<group>"; };
-		2F70FB8F280E141500D2A725 /* EntryDetailsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailsComponent.swift; sourceTree = "<group>"; };
+		2F70FB8F280E141500D2A725 /* EditDetailsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailsComponent.swift; sourceTree = "<group>"; };
 		2F70FB92280E224500D2A725 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		2F70FB99280F19A100D2A725 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricService.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 				2FA93C032B38E69200A1F994 /* DateRowView.swift */,
 				2F70FB8C280E10FE00D2A725 /* CardRowView.swift */,
 				2FAF0054283D68B10092E8DD /* CalendarRowView.swift */,
-				2F70FB8F280E141500D2A725 /* EntryDetailsComponent.swift */,
+				2F70FB8F280E141500D2A725 /* EditDetailsComponent.swift */,
 				2F70FB672808536E00D2A725 /* EntryFormView.swift */,
 				2F70FB99280F19A100D2A725 /* StarRatingView.swift */,
 				2F01D8B32814697B004583E3 /* FeelingFinderView.swift */,
@@ -497,7 +497,7 @@
 				2FA30EDF2B34CAC100195CA4 /* BiometricService.swift in Sources */,
 				2FA30EE22B34CAF400195CA4 /* BiometricStore.swift in Sources */,
 				2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */,
-				2F70FB90280E141500D2A725 /* EntryDetailsComponent.swift in Sources */,
+				2F70FB90280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8D280E10FE00D2A725 /* CardRowView.swift in Sources */,
 				2FA93C132B3B71B300A1F994 /* ChartBarMarkDateView.swift in Sources */,
 				2F70FB682808536E00D2A725 /* EntryFormView.swift in Sources */,
@@ -559,7 +559,7 @@
 				2FA30EE02B34CAC100195CA4 /* BiometricService.swift in Sources */,
 				2FA30EE32B34CAF400195CA4 /* BiometricStore.swift in Sources */,
 				2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */,
-				2F70FB91280E141500D2A725 /* EntryDetailsComponent.swift in Sources */,
+				2F70FB91280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8E280E10FE00D2A725 /* CardRowView.swift in Sources */,
 				2FA93C142B3B71B300A1F994 /* ChartBarMarkDateView.swift in Sources */,
 				2F70FB692808536E00D2A725 /* EntryFormView.swift in Sources */,
