@@ -17,9 +17,10 @@ struct BubbleEffectView: View {
                 ForEach(viewModel.bubbles){bubble in
                     BubbleView(bubble: bubble)
                 }
-            }.onChange(of: replay, perform: { _ in
+            }
+            .onChange(of: replay) {
                 viewModel.addBubbles(frameSize: geo.size)
-            })
+            }
             
             .onAppear(){
                 //Set the initial position from frame size

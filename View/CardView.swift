@@ -86,7 +86,7 @@ struct CardView: View {
                         .labelsHidden()
                         .id(calendarId)
                         // Needed to close calendar picker after selection
-                        .onChange(of: Calendar.current.component(.day, from: entryStore.searchDate)) { _ in
+                        .onChange(of: Calendar.current.component(.day, from: entryStore.searchDate)) {
                             calendarId = UUID()
                             if !canResetDate {
                                 entryStore.isSearchingDate = true
