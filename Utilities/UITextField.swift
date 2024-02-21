@@ -13,7 +13,7 @@ struct EmojiPicker: UIViewRepresentable {
     @Binding var emoji: String
     var placeholder: String = ""
     var textAlignment: NSTextAlignment = .left
-//    var isEmoji: Bool = true
+    var isEmoji: Bool = true
     var fontStyle: UIFont.TextStyle = .body
     var fontSize: CGFloat = 16
     
@@ -23,26 +23,40 @@ struct EmojiPicker: UIViewRepresentable {
         self.textAlignment = textAlignment
     }
     
-//    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment, isEmoji: Bool) {
-//        self._emoji = emoji
-//        self.placeholder = placeholder
-//        self.textAlignment = textAlignment
-//        self.isEmoji = isEmoji
-//    }
-    
-    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment, /*isEmoji: Bool,*/ fontStyle: UIFont.TextStyle) {
+    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment, isEmoji: Bool) {
         self._emoji = emoji
         self.placeholder = placeholder
         self.textAlignment = textAlignment
-//        self.isEmoji = isEmoji
+        self.isEmoji = isEmoji
+    }
+    
+    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment, fontStyle: UIFont.TextStyle) {
+        self._emoji = emoji
+        self.placeholder = placeholder
+        self.textAlignment = textAlignment
         self.fontStyle = fontStyle
     }
     
-    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment, /*isEmoji: Bool,*/ fontSize: CGFloat) {
+    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment, fontSize: CGFloat) {
         self._emoji = emoji
         self.placeholder = placeholder
         self.textAlignment = textAlignment
-//        self.isEmoji = isEmoji
+        self.fontSize = fontSize
+    }
+    
+    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment, isEmoji: Bool, fontStyle: UIFont.TextStyle) {
+        self._emoji = emoji
+        self.placeholder = placeholder
+        self.textAlignment = textAlignment
+        self.isEmoji = isEmoji
+        self.fontStyle = fontStyle
+    }
+    
+    init(emoji: Binding<String>, placeholder: String, textAlignment: NSTextAlignment, isEmoji: Bool, fontSize: CGFloat) {
+        self._emoji = emoji
+        self.placeholder = placeholder
+        self.textAlignment = textAlignment
+        self.isEmoji = isEmoji
         self.fontSize = fontSize
     }
     
