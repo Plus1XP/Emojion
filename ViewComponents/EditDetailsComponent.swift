@@ -14,6 +14,8 @@ struct EditDetailsComponent: View {
     @EnvironmentObject var feelingFinderStore: FeelingFinderStore
     @State var hasEntryChanged: Bool = false
     @State var canEditStarRating: Bool = true
+    @State var animateXMark: Bool = false
+    @State var animateCheckMark: Bool = false
     @Binding var event: String
     @Binding var emojion : String
     @Binding var feeling: [Int]
@@ -31,7 +33,7 @@ struct EditDetailsComponent: View {
     var body: some View {
         VStack {
             HStack {
-                TextField("What are you doing?", text: $event)
+                TextField("What are you doing?", text: $event, axis: .vertical)
                     .font(.title3)
                     .fontWeight(.semibold)
                     .allowsTightening(true)
@@ -43,7 +45,9 @@ struct EditDetailsComponent: View {
                         }
                     })
             }
-            .padding()
+            .padding(.top)
+            .padding(.leading)
+            .padding(.trailing)
             
             HStack {
                 EmojiPicker(emoji: $emojion, placeholder: "🫥", textAlignment: .center, fontSize: emojionFontSize)
@@ -67,18 +71,15 @@ struct EditDetailsComponent: View {
                     .overlay(
                         Circle()
                             .stroke(lineWidth: 5)
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
                     )
                     .shadow(radius: 10)
                     .padding()
                  */
-                /*
-                    .background(
-                        Circle()
-                            .fill(setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-                            .cornerRadius(10.0)
+                    .background(self.emojion == "" ? Circle()
+                        .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                        .cornerRadius(10.0) : nil
                     )
-                 */
             }
             
             HStack {
@@ -134,6 +135,7 @@ struct EditDetailsComponent: View {
                         .disableAutocorrection(false)
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil) // <-- tell Text to use as many lines as it needs (so no truncating)
+                        .scrollContentBackground(.hidden) // <-- hide native background to see custom color
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading) // <-- tell Text to take the entire space available for ScrollView
                         .focused($isNoteFocused)
                     if !self.isNoteFocused && (note == "") {
@@ -192,11 +194,19 @@ struct EditDetailsComponent: View {
                         self.rating = entryStore.entries[self.index].rating
                         self.cachedRating = entryStore.entries[self.index].rating
                         self.note = entryStore.entries[self.index].note ?? ""
-                        self.hasEntryChanged = false
+                        self.animateXMark = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                            self.animateXMark = false
+                            self.hasEntryChanged = false
+                            
+                        }
                     }, label: {
-                        Image(systemName: "xmark.circle.fill")
+                        Image(systemName: self.animateXMark ? "xmark.circle" : "xmark.circle.fill")
                             .font(.largeTitle)
                             .foregroundStyle(.red)
+                            .symbolEffect(.bounce, options: .speed(2), value: self.animateXMark)
+                            .symbolEffect(.pulse.wholeSymbol, options: .repeating, value: self.animateXMark)
+                            .contentTransition(.symbolEffect(.replace))
                             .background(
                                 Circle()
                                     .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
@@ -211,11 +221,19 @@ struct EditDetailsComponent: View {
                         entryStore.entries[self.index].rating = self.rating
                         entryStore.entries[self.index].note = self.note
                         entryStore.updateEntry(entry: entryStore.entries[index])
-                        self.hasEntryChanged = false
+                        self.animateCheckMark = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                            self.animateCheckMark = false
+                            self.hasEntryChanged = false
+                            
+                        }
                     }, label: {
-                        Image(systemName: "checkmark.circle.fill")
+                        Image(systemName: self.animateCheckMark ? "checkmark.circle" : "checkmark.circle.fill")
                             .font(.largeTitle)
                             .foregroundStyle(.green)
+                            .symbolEffect(.bounce, options: .speed(2), value: self.animateCheckMark)
+                            .symbolEffect(.pulse.wholeSymbol, options: .repeating, value: self.animateCheckMark)
+                            .contentTransition(.symbolEffect(.replace))
                             .background(
                                 Circle()
                                     .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))

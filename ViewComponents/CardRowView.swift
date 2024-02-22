@@ -49,6 +49,7 @@ struct CardRowView: View {
                                     .font(.callout)
                                     .fontWeight(.medium)
                                     .lineLimit(2)
+                                    .allowsTightening(true)
                                     .foregroundStyle(.primary)
                             }
                         }

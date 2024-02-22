@@ -79,7 +79,7 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
                     // This Hack removes the Details Disclosure chevron from list view.
                     ZStack {
                         CalendarRowView(index: entryStore.entries.firstIndex(of: entry)!)
-                        NavigationLink(destination: EntryDetailsView(index: entryStore.entries.firstIndex(of: entry)!)) {
+                        NavigationLink(destination: EntryDetailsView(index: Binding(get: {entryStore.entries.firstIndex(of: entry)!}, set: {_ in entryStore.entries.firstIndex(of: entry)}))) {
                             EmptyView()
                         }.opacity(0)
                     }
@@ -109,15 +109,23 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
             }
             .listStyle(.plain)
         }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    self.canShowAddEntryView.toggle()
-                }) {
-                    Label("Add Item", systemImage: "plus")
+        .navigationBarItems(
+            leading:
+                HStack {
+                    
+                },
+            trailing:
+                HStack {
+                    Button(action: {
+                        self.canShowAddEntryView.toggle()
+                    }) {
+                        Label("Add Item", systemImage: canShowAddEntryView ? "plus.circle.fill" : "plus")
+                            .rotationEffect(.degrees(self.canShowAddEntryView ? 360 : 0))
+                            .scaleEffect(self.canShowAddEntryView ? 1.5 : 1)
+                            .animation(.easeInOut, value: self.canShowAddEntryView)
+                    }
                 }
-            }
-        }
+        )
         .onAppear {
 //            entryStore.fetchEntries()
             // Makes calendar not load green dots etc.

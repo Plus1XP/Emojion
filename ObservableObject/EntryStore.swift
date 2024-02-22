@@ -139,6 +139,15 @@ class EntryStore: ObservableObject {
         saveChanges()
     }
     
+    func deleteEntrySelectionEntries() {
+        for entry in self.entrySelection {
+            PersistenceController.shared.container.viewContext.delete(entry)
+        }
+        self.entrySelection.removeAll()
+//        self.sortEntries()
+        self.saveChanges()
+    }
+    
     func deleteAllEntries() {
         for entry in entries {
             PersistenceController.shared.container.viewContext.delete(entry)

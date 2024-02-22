@@ -18,7 +18,8 @@ struct EntryDetailsView: View {
     @State var note: String = ""
     @State var confirmDeletion: Bool = false
     @State var canShowFeelingFinderView: Bool = false
-    let index: Int
+    @State var animate: Bool = false
+    @Binding var index: Int
     
     var body: some View {
         EditDetailsComponent(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, cachedRating: $cachedRating, note: $note, canShowFeelingFinderView: $canShowFeelingFinderView, index: self.index)
@@ -27,11 +28,14 @@ struct EntryDetailsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
+                        self.animate.toggle()
                         self.confirmDeletion = true
                     }, label: {
-                        Image(systemName: "trash.fill")
+                        Image(systemName: self.confirmDeletion ? "trash.fill" : "trash")
                             .font(.subheadline)
                             .foregroundStyle(.red)
+                            .symbolEffect(.pulse.wholeSymbol, options: .repeat(3), value: self.animate)
+                            .contentTransition(.symbolEffect(.replace))
                             .padding(5)
                             .background(
                                 Circle()
@@ -71,7 +75,7 @@ struct EntryDetailsView: View {
 
 struct EntryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        EntryDetailsView(index: 0)
+        EntryDetailsView(index: .constant(0))
             .environmentObject(EntryStore())
     }
 }
