@@ -7,18 +7,6 @@
 
 import SwiftUI
 
-struct FeelingStats: Identifiable, Comparable {
-    var color: String
-    var type: String
-    var date: Date
-    var count: Int
-    var id = UUID()
-    
-    static func <(lhs: FeelingStats, rhs: FeelingStats) -> Bool {
-            lhs.type < rhs.type
-        }
-}
-
 struct FeelingData: Identifiable, Comparable {
     var id = UUID()
     var type: String

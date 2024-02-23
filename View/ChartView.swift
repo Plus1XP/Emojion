@@ -15,31 +15,28 @@ struct ChartView: View {
     
     var body: some View {
 //    ToDo: Add multiple chart views
-//        StackedBarChartView(chartStore: chartStore, entryStore: entryStore)
         VStack{
             TabView(selection: $selection) {
-                ChartBarMarkDateView()
-                .tag(0)
+                ChartSectorMarkView()
+                    .tag(0)
                 ChartLineMarkView()
                     .onDisappear(perform: {
                         if self.selection != 2 {
-                            self.selection = 4
+                            self.selection = 3
                         }
                     })
-                .tag(1)
+                    .tag(1)
                 ChartBarMarkXYView()
-                .tag(2)
+                    .tag(2)
                 ChartSectorMarkView()
-                .tag(3)
-                ChartBarMarkDateView()
                     .onDisappear(perform: {
-                        if self.selection != 3 {
+                        if self.selection != 2 {
                             self.selection = 1
                         }
                     })
-                .tag(4)
+                    .tag(3)
                 ChartLineMarkView()
-                .tag(5)
+                    .tag(4)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .padding([.leading, .trailing, .bottom], 20)

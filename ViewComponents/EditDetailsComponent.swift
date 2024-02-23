@@ -83,9 +83,10 @@ struct EditDetailsComponent: View {
             }
             
             HStack {
-                Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
-                    .font(.headline)
-                    .fontWeight(.medium)
+                Text(feeling == [0,0,0] ? "What are you feeling?" : feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
+                    .font(feeling == [0,0,0] ? .body : .headline)
+                    .fontWeight(feeling == [0,0,0] ? .regular : .medium)
+                    .foregroundColor(feeling == [0,0,0] ? Color(uiColor: .placeholderText) : Color.primary)
                     .onTapGesture(perform: {
                         canShowFeelingFinderView.toggle()
                     })
@@ -114,7 +115,6 @@ struct EditDetailsComponent: View {
                 StarRatingView($rating, starFontSize, $canEditStarRating)
                     .onChange(of: self.rating, {
                         if self.rating != self.cachedRating {
-                            debugPrint("now its \(rating)")
                             self.cachedRating = self.rating
                             self.hasEntryChanged = true
                         }

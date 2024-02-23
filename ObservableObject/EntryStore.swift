@@ -210,24 +210,27 @@ class EntryStore: ObservableObject {
 
         for entry in entries {
             if entry.feeling?.first == 0 {
-                feelingDictionary["Angry"]! += 1
+                // Do nothing this is blank entry
             }
             if entry.feeling?.first == 1 {
-                feelingDictionary["Bad"]! += 1
+                feelingDictionary["Angry"]! += 1
             }
             if entry.feeling?.first == 2 {
-                feelingDictionary["Disgusting"]! += 1
+                feelingDictionary["Bad"]! += 1
             }
             if entry.feeling?.first == 3 {
-                feelingDictionary["Fearful"]! += 1
+                feelingDictionary["Disgusting"]! += 1
             }
             if entry.feeling?.first == 4 {
-                feelingDictionary["Happy"]! += 1
+                feelingDictionary["Fearful"]! += 1
             }
             if entry.feeling?.first == 5 {
-                feelingDictionary["Sad"]! += 1
+                feelingDictionary["Happy"]! += 1
             }
             if entry.feeling?.first == 6 {
+                feelingDictionary["Sad"]! += 1
+            }
+            if entry.feeling?.first == 7 {
                 feelingDictionary["Surprised"]! += 1
             }
             
@@ -240,24 +243,27 @@ class EntryStore: ObservableObject {
 
         for entry in entries {
             if entry.feeling?.first == 0 {
-                feelingDictionary[0].1 += 1
+                // Do nothing this is blank entry
             }
             if entry.feeling?.first == 1 {
-                feelingDictionary[1].1 += 1
+                feelingDictionary[0].1 += 1
             }
             if entry.feeling?.first == 2 {
-                feelingDictionary[2].1 += 1
+                feelingDictionary[1].1 += 1
             }
             if entry.feeling?.first == 3 {
-                feelingDictionary[3].1 += 1
+                feelingDictionary[2].1 += 1
             }
             if entry.feeling?.first == 4 {
-                feelingDictionary[4].1 += 1
+                feelingDictionary[3].1 += 1
             }
             if entry.feeling?.first == 5 {
-                feelingDictionary[5].1 += 1
+                feelingDictionary[4].1 += 1
             }
             if entry.feeling?.first == 6 {
+                feelingDictionary[5].1 += 1
+            }
+            if entry.feeling?.first == 7 {
                 feelingDictionary[6].1 += 1
             }
         }

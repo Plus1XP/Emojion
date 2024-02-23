@@ -83,8 +83,6 @@
 		2FA93C0E2B3B716400A1F994 /* ChartBarMarkXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */; };
 		2FA93C102B3B719700A1F994 /* ChartBarMarkXYView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */; };
 		2FA93C112B3B719700A1F994 /* ChartBarMarkXYView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */; };
-		2FA93C132B3B71B300A1F994 /* ChartBarMarkDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C122B3B71B300A1F994 /* ChartBarMarkDateView.swift */; };
-		2FA93C142B3B71B300A1F994 /* ChartBarMarkDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C122B3B71B300A1F994 /* ChartBarMarkDateView.swift */; };
 		2FA93C162B3B71D100A1F994 /* ChartLineMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */; };
 		2FA93C172B3B71D100A1F994 /* ChartLineMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */; };
 		2FA93C192B3B71DA00A1F994 /* ChartSectorMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */; };
@@ -107,8 +105,6 @@
 		2FC755ED282AA5EF008344CE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC755EB282AA5EF008344CE /* Entry.swift */; };
 		2FCF6C9B295C8E8D00834252 /* FeelingStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF6C9A295C8E8D00834252 /* FeelingStats.swift */; };
 		2FCF6C9C295C8E8D00834252 /* FeelingStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF6C9A295C8E8D00834252 /* FeelingStats.swift */; };
-		2FCF6C9E295C8FAC00834252 /* StackedBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF6C9D295C8FAC00834252 /* StackedBarChartView.swift */; };
-		2FCF6C9F295C8FAC00834252 /* StackedBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF6C9D295C8FAC00834252 /* StackedBarChartView.swift */; };
 		2FCF6CA1295C90A400834252 /* ChartStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF6CA0295C90A400834252 /* ChartStore.swift */; };
 		2FCF6CA2295C90A400834252 /* ChartStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FCF6CA0295C90A400834252 /* ChartStore.swift */; };
 		2FDBE9042B4B1EF00088CAFE /* EntryStoreExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDBE9032B4B1EF00088CAFE /* EntryStoreExtension.swift */; };
@@ -169,7 +165,6 @@
 		2FA93C092B3A1DB500A1F994 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBarMarkXView.swift; sourceTree = "<group>"; };
 		2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBarMarkXYView.swift; sourceTree = "<group>"; };
-		2FA93C122B3B71B300A1F994 /* ChartBarMarkDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBarMarkDateView.swift; sourceTree = "<group>"; };
 		2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartLineMarkView.swift; sourceTree = "<group>"; };
 		2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSectorMarkView.swift; sourceTree = "<group>"; };
 		2FA93C1B2B3B883B00A1F994 /* BubbleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleEffect.swift; sourceTree = "<group>"; };
@@ -181,7 +176,6 @@
 		2FBDEB952824A246003953C0 /* MockDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataObject.swift; sourceTree = "<group>"; };
 		2FC755EB282AA5EF008344CE /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		2FCF6C9A295C8E8D00834252 /* FeelingStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingStats.swift; sourceTree = "<group>"; };
-		2FCF6C9D295C8FAC00834252 /* StackedBarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackedBarChartView.swift; sourceTree = "<group>"; };
 		2FCF6CA0295C90A400834252 /* ChartStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartStore.swift; sourceTree = "<group>"; };
 		2FDBE9032B4B1EF00088CAFE /* EntryStoreExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryStoreExtension.swift; sourceTree = "<group>"; };
 		2FDBE9062B4B212A0088CAFE /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
@@ -221,9 +215,7 @@
 				2F01D8B32814697B004583E3 /* FeelingFinderView.swift */,
 				2FB51F9B2B868AF2007757E3 /* EntryDebugButtons.swift */,
 				2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */,
-				2FCF6C9D295C8FAC00834252 /* StackedBarChartView.swift */,
 				2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */,
-				2FA93C122B3B71B300A1F994 /* ChartBarMarkDateView.swift */,
 				2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */,
 				2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */,
 				2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */,
@@ -501,7 +493,6 @@
 				2F4F147228323D76008D74B0 /* UITextEditor.swift in Sources */,
 				2FFE3985283FD26900DFFA48 /* SettingsView.swift in Sources */,
 				2FA93C1C2B3B883B00A1F994 /* BubbleEffect.swift in Sources */,
-				2FCF6C9E295C8FAC00834252 /* StackedBarChartView.swift in Sources */,
 				2FB51F992B866661007757E3 /* ShakeEffect.swift in Sources */,
 				2FAF0055283D68B10092E8DD /* CalendarRowView.swift in Sources */,
 				2FA30EDF2B34CAC100195CA4 /* BiometricService.swift in Sources */,
@@ -509,7 +500,6 @@
 				2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB90280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8D280E10FE00D2A725 /* CardRowView.swift in Sources */,
-				2FA93C132B3B71B300A1F994 /* ChartBarMarkDateView.swift in Sources */,
 				2F70FB682808536E00D2A725 /* EntryFormView.swift in Sources */,
 				2FA30EEC2B34D03B00195CA4 /* LoginView.swift in Sources */,
 				2F70FB84280D79DD00D2A725 /* EditEntryView.swift in Sources */,
@@ -565,7 +555,6 @@
 				2F4F147328323D76008D74B0 /* UITextEditor.swift in Sources */,
 				2FFE3986283FD26900DFFA48 /* SettingsView.swift in Sources */,
 				2FA93C1D2B3B883B00A1F994 /* BubbleEffect.swift in Sources */,
-				2FCF6C9F295C8FAC00834252 /* StackedBarChartView.swift in Sources */,
 				2FB51F9A2B866661007757E3 /* ShakeEffect.swift in Sources */,
 				2FAF0056283D68B10092E8DD /* CalendarRowView.swift in Sources */,
 				2FA30EE02B34CAC100195CA4 /* BiometricService.swift in Sources */,
@@ -573,7 +562,6 @@
 				2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB91280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8E280E10FE00D2A725 /* CardRowView.swift in Sources */,
-				2FA93C142B3B71B300A1F994 /* ChartBarMarkDateView.swift in Sources */,
 				2F70FB692808536E00D2A725 /* EntryFormView.swift in Sources */,
 				2FA30EED2B34D03B00195CA4 /* LoginView.swift in Sources */,
 				2F70FB85280D79DD00D2A725 /* EditEntryView.swift in Sources */,
@@ -704,7 +692,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Emojion (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = L4UU7WP4CE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -741,7 +729,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Emojion (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = L4UU7WP4CE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
