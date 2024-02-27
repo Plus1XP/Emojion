@@ -99,7 +99,7 @@ extension EntryStore {
             newEntry.event = "Angry: \(count)"
             newEntry.emojion = generateEmoji()
             newEntry.feeling = [primary, secondary, tertiary]
-            newEntry.rating = generateRating()
+            newEntry.rating = 0
             newEntry.note = generateNote()
             debugPrint(newEntry.feeling)
             saveChanges()
@@ -127,7 +127,7 @@ extension EntryStore {
             newEntry.event = "Bad: \(count)"
             newEntry.emojion = generateEmoji()
             newEntry.feeling = [primary, secondary, tertiary]
-            newEntry.rating = generateRating()
+            newEntry.rating = 1
             newEntry.note = generateNote()
             debugPrint(newEntry.feeling)
             saveChanges()
@@ -155,7 +155,7 @@ extension EntryStore {
             newEntry.event = "Disgusted: \(count)"
             newEntry.emojion = generateEmoji()
             newEntry.feeling = [primary, secondary, tertiary]
-            newEntry.rating = generateRating()
+            newEntry.rating = 2
             newEntry.note = generateNote()
             debugPrint(newEntry.feeling)
             saveChanges()
@@ -183,7 +183,7 @@ extension EntryStore {
             newEntry.event = "Fearful: \(count)"
             newEntry.emojion = generateEmoji()
             newEntry.feeling = [primary, secondary, tertiary]
-            newEntry.rating = generateRating()
+            newEntry.rating = 3
             newEntry.note = generateNote()
             debugPrint(newEntry.feeling)
             saveChanges()
@@ -211,7 +211,7 @@ extension EntryStore {
             newEntry.event = "Happy: \(count)"
             newEntry.emojion = generateEmoji()
             newEntry.feeling = [primary, secondary, tertiary]
-            newEntry.rating = generateRating()
+            newEntry.rating = 4
             newEntry.note = generateNote()
             debugPrint(newEntry.feeling)
             saveChanges()
@@ -239,7 +239,7 @@ extension EntryStore {
             newEntry.event = "Sad: \(count)"
             newEntry.emojion = generateEmoji()
             newEntry.feeling = [primary, secondary, tertiary]
-            newEntry.rating = generateRating()
+            newEntry.rating = 4
             newEntry.note = generateNote()
             debugPrint(newEntry.feeling)
             saveChanges()
@@ -267,7 +267,7 @@ extension EntryStore {
             newEntry.event = "Surprised: \(count)"
             newEntry.emojion = generateEmoji()
             newEntry.feeling = [primary, secondary, tertiary]
-            newEntry.rating = generateRating()
+            newEntry.rating = 4
             newEntry.note = generateNote()
             debugPrint(newEntry.feeling)
             saveChanges()

@@ -101,6 +101,8 @@
 		2FB51F9D2B868AF2007757E3 /* EntryDebugButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB51F9B2B868AF2007757E3 /* EntryDebugButtons.swift */; };
 		2FB51F9F2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB51F9E2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift */; };
 		2FB51FA02B88D2BB007757E3 /* FeelingWheelUpdateV22.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB51F9E2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift */; };
+		2FB51FA22B8E593F007757E3 /* StarRatingUpdateV22.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB51FA12B8E593F007757E3 /* StarRatingUpdateV22.swift */; };
+		2FB51FA32B8E593F007757E3 /* StarRatingUpdateV22.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB51FA12B8E593F007757E3 /* StarRatingUpdateV22.swift */; };
 		2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
 		2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
 		2FC755EC282AA5EF008344CE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC755EB282AA5EF008344CE /* Entry.swift */; };
@@ -176,6 +178,7 @@
 		2FB51F982B866661007757E3 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		2FB51F9B2B868AF2007757E3 /* EntryDebugButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDebugButtons.swift; sourceTree = "<group>"; };
 		2FB51F9E2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingWheelUpdateV22.swift; sourceTree = "<group>"; };
+		2FB51FA12B8E593F007757E3 /* StarRatingUpdateV22.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingUpdateV22.swift; sourceTree = "<group>"; };
 		2FBDEB952824A246003953C0 /* MockDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataObject.swift; sourceTree = "<group>"; };
 		2FC755EB282AA5EF008344CE /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		2FCF6C9A295C8E8D00834252 /* FeelingStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingStats.swift; sourceTree = "<group>"; };
@@ -318,6 +321,7 @@
 				2FCF6C9A295C8E8D00834252 /* FeelingStats.swift */,
 				2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */,
 				2FB51F9E2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift */,
+				2FB51FA12B8E593F007757E3 /* StarRatingUpdateV22.swift */,
 			);
 			path = DataObject;
 			sourceTree = "<group>";
@@ -468,6 +472,7 @@
 				2F01D8B42814697B004583E3 /* FeelingFinderView.swift in Sources */,
 				2FA93C162B3B71D100A1F994 /* ChartLineMarkView.swift in Sources */,
 				2F70FB81280D6FC600D2A725 /* String.swift in Sources */,
+				2FB51FA22B8E593F007757E3 /* StarRatingUpdateV22.swift in Sources */,
 				2F70FB7E280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB552808484300D2A725 /* Persistence.swift in Sources */,
 				2F1357942850D2B4006C07B2 /* Color.swift in Sources */,
@@ -531,6 +536,7 @@
 				2F01D8B52814697B004583E3 /* FeelingFinderView.swift in Sources */,
 				2FA93C172B3B71D100A1F994 /* ChartLineMarkView.swift in Sources */,
 				2F70FB82280D6FC600D2A725 /* String.swift in Sources */,
+				2FB51FA32B8E593F007757E3 /* StarRatingUpdateV22.swift in Sources */,
 				2F70FB7F280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB562808484300D2A725 /* Persistence.swift in Sources */,
 				2F1357952850D2B4006C07B2 /* Color.swift in Sources */,

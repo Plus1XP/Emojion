@@ -34,6 +34,7 @@ class EntryStore: ObservableObject {
     init() {
         fetchEntries()
         FeelingWheelUpdateV22(entries: entries)
+        StarRatingUpdateV22(entries: entries)
     }
     
     func fetchEntries() {

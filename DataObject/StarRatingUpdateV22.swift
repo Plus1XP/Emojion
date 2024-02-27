@@ -1,37 +1,37 @@
 //
-//  FeelingWheelUpdateV22.swift
+//  StarRatingUpdateV22.swift
 //  Emojion
 //
-//  Created by nabbit on 23/02/2024.
+//  Created by nabbit on 27/02/2024.
 //
 
 import SwiftUI
 
-struct FeelingWheelUpdateV22 {
-    @AppStorage("hasRunFeelingArrayV22Update") var hasRunV22Update: Bool = false
+struct StarRatingUpdateV22 {
+    @AppStorage("hasRunStarRatingV22Update") var hasRunV22Update: Bool = false
     var entries: [Entry]
     
     init(entries: [Entry]) {
         self.entries = entries
-        RunFeelingArrayUpdateV22(entries: entries)
+        RunStarRatingUpdateV22(entries: entries)
     }
 
-    func RunFeelingArrayUpdateV22(entries: [Entry]) -> Void {
+    func RunStarRatingUpdateV22(entries: [Entry]) -> Void {
         debugPrint("App Version: \(getAppVersion())")
         if getAppVersion() <= 22 && hasRunV22Update == false {
             debugPrint("Current version \(getAppVersion()) is lower than fix 22")
-            debugPrint("Running Feeling Array Fix")
-            UpdateFeelingEntries(entries: entries)
+            debugPrint("Running Star Rating Fix")
+            UpdateRatingEntries(entries: entries)
             hasRunV22Update = true
             debugPrint("Fix Complete")
         }
         if getAppVersion() <= 22 && hasRunV22Update == true {
             debugPrint("Current version \(getAppVersion()) is lower than fix 22")
-            debugPrint("Feeling Array Fix Already Applied")
+            debugPrint("Star Rating Fix Already Applied")
             debugPrint("Abort Fix")
         } else {
             debugPrint("Current version \(getAppVersion()) is higher than fix 22")
-            debugPrint("Abort Feeling Array Fix")
+            debugPrint("Abort Star Rating Fix")
         }
     }
     
@@ -45,12 +45,12 @@ struct FeelingWheelUpdateV22 {
         return 0
     }
     
-    func UpdateFeelingEntries(entries: [Entry]) -> Void {
+    func UpdateRatingEntries(entries: [Entry]) -> Void {
         for entry in entries {
-            debugPrint("Changing Array \(String(describing: entry.id))")
-            debugPrint(entry.feeling?[0])
-            entry.feeling?[0] += 1
-            debugPrint(entry.feeling?[0])
+            debugPrint("Changing Star Rating \(String(describing: entry.id))")
+            debugPrint(entry.rating)
+            entry.rating += 1
+            debugPrint(entry.rating)
             saveChanges()
         }
     }
@@ -64,3 +64,4 @@ struct FeelingWheelUpdateV22 {
         }
     }
 }
+
