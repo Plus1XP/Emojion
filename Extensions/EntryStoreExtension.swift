@@ -76,7 +76,19 @@ extension EntryStore {
         fetchEntries()
     }
     
-    func addFeelingConversionMockEntries() {
+    func addAllMockFeelings() -> Void {
+        addAngryFeelingMockEntries()
+        addBadFeelingMockEntries()
+        addDisgustedFeelingMockEntries()
+        addFearfulFeelingMockEntries()
+        addHappyFeelingMockEntries()
+        addSadFeelingMockEntries()
+        addSurprisedFeelingMockEntries()
+        fetchEntries()
+    }
+    
+    func addAngryFeelingMockEntries() {
+        var primary = 0
         var secondary = 0
         var tertiary = 0
         for count in 1...16 {
@@ -84,16 +96,13 @@ extension EntryStore {
             let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
             newEntry.id = generateUUID()
             newEntry.timestamp = Date.now
-            newEntry.event = generateEvent()
+            newEntry.event = "Angry: \(count)"
             newEntry.emojion = generateEmoji()
-            newEntry.feeling = [0, secondary, tertiary]
+            newEntry.feeling = [primary, secondary, tertiary]
             newEntry.rating = generateRating()
             newEntry.note = generateNote()
             debugPrint(newEntry.feeling)
             saveChanges()
-//            if !(count % 2 == 0) && count != 1 {
-//                secondary = 0
-//            }
             tertiary += 1
             if count % 2 == 0 {
                 secondary += 1
@@ -104,7 +113,174 @@ extension EntryStore {
                 }
             }
         }
-        fetchEntries()
+    }
+    
+    func addBadFeelingMockEntries() {
+        var primary = 1
+        var secondary = 0
+        var tertiary = 0
+        for count in 1...8 {
+            debugPrint("Count: \(count)")
+            let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
+            newEntry.id = generateUUID()
+            newEntry.timestamp = Date.now
+            newEntry.event = "Bad: \(count)"
+            newEntry.emojion = generateEmoji()
+            newEntry.feeling = [primary, secondary, tertiary]
+            newEntry.rating = generateRating()
+            newEntry.note = generateNote()
+            debugPrint(newEntry.feeling)
+            saveChanges()
+            tertiary += 1
+            if count % 2 == 0 {
+                secondary += 1
+                tertiary = 0
+            } else {
+                if count == 1 {
+                    secondary = 0
+                }
+            }
+        }
+    }
+    
+    func addDisgustedFeelingMockEntries() {
+        var primary = 2
+        var secondary = 0
+        var tertiary = 0
+        for count in 1...8 {
+            debugPrint("Count: \(count)")
+            let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
+            newEntry.id = generateUUID()
+            newEntry.timestamp = Date.now
+            newEntry.event = "Disgusted: \(count)"
+            newEntry.emojion = generateEmoji()
+            newEntry.feeling = [primary, secondary, tertiary]
+            newEntry.rating = generateRating()
+            newEntry.note = generateNote()
+            debugPrint(newEntry.feeling)
+            saveChanges()
+            tertiary += 1
+            if count % 2 == 0 {
+                secondary += 1
+                tertiary = 0
+            } else {
+                if count == 1 {
+                    secondary = 0
+                }
+            }
+        }
+    }
+    
+    func addFearfulFeelingMockEntries() {
+        var primary = 3
+        var secondary = 0
+        var tertiary = 0
+        for count in 1...12 {
+            debugPrint("Count: \(count)")
+            let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
+            newEntry.id = generateUUID()
+            newEntry.timestamp = Date.now
+            newEntry.event = "Fearful: \(count)"
+            newEntry.emojion = generateEmoji()
+            newEntry.feeling = [primary, secondary, tertiary]
+            newEntry.rating = generateRating()
+            newEntry.note = generateNote()
+            debugPrint(newEntry.feeling)
+            saveChanges()
+            tertiary += 1
+            if count % 2 == 0 {
+                secondary += 1
+                tertiary = 0
+            } else {
+                if count == 1 {
+                    secondary = 0
+                }
+            }
+        }
+    }
+    
+    func addHappyFeelingMockEntries() {
+        var primary = 4
+        var secondary = 0
+        var tertiary = 0
+        for count in 1...18 {
+            debugPrint("Count: \(count)")
+            let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
+            newEntry.id = generateUUID()
+            newEntry.timestamp = Date.now
+            newEntry.event = "Happy: \(count)"
+            newEntry.emojion = generateEmoji()
+            newEntry.feeling = [primary, secondary, tertiary]
+            newEntry.rating = generateRating()
+            newEntry.note = generateNote()
+            debugPrint(newEntry.feeling)
+            saveChanges()
+            tertiary += 1
+            if count % 2 == 0 {
+                secondary += 1
+                tertiary = 0
+            } else {
+                if count == 1 {
+                    secondary = 0
+                }
+            }
+        }
+    }
+    
+    func addSadFeelingMockEntries() {
+        var primary = 5
+        var secondary = 0
+        var tertiary = 0
+        for count in 1...12 {
+            debugPrint("Count: \(count)")
+            let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
+            newEntry.id = generateUUID()
+            newEntry.timestamp = Date.now
+            newEntry.event = "Sad: \(count)"
+            newEntry.emojion = generateEmoji()
+            newEntry.feeling = [primary, secondary, tertiary]
+            newEntry.rating = generateRating()
+            newEntry.note = generateNote()
+            debugPrint(newEntry.feeling)
+            saveChanges()
+            tertiary += 1
+            if count % 2 == 0 {
+                secondary += 1
+                tertiary = 0
+            } else {
+                if count == 1 {
+                    secondary = 0
+                }
+            }
+        }
+    }
+    
+    func addSurprisedFeelingMockEntries() {
+        var primary = 6
+        var secondary = 0
+        var tertiary = 0
+        for count in 1...8 {
+            debugPrint("Count: \(count)")
+            let newEntry = Entry(context: PersistenceController.shared.container.viewContext)
+            newEntry.id = generateUUID()
+            newEntry.timestamp = Date.now
+            newEntry.event = "Surprised: \(count)"
+            newEntry.emojion = generateEmoji()
+            newEntry.feeling = [primary, secondary, tertiary]
+            newEntry.rating = generateRating()
+            newEntry.note = generateNote()
+            debugPrint(newEntry.feeling)
+            saveChanges()
+            tertiary += 1
+            if count % 2 == 0 {
+                secondary += 1
+                tertiary = 0
+            } else {
+                if count == 1 {
+                    secondary = 0
+                }
+            }
+        }
     }
     
     func generateUUID() -> UUID {

@@ -99,6 +99,8 @@
 		2FB51F9A2B866661007757E3 /* ShakeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB51F982B866661007757E3 /* ShakeEffect.swift */; };
 		2FB51F9C2B868AF2007757E3 /* EntryDebugButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB51F9B2B868AF2007757E3 /* EntryDebugButtons.swift */; };
 		2FB51F9D2B868AF2007757E3 /* EntryDebugButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB51F9B2B868AF2007757E3 /* EntryDebugButtons.swift */; };
+		2FB51F9F2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB51F9E2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift */; };
+		2FB51FA02B88D2BB007757E3 /* FeelingWheelUpdateV22.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB51F9E2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift */; };
 		2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
 		2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBDEB952824A246003953C0 /* MockDataObject.swift */; };
 		2FC755EC282AA5EF008344CE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC755EB282AA5EF008344CE /* Entry.swift */; };
@@ -173,6 +175,7 @@
 		2FAF0054283D68B10092E8DD /* CalendarRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarRowView.swift; sourceTree = "<group>"; };
 		2FB51F982B866661007757E3 /* ShakeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeEffect.swift; sourceTree = "<group>"; };
 		2FB51F9B2B868AF2007757E3 /* EntryDebugButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDebugButtons.swift; sourceTree = "<group>"; };
+		2FB51F9E2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingWheelUpdateV22.swift; sourceTree = "<group>"; };
 		2FBDEB952824A246003953C0 /* MockDataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataObject.swift; sourceTree = "<group>"; };
 		2FC755EB282AA5EF008344CE /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		2FCF6C9A295C8E8D00834252 /* FeelingStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingStats.swift; sourceTree = "<group>"; };
@@ -281,13 +284,13 @@
 		2F70FB76280C85D800D2A725 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2FA30EE82B34CFFF00195CA4 /* AuthenticationView.swift */,
+				2FA30EEB2B34D03B00195CA4 /* LoginView.swift */,
 				2F70FB3F2808484100D2A725 /* ContentView.swift */,
 				2F70FB89280E011300D2A725 /* CardView.swift */,
 				2F20BB1D283BF856002512AB /* CalendarView.swift */,
 				2F135771284E0539006C07B2 /* ChartView.swift */,
 				2FFE3984283FD26900DFFA48 /* SettingsView.swift */,
-				2FA30EE82B34CFFF00195CA4 /* AuthenticationView.swift */,
-				2FA30EEB2B34D03B00195CA4 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				2FBDEB952824A246003953C0 /* MockDataObject.swift */,
 				2FCF6C9A295C8E8D00834252 /* FeelingStats.swift */,
 				2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */,
+				2FB51F9E2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift */,
 			);
 			path = DataObject;
 			sourceTree = "<group>";
@@ -482,6 +486,7 @@
 				2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */,
 				2FDBE9072B4B212A0088CAFE /* Formatter.swift in Sources */,
 				2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */,
+				2FB51F9F2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift in Sources */,
 				2F70FB8A280E011300D2A725 /* CardView.swift in Sources */,
 				2FF810F12847BFC00050E533 /* CalendarStore.swift in Sources */,
 				2FA30EE52B34CB2300195CA4 /* SyncMonitor.swift in Sources */,
@@ -544,6 +549,7 @@
 				2F35F304282F178A0038D78B /* NSManagedObject.swift in Sources */,
 				2FDBE9082B4B212A0088CAFE /* Formatter.swift in Sources */,
 				2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */,
+				2FB51FA02B88D2BB007757E3 /* FeelingWheelUpdateV22.swift in Sources */,
 				2F70FB8B280E011300D2A725 /* CardView.swift in Sources */,
 				2FF810F22847BFC00050E533 /* CalendarStore.swift in Sources */,
 				2FA30EE62B34CB2300195CA4 /* SyncMonitor.swift in Sources */,
@@ -692,7 +698,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Emojion (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = L4UU7WP4CE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -710,7 +716,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
 				PRODUCT_NAME = Emojion;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -729,7 +735,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Emojion (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = L4UU7WP4CE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -747,7 +753,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
 				PRODUCT_NAME = Emojion;
 				PROVISIONING_PROFILE_SPECIFIER = "";

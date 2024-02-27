@@ -43,7 +43,20 @@ struct EntryDebugButtons: View {
                 }) {
                     Label("", systemImage: "xmark.icloud.fill")
                         .foregroundStyle(.white, .red)
-                }            }
+                }
+                Button(action: {
+                    entryStore.addAllMockFeelings()
+                }) {
+                    Label("", systemImage: "checkmark.seal.fill")
+                        .foregroundStyle(.white, .blue)
+                }
+                Button(action: {
+                    FeelingWheelUpdateV22(entries: entryStore.entries)
+                }) {
+                    Label("", systemImage: "exclamationmark.triangle.fill")
+                        .foregroundStyle(.white, .yellow)
+                }
+            }
             .presentationCompactAdaptation(.popover)
             .frame(minWidth: 100, maxHeight: 50)
             .padding()
