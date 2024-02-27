@@ -20,7 +20,9 @@ struct ContentView: View {
                     .navigationTitle("Emojions")
             }
             .tabItem {
-                Image(systemName: "rectangle.stack")
+//                Image(systemName: "rectangle.stack")
+                Image(systemName: "calendar.day.timeline.left")
+
                 Text("Emojions")
             }
             .tag(0)
