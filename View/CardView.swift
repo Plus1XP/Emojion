@@ -40,10 +40,16 @@ struct CardView: View {
                                             CardRowView(index: entryStore.entries.firstIndex(of: entry)!)
                                                 .padding(.leading, self.editMode.isEditing ? 10 : 0)
                                         }
-                                        NavigationLink(destination: EntryDetailsView(index: Binding(get: {entryStore.entries.firstIndex(of: entry)!}, set: {_ in entryStore.entries.firstIndex(of: entry)}))) {
-                                            EmptyView()
+                                        if let entryIndex = entryStore.entries.firstIndex(of: entry) {
+                                            NavigationLink(destination: EntryDetailsView(index: Binding(get: {entryIndex}, set: {_ in entryIndex}))) {
+                                                EmptyView()
+                                            }
+                                            .opacity(0)
                                         }
-                                        .opacity(0)
+//                                        NavigationLink(destination: EntryDetailsView(index: Binding(get: {entryStore.entries.firstIndex(of: entry)!}, set: {_ in entryStore.entries.firstIndex(of: entry)}))) {
+//                                            EmptyView()
+//                                        }
+//                                        .opacity(0)
                                     }
                                 }
                                 .listRowSeparator(.hidden)
