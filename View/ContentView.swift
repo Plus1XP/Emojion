@@ -17,13 +17,13 @@ struct ContentView: View {
         TabView(selection: $selection) {
             NavigationView {
                 CardView()
-                    .navigationTitle("Emojions")
+                    .navigationTitle("Timeline")
             }
             .tabItem {
 //                Image(systemName: "rectangle.stack")
                 Image(systemName: "calendar.day.timeline.left")
 
-                Text("Emojions")
+                Text("Timeline") // Over names could be: Overview, Entries
             }
             .tag(0)
             NavigationView {
