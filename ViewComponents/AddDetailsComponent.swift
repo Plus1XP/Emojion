@@ -1,14 +1,14 @@
 //
-//  EntryDetailsCardView.swift
+//  AddDetailsComponent.swift
 //  Emojion
 //
-//  Created by Plus1XP on 18/04/2022.
+//  Created by nabbit on 01/03/2024.
 //
 
 import SwiftUI
 import Combine
 
-struct EditDetailsComponent: View {
+struct AddDetailsComponent: View {
     @Environment(\.presentationMode) var presentaionMode
     @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var entryStore: EntryStore
@@ -29,7 +29,7 @@ struct EditDetailsComponent: View {
     var emojionFontSize: CGFloat = 125
     var starFontSize: CGFloat = 25
     let sectionTitleColor: Color = Color.secondary
-    let index: Int
+//    let index: Int
     
     var body: some View {
         VStack {
@@ -163,38 +163,38 @@ struct EditDetailsComponent: View {
             .padding(.trailing)
             .padding(.bottom)
             
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
-                Text("Entry Date")
-                    .font(.footnote)
-                    .textCase(nil)
-                    .foregroundStyle(self.sectionTitleColor)
-            })
-            HStack {
-                if let date = entryStore.entries[index].timestamp {
-                    Text(date, formatter: Formatter.dateFormatter)
-                }
-            }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(
-                Rectangle()
-                    .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-                    .cornerRadius(10.0)
-            )
-            .padding(.leading)
-            .padding(.trailing)
-            .padding(.bottom)
+//            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
+//                Text("Entry Date")
+//                    .font(.footnote)
+//                    .textCase(nil)
+//                    .foregroundStyle(self.sectionTitleColor)
+//            })
+//            HStack {
+//                if let date = entryStore.entries[index].timestamp {
+//                    Text(date, formatter: Formatter.dateFormatter)
+//                }
+//            }
+//            .padding()
+//            .frame(maxWidth: .infinity)
+//            .background(
+//                Rectangle()
+//                    .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+//                    .cornerRadius(10.0)
+//            )
+//            .padding(.leading)
+//            .padding(.trailing)
+//            .padding(.bottom)
             
             if hasEntryChanged {
                 HStack {
                     Spacer()
                     Button(action: {
-                        self.event = entryStore.entries[self.index].event ?? ""
-                        self.emojion = entryStore.entries[self.index].emojion ?? "🫥"
-                        self.feeling = entryStore.entries[self.index].feeling ?? [0,0,0]
-                        self.rating = entryStore.entries[self.index].rating
-                        self.cachedRating = entryStore.entries[self.index].rating
-                        self.note = entryStore.entries[self.index].note ?? ""
+                        self.event = ""
+                        self.emojion = "🫥"
+                        self.feeling = [0,0,0]
+                        self.rating = 0
+                        self.cachedRating = 0
+                        self.note = ""
                         self.animateXMark = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                             self.animateXMark = false
@@ -217,17 +217,13 @@ struct EditDetailsComponent: View {
                     })
                     Spacer()
                     Button(action: {
-                        entryStore.entries[self.index].event = self.event
-                        entryStore.entries[self.index].emojion = self.emojion
-                        entryStore.entries[self.index].feeling = self.feeling
-                        entryStore.entries[self.index].rating = self.rating
-                        entryStore.entries[self.index].note = self.note
-                        entryStore.updateEntry(entry: entryStore.entries[index])
+                        entryStore.addNewEntry(event: self.event, emojion: self.emojion, feeling: self.feeling, rating: self.rating, note: self.note)
                         self.animateCheckMark = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                             self.animateCheckMark = false
                             self.hasEntryChanged = false
                             self.presentaionMode.wrappedValue.dismiss()
+                            
                         }
                     }, label: {
                         Image(systemName: self.animateCheckMark ? "checkmark.circle" : "checkmark.circle.fill")
@@ -254,9 +250,9 @@ struct EditDetailsComponent: View {
     }
 }
 
-struct EditDetailsComponent_Previews: PreviewProvider {
+struct AddDetailsComponent_Previews: PreviewProvider {
     static var previews: some View {
-        EditDetailsComponent(event: .constant(Entry.MockEntry.event!), emojion: .constant(Entry.MockEntry.emojion!), feeling: .constant(Entry.MockEntry.feeling!), rating: .constant(Entry.MockEntry.rating), cachedRating: .constant(3), note: .constant(Entry.MockEntry.note!), canShowFeelingFinderView: .constant(false), index: 0)
+        AddDetailsComponent(event: .constant(Entry.MockEntry.event!), emojion: .constant(Entry.MockEntry.emojion!), feeling: .constant(Entry.MockEntry.feeling!), rating: .constant(Entry.MockEntry.rating), cachedRating: .constant(3), note: .constant(Entry.MockEntry.note!), canShowFeelingFinderView: .constant(false))
             .environmentObject(EntryStore())
             .environmentObject(FeelingFinderStore())
         

@@ -21,6 +21,8 @@
 		2F1357952850D2B4006C07B2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1357932850D2B4006C07B2 /* Color.swift */; };
 		2F20BB1E283BF856002512AB /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20BB1D283BF856002512AB /* CalendarView.swift */; };
 		2F20BB1F283BF856002512AB /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20BB1D283BF856002512AB /* CalendarView.swift */; };
+		2F264E992B927F4F00B3F51A /* AddDetailsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */; };
+		2F264E9A2B927F4F00B3F51A /* AddDetailsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */; };
 		2F2B411E2B4D9C4600C94C90 /* MarqueText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B411D2B4D9C4600C94C90 /* MarqueText.swift */; };
 		2F2B411F2B4D9C4600C94C90 /* MarqueText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B411D2B4D9C4600C94C90 /* MarqueText.swift */; };
 		2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35F302282F178A0038D78B /* NSManagedObject.swift */; };
@@ -133,6 +135,7 @@
 		2F135771284E0539006C07B2 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		2F1357932850D2B4006C07B2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2F20BB1D283BF856002512AB /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailsComponent.swift; sourceTree = "<group>"; };
 		2F2B411D2B4D9C4600C94C90 /* MarqueText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueText.swift; sourceTree = "<group>"; };
 		2F35F302282F178A0038D78B /* NSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
 		2F4F147128323D76008D74B0 /* UITextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextEditor.swift; sourceTree = "<group>"; };
@@ -226,6 +229,7 @@
 				2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */,
 				2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */,
 				2FA93C1E2B3B93E400A1F994 /* ChartStatsView.swift */,
+				2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -480,6 +484,7 @@
 				2FA93C0D2B3B716400A1F994 /* ChartBarMarkXView.swift in Sources */,
 				2F01D8742812D711004583E3 /* Character.swift in Sources */,
 				2FA30EE92B34CFFF00195CA4 /* AuthenticationView.swift in Sources */,
+				2F264E992B927F4F00B3F51A /* AddDetailsComponent.swift in Sources */,
 				2FCF6CA1295C90A400834252 /* ChartStore.swift in Sources */,
 				2FF810EE284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2FA93C072B38FCC100A1F994 /* Date.swift in Sources */,
@@ -544,6 +549,7 @@
 				2FA93C0E2B3B716400A1F994 /* ChartBarMarkXView.swift in Sources */,
 				2F01D8752812D711004583E3 /* Character.swift in Sources */,
 				2FA30EEA2B34CFFF00195CA4 /* AuthenticationView.swift in Sources */,
+				2F264E9A2B927F4F00B3F51A /* AddDetailsComponent.swift in Sources */,
 				2FCF6CA2295C90A400834252 /* ChartStore.swift in Sources */,
 				2FF810EF284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2FA93C082B38FCC100A1F994 /* Date.swift in Sources */,

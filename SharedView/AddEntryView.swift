@@ -8,40 +8,25 @@
 import SwiftUI
 
 struct AddEntryView: View {
-    @Environment(\.presentationMode) var presentaionMode
+    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var entryStore: EntryStore
     @State var event: String = ""
-    @State var emojion: String = ""
+    @State var emojion : String = ""
     @State var feeling: [Int] = [0,0,0]
     @State var rating: Int64 = 0
+    @State var cachedRating: Int64 = 0
     @State var note: String = ""
+    @State var canShowFeelingFinderView: Bool = false
+    @State var animate: Bool = false
         
     var body: some View {
-        NavigationView {
-            Form {
-                EntryFormView(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, note: $note)
-            }
+        AddDetailsComponent(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, cachedRating: $cachedRating, note: $note, canShowFeelingFinderView: $canShowFeelingFinderView)
             .navigationTitle("New Emojion")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        presentaionMode.wrappedValue.dismiss()
-                    }) {
-                        Label("Dismiss", systemImage: "chevron.down")
-                            .foregroundColor(Color.red)
-                    }
-                 }
-                 ToolbarItem(placement: .navigationBarTrailing) {
-                     Button(action: {
-                         entryStore.addNewEntry(event: event, emojion: emojion, feeling: feeling, rating: rating, note: note)
-                         presentaionMode.wrappedValue.dismiss()
-                     }) {
-                         Label("Save", systemImage: "checkmark")
-                             .foregroundColor(Color.green)
-                     }
-                  }
-              }
-        }
+            .navigationBarTitleDisplayMode(.inline)
+            .presentationDragIndicator(.visible)
+            .background(Color.setViewBackgroundColor(colorScheme: self.colorScheme))
+            .opacity(self.canShowFeelingFinderView ? 0.5 : 1)
+            .blur(radius: self.canShowFeelingFinderView ? 2.5 : 0, opaque: false)
     }
 }
 
