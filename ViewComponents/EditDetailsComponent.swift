@@ -249,6 +249,7 @@ struct EditDetailsComponent: View {
             }
             Spacer()
         }
+        .presentationDragIndicator(.visible)
     }
 }
 
