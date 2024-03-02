@@ -30,10 +30,12 @@ class EntryStore: ObservableObject {
     }
     
     let wordList: [String] = ["sausage", "blubber", "pencil", "cloud", "moon", "water", "computer", "school", "network", "hammer", "walking", "violently", "mediocre", "literature", "chair", "two", "window", "cords", "musical", "zebra", "xylophone", "penguin", "home", "dog", "final", "ink", "teacher", "fun", "website", "banana", "uncle", "softly", "mega", "ten", "awesome", "attatch", "blue", "internet", "bottle", "tight", "zone", "tomato", "prison", "hydro", "cleaning", "telivision", "send", "frog", "cup", "book", "zooming", "falling", "evily", "gamer", "lid", "juice", "moniter", "captain", "bonding", "loudly", "thudding", "guitar", "shaving", "hair", "soccer", "water", "racket", "table", "late", "media", "desktop", "flipper", "club", "flying", "smooth", "monster", "purple", "guardian", "bold", "hyperlink", "presentation", "world", "national",   "comment", "element", "magic", "lion", "sand", "crust", "toast", "jam", "hunter", "forest", "foraging", "silently", "tawesomated", "joshing", "pong"]
- 
-        init() {
-            fetchEntries()
-        }
+    
+    init() {
+        fetchEntries()
+        FeelingWheelUpdateV22(entries: entries)
+        StarRatingUpdateV22(entries: entries)
+    }
     
     func fetchEntries() {
         let request = NSFetchRequest<Entry>(entityName: "Entry")
@@ -139,6 +141,15 @@ class EntryStore: ObservableObject {
         saveChanges()
     }
     
+    func deleteEntrySelectionEntries() {
+        for entry in self.entrySelection {
+            PersistenceController.shared.container.viewContext.delete(entry)
+        }
+        self.entrySelection.removeAll()
+//        self.sortEntries()
+        self.saveChanges()
+    }
+    
     func deleteAllEntries() {
         for entry in entries {
             PersistenceController.shared.container.viewContext.delete(entry)
@@ -201,24 +212,27 @@ class EntryStore: ObservableObject {
 
         for entry in entries {
             if entry.feeling?.first == 0 {
-                feelingDictionary["Angry"]! += 1
+                // Do nothing this is blank entry
             }
             if entry.feeling?.first == 1 {
-                feelingDictionary["Bad"]! += 1
+                feelingDictionary["Angry"]! += 1
             }
             if entry.feeling?.first == 2 {
-                feelingDictionary["Disgusting"]! += 1
+                feelingDictionary["Bad"]! += 1
             }
             if entry.feeling?.first == 3 {
-                feelingDictionary["Fearful"]! += 1
+                feelingDictionary["Disgusting"]! += 1
             }
             if entry.feeling?.first == 4 {
-                feelingDictionary["Happy"]! += 1
+                feelingDictionary["Fearful"]! += 1
             }
             if entry.feeling?.first == 5 {
-                feelingDictionary["Sad"]! += 1
+                feelingDictionary["Happy"]! += 1
             }
             if entry.feeling?.first == 6 {
+                feelingDictionary["Sad"]! += 1
+            }
+            if entry.feeling?.first == 7 {
                 feelingDictionary["Surprised"]! += 1
             }
             
@@ -231,24 +245,27 @@ class EntryStore: ObservableObject {
 
         for entry in entries {
             if entry.feeling?.first == 0 {
-                feelingDictionary[0].1 += 1
+                // Do nothing this is blank entry
             }
             if entry.feeling?.first == 1 {
-                feelingDictionary[1].1 += 1
+                feelingDictionary[0].1 += 1
             }
             if entry.feeling?.first == 2 {
-                feelingDictionary[2].1 += 1
+                feelingDictionary[1].1 += 1
             }
             if entry.feeling?.first == 3 {
-                feelingDictionary[3].1 += 1
+                feelingDictionary[2].1 += 1
             }
             if entry.feeling?.first == 4 {
-                feelingDictionary[4].1 += 1
+                feelingDictionary[3].1 += 1
             }
             if entry.feeling?.first == 5 {
-                feelingDictionary[5].1 += 1
+                feelingDictionary[4].1 += 1
             }
             if entry.feeling?.first == 6 {
+                feelingDictionary[5].1 += 1
+            }
+            if entry.feeling?.first == 7 {
                 feelingDictionary[6].1 += 1
             }
         }

@@ -49,6 +49,7 @@ struct CardRowView: View {
                                     .font(.callout)
                                     .fontWeight(.medium)
                                     .lineLimit(2)
+                                    .allowsTightening(true)
                                     .foregroundStyle(.primary)
                             }
                         }
@@ -56,8 +57,12 @@ struct CardRowView: View {
                     HStack {
                         Spacer()
                         if entryStore.entries.indices.contains(index) {
-                            StarRatingView(Binding(get: {entryStore.entries[index].rating}, set: {entryStore.entries[index].rating = $0}), starFontSize, starSpacing)
-                                .padding(.top, -5)
+                            // have to cast to int (non fixed size int) to check nil.
+                            if let rating = entryStore.entries[index].rating as? NSNumber {
+                                var int64value = rating.int64Value // This is an `Int64`
+                                StarRatingView(Binding(get: {int64value}, set: {int64value = $0}), starFontSize, starSpacing)
+                                    .padding(.top, -5)
+                            }
                         }
                         Spacer()
                     }

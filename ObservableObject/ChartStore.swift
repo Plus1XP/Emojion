@@ -8,7 +8,7 @@
 import SwiftUI
 
 class ChartStore: ObservableObject {
-    @Published var chartData: [FeelingStats] = [FeelingStats]() // Remove Soon
+    private let feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
     @Published var feelingData: [FeelingData] = [FeelingData]()
     @Published var feelingColors: [Color] = [.red, .green, .gray, .orange, .yellow, .blue, .purple]
     @Published var mostUsedEmoji: (emoji: String, tally: Int) = (emoji:"🫥" , tally:0)
@@ -27,8 +27,6 @@ class ChartStore: ObservableObject {
     @Published var leastUsedYear: (year: String, tally: Int) = (year: "", tally: 0)
     @Published var oldestEntryDate: String = ""
     @Published var newestEntryDate: String = ""
-
-    private let feelingFinderStore: FeelingFinderStore = FeelingFinderStore() // Remove Soon
     
     init() {
 //        self.populateEmptyFeelingData()
@@ -42,14 +40,6 @@ class ChartStore: ObservableObject {
         self.fetchExtremumFeeling(entries: entries)
         self.fetchExtremumEntryDate(entries: entries)
         self.fetchExtremumUsageDates(entries: entries)
-    }
-
-    func updateFeelingStats(entryStore: EntryStore) -> [FeelingStats] { // Remove Soon
-        chartData = [FeelingStats]()
-        for entry in entryStore.entries {
-            chartData.append(FeelingStats(color: getPrimarySelectedFeelingColor(feelingArray: entry.feeling!).description, type: getPrimarySelectedFeelingName(feelingArray: entry.feeling!), date: entry.timestamp!, count: 1))
-        }
-        return chartData.sorted()
     }
     
     func populateEmptyFeelingData() {
@@ -66,48 +56,51 @@ class ChartStore: ObservableObject {
     func fetchFeelingData(entries: [Entry]) {
         for entry in entries {
             if entry.feeling?.first == 0 {
+                // Do nothing this is blank entry
+            }
+            if entry.feeling?.first == 1 {
                 if let existingElement = feelingData.first(where: { $0.type == "Angry" }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
                     feelingData.append(FeelingData(type: "Angry", count: 1, color: Color.red, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 1 {
+            if entry.feeling?.first == 2 {
                 if let existingElement = feelingData.first(where: { $0.type == "Bad" }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
                     feelingData.append(FeelingData(type: "Bad", count: 1, color: Color.green, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 2 {
+            if entry.feeling?.first == 3 {
                 if let existingElement = feelingData.first(where: { $0.type == "Disgusted" }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
                     feelingData.append(FeelingData(type: "Disgusted", count: 1, color: Color.gray, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 3 {
+            if entry.feeling?.first == 4 {
                 if let existingElement = feelingData.first(where: { $0.type == "Fearful" }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
                     feelingData.append(FeelingData(type: "Fearful", count: 1, color: Color.orange, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 4 {
+            if entry.feeling?.first == 5 {
                 if let existingElement = feelingData.first(where: { $0.type == "Happy" }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
                     feelingData.append(FeelingData(type: "Happy", count: 1, color: Color.yellow, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 5 {
+            if entry.feeling?.first == 6 {
                 if let existingElement = feelingData.first(where: { $0.type == "Sad" }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
                     feelingData.append(FeelingData(type: "Sad", count: 1, color: Color.blue, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 6 {
+            if entry.feeling?.first == 7 {
                 if let existingElement = feelingData.first(where: { $0.type == "Surprised" }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
@@ -136,9 +129,9 @@ class ChartStore: ObservableObject {
         var tertiaryFeelingList = [String]()
 
         for entry in entries {
-            primaryFeelingList.append(getPrimarySelectedFeelingName(feelingArray: entry.feeling!))
-            secondaryFeelingList.append(getSecondarySelectedFeelingName(feelingArray: entry.feeling!))
-            tertiaryFeelingList.append(getTertiarySelectedFeelingName(feelingArray: entry.feeling!))
+            primaryFeelingList.append(feelingFinderStore.getPrimarySelectedFeelingName(feelingArray: entry.feeling!))
+            secondaryFeelingList.append(feelingFinderStore.getSecondarySelectedFeelingName(feelingArray: entry.feeling!))
+            tertiaryFeelingList.append(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: entry.feeling!))
         }
 
         self.mostUsedPrimaryFeeling = returnMostUsedString(stringList: primaryFeelingList)
@@ -210,37 +203,5 @@ class ChartStore: ObservableObject {
             result.1 = tally
         }
         return result
-    }
-    
-    func getPrimarySelectedFeelingName(feelingArray: [Int]) -> String {
-        if !feelingArray.isEmpty {
-            return feelingFinderStore.feeling[feelingArray[0]].name.capitalized
-        } else {
-            return ""
-        }
-    }
-    
-    func getSecondarySelectedFeelingName(feelingArray: [Int]) -> String {
-        if !feelingArray.isEmpty {
-            return feelingFinderStore.feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].name.capitalized
-        } else {
-            return ""
-        }
-    }
-
-    func getTertiarySelectedFeelingName(feelingArray: [Int]) -> String {
-        if !feelingArray.isEmpty {
-            return feelingFinderStore.feeling[feelingArray[0]].secondaryFeelings[feelingArray[1]].tertiaryFeelings[feelingArray[2]].name.capitalized
-        } else {
-            return ""
-        }
-    }
-
-    func getPrimarySelectedFeelingColor(feelingArray: [Int]) -> Color {
-        if !feelingArray.isEmpty {
-            return feelingFinderStore.feeling[feelingArray[0]].color
-        } else {
-            return Color.primary
-        }
     }
 }

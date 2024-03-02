@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StarRatingView: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @State var animate: Bool = false
     @Binding var starRating: Int64
     @Binding var canEditStarRating: Bool
     var starFontSize: CGFloat
@@ -39,16 +41,38 @@ struct StarRatingView: View {
             ForEach(0..<5) { star in
                 let starEmoji = "⭐️".ToImage(fontSize: starFontSize)
                 Image(uiImage: starEmoji!)
-                    .opacity(self.starRating >= Int64(star) ? 1.0 : 0.1)
+                    .opacity(getItemQuantityWithOffset(quantity: self.starRating) >= Int64(star) ? 1.0 : 0.15)
                     .onTapGesture {
-                        self.starRating = Int64(star)
-                        debugPrint("Rating has changed: \(starRating + 1)")
+                        let impactFeedback = UIImpactFeedbackGenerator(style: .light)
+                        impactFeedback.impactOccurred()
+                        self.animate.toggle()
+                        if !(star == 0 && self.starRating == 1) {
+                            self.starRating = setItemQuantityWithOffset(quantity: Int64(star))
+                        } else {
+                            self.starRating = 0
+                        }
+                        debugPrint("Rating has changed: \(starRating)")
                     }
+                    .shake($animate) {
+                        debugPrint("Execute Shake Animation")
+                    }
+//                    .background(self.starRating == 0 ? Circle()
+//                        .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+//                        .frame(width: 30, height: 30) : nil
+//                    )
             }
             
         }
         .disabled(!canEditStarRating)
     }
+}
+
+private func getItemQuantityWithOffset(quantity: Int64) -> Int64 {
+    return quantity - 1
+}
+
+private func setItemQuantityWithOffset(quantity: Int64) -> Int64 {
+    return quantity + 1
 }
 
 struct StarRatingView_Previews: PreviewProvider {

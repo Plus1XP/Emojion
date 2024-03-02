@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct CardView: View {
+    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var entryStore: EntryStore
+    @State private var editMode: EditMode = .inactive
     @State private var canShowAddEntryView: Bool = false
     @State private var canShowEditEntryView: Bool = false
-    @State private var canShowDebugMenu: Bool = false
     @State private var canAutoCompleteSearch: Bool = false
+    @State private var confirmDeletion: Bool = false
     @State private var canResetDate: Bool = false
-    @State private var hasEntrySaved: Bool = false
     @State private var calendarId: UUID = UUID()
     @State var index: Int = 0
     
@@ -33,13 +34,22 @@ struct CardView: View {
                                     // This Hack removes the Details Disclosure chevron from list view.
                                     ZStack {
                                         HStack(alignment: .top) {
+                                            if !self.editMode.isEditing {
                                                 DateRowView(index: entryStore.entries.firstIndex(of: entry)!)
-                                                CardRowView(index: entryStore.entries.firstIndex(of: entry)!)
+                                            }
+                                            CardRowView(index: entryStore.entries.firstIndex(of: entry)!)
+                                                .padding(.leading, self.editMode.isEditing ? 10 : 0)
                                         }
-                                        NavigationLink(destination: EntryDetailsView(index: entryStore.entries.firstIndex(of: entry)!)) {
-                                            EmptyView()
+                                        if let entryIndex = entryStore.entries.firstIndex(of: entry) {
+                                            NavigationLink(destination: EntryDetailsView(index: Binding(get: {entryIndex}, set: {_ in entryIndex}))) {
+                                                EmptyView()
+                                            }
+                                            .opacity(0)
                                         }
-                                        .opacity(0)
+//                                        NavigationLink(destination: EntryDetailsView(index: Binding(get: {entryStore.entries.firstIndex(of: entry)!}, set: {_ in entryStore.entries.firstIndex(of: entry)}))) {
+//                                            EmptyView()
+//                                        }
+//                                        .opacity(0)
                                     }
                                 }
                                 .listRowSeparator(.hidden)
@@ -48,7 +58,10 @@ struct CardView: View {
                                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                     Button(role: .destructive) {
                                         withAnimation {
-                                            entryStore.deleteEntry(index: index)
+                                            let feedbackGenerator: UINotificationFeedbackGenerator? = UINotificationFeedbackGenerator()
+                                            feedbackGenerator?.notificationOccurred(.success)
+                                            entryStore.deleteEntry(entry: entry)
+                                            self.entryStore.entrySelection.removeAll()
                                         }
                                     } label: {
                                         Label("Delete", systemImage: "trash")
@@ -62,7 +75,6 @@ struct CardView: View {
                                     .tint(.blue)
                                 }
                             }
-                            .onDelete(perform: entryStore.deleteEntry)
                         }
                     }
                 }
@@ -80,13 +92,14 @@ struct CardView: View {
             }
         }
         .disableAutocorrection(true)
-        .toolbar {
-            ToolbarItemGroup(placement: .navigationBarLeading) {
+        .navigationBarItems(
+            leading:
+                HStack {
                     DatePicker("Please enter a date", selection: $entryStore.searchDate, displayedComponents: .date)
                         .labelsHidden()
                         .id(calendarId)
-                        // Needed to close calendar picker after selection
-                        .onChange(of: Calendar.current.component(.day, from: entryStore.searchDate)) { _ in
+                    // Needed to close calendar picker after selection
+                        .onChange(of: Calendar.current.component(.day, from: entryStore.searchDate)) {
                             calendarId = UUID()
                             if !canResetDate {
                                 entryStore.isSearchingDate = true
@@ -94,85 +107,121 @@ struct CardView: View {
                                 canResetDate = false
                             }
                         }
-                if entryStore.isSearchingDate {
-                    Button(action: {
+                    
+                    if entryStore.isSearchingDate {
+                        Button(action: {
                             entryStore.isSearchingDate = false
                             canResetDate = true
                             entryStore.searchDate = Date.now
-                    }) {
-                        Label("Reset Calendar", systemImage: "xmark")
-                            .foregroundStyle(.red, .primary)
+                        }) {
+                            Label("Reset Calendar", systemImage: "xmark")
+                                .foregroundStyle(.red, .primary)
+                        }
                     }
-                }
+                    
+                    if self.editMode == .active {
+                        Button(action: {
+                            if self.entryStore.entrySelection.isEmpty {
+                                for entry in self.entryStore.entries {
+                                    self.entryStore.entrySelection.insert(entry)
+                                }
+                            } else {
+                                self.entryStore.entrySelection.removeAll()
+                            }
+                        }) {
+                            Image(systemName: self.entryStore.entrySelection.isEmpty ? "checklist.unchecked" : "checklist.checked")
+                                .symbolEffect(.bounce, value: self.entryStore.entrySelection.isEmpty)
+                                .contentTransition(.symbolEffect(.replace))
+                        }
+                        .foregroundStyle(.blue, setFontColor(colorScheme: colorScheme))
+                        .disabled(editMode == .inactive ? true : false)
+                        
+                        Button(action: {
+                            self.confirmDeletion = true
+                        }) {
+                            Label("Delete", systemImage: self.confirmDeletion ? "trash.fill" : "trash")
+                                .symbolEffect(.pulse.wholeSymbol, options: .repeating, value: self.confirmDeletion)
+                                .contentTransition(.symbolEffect(.replace))
+                        }
+                        .foregroundStyle(self.entryStore.entrySelection.isEmpty ? .gray : .red, .blue)
+                        .disabled(self.entryStore.entrySelection.isEmpty)
+                    }
                     // For Internal debugging
 #if DEBUG
-                    Button(action: {
-                        self.canShowDebugMenu.toggle()
-                    }) {
-                        Label("Show Debug Menu", systemImage: canShowDebugMenu ? "chevron.down.circle.fill" : "chevron.down.circle")
-                            .foregroundStyle(.primary)
-                    }
-                    .popover(isPresented: $canShowDebugMenu) {
-                        HStack {
-                            Button(action: {
-                                entryStore.addTestFlightMockEntries()
-                            }) {
-                                Label("", systemImage: "swift")
-                                    .foregroundStyle(.orange, .primary)
-                            }
-                            Button(action: {
-                                entryStore.addRandomMockEntries(numberOfEntries: 30)
-                            }) {
-                                Label("", systemImage: "calendar.badge.plus")
-                                    .foregroundStyle(.green, .primary)
-                            }
-                            Button(action: {
-                                entryStore.deleteAllEntries()
-                            }) {
-                                Label("", systemImage: "calendar.badge.minus")
-                                    .foregroundStyle(.red, .primary)
-                            }
-                            Button(action: {
-                                entryStore.resetCoreData()
-                            }) {
-                                Label("", systemImage: "xmark.icloud.fill")
-                                    .foregroundStyle(.white, .red)
-                            }
-                        }
-                        .presentationCompactAdaptation(.popover)
-                        .frame(minWidth: 100, maxHeight: 50)
-                        .padding()
-                        .background(.ultraThinMaterial)
-                    }
+                    EntryDebugButtons()
 #endif
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    self.canShowAddEntryView.toggle()
-                }) {
-                    Label("Add Item", systemImage: "plus")
+                },
+            trailing:
+                HStack {
+                    Button {
+                        if self.editMode == .inactive {
+                            self.editMode = .active
+                        }
+                        else if self.editMode == .active {
+                            self.editMode = .inactive
+                            self.entryStore.entrySelection.removeAll()
+                        }
+                    } label: {
+                        if self.editMode.isEditing {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundStyle(.white, .blue)
+                        } else {
+                            Image(systemName: "checkmark.circle")
+                                .foregroundStyle(.gray, .blue)
+                        }
+                    }
+                    .scaleEffect(self.editMode.isEditing ? 1.5 : 1)
+                    .animation(.bouncy, value: self.editMode.isEditing)
+
+                    Button(action: {
+                        self.canShowAddEntryView.toggle()
+                    }) {
+                        Label("Add Item", systemImage: canShowAddEntryView ? "plus.circle.fill" : "plus")
+                            .rotationEffect(.degrees(self.canShowAddEntryView ? 360 : 0))
+                            .scaleEffect(self.canShowAddEntryView ? 1.5 : 1)
+                            .animation(.easeInOut, value: self.canShowAddEntryView)
+                    }
                 }
+        )
+        .environment(\.editMode, $editMode)
+        .alert("Confirm Deletion", isPresented: $confirmDeletion) {
+            Button("Cancel", role: .cancel) {
+                self.entryStore.entrySelection.removeAll()
+                self.editMode = .inactive
+                self.confirmDeletion = false
             }
+            Button("Delete", role: .destructive) {
+                let feedbackGenerator: UINotificationFeedbackGenerator? = UINotificationFeedbackGenerator()
+                feedbackGenerator?.notificationOccurred(.success)
+                entryStore.deleteEntrySelectionEntries()
+                self.editMode = .inactive
+                self.confirmDeletion = false
+            }
+        } message: {
+            Text("Are you sure you want to delete the Entry?")
         }
         .onAppear {
             entryStore.fetchEntries()
         }
+        .onDisappear(perform: {
+            self.editMode = .inactive
+            self.entryStore.entrySelection.removeAll()
+
+        })
         .refreshable {
             entryStore.fetchEntries()
         }
         .sheet(isPresented: $canShowAddEntryView) {
             AddEntryView()
         }
-        .sheet(isPresented: $canShowEditEntryView, onDismiss: {
-            if !hasEntrySaved {
-                entryStore.discardChanges()
-            }
-        }, content: {
-            EditEntryView(canShowEditEntryView: $canShowEditEntryView, hasEntrySaved: $hasEntrySaved, index: $index)
-        })
+        .sheet(isPresented: $canShowEditEntryView) {
+            EntryDetailsView(index: $index)
+        }
     }
+}
+
+func setFontColor(colorScheme: ColorScheme) -> Color {
+    return colorScheme == .light ? .black : .white
 }
 
 struct CardView_Previews: PreviewProvider {

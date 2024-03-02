@@ -20,7 +20,7 @@ struct DateRowView: View {
                     if let date = entryStore.entries[index].timestamp {
                         Text(date, formatter: Formatter.mediumMonthFormatter)
                             .textCase(.uppercase)
-                            .font(.callout)
+                            .font(.title3)
                             .fontWeight(.bold)
                             .foregroundStyle(.red)
                     }
@@ -43,7 +43,7 @@ struct DateRowView: View {
                             .font(.footnote)
                             .allowsTightening(true)
                             .scaledToFit()
-                            .minimumScaleFactor(0.8)
+                            .minimumScaleFactor(0.7)
                             .foregroundStyle(.primary)
                     }
                 }

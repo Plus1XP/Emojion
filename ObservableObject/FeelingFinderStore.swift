@@ -9,6 +9,11 @@ import SwiftUI
 
 class FeelingFinderStore: ObservableObject {
     @Published var feeling: [FeelingWheel] = [
+        .init(name: "None", color: Color.clear, secondaryFeelings: [
+            FeelingWheel(name: "None", color: Color.clear, tertiaryFeelings: [
+                FeelingWheel(name: "None", color: Color.clear)
+                ])
+        ]),
         .init(name: "Angry", color: Color.red, secondaryFeelings: [
             FeelingWheel(name: "Aggressive", color: Color.red, tertiaryFeelings: [
                 FeelingWheel(name: "Hostile", color: Color.red),
