@@ -15,6 +15,8 @@ struct EditDetailsComponent: View {
     @EnvironmentObject var feelingFinderStore: FeelingFinderStore
     @State var hasEntryChanged: Bool = false
     @State var canEditStarRating: Bool = true
+    @State var confirmDeletion: Bool = false
+    @State var animate: Bool = false
     @State var animateXMark: Bool = false
     @State var animateCheckMark: Bool = false
     @Binding var event: String
@@ -170,17 +172,51 @@ struct EditDetailsComponent: View {
                     .foregroundStyle(self.sectionTitleColor)
             })
             HStack {
-                if let date = entryStore.entries[index].timestamp {
-                    Text(date, formatter: Formatter.dateFormatter)
+                HStack {
+                    if let date = entryStore.entries[index].timestamp {
+                        Text(date, formatter: Formatter.dateFormatter)
+                    }
                 }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(
+                    Rectangle()
+                        .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                        .cornerRadius(10.0)
+                )
+                HStack {
+                    Button(action: {
+                        self.animate.toggle()
+                        self.confirmDeletion = true
+                    }, label: {
+                        Image(systemName: self.confirmDeletion ? "trash.fill" : "trash")
+                            .font(.headline)
+                            .foregroundStyle(.red)
+                            .symbolEffect(.pulse.wholeSymbol, options: .repeat(3), value: self.animate)
+                            .contentTransition(.symbolEffect(.replace))
+                    })
+                    .alert("Confirm Deletion", isPresented: $confirmDeletion) {
+                        Button("Cancel", role: .cancel) {
+                            self.confirmDeletion = false
+                        }
+                        Button("Delete", role: .destructive) {
+                            let feedbackGenerator: UINotificationFeedbackGenerator? = UINotificationFeedbackGenerator()
+                            feedbackGenerator?.notificationOccurred(.success)
+                            entryStore.deleteEntry(index: index)
+                            self.confirmDeletion = false
+                            self.presentaionMode.wrappedValue.dismiss()
+                        }
+                    } message: {
+                        Text("Are you sure you want to delete the Entry?")
+                    }
+                }
+                .padding()
+                .background(
+                    Rectangle()
+                        .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                        .cornerRadius(10.0)
+                )
             }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(
-                Rectangle()
-                    .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-                    .cornerRadius(10.0)
-            )
             .padding(.leading)
             .padding(.trailing)
             .padding(.bottom)
