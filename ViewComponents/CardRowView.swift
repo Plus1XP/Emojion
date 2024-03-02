@@ -29,7 +29,7 @@ struct CardRowView: View {
                     HStack {
                         if entryStore.entries.indices.contains(index) {
                             if let feeling = entryStore.entries[index].feeling {
-                                Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
+                                Text(feeling == [0,0,0] ? "" : feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
                                     .font(.footnote)
                                     .fontWeight(.medium)
                                     .foregroundStyle(.primary)
