@@ -24,7 +24,6 @@ struct EntryDetailsView: View {
             .navigationTitle("Emojion Details")
             .navigationBarTitleDisplayMode(.inline)
             .presentationDragIndicator(.visible)
-            .padding(.top)
             .onAppear(perform: {
                 self.event = entryStore.entries[self.index].event ?? ""
                 self.emojion = entryStore.entries[self.index].emojion ?? "🫥"

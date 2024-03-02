@@ -41,8 +41,6 @@
 		2F70FB582808484300D2A725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F70FB412808484300D2A725 /* Assets.xcassets */; };
 		2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB6128084B9100D2A725 /* AddEntryView.swift */; };
 		2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB6128084B9100D2A725 /* AddEntryView.swift */; };
-		2F70FB682808536E00D2A725 /* EntryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB672808536E00D2A725 /* EntryFormView.swift */; };
-		2F70FB692808536E00D2A725 /* EntryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB672808536E00D2A725 /* EntryFormView.swift */; };
 		2F70FB74280C7EE300D2A725 /* EntryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB73280C7EE300D2A725 /* EntryStore.swift */; };
 		2F70FB75280C7EE300D2A725 /* EntryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB73280C7EE300D2A725 /* EntryStore.swift */; };
 		2F70FB7A280C890E00D2A725 /* EntryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB79280C890E00D2A725 /* EntryDetailsView.swift */; };
@@ -51,8 +49,6 @@
 		2F70FB7F280CD72600D2A725 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB7D280CD72600D2A725 /* UITextField.swift */; };
 		2F70FB81280D6FC600D2A725 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB80280D6FC600D2A725 /* String.swift */; };
 		2F70FB82280D6FC600D2A725 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB80280D6FC600D2A725 /* String.swift */; };
-		2F70FB84280D79DD00D2A725 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB83280D79DD00D2A725 /* EditEntryView.swift */; };
-		2F70FB85280D79DD00D2A725 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB83280D79DD00D2A725 /* EditEntryView.swift */; };
 		2F70FB87280D82CB00D2A725 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB86280D82CB00D2A725 /* Binding.swift */; };
 		2F70FB88280D82CB00D2A725 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB86280D82CB00D2A725 /* Binding.swift */; };
 		2F70FB8A280E011300D2A725 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB89280E011300D2A725 /* CardView.swift */; };
@@ -149,12 +145,10 @@
 		2F70FB4C2808484300D2A725 /* Emojion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F70FB4E2808484300D2A725 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		2F70FB6128084B9100D2A725 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
-		2F70FB672808536E00D2A725 /* EntryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormView.swift; sourceTree = "<group>"; };
 		2F70FB73280C7EE300D2A725 /* EntryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryStore.swift; sourceTree = "<group>"; };
 		2F70FB79280C890E00D2A725 /* EntryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailsView.swift; sourceTree = "<group>"; };
 		2F70FB7D280CD72600D2A725 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		2F70FB80280D6FC600D2A725 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		2F70FB83280D79DD00D2A725 /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
 		2F70FB86280D82CB00D2A725 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		2F70FB89280E011300D2A725 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2F70FB8C280E10FE00D2A725 /* CardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRowView.swift; sourceTree = "<group>"; };
@@ -218,8 +212,8 @@
 				2FA93C032B38E69200A1F994 /* DateRowView.swift */,
 				2F70FB8C280E10FE00D2A725 /* CardRowView.swift */,
 				2FAF0054283D68B10092E8DD /* CalendarRowView.swift */,
+				2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */,
 				2F70FB8F280E141500D2A725 /* EditDetailsComponent.swift */,
-				2F70FB672808536E00D2A725 /* EntryFormView.swift */,
 				2F70FB99280F19A100D2A725 /* StarRatingView.swift */,
 				2F01D8B32814697B004583E3 /* FeelingFinderView.swift */,
 				2FB51F9B2B868AF2007757E3 /* EntryDebugButtons.swift */,
@@ -229,7 +223,6 @@
 				2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */,
 				2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */,
 				2FA93C1E2B3B93E400A1F994 /* ChartStatsView.swift */,
-				2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -238,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				2F70FB6128084B9100D2A725 /* AddEntryView.swift */,
-				2F70FB83280D79DD00D2A725 /* EditEntryView.swift */,
 				2F70FB79280C890E00D2A725 /* EntryDetailsView.swift */,
 			);
 			path = SharedView;
@@ -515,9 +507,7 @@
 				2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB90280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8D280E10FE00D2A725 /* CardRowView.swift in Sources */,
-				2F70FB682808536E00D2A725 /* EntryFormView.swift in Sources */,
 				2FA30EEC2B34D03B00195CA4 /* LoginView.swift in Sources */,
-				2F70FB84280D79DD00D2A725 /* EditEntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,9 +570,7 @@
 				2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB91280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8E280E10FE00D2A725 /* CardRowView.swift in Sources */,
-				2F70FB692808536E00D2A725 /* EntryFormView.swift in Sources */,
 				2FA30EED2B34D03B00195CA4 /* LoginView.swift in Sources */,
-				2F70FB85280D79DD00D2A725 /* EditEntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

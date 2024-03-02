@@ -12,12 +12,10 @@ struct CardView: View {
     @EnvironmentObject var entryStore: EntryStore
     @State private var editMode: EditMode = .inactive
     @State private var canShowAddEntryView: Bool = false
-    @State private var canShowEditEntryView: Bool = false
     @State private var canAutoCompleteSearch: Bool = false
     @State private var confirmDeletion: Bool = false
     @State private var canResetDate: Bool = false
     @State private var calendarId: UUID = UUID()
-    @State var index: Int = 0
     
     var body: some View {
         List(selection: $entryStore.entrySelection) {
@@ -64,15 +62,10 @@ struct CardView: View {
                                             self.entryStore.entrySelection.removeAll()
                                         }
                                     } label: {
-                                        Label("Delete", systemImage: "trash")
+                                        Label("", systemImage: "trash")
+                                            .foregroundStyle(.red, .red)
                                     }
-                                    Button {
-                                        self.index = entryStore.entries.firstIndex(of: entry)!
-                                        self.canShowEditEntryView.toggle()
-                                    } label: {
-                                        Label("Edit", systemImage: "pencil")
-                                    }
-                                    .tint(.blue)
+                                    .tint(.clear)
                                 }
                             }
                         }
@@ -213,9 +206,6 @@ struct CardView: View {
         }
         .sheet(isPresented: $canShowAddEntryView) {
             AddEntryView()
-        }
-        .sheet(isPresented: $canShowEditEntryView) {
-            EntryDetailsView(index: $index)
         }
     }
 }
