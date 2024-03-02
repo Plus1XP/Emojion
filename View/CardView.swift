@@ -60,7 +60,7 @@ struct CardView: View {
                                         withAnimation {
                                             let feedbackGenerator: UINotificationFeedbackGenerator? = UINotificationFeedbackGenerator()
                                             feedbackGenerator?.notificationOccurred(.success)
-                                            entryStore.deleteEntry(index: index)
+                                            entryStore.deleteEntry(entry: entry)
                                             self.entryStore.entrySelection.removeAll()
                                         }
                                     } label: {
