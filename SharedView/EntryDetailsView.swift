@@ -26,6 +26,7 @@ struct EntryDetailsView: View {
             .navigationTitle("Emojion Details")
             .navigationBarTitleDisplayMode(.inline)
             .presentationDragIndicator(.visible)
+            .padding(.top)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {

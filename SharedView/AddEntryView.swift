@@ -24,6 +24,7 @@ struct AddEntryView: View {
             .navigationTitle("New Emojion")
             .navigationBarTitleDisplayMode(.inline)
             .presentationDragIndicator(.visible)
+            .padding(.top)
             .background(Color.setViewBackgroundColor(colorScheme: self.colorScheme))
             .opacity(self.canShowFeelingFinderView ? 0.5 : 1)
             .blur(radius: self.canShowFeelingFinderView ? 2.5 : 0, opaque: false)
