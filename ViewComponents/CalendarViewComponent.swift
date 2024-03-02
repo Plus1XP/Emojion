@@ -23,9 +23,6 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
     // Constants
     private let daysInWeek = 7
     @State private var canShowAddEntryView: Bool = false
-    @State private var canShowEditEntryView: Bool = false
-    @State private var hasEntrySaved: Bool = false
-    @State var index: Int = 0
     
     @FetchRequest var entries: FetchedResults<Entry>
     
@@ -88,18 +85,16 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Button(role: .destructive) {
                             withAnimation {
-                                entryStore.deleteEntry(index: entryStore.entries.firstIndex(of: entry)!)
+                                let feedbackGenerator: UINotificationFeedbackGenerator? = UINotificationFeedbackGenerator()
+                                feedbackGenerator?.notificationOccurred(.success)
+                                entryStore.deleteEntry(entry: entry)
+                                self.entryStore.entrySelection.removeAll()
                             }
                         } label: {
-                            Label("Delete", systemImage: "trash")
+                            Label("", systemImage: "trash")
+                                .foregroundStyle(.red, .red)
                         }
-                        Button {
-                            index = entryStore.entries.firstIndex(of: entry)!
-                                self.canShowEditEntryView.toggle()
-                        } label: {
-                            Label("Edit", systemImage: "pencil")
-                        }
-                        .tint(.blue)
+                        .tint(.clear)
                     }
                     .listRowBackground(
                         Rectangle()
@@ -137,13 +132,6 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
         .sheet(isPresented: $canShowAddEntryView) {
             AddEntryView()
         }
-        .sheet(isPresented: $canShowEditEntryView, onDismiss: {
-            if !hasEntrySaved {
-                entryStore.discardChanges()
-            }
-        }, content: {
-            EditEntryView(canShowEditEntryView: $canShowEditEntryView, hasEntrySaved: $hasEntrySaved, index: $index)
-        })
     }
 }
 
