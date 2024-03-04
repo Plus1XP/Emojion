@@ -29,7 +29,6 @@ struct AddDetailsComponent: View {
     var emojionFontSize: CGFloat = 125
     var starFontSize: CGFloat = 25
     let sectionTitleColor: Color = Color.secondary
-//    let index: Int
     
     var body: some View {
         VStack {
@@ -162,28 +161,6 @@ struct AddDetailsComponent: View {
             .padding(.leading)
             .padding(.trailing)
             .padding(.bottom)
-            
-//            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
-//                Text("Entry Date")
-//                    .font(.footnote)
-//                    .textCase(nil)
-//                    .foregroundStyle(self.sectionTitleColor)
-//            })
-//            HStack {
-//                if let date = entryStore.entries[index].timestamp {
-//                    Text(date, formatter: Formatter.dateFormatter)
-//                }
-//            }
-//            .padding()
-//            .frame(maxWidth: .infinity)
-//            .background(
-//                Rectangle()
-//                    .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-//                    .cornerRadius(10.0)
-//            )
-//            .padding(.leading)
-//            .padding(.trailing)
-//            .padding(.bottom)
             
             if hasEntryChanged {
                 HStack {

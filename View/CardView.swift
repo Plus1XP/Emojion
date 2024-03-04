@@ -33,21 +33,15 @@ struct CardView: View {
                                     ZStack {
                                         HStack(alignment: .top) {
                                             if !self.editMode.isEditing {
-                                                DateRowView(index: entryStore.entries.firstIndex(of: entry)!)
+                                                DateRowView(entry: entry)
                                             }
-                                            CardRowView(index: entryStore.entries.firstIndex(of: entry)!)
+                                            CardRowView(entry: entry)
                                                 .padding(.leading, self.editMode.isEditing ? 10 : 0)
                                         }
-                                        if let entryIndex = entryStore.entries.firstIndex(of: entry) {
-                                            NavigationLink(destination: EntryDetailsView(index: Binding(get: {entryIndex}, set: {_ in entryIndex}))) {
-                                                EmptyView()
-                                            }
-                                            .opacity(0)
+                                        NavigationLink(destination: EntryDetailsView(entry: entry)) {
+                                            EmptyView()
                                         }
-//                                        NavigationLink(destination: EntryDetailsView(index: Binding(get: {entryStore.entries.firstIndex(of: entry)!}, set: {_ in entryStore.entries.firstIndex(of: entry)}))) {
-//                                            EmptyView()
-//                                        }
-//                                        .opacity(0)
+                                        .opacity(0)
                                     }
                                 }
                                 .listRowSeparator(.hidden)
@@ -91,7 +85,7 @@ struct CardView: View {
                     DatePicker("Please enter a date", selection: $entryStore.searchDate, displayedComponents: .date)
                         .labelsHidden()
                         .id(calendarId)
-                    // Needed to close calendar picker after selection
+                        // Needed to close calendar picker after selection
                         .onChange(of: Calendar.current.component(.day, from: entryStore.searchDate)) {
                             calendarId = UUID()
                             if !canResetDate {

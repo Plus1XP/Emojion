@@ -14,15 +14,14 @@ struct CalendarRowView: View {
     var emojionFontSize: CGFloat = 55
     var starFontSize: CGFloat = 18
     var starSpacing: CGFloat = -1
-    
-    let index: Int
+    let entry: Entry
 
     var body: some View {
         HStack(spacing: 0) {
             VStack(alignment: .center, content: {
-                let emojionEmoji = (entryStore.entries[index].emojion == "" || entryStore.entries[index].emojion == nil ? "🫥" : entryStore.entries[index].emojion)!.ToImage(fontSize: emojionFontSize)
+                let emojionEmoji = (entry.emojion == "" || entry.emojion == nil ? "🫥" : entry.emojion)!.ToImage(fontSize: emojionFontSize)
                 Image(uiImage: emojionEmoji!)
-                if let feeling = entryStore.entries[index].feeling {
+                if let feeling = entry.feeling {
                     Text(feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
                         .font(.subheadline)
                         .fontWeight(.medium)
@@ -35,7 +34,7 @@ struct CalendarRowView: View {
             HStack(alignment: .top) {
                 VStack() {
                     HStack() {
-                        if let event = entryStore.entries[index].event {
+                        if let event = entry.event {
                             Text(event)
                                 .font(.headline)
                                 .fontWeight(.semibold)
@@ -46,7 +45,7 @@ struct CalendarRowView: View {
                     }
                     HStack() {
                         Spacer()
-                        StarRatingView($entryStore.entries[index].rating, starFontSize, starSpacing)
+                        StarRatingView(Binding(get: {entry.rating}, set: {_ = $0}), starFontSize, starSpacing)
                         Spacer()
                     }
                 }
@@ -60,13 +59,15 @@ struct CalendarRowView: View {
                 .cornerRadius(10.0)
         )
         .overlay(alignment: .topTrailing) {
+            if let note = entry.note {
                 Image(systemName: "note.text")
-                .foregroundColor(entryStore.entries[index].note == "" ? .clear : .primary)
+                    .foregroundColor(note == "" ? .clear : .primary)
                     .padding([.top, .trailing], 10)
+            }
         }
         .overlay(alignment: .bottomTrailing) {
             HStack {
-                if let date = entryStore.entries[index].timestamp {
+                if let date = entry.timestamp {
                     Text(date, formatter: Formatter.shortTimeFormat)
                         .font(.footnote)
                 }
@@ -79,7 +80,7 @@ struct CalendarRowView: View {
 
 struct CalendarRowView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarRowView(index: 0)
+        CalendarRowView(entry: Entry.MockEntry)
             .environmentObject(FeelingFinderStore())
     }
 }

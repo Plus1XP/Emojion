@@ -75,8 +75,8 @@ public struct CalendarViewComponent<Day: View, Header: View, Title: View, Traili
                 ForEach(entries, id: \.self) { entry in
                     // This Hack removes the Details Disclosure chevron from list view.
                     ZStack {
-                        CalendarRowView(index: entryStore.entries.firstIndex(of: entry)!)
-                        NavigationLink(destination: EntryDetailsView(index: Binding(get: {entryStore.entries.firstIndex(of: entry)!}, set: {_ in entryStore.entries.firstIndex(of: entry)}))) {
+                        CalendarRowView(entry: entry)
+                        NavigationLink(destination: EntryDetailsView(entry: entry)) {
                             EmptyView()
                         }.opacity(0)
                     }

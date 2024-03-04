@@ -19,20 +19,20 @@ extension EntryStore {
         
         for i in 1...(day - 1) {
             if i % 2 == 0 {
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 08:00")!, event: "Walk Dog", emojion: "😤", feeling: [1,1,0], rating: 1, note: "I love my dog but it was far to cold today.")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 08:00")!, event: "Walk Dog", emojion: "😤", feeling: [1,1,0], rating: 2, note: "I love my dog but it was far to cold today.")
             }
             if i % 2 == 1 {
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 20:00")!, event: "Play Squash", emojion: "💪", feeling: [7,2,1], rating: 3, note: "Excercise makes me feel alive!")
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 15:00")!, event: "Learn to Code", emojion: "🤓", feeling: [7,2,0], rating: 2, note: "I must succeed at all costs..")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 20:00")!, event: "Play Squash", emojion: "💪", feeling: [7,2,1], rating: 4, note: "Excercise makes me feel alive!")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 15:00")!, event: "Learn to Code", emojion: "🤓", feeling: [7,2,0], rating: 3, note: "I must succeed at all costs..")
             }
             if i % 3 == 0 {
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 18:00")!, event: "Dance Class", emojion: "🤭", feeling: [5,5,0], rating: 4, note: "learning the forbidden dance was exciting!")
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 21:30")!, event: "Babysit", emojion: "🫠", feeling: [2,2,1], rating: 0, note: "Note to self, dont have kids.")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 18:00")!, event: "Dance Class", emojion: "🤭", feeling: [5,5,0], rating: 5, note: "learning the forbidden dance was exciting!")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 21:30")!, event: "Babysit", emojion: "🫠", feeling: [2,2,1], rating: 1, note: "Note to self, dont have kids.")
             }
         }
-        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 09:00")!, event: "comicon", emojion: "🤯", feeling: [7,0,1], rating: 0, note: "1 of a kind experience ruined by the smell...")
-        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 14:00")!, event: "Job Interview", emojion: "😬", feeling: [4,4,1], rating: 2, note: "Coffee helped my anxeity")
-        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 18:00")!, event: "Dinner Date", emojion: "🥰", feeling: [5,8,0], rating: 4, note: "Great way to end the day!")
+        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 09:00")!, event: "comicon", emojion: "🤯", feeling: [7,0,1], rating: 1, note: "1 of a kind experience ruined by the smell...")
+        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 14:00")!, event: "Job Interview", emojion: "😬", feeling: [4,4,1], rating: 3, note: "Coffee helped my anxeity")
+        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 18:00")!, event: "Dinner Date", emojion: "🥰", feeling: [5,8,0], rating: 5, note: "Great way to end the day!")
     }
     
     func addChartMockEntries() -> Void {
@@ -45,20 +45,20 @@ extension EntryStore {
         
         for i in 1...(day - 1) {
             if i % 2 == 0 {
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 08:00")!, event: "Walk Dog", emojion: "😤", feeling: [1,1,0], rating: 1, note: "I love my dog but it was far to cold today.")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 08:00")!, event: "Walk Dog", emojion: "😤", feeling: [1,1,0], rating: 2, note: "I love my dog but it was far to cold today.")
             }
             if i % 2 == 1 {
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 20:00")!, event: "Play Squash", emojion: "💪", feeling: [7,2,1], rating: 3, note: "Excercise makes me feel alive!")
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 15:00")!, event: "Learn to Code", emojion: "🤓", feeling: [7,2,0], rating: 2, note: "I must succeed at all costs..")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 20:00")!, event: "Play Squash", emojion: "💪", feeling: [7,2,1], rating: 4, note: "Excercise makes me feel alive!")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 15:00")!, event: "Learn to Code", emojion: "🤓", feeling: [7,2,0], rating: 3, note: "I must succeed at all costs..")
             }
             if i % 3 == 0 {
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 18:00")!, event: "Dance Class", emojion: "🤭", feeling: [5,5,0], rating: 4, note: "learning the forbidden dance was exciting!")
-                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 21:30")!, event: "Babysit", emojion: "🫠", feeling: [2,2,1], rating: 0, note: "Note to self, dont have kids.")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 18:00")!, event: "Dance Class", emojion: "🤭", feeling: [5,5,0], rating: 5, note: "learning the forbidden dance was exciting!")
+                addNewEntry(date: formatter.date(from: "\(i)/\(month)/\(year) 21:30")!, event: "Babysit", emojion: "🫠", feeling: [2,2,1], rating: 1, note: "Note to self, dont have kids.")
             }
         }
-        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 09:00")!, event: "comicon", emojion: "🤯", feeling: [7,0,1], rating: 0, note: "1 of a kind experience ruined by the smell...")
-        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 14:00")!, event: "Job Interview", emojion: "😬", feeling: [4,4,1], rating: 2, note: "Coffee helped my anxeity")
-        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 18:00")!, event: "Dinner Date", emojion: "🥰", feeling: [5,8,0], rating: 4, note: "Great way to end the day!")
+        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 09:00")!, event: "comicon", emojion: "🤯", feeling: [7,0,1], rating: 1, note: "1 of a kind experience ruined by the smell...")
+        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 14:00")!, event: "Job Interview", emojion: "😬", feeling: [4,4,1], rating: 3, note: "Coffee helped my anxeity")
+        addNewEntry(date: formatter.date(from: "\(day)/\(month)/\(year) 18:00")!, event: "Dinner Date", emojion: "🥰", feeling: [5,8,0], rating: 5, note: "Great way to end the day!")
     }
     
     func addRandomMockEntries(numberOfEntries: Int) {
@@ -298,7 +298,7 @@ extension EntryStore {
         
         let randomMonth = Int.random(in: 1...month)
         
-        let components = DateComponents(year: year, month: randomMonth, day: generateDayDate(currentDay: day, currentMonth: month, randomMonth: randomMonth), hour: Int.random(in: 1...hour), minute: Int.random(in: 0...minute), second: Int.random(in: 0...second))
+        let components = DateComponents(year: year, month: randomMonth, day: generateDayDate(currentDay: day, currentMonth: month, randomMonth: randomMonth), hour: Int.random(in: 0...hour), minute: Int.random(in: 0...minute), second: Int.random(in: 0...second))
         return calendar.date(from: components).unsafelyUnwrapped
     }
     
@@ -324,7 +324,7 @@ extension EntryStore {
     }
     
     func generateRating() -> Int64 {
-        return Int64.random(in: 0...4)
+        return Int64.random(in: 1...5)
     }
     
     func generateNote() -> String {

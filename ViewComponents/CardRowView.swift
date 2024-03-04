@@ -14,63 +14,54 @@ struct CardRowView: View {
     var emojionFontSize: CGFloat = 50
     var starFontSize: CGFloat = 18
     var starSpacing: CGFloat = -1
-    let index: Int
+    let entry: Entry
 
     var body: some View {
         HStack {
-                VStack {
-                    HStack {
-                        if entryStore.entries.indices.contains(index) {
-                            if let emojionEmoji = (entryStore.entries[index].emojion == "" || entryStore.entries[index].emojion == nil ? "🫥" : entryStore.entries[index].emojion)!.ToImage(fontSize: emojionFontSize) {
-                                Image(uiImage: emojionEmoji)
-                            }
-                        }
-                    }
-                    HStack {
-                        if entryStore.entries.indices.contains(index) {
-                            if let feeling = entryStore.entries[index].feeling {
-                                Text(feeling == [0,0,0] ? "" : feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
-                                    .font(.footnote)
-                                    .fontWeight(.medium)
-                                    .foregroundStyle(.primary)
-                                    .allowsTightening(true)
-                                    .scaledToFit()
-                                    .minimumScaleFactor(0.8)
-                            }
-                        }
+            VStack {
+                HStack {
+                    if let emojionEmoji = (entry.emojion == "" || entry.emojion == nil ? "🫥" : entry.emojion)!.ToImage(fontSize: emojionFontSize) {
+                        Image(uiImage: emojionEmoji)
                     }
                 }
-                .frame(maxWidth: "Out of Control".widthOfString(usingFont: UIFont.systemFont(ofSize: 12)))//
-                VStack(alignment: .leading, content:  {
-                    HStack {
-                        if entryStore.entries.indices.contains(index) {
-                            if let event = entryStore.entries[index].event {
-                                Text(event)
-                                    .font(.callout)
-                                    .fontWeight(.medium)
-                                    .lineLimit(2)
-                                    .allowsTightening(true)
-                                    .foregroundStyle(.primary)
-                            }
-                        }
+                HStack {
+                    if let feeling = entry.feeling {
+                        Text(feeling == [0,0,0] ? "" : feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
+                            .font(.footnote)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.primary)
+                            .allowsTightening(true)
+                            .scaledToFit()
+                            .minimumScaleFactor(0.8)
                     }
-                    HStack {
-                        Spacer()
-                        if entryStore.entries.indices.contains(index) {
-                            // have to cast to int (non fixed size int) to check nil.
-                            if let rating = entryStore.entries[index].rating as? NSNumber {
-                                var int64value = rating.int64Value // This is an `Int64`
-                                StarRatingView(Binding(get: {int64value}, set: {int64value = $0}), starFontSize, starSpacing)
-                                    .padding(.top, -5)
-                            }
-                        }
-                        Spacer()
+                }
+            }
+            .frame(maxWidth: "Out of Control".widthOfString(usingFont: UIFont.systemFont(ofSize: 12)))
+            VStack(alignment: .leading, content:  {
+                HStack {
+                    if let event = entry.event {
+                        Text(event)
+                            .font(.callout)
+                            .fontWeight(.medium)
+                            .lineLimit(2)
+                            .allowsTightening(true)
+                            .foregroundStyle(.primary)
                     }
-                    
-                })
-                .padding([.leading], 5)
-                .padding([.trailing], 20)
-                Spacer()
+                }
+                HStack {
+                    Spacer()
+                    // have to cast to int (non fixed size int) to check nil.
+                    if let rating = entry.rating as? NSNumber {
+                        var int64value = rating.int64Value // This is an `Int64`
+                        StarRatingView(Binding(get: {int64value}, set: {int64value = $0}), starFontSize, starSpacing)
+                            .padding(.top, -5)
+                    }
+                    Spacer()
+                }
+            })
+            .padding([.leading], 5)
+            .padding([.trailing], 20)
+            Spacer()
         }
         .frame(maxHeight: .infinity)
         .padding(10)
@@ -81,12 +72,10 @@ struct CardRowView: View {
                 .padding([.top, .bottom], 3)
         )
         .overlay(alignment: .topTrailing) {
-            if entryStore.entries.indices.contains(index) {
-                if let note = entryStore.entries[index].note {
-                    Image(systemName: "note.text")
-                        .foregroundColor(note == "" ? .clear : .primary)
-                        .padding([.top, .trailing], 10)
-                }
+            if let note = entry.note {
+                Image(systemName: "note.text")
+                    .foregroundColor(note == "" ? .clear : .primary)
+                    .padding([.top, .trailing], 10)
             }
         }
     }
@@ -94,6 +83,6 @@ struct CardRowView: View {
 
 struct CardRowView_Previews: PreviewProvider {
     static var previews: some View {
-        CardRowView(index: 0)
+        CardRowView(entry: Entry.MockEntry)
     }
 }
