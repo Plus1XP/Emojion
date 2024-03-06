@@ -48,7 +48,7 @@ struct EditDetailsComponent: View {
                         }
                     })
             }
-            .padding(.top) // fix spacing
+            .padding(.top)
             .padding(.leading)
             .padding(.trailing)
             

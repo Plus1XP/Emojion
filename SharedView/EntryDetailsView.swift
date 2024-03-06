@@ -20,6 +20,7 @@ struct EntryDetailsView: View {
     let entry: Entry
     
     var body: some View {
+        //MARK: Refactor & Combine Add & Edit Details Views & Components
         EditDetailsComponent(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, cachedRating: $cachedRating, note: $note, canShowFeelingFinderView: $canShowFeelingFinderView, entry: entry)
             .navigationTitle("Emojion Details")
             .navigationBarTitleDisplayMode(.inline)

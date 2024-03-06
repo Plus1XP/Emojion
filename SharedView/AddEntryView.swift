@@ -20,6 +20,7 @@ struct AddEntryView: View {
     @State var animate: Bool = false
         
     var body: some View {
+        //MARK: Refactor & Combine Add & Edit Details Views & Components
         AddDetailsComponent(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, cachedRating: $cachedRating, note: $note, canShowFeelingFinderView: $canShowFeelingFinderView)
             .navigationTitle("New Emojion")
             .navigationBarTitleDisplayMode(.inline)

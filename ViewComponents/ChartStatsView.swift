@@ -269,6 +269,7 @@ struct ChartStatsView: View {
             )
             .padding([.leading, .trailing], 10)
             Divider()
+            //MARK: Refactor ForEach Loop
             VStack(alignment: .center, content: {
                 HStack {
                     ForEach(chartStore.feelingData, id: \.id) { feeling in
