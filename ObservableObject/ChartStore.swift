@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-enum ChartTimeFrame: String {
+enum ChartTimeFrame: String, CaseIterable, Identifiable {
     case Today
     case Yesterday
     case Week
     case Month
     case Year
     case All
+    
+    var id: ChartTimeFrame { self }
 }
 
 class ChartStore: ObservableObject {

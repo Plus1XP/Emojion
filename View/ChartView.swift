@@ -57,14 +57,11 @@ struct ChartView: View {
             trailing:
                 HStack {
                     Picker("Chart TimeFrame", selection: $chartStore.chartTimeFrameSelection, content: {
-                        Text(ChartTimeFrame.Today.rawValue).tag(ChartTimeFrame.Today)
-                        Text(ChartTimeFrame.Yesterday.rawValue).tag(ChartTimeFrame.Yesterday)
-                        Text(ChartTimeFrame.Week.rawValue).tag(ChartTimeFrame.Week)
-                        Text(ChartTimeFrame.Month.rawValue).tag(ChartTimeFrame.Month)
-                        Text(ChartTimeFrame.Year.rawValue).tag(ChartTimeFrame.Year)
-                        Text(ChartTimeFrame.All.rawValue).tag(ChartTimeFrame.All)
+                        ForEach(ChartTimeFrame.allCases, content: { timeFrame in
+                            Text(timeFrame.rawValue.capitalized)
+                        })
                     })
-                    .pickerStyle(.inline)
+                    .pickerStyle(.segmented)
                     .onChange(of: chartStore.chartTimeFrameSelection, {
                         chartStore.fetchAll(entries: entryStore.entries)
                     })
