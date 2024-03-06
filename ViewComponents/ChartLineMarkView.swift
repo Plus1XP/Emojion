@@ -15,7 +15,7 @@ struct ChartLineMarkView: View {
         Chart{
             ForEach(chartStore.feelingData, id: \.id) { feeling in
                 LineMark(
-                    x: .value("Feeling Type", feeling.type ),
+                    x: .value("Feeling Type", feeling.type.rawValue),
                     y: .value("Total Count", feeling.count)
                 )
                 .interpolationMethod(.catmullRom)
@@ -28,7 +28,7 @@ struct ChartLineMarkView: View {
                 }
                 .symbolSize(15)
                 AreaMark(
-                    x: .value("Feeling Type", feeling.type),
+                    x: .value("Feeling Type", feeling.type.rawValue),
                     y: .value("Total Count", feeling.count)
                 )
                 .interpolationMethod(.catmullRom)

@@ -273,12 +273,12 @@ struct ChartStatsView: View {
             VStack(alignment: .center, content: {
                 HStack {
                     ForEach(chartStore.feelingData, id: \.id) { feeling in
-                        if feeling.type == "Angry" || feeling.type == "Bad" || feeling.type == "Disgusted" || feeling.type == "Fearful" {
+                        if feeling.type == .Angry || feeling.type == .Bad || feeling.type == .Disgusted || feeling.type == .Fearful {
                             VStack(alignment: .center, content: {
                                 Text("\(feeling.count)")
                                     .font(GetEmojionCountFontSize())
                                     .fontWeight(.bold)
-                                Text("\(feeling.type)")
+                                Text("\(feeling.type.rawValue)")
                                     .font(.footnote)
                             })
                             .frame(width: GetEmojionFrameWidthSize(), height: 75)
@@ -292,12 +292,12 @@ struct ChartStatsView: View {
                 
                 HStack {
                     ForEach(chartStore.feelingData, id: \.id) { feeling in
-                        if feeling.type == "Happy" || feeling.type == "Sad" || feeling.type == "Surprised" {
+                        if feeling.type == .Happy || feeling.type == .Sad || feeling.type == .Surprised {
                             VStack(alignment: .center, content: {
                                 Text("\(feeling.count)")
                                     .font(GetEmojionCountFontSize())
                                     .fontWeight(.bold)
-                                Text("\(feeling.type)")
+                                Text("\(feeling.type.rawValue)")
                                     .font(.footnote)
                             })
                             .frame(width: GetEmojionFrameWidthSize(), height: 75)
