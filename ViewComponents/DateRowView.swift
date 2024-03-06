@@ -11,41 +11,35 @@ struct DateRowView: View {
     @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var entryStore: EntryStore
     @EnvironmentObject var feelingFinderStore: FeelingFinderStore
-    let index: Int
+    let entry: Entry
 
     var body: some View {
         VStack {
             HStack {
-                if entryStore.entries.indices.contains(index) {
-                    if let date = entryStore.entries[index].timestamp {
-                        Text(date, formatter: Formatter.mediumMonthFormatter)
-                            .textCase(.uppercase)
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.red)
-                    }
+                if let date = entry.timestamp {
+                    Text(date, formatter: Formatter.mediumMonthFormatter)
+                        .textCase(.uppercase)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.red)
                 }
             }
             HStack {
-                if entryStore.entries.indices.contains(index) {
-                    if let date = entryStore.entries[index].timestamp {
-                        Text(date, formatter: Formatter.shortDayFormat)
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.primary)
-                    }
+                if let date = entry.timestamp {
+                    Text(date, formatter: Formatter.shortDayFormat)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.primary)
                 }
             }
             HStack {
-                if entryStore.entries.indices.contains(index) {
-                    if let date = entryStore.entries[index].timestamp {
-                        Text(date, formatter: Formatter.shortTimeFormat)
-                            .font(.footnote)
-                            .allowsTightening(true)
-                            .scaledToFit()
-                            .minimumScaleFactor(0.7)
-                            .foregroundStyle(.primary)
-                    }
+                if let date = entry.timestamp {
+                    Text(date, formatter: Formatter.shortTimeFormat)
+                        .font(.footnote)
+                        .allowsTightening(true)
+                        .scaledToFit()
+                        .minimumScaleFactor(0.7)
+                        .foregroundStyle(.primary)
                 }
             }
         }
@@ -55,16 +49,16 @@ struct DateRowView: View {
         .background(
             Rectangle()
                 .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-                 .cornerRadius(10.0)
-                 .padding([.top], 3.8)
-                 .padding([.bottom], 3.5)
-
-            )
+                .cornerRadius(10.0)
+                .padding([.top], 3.8)
+                .padding([.bottom], 3.5)
+            
+        )
     }
 }
 
 struct DateRowView_Previews: PreviewProvider {
     static var previews: some View {
-        DateRowView(index: 0)
+        DateRowView(entry: Entry.MockEntry)
     }
 }

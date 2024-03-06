@@ -15,6 +15,8 @@ struct EditDetailsComponent: View {
     @EnvironmentObject var feelingFinderStore: FeelingFinderStore
     @State var hasEntryChanged: Bool = false
     @State var canEditStarRating: Bool = true
+    @State var confirmDeletion: Bool = false
+    @State var animate: Bool = false
     @State var animateXMark: Bool = false
     @State var animateCheckMark: Bool = false
     @Binding var event: String
@@ -29,7 +31,7 @@ struct EditDetailsComponent: View {
     var emojionFontSize: CGFloat = 125
     var starFontSize: CGFloat = 25
     let sectionTitleColor: Color = Color.secondary
-    let index: Int
+    let entry: Entry
     
     var body: some View {
         VStack {
@@ -170,17 +172,51 @@ struct EditDetailsComponent: View {
                     .foregroundStyle(self.sectionTitleColor)
             })
             HStack {
-                if let date = entryStore.entries[index].timestamp {
-                    Text(date, formatter: Formatter.dateFormatter)
+                HStack {
+                    if let date = entry.timestamp {
+                        Text(date, formatter: Formatter.dateFormatter)
+                    }
                 }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(
+                    Rectangle()
+                        .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                        .cornerRadius(10.0)
+                )
+                HStack {
+                    Button(action: {
+                        self.animate.toggle()
+                        self.confirmDeletion = true
+                    }, label: {
+                        Image(systemName: self.confirmDeletion ? "trash.fill" : "trash")
+                            .font(.headline)
+                            .foregroundStyle(.red)
+                            .symbolEffect(.pulse.wholeSymbol, options: .repeat(3), value: self.animate)
+                            .contentTransition(.symbolEffect(.replace))
+                    })
+                    .alert("Confirm Deletion", isPresented: $confirmDeletion) {
+                        Button("Cancel", role: .cancel) {
+                            self.confirmDeletion = false
+                        }
+                        Button("Delete", role: .destructive) {
+                            let feedbackGenerator: UINotificationFeedbackGenerator? = UINotificationFeedbackGenerator()
+                            feedbackGenerator?.notificationOccurred(.success)
+                            entryStore.deleteEntry(entry: entry)
+                            self.confirmDeletion = false
+                            self.presentaionMode.wrappedValue.dismiss()
+                        }
+                    } message: {
+                        Text("Are you sure you want to delete the Entry?")
+                    }
+                }
+                .padding()
+                .background(
+                    Rectangle()
+                        .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                        .cornerRadius(10.0)
+                )
             }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(
-                Rectangle()
-                    .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-                    .cornerRadius(10.0)
-            )
             .padding(.leading)
             .padding(.trailing)
             .padding(.bottom)
@@ -189,12 +225,13 @@ struct EditDetailsComponent: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        self.event = entryStore.entries[self.index].event ?? ""
-                        self.emojion = entryStore.entries[self.index].emojion ?? "🫥"
-                        self.feeling = entryStore.entries[self.index].feeling ?? [0,0,0]
-                        self.rating = entryStore.entries[self.index].rating
-                        self.cachedRating = entryStore.entries[self.index].rating
-                        self.note = entryStore.entries[self.index].note ?? ""
+                        self.event = entry.event ?? ""
+                        self.emojion = entry.emojion ?? "🫥"
+                        self.feeling = entry.feeling ?? [0,0,0]
+                        self.rating = entry.rating
+                        self.cachedRating = entry.rating
+                        self.note = entry.note ?? ""
+//                        self.entryStore.discardChanges()
                         self.animateXMark = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                             self.animateXMark = false
@@ -217,12 +254,12 @@ struct EditDetailsComponent: View {
                     })
                     Spacer()
                     Button(action: {
-                        entryStore.entries[self.index].event = self.event
-                        entryStore.entries[self.index].emojion = self.emojion
-                        entryStore.entries[self.index].feeling = self.feeling
-                        entryStore.entries[self.index].rating = self.rating
-                        entryStore.entries[self.index].note = self.note
-                        entryStore.updateEntry(entry: entryStore.entries[index])
+                        entry.event = self.event
+                        entry.emojion = self.emojion
+                        entry.feeling = self.feeling
+                        entry.rating = self.rating
+                        entry.note = self.note
+                        entryStore.updateEntry(entry: entry)
                         self.animateCheckMark = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                             self.animateCheckMark = false
@@ -256,7 +293,7 @@ struct EditDetailsComponent: View {
 
 struct EditDetailsComponent_Previews: PreviewProvider {
     static var previews: some View {
-        EditDetailsComponent(event: .constant(Entry.MockEntry.event!), emojion: .constant(Entry.MockEntry.emojion!), feeling: .constant(Entry.MockEntry.feeling!), rating: .constant(Entry.MockEntry.rating), cachedRating: .constant(3), note: .constant(Entry.MockEntry.note!), canShowFeelingFinderView: .constant(false), index: 0)
+        EditDetailsComponent(event: .constant(Entry.MockEntry.event!), emojion: .constant(Entry.MockEntry.emojion!), feeling: .constant(Entry.MockEntry.feeling!), rating: .constant(Entry.MockEntry.rating), cachedRating: .constant(3), note: .constant(Entry.MockEntry.note!), canShowFeelingFinderView: .constant(false), entry: Entry.MockEntry)
             .environmentObject(EntryStore())
             .environmentObject(FeelingFinderStore())
         

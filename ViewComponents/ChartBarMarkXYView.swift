@@ -15,7 +15,7 @@ struct ChartBarMarkXYView: View {
         Chart {
             ForEach(chartStore.feelingData) { feeling in
                     BarMark(
-                        x: .value("Feeling Type", feeling.type),
+                        x: .value("Feeling Type", feeling.type.rawValue),
                         y: .value("Total Count", feeling.count)
                     )
                     .foregroundStyle(LinearGradient(

@@ -12,12 +12,10 @@ struct CardView: View {
     @EnvironmentObject var entryStore: EntryStore
     @State private var editMode: EditMode = .inactive
     @State private var canShowAddEntryView: Bool = false
-    @State private var canShowEditEntryView: Bool = false
     @State private var canAutoCompleteSearch: Bool = false
     @State private var confirmDeletion: Bool = false
     @State private var canResetDate: Bool = false
     @State private var calendarId: UUID = UUID()
-    @State var index: Int = 0
     
     var body: some View {
         List(selection: $entryStore.entrySelection) {
@@ -35,21 +33,15 @@ struct CardView: View {
                                     ZStack {
                                         HStack(alignment: .top) {
                                             if !self.editMode.isEditing {
-                                                DateRowView(index: entryStore.entries.firstIndex(of: entry)!)
+                                                DateRowView(entry: entry)
                                             }
-                                            CardRowView(index: entryStore.entries.firstIndex(of: entry)!)
+                                            CardRowView(entry: entry)
                                                 .padding(.leading, self.editMode.isEditing ? 10 : 0)
                                         }
-                                        if let entryIndex = entryStore.entries.firstIndex(of: entry) {
-                                            NavigationLink(destination: EntryDetailsView(index: Binding(get: {entryIndex}, set: {_ in entryIndex}))) {
-                                                EmptyView()
-                                            }
-                                            .opacity(0)
+                                        NavigationLink(destination: EntryDetailsView(entry: entry)) {
+                                            EmptyView()
                                         }
-//                                        NavigationLink(destination: EntryDetailsView(index: Binding(get: {entryStore.entries.firstIndex(of: entry)!}, set: {_ in entryStore.entries.firstIndex(of: entry)}))) {
-//                                            EmptyView()
-//                                        }
-//                                        .opacity(0)
+                                        .opacity(0)
                                     }
                                 }
                                 .listRowSeparator(.hidden)
@@ -64,15 +56,10 @@ struct CardView: View {
                                             self.entryStore.entrySelection.removeAll()
                                         }
                                     } label: {
-                                        Label("Delete", systemImage: "trash")
+                                        Label("", systemImage: "trash")
+                                            .foregroundStyle(.red, .red)
                                     }
-                                    Button {
-                                        self.index = entryStore.entries.firstIndex(of: entry)!
-                                        self.canShowEditEntryView.toggle()
-                                    } label: {
-                                        Label("Edit", systemImage: "pencil")
-                                    }
-                                    .tint(.blue)
+                                    .tint(.clear)
                                 }
                             }
                         }
@@ -98,7 +85,7 @@ struct CardView: View {
                     DatePicker("Please enter a date", selection: $entryStore.searchDate, displayedComponents: .date)
                         .labelsHidden()
                         .id(calendarId)
-                    // Needed to close calendar picker after selection
+                        // Needed to close calendar picker after selection
                         .onChange(of: Calendar.current.component(.day, from: entryStore.searchDate)) {
                             calendarId = UUID()
                             if !canResetDate {
@@ -213,9 +200,6 @@ struct CardView: View {
         }
         .sheet(isPresented: $canShowAddEntryView) {
             AddEntryView()
-        }
-        .sheet(isPresented: $canShowEditEntryView) {
-            EntryDetailsView(index: $index)
         }
     }
 }

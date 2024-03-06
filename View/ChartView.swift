@@ -11,18 +11,18 @@ struct ChartView: View {
     @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var chartStore: ChartStore
     @EnvironmentObject var entryStore: EntryStore
-    @State private var selection = 1
+    @State private var chartViewSelection = 1
     
     var body: some View {
 //    ToDo: Add multiple chart views
         VStack{
-            TabView(selection: $selection) {
+            TabView(selection: $chartViewSelection) {
                 ChartSectorMarkView()
                     .tag(0)
                 ChartLineMarkView()
                     .onDisappear(perform: {
-                        if self.selection != 2 {
-                            self.selection = 3
+                        if self.chartViewSelection != 2 {
+                            self.chartViewSelection = 3
                         }
                     })
                     .tag(1)
@@ -30,8 +30,8 @@ struct ChartView: View {
                     .tag(2)
                 ChartSectorMarkView()
                     .onDisappear(perform: {
-                        if self.selection != 2 {
-                            self.selection = 1
+                        if self.chartViewSelection != 2 {
+                            self.chartViewSelection = 1
                         }
                     })
                     .tag(3)
@@ -53,9 +53,22 @@ struct ChartView: View {
             ChartBarMarkXView()
                 .padding([.leading, .trailing], 20)
         }
+        .navigationBarItems(
+            trailing:
+                HStack {
+                    Picker("Chart TimeFrame", selection: $chartStore.chartTimeFrameSelection, content: {
+                        ForEach(ChartTimeFrame.allCases, content: { timeFrame in
+                            Text(timeFrame.rawValue.capitalized)
+                        })
+                    })
+                    .pickerStyle(.segmented)
+                    .onChange(of: chartStore.chartTimeFrameSelection, {
+                        chartStore.fetchAll(entries: entryStore.entries)
+                    })
+                }
+        )
         .onAppear(perform: {
             chartStore.fetchAll(entries: entryStore.entries)
-
         })
         .refreshable {
             chartStore.fetchAll(entries: entryStore.entries)

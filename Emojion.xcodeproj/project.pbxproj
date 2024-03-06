@@ -23,6 +23,8 @@
 		2F20BB1F283BF856002512AB /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F20BB1D283BF856002512AB /* CalendarView.swift */; };
 		2F264E992B927F4F00B3F51A /* AddDetailsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */; };
 		2F264E9A2B927F4F00B3F51A /* AddDetailsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */; };
+		2F264E9C2B9897C500B3F51A /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F264E9B2B9897C500B3F51A /* Calendar.swift */; };
+		2F264E9D2B9897C500B3F51A /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F264E9B2B9897C500B3F51A /* Calendar.swift */; };
 		2F2B411E2B4D9C4600C94C90 /* MarqueText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B411D2B4D9C4600C94C90 /* MarqueText.swift */; };
 		2F2B411F2B4D9C4600C94C90 /* MarqueText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B411D2B4D9C4600C94C90 /* MarqueText.swift */; };
 		2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F35F302282F178A0038D78B /* NSManagedObject.swift */; };
@@ -41,8 +43,6 @@
 		2F70FB582808484300D2A725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F70FB412808484300D2A725 /* Assets.xcassets */; };
 		2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB6128084B9100D2A725 /* AddEntryView.swift */; };
 		2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB6128084B9100D2A725 /* AddEntryView.swift */; };
-		2F70FB682808536E00D2A725 /* EntryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB672808536E00D2A725 /* EntryFormView.swift */; };
-		2F70FB692808536E00D2A725 /* EntryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB672808536E00D2A725 /* EntryFormView.swift */; };
 		2F70FB74280C7EE300D2A725 /* EntryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB73280C7EE300D2A725 /* EntryStore.swift */; };
 		2F70FB75280C7EE300D2A725 /* EntryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB73280C7EE300D2A725 /* EntryStore.swift */; };
 		2F70FB7A280C890E00D2A725 /* EntryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB79280C890E00D2A725 /* EntryDetailsView.swift */; };
@@ -51,8 +51,6 @@
 		2F70FB7F280CD72600D2A725 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB7D280CD72600D2A725 /* UITextField.swift */; };
 		2F70FB81280D6FC600D2A725 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB80280D6FC600D2A725 /* String.swift */; };
 		2F70FB82280D6FC600D2A725 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB80280D6FC600D2A725 /* String.swift */; };
-		2F70FB84280D79DD00D2A725 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB83280D79DD00D2A725 /* EditEntryView.swift */; };
-		2F70FB85280D79DD00D2A725 /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB83280D79DD00D2A725 /* EditEntryView.swift */; };
 		2F70FB87280D82CB00D2A725 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB86280D82CB00D2A725 /* Binding.swift */; };
 		2F70FB88280D82CB00D2A725 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB86280D82CB00D2A725 /* Binding.swift */; };
 		2F70FB8A280E011300D2A725 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB89280E011300D2A725 /* CardView.swift */; };
@@ -136,6 +134,7 @@
 		2F1357932850D2B4006C07B2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2F20BB1D283BF856002512AB /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailsComponent.swift; sourceTree = "<group>"; };
+		2F264E9B2B9897C500B3F51A /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		2F2B411D2B4D9C4600C94C90 /* MarqueText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueText.swift; sourceTree = "<group>"; };
 		2F35F302282F178A0038D78B /* NSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObject.swift; sourceTree = "<group>"; };
 		2F4F147128323D76008D74B0 /* UITextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextEditor.swift; sourceTree = "<group>"; };
@@ -149,12 +148,10 @@
 		2F70FB4C2808484300D2A725 /* Emojion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emojion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F70FB4E2808484300D2A725 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		2F70FB6128084B9100D2A725 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
-		2F70FB672808536E00D2A725 /* EntryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryFormView.swift; sourceTree = "<group>"; };
 		2F70FB73280C7EE300D2A725 /* EntryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryStore.swift; sourceTree = "<group>"; };
 		2F70FB79280C890E00D2A725 /* EntryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailsView.swift; sourceTree = "<group>"; };
 		2F70FB7D280CD72600D2A725 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		2F70FB80280D6FC600D2A725 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		2F70FB83280D79DD00D2A725 /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
 		2F70FB86280D82CB00D2A725 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
 		2F70FB89280E011300D2A725 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2F70FB8C280E10FE00D2A725 /* CardRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRowView.swift; sourceTree = "<group>"; };
@@ -218,8 +215,8 @@
 				2FA93C032B38E69200A1F994 /* DateRowView.swift */,
 				2F70FB8C280E10FE00D2A725 /* CardRowView.swift */,
 				2FAF0054283D68B10092E8DD /* CalendarRowView.swift */,
+				2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */,
 				2F70FB8F280E141500D2A725 /* EditDetailsComponent.swift */,
-				2F70FB672808536E00D2A725 /* EntryFormView.swift */,
 				2F70FB99280F19A100D2A725 /* StarRatingView.swift */,
 				2F01D8B32814697B004583E3 /* FeelingFinderView.swift */,
 				2FB51F9B2B868AF2007757E3 /* EntryDebugButtons.swift */,
@@ -229,7 +226,6 @@
 				2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */,
 				2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */,
 				2FA93C1E2B3B93E400A1F994 /* ChartStatsView.swift */,
-				2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -238,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				2F70FB6128084B9100D2A725 /* AddEntryView.swift */,
-				2F70FB83280D79DD00D2A725 /* EditEntryView.swift */,
 				2F70FB79280C890E00D2A725 /* EntryDetailsView.swift */,
 			);
 			path = SharedView;
@@ -344,6 +339,7 @@
 				2FA93C092B3A1DB500A1F994 /* Sequence.swift */,
 				2FDBE9032B4B1EF00088CAFE /* EntryStoreExtension.swift */,
 				2FDBE9062B4B212A0088CAFE /* Formatter.swift */,
+				2F264E9B2B9897C500B3F51A /* Calendar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -476,6 +472,7 @@
 				2F01D8B42814697B004583E3 /* FeelingFinderView.swift in Sources */,
 				2FA93C162B3B71D100A1F994 /* ChartLineMarkView.swift in Sources */,
 				2F70FB81280D6FC600D2A725 /* String.swift in Sources */,
+				2F264E9C2B9897C500B3F51A /* Calendar.swift in Sources */,
 				2FB51FA22B8E593F007757E3 /* StarRatingUpdateV22.swift in Sources */,
 				2F70FB7E280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB552808484300D2A725 /* Persistence.swift in Sources */,
@@ -515,9 +512,7 @@
 				2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB90280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8D280E10FE00D2A725 /* CardRowView.swift in Sources */,
-				2F70FB682808536E00D2A725 /* EntryFormView.swift in Sources */,
 				2FA30EEC2B34D03B00195CA4 /* LoginView.swift in Sources */,
-				2F70FB84280D79DD00D2A725 /* EditEntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +536,7 @@
 				2F01D8B52814697B004583E3 /* FeelingFinderView.swift in Sources */,
 				2FA93C172B3B71D100A1F994 /* ChartLineMarkView.swift in Sources */,
 				2F70FB82280D6FC600D2A725 /* String.swift in Sources */,
+				2F264E9D2B9897C500B3F51A /* Calendar.swift in Sources */,
 				2FB51FA32B8E593F007757E3 /* StarRatingUpdateV22.swift in Sources */,
 				2F70FB7F280CD72600D2A725 /* UITextField.swift in Sources */,
 				2F70FB562808484300D2A725 /* Persistence.swift in Sources */,
@@ -580,9 +576,7 @@
 				2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F70FB91280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8E280E10FE00D2A725 /* CardRowView.swift in Sources */,
-				2F70FB692808536E00D2A725 /* EntryFormView.swift in Sources */,
 				2FA30EED2B34D03B00195CA4 /* LoginView.swift in Sources */,
-				2F70FB85280D79DD00D2A725 /* EditEntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,7 +704,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Emojion (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = L4UU7WP4CE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -728,7 +722,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
 				PRODUCT_NAME = Emojion;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -747,7 +741,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Emojion (iOS).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = L4UU7WP4CE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -765,7 +759,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
 				PRODUCT_NAME = Emojion;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -785,7 +779,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = L4UU7WP4CE;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -797,7 +791,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
 				PRODUCT_NAME = Emojion;
 				SDKROOT = macosx;
@@ -814,7 +808,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = L4UU7WP4CE;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -826,7 +820,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.plus1xp.Emojion;
 				PRODUCT_NAME = Emojion;
 				SDKROOT = macosx;

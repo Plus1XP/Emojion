@@ -7,8 +7,20 @@
 
 import SwiftUI
 
+enum ChartTimeFrame: String, CaseIterable, Identifiable {
+    case Today
+    case Yesterday
+    case Week
+    case Month
+    case Year
+    case All
+    
+    var id: ChartTimeFrame { self }
+}
+
 class ChartStore: ObservableObject {
     private let feelingFinderStore: FeelingFinderStore = FeelingFinderStore()
+    @Published var chartTimeFrameSelection: ChartTimeFrame = .Today
     @Published var feelingData: [FeelingData] = [FeelingData]()
     @Published var feelingColors: [Color] = [.red, .green, .gray, .orange, .yellow, .blue, .purple]
     @Published var mostUsedEmoji: (emoji: String, tally: Int) = (emoji:"🫥" , tally:0)
@@ -43,13 +55,13 @@ class ChartStore: ObservableObject {
     }
     
     func populateEmptyFeelingData() {
-        feelingData.append(FeelingData(type: "Angry", count: 0, color: Color.red, date: [Date.now]))
-        feelingData.append(FeelingData(type: "Bad", count: 0, color: Color.green, date: [Date.now]))
-        feelingData.append(FeelingData(type: "Disgusted", count: 0, color: Color.gray, date: [Date.now]))
-        feelingData.append(FeelingData(type: "Fearful", count: 0, color: Color.orange, date: [Date.now]))
-        feelingData.append(FeelingData(type: "Happy", count: 0, color: Color.yellow, date: [Date.now]))
-        feelingData.append(FeelingData(type: "Sad", count: 0, color: Color.blue, date: [Date.now]))
-        feelingData.append(FeelingData(type: "Surprised", count: 0, color: Color.purple, date: [Date.now]))
+        feelingData.append(FeelingData(type: .Angry, count: 0, color: Color.red, date: [Date.now]))
+        feelingData.append(FeelingData(type: .Bad, count: 0, color: Color.green, date: [Date.now]))
+        feelingData.append(FeelingData(type: .Disgusted, count: 0, color: Color.gray, date: [Date.now]))
+        feelingData.append(FeelingData(type: .Fearful, count: 0, color: Color.orange, date: [Date.now]))
+        feelingData.append(FeelingData(type: .Happy, count: 0, color: Color.yellow, date: [Date.now]))
+        feelingData.append(FeelingData(type: .Sad, count: 0, color: Color.blue, date: [Date.now]))
+        feelingData.append(FeelingData(type: .Surprised, count: 0, color: Color.purple, date: [Date.now]))
         feelingData.sort()
     }
     
@@ -58,58 +70,79 @@ class ChartStore: ObservableObject {
             if entry.feeling?.first == 0 {
                 // Do nothing this is blank entry
             }
-            if entry.feeling?.first == 1 {
-                if let existingElement = feelingData.first(where: { $0.type == "Angry" }) {
+            if entry.feeling?.first == 1 && ValidateTimeFrame(entry: entry) {
+                if let existingElement = feelingData.first(where: { $0.type == .Angry }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
-                    feelingData.append(FeelingData(type: "Angry", count: 1, color: Color.red, date: [entry.timestamp!]))
+                    feelingData.append(FeelingData(type: .Angry, count: 1, color: Color.red, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 2 {
-                if let existingElement = feelingData.first(where: { $0.type == "Bad" }) {
+            if entry.feeling?.first == 2 && ValidateTimeFrame(entry: entry) {
+                if let existingElement = feelingData.first(where: { $0.type == .Bad }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
-                    feelingData.append(FeelingData(type: "Bad", count: 1, color: Color.green, date: [entry.timestamp!]))
+                    feelingData.append(FeelingData(type: .Bad, count: 1, color: Color.green, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 3 {
-                if let existingElement = feelingData.first(where: { $0.type == "Disgusted" }) {
+            if entry.feeling?.first == 3 && ValidateTimeFrame(entry: entry) {
+                if let existingElement = feelingData.first(where: { $0.type == .Disgusted }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
-                    feelingData.append(FeelingData(type: "Disgusted", count: 1, color: Color.gray, date: [entry.timestamp!]))
+                    feelingData.append(FeelingData(type: .Disgusted, count: 1, color: Color.gray, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 4 {
-                if let existingElement = feelingData.first(where: { $0.type == "Fearful" }) {
+            if entry.feeling?.first == 4 && ValidateTimeFrame(entry: entry) {
+                if let existingElement = feelingData.first(where: { $0.type == .Fearful }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
-                    feelingData.append(FeelingData(type: "Fearful", count: 1, color: Color.orange, date: [entry.timestamp!]))
+                    feelingData.append(FeelingData(type: .Fearful, count: 1, color: Color.orange, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 5 {
-                if let existingElement = feelingData.first(where: { $0.type == "Happy" }) {
+            if entry.feeling?.first == 5 && ValidateTimeFrame(entry: entry) {
+                if let existingElement = feelingData.first(where: { $0.type == .Happy }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
-                    feelingData.append(FeelingData(type: "Happy", count: 1, color: Color.yellow, date: [entry.timestamp!]))
+                    feelingData.append(FeelingData(type: .Happy, count: 1, color: Color.yellow, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 6 {
-                if let existingElement = feelingData.first(where: { $0.type == "Sad" }) {
+            if entry.feeling?.first == 6 && ValidateTimeFrame(entry: entry) {
+                if let existingElement = feelingData.first(where: { $0.type == .Sad }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
-                    feelingData.append(FeelingData(type: "Sad", count: 1, color: Color.blue, date: [entry.timestamp!]))
+                    feelingData.append(FeelingData(type: .Sad, count: 1, color: Color.blue, date: [entry.timestamp!]))
                 }
             }
-            if entry.feeling?.first == 7 {
-                if let existingElement = feelingData.first(where: { $0.type == "Surprised" }) {
+            if entry.feeling?.first == 7 && ValidateTimeFrame(entry: entry) {
+                if let existingElement = feelingData.first(where: { $0.type == .Surprised }) {
                     feelingData[feelingData.firstIndex(of: existingElement)!].count += 1
                 } else {
-                    feelingData.append(FeelingData(type: "Surprised", count: 1, color: Color.purple, date: [entry.timestamp!]))
+                    feelingData.append(FeelingData(type: .Surprised, count: 1, color: Color.purple, date: [entry.timestamp!]))
                 }
             }
             
         }
         feelingData.sort()
+    }
+    
+    func ValidateTimeFrame(entry: Entry) -> Bool {
+        let calendar = Calendar.current
+
+        guard let entryDate = entry.timestamp else { return false }
+        
+        switch chartTimeFrameSelection {
+        case .Today:
+            return calendar.isDateInToday(entryDate)
+        case .Yesterday:
+            return calendar.isDateInYesterday(entryDate)
+        case .Week:
+            return calendar.isDateInThisWeek(entryDate)
+        case .Month:
+            return calendar.isDateInThisMonth(entryDate)
+        case .Year:
+            return calendar.isDateInThisYear(entryDate)
+        case .All:
+            return true
+        }
     }
     
     func fetchExtremumEmojis(entries: [Entry]) {

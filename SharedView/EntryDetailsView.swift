@@ -16,56 +16,22 @@ struct EntryDetailsView: View {
     @State var rating: Int64 = 0
     @State var cachedRating: Int64 = 0
     @State var note: String = ""
-    @State var confirmDeletion: Bool = false
     @State var canShowFeelingFinderView: Bool = false
-    @State var animate: Bool = false
-    @Binding var index: Int
+    let entry: Entry
     
     var body: some View {
-        EditDetailsComponent(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, cachedRating: $cachedRating, note: $note, canShowFeelingFinderView: $canShowFeelingFinderView, index: self.index)
+        //MARK: Refactor & Combine Add & Edit Details Views & Components
+        EditDetailsComponent(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, cachedRating: $cachedRating, note: $note, canShowFeelingFinderView: $canShowFeelingFinderView, entry: entry)
             .navigationTitle("Emojion Details")
             .navigationBarTitleDisplayMode(.inline)
             .presentationDragIndicator(.visible)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        self.animate.toggle()
-                        self.confirmDeletion = true
-                    }, label: {
-                        Image(systemName: self.confirmDeletion ? "trash.fill" : "trash")
-                            .font(.subheadline)
-                            .foregroundStyle(.red)
-                            .symbolEffect(.pulse.wholeSymbol, options: .repeat(3), value: self.animate)
-                            .contentTransition(.symbolEffect(.replace))
-                            .padding(5)
-                            .background(
-                                Circle()
-                                    .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-                                    .cornerRadius(25.0)
-                            )
-                    })
-                    .alert("Confirm Deletion", isPresented: $confirmDeletion) {
-                        Button("Cancel", role: .cancel) {
-                            self.confirmDeletion = false
-                        }
-                        Button("Delete", role: .destructive) {
-                            let feedbackGenerator: UINotificationFeedbackGenerator? = UINotificationFeedbackGenerator()
-                            feedbackGenerator?.notificationOccurred(.success)
-                            entryStore.deleteEntry(index: index)
-                            self.confirmDeletion = false
-                        }
-                    } message: {
-                        Text("Are you sure you want to delete the Entry?")
-                    }
-                }
-            }
             .onAppear(perform: {
-                self.event = entryStore.entries[self.index].event ?? ""
-                self.emojion = entryStore.entries[self.index].emojion ?? "🫥"
-                self.feeling = entryStore.entries[self.index].feeling ?? [0,0,0]
-                self.rating = entryStore.entries[self.index].rating
-                self.cachedRating = entryStore.entries[self.index].rating
-                self.note = entryStore.entries[self.index].note ?? ""
+                self.event = entry.event ?? ""
+                self.emojion = entry.emojion ?? "🫥"
+                self.feeling = entry.feeling ?? [0,0,0]
+                self.rating = entry.rating
+                self.cachedRating = entry.rating
+                self.note = entry.note ?? ""
                 
             })
             .background(Color.setViewBackgroundColor(colorScheme: self.colorScheme))
@@ -76,7 +42,7 @@ struct EntryDetailsView: View {
 
 struct EntryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        EntryDetailsView(index: .constant(0))
+        EntryDetailsView(entry: Entry.MockEntry)
             .environmentObject(EntryStore())
     }
 }

@@ -18,11 +18,11 @@ struct ChartSectorMarkView: View {
                 innerRadius: .ratio(0.2),
                 angularInset: 1.5)
             .cornerRadius(5)
-            .foregroundStyle(by: .value("Type", feeling.type))
+            .foregroundStyle(by: .value("Type", feeling.type.rawValue))
         }
         .chartLegend(.hidden)
         .chartForegroundStyleScale(domain: chartStore.feelingData.compactMap({ feeling in
-            feeling.type
+            feeling.type.rawValue
         }), range: chartStore.feelingColors)
         .padding(.top, 5)
     }
