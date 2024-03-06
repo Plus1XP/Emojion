@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    func isWithinTodat() -> Bool {
+    func isWithinToday() -> Bool {
         let calendar = Calendar.current
         let now = Date()
         let sevenDaysAgo = calendar.date(byAdding: .day, value: 0, to: now)
