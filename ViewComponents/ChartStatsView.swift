@@ -15,7 +15,7 @@ struct ChartStatsView: View {
     @State var canShowLeastUsed: Bool = true
     
     var body: some View {
-        VStack(alignment: .leading, content: {
+        VStack(alignment: .center, content: {
             HStack {
                 if canShowMostUsed {
                     VStack(alignment: .leading, content: {
@@ -270,31 +270,50 @@ struct ChartStatsView: View {
             .padding([.leading, .trailing], 10)
             Divider()
             VStack(alignment: .center, content: {
-                WrappingHStack(alignment: .center, horizontalSpacing: nil, verticalSpacing: nil, fitContentWidth: false) {
+                HStack {
                     ForEach(chartStore.feelingData, id: \.id) { feeling in
-                        VStack(alignment: .center, content: {
-                            Text("\(feeling.count)")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            Text("\(feeling.type)")
-                                .font(.footnote)
-                        })
-                        .padding(10)
-                        .frame(width: 85, height: 75)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(feeling.color)
-                        )
+                        if feeling.type == "Angry" || feeling.type == "Bad" || feeling.type == "Disgusted" || feeling.type == "Fearful" {
+                            VStack(alignment: .center, content: {
+                                Text("\(feeling.count)")
+                                    .font(GetEmojionCountFontSize())
+                                    .fontWeight(.bold)
+                                Text("\(feeling.type)")
+                                    .font(.footnote)
+                            })
+                            .frame(width: GetEmojionFrameWidthSize(), height: 75)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(feeling.color)
+                            )
+                        }
+                    }
+                }
+                
+                HStack {
+                    ForEach(chartStore.feelingData, id: \.id) { feeling in
+                        if feeling.type == "Happy" || feeling.type == "Sad" || feeling.type == "Surprised" {
+                            VStack(alignment: .center, content: {
+                                Text("\(feeling.count)")
+                                    .font(GetEmojionCountFontSize())
+                                    .fontWeight(.bold)
+                                Text("\(feeling.type)")
+                                    .font(.footnote)
+                            })
+                            .frame(width: GetEmojionFrameWidthSize(), height: 75)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(feeling.color)
+                            )
+                        }
                     }
                     VStack(alignment: .center, content: {
                         Text("\(entryStore.entries.count)")
-                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            .font(GetEmojionCountFontSize())
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         Text("Total")
                             .font(.footnote)
                     })
-                    .padding(10)
-                    .frame(width: 85, height: 75)
+                    .frame(width: GetEmojionFrameWidthSize(), height: 75)
                     .cornerRadius(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
@@ -305,6 +324,22 @@ struct ChartStatsView: View {
             })
             .padding(.bottom, 10)
         })
+    }
+    
+    func GetEmojionFrameWidthSize() -> CGFloat {
+        if UIDevice.current.name.contains("Pro Max") {
+            return 85
+        } else {
+            return 75
+        }
+    }
+    
+    func GetEmojionCountFontSize() -> Font {
+        if entryStore.entries.count < 1000 {
+            return .title
+        } else {
+            return .title2
+        }
     }
 }
 

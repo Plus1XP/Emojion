@@ -41,8 +41,24 @@ struct ChartBarMarkXView: View {
         .chartXAxis(.hidden)
 //                    .chartYScale(range: .plotDimension(endPadding: -8))
 //                    .chartLegend(position: .bottom, spacing: -8)
-        .chartLegend(.visible)
+        .chartLegend(CanShowChartLegend())
 //        .padding(.bottom, 15)
-        .frame(height: 50)
+        .frame(height: GetChartLegendSize())
+    }
+    
+    func CanShowChartLegend() -> Visibility {
+        if UIDevice.current.name.contains("Pro Max") {
+            return .visible
+        } else {
+            return .hidden
+        }
+    }
+    
+    func GetChartLegendSize() -> CGFloat {
+        if UIDevice.current.name.contains("Pro Max") {
+            return 50
+        } else {
+            return 30
+        }
     }
 }

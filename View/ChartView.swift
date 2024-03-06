@@ -69,7 +69,6 @@ struct ChartView: View {
         )
         .onAppear(perform: {
             chartStore.fetchAll(entries: entryStore.entries)
-
         })
         .refreshable {
             chartStore.fetchAll(entries: entryStore.entries)
