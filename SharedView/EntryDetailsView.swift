@@ -42,7 +42,8 @@ struct EntryDetailsView: View {
 
 struct EntryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        EntryDetailsView(entry: Entry.MockEntry)
+        EntryDetailsView(entry: PersistenceController.preview.sampleEntry)
             .environmentObject(EntryStore())
+            .environmentObject(FeelingFinderStore())
     }
 }

@@ -59,6 +59,8 @@ struct DateRowView: View {
 
 struct DateRowView_Previews: PreviewProvider {
     static var previews: some View {
-        DateRowView(entry: Entry.MockEntry)
+        DateRowView(entry: PersistenceController.preview.sampleEntry)
+            .environmentObject(EntryStore())
+            .environmentObject(FeelingFinderStore())
     }
 }

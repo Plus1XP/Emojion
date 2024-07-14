@@ -75,7 +75,8 @@ struct FeelingFinderView: View {
 
 struct FeelingFinderView_Previews: PreviewProvider {
     static var previews: some View {
-        FeelingFinderView(feeling: .constant(Entry.MockEntry.feeling!))
+        FeelingFinderView(feeling: .constant(PersistenceController.preview.sampleEntry.feeling ?? [0,0,0]))
             .previewLayout(.sizeThatFits)
+            .environmentObject(FeelingFinderStore())
     }
 }

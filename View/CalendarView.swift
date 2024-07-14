@@ -173,6 +173,7 @@ struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
         CalendarView(calendar: Calendar(identifier: .iso8601))
             .environmentObject(EntryStore())
+            .environmentObject(FeelingFinderStore())
             .environmentObject(CalendarStore())
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }

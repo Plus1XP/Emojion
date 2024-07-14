@@ -44,6 +44,8 @@ struct AuthenticationView: View {
 #Preview {
     AuthenticationView()
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        .environmentObject(EntryStore())
+        .environmentObject(FeelingFinderStore())
         .environmentObject(BiometricStore())
 }
 

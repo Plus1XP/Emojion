@@ -37,3 +37,10 @@ struct ChartBarMarkXYView: View {
         .padding(.top, 5)
     }
 }
+
+#Preview {
+    ChartBarMarkXYView()
+        .environmentObject(EntryStore())
+        .environmentObject(ChartStore())
+        .preferredColorScheme(.light)
+}

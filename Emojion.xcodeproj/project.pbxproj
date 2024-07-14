@@ -63,6 +63,8 @@
 		2F70FB94280E224600D2A725 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB92280E224500D2A725 /* View.swift */; };
 		2F70FB9A280F19A100D2A725 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB99280F19A100D2A725 /* StarRatingView.swift */; };
 		2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB99280F19A100D2A725 /* StarRatingView.swift */; };
+		2F7561442C444A7E008D7BE5 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7561432C444A7E008D7BE5 /* PersistenceController.swift */; };
+		2F7561452C444A7E008D7BE5 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7561432C444A7E008D7BE5 /* PersistenceController.swift */; };
 		2FA30EDF2B34CAC100195CA4 /* BiometricService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */; };
 		2FA30EE02B34CAC100195CA4 /* BiometricService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */; };
 		2FA30EE22B34CAF400195CA4 /* BiometricStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EE12B34CAF400195CA4 /* BiometricStore.swift */; };
@@ -158,6 +160,7 @@
 		2F70FB8F280E141500D2A725 /* EditDetailsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDetailsComponent.swift; sourceTree = "<group>"; };
 		2F70FB92280E224500D2A725 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		2F70FB99280F19A100D2A725 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
+		2F7561432C444A7E008D7BE5 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricService.swift; sourceTree = "<group>"; };
 		2FA30EE12B34CAF400195CA4 /* BiometricStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricStore.swift; sourceTree = "<group>"; };
 		2FA30EE42B34CB2300195CA4 /* SyncMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMonitor.swift; sourceTree = "<group>"; };
@@ -328,18 +331,19 @@
 		2F70FB7C280CD70E00D2A725 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				2F70FB80280D6FC600D2A725 /* String.swift */,
 				2F70FB86280D82CB00D2A725 /* Binding.swift */,
-				2F70FB92280E224500D2A725 /* View.swift */,
+				2F264E9B2B9897C500B3F51A /* Calendar.swift */,
 				2F01D8732812D711004583E3 /* Character.swift */,
-				2FC755EB282AA5EF008344CE /* Entry.swift */,
-				2F35F302282F178A0038D78B /* NSManagedObject.swift */,
 				2F1357932850D2B4006C07B2 /* Color.swift */,
 				2FA93C062B38FCC100A1F994 /* Date.swift */,
-				2FA93C092B3A1DB500A1F994 /* Sequence.swift */,
+				2FC755EB282AA5EF008344CE /* Entry.swift */,
 				2FDBE9032B4B1EF00088CAFE /* EntryStoreExtension.swift */,
 				2FDBE9062B4B212A0088CAFE /* Formatter.swift */,
-				2F264E9B2B9897C500B3F51A /* Calendar.swift */,
+				2F35F302282F178A0038D78B /* NSManagedObject.swift */,
+				2FA93C092B3A1DB500A1F994 /* Sequence.swift */,
+				2F70FB80280D6FC600D2A725 /* String.swift */,
+				2F70FB92280E224500D2A725 /* View.swift */,
+				2F7561432C444A7E008D7BE5 /* PersistenceController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -347,13 +351,13 @@
 		2F70FB95280EBDF600D2A725 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				2F70FB7D280CD72600D2A725 /* UITextField.swift */,
-				2F4F147128323D76008D74B0 /* UITextEditor.swift */,
-				2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */,
 				2FA93C1B2B3B883B00A1F994 /* BubbleEffect.swift */,
-				2FA93C212B3F3AF000A1F994 /* WrappingHStack.swift */,
 				2F2B411D2B4D9C4600C94C90 /* MarqueText.swift */,
+				2FFE398A28410FF600DFFA48 /* PopoverViewModifier.swift */,
 				2FB51F982B866661007757E3 /* ShakeEffect.swift */,
+				2F4F147128323D76008D74B0 /* UITextEditor.swift */,
+				2F70FB7D280CD72600D2A725 /* UITextField.swift */,
+				2FA93C212B3F3AF000A1F994 /* WrappingHStack.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -491,6 +495,7 @@
 				2FFE398B28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB532808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F303282F178A0038D78B /* NSManagedObject.swift in Sources */,
+				2F7561442C444A7E008D7BE5 /* PersistenceController.swift in Sources */,
 				2FDBE9072B4B212A0088CAFE /* Formatter.swift in Sources */,
 				2FBDEB962824A246003953C0 /* MockDataObject.swift in Sources */,
 				2FB51F9F2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift in Sources */,
@@ -555,6 +560,7 @@
 				2FFE398C28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
 				2F70FB542808484300D2A725 /* ContentView.swift in Sources */,
 				2F35F304282F178A0038D78B /* NSManagedObject.swift in Sources */,
+				2F7561452C444A7E008D7BE5 /* PersistenceController.swift in Sources */,
 				2FDBE9082B4B212A0088CAFE /* Formatter.swift in Sources */,
 				2FBDEB972824A246003953C0 /* MockDataObject.swift in Sources */,
 				2FB51FA02B88D2BB007757E3 /* FeelingWheelUpdateV22.swift in Sources */,

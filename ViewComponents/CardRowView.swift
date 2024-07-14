@@ -83,6 +83,8 @@ struct CardRowView: View {
 
 struct CardRowView_Previews: PreviewProvider {
     static var previews: some View {
-        CardRowView(entry: Entry.MockEntry)
+        CardRowView(entry: PersistenceController.preview.sampleEntry)
+            .environmentObject(EntryStore())
+            .environmentObject(FeelingFinderStore())
     }
 }

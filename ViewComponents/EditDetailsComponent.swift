@@ -291,11 +291,10 @@ struct EditDetailsComponent: View {
     }
 }
 
-struct EditDetailsComponent_Previews: PreviewProvider {
-    static var previews: some View {
-        EditDetailsComponent(event: .constant(Entry.MockEntry.event!), emojion: .constant(Entry.MockEntry.emojion!), feeling: .constant(Entry.MockEntry.feeling!), rating: .constant(Entry.MockEntry.rating), cachedRating: .constant(3), note: .constant(Entry.MockEntry.note!), canShowFeelingFinderView: .constant(false), entry: Entry.MockEntry)
-            .environmentObject(EntryStore())
-            .environmentObject(FeelingFinderStore())
-        
-    }
+#Preview {
+    @State var entry: Entry = PersistenceController.preview.sampleEntry
+    
+    return EditDetailsComponent(event: .constant(entry.event ?? ""), emojion: .constant(entry.emojion ?? ""), feeling: .constant(entry.feeling ?? [0,0,0]), rating: .constant(entry.rating ?? 0), cachedRating: .constant(entry.rating ?? 0), note: .constant(entry.note ?? ""), canShowFeelingFinderView: .constant(false), entry: entry)
+        .environmentObject(EntryStore())
+        .environmentObject(FeelingFinderStore())
 }
