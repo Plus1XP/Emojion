@@ -12,6 +12,7 @@ struct SettingsView: View {
     @EnvironmentObject var biometricStore: BiometricStore
     @ObservedObject var syncMonitor: SyncMonitor = SyncMonitor.shared
     @State var canShowSyncError: Bool = false
+    @State var showConfetti: Bool = false
     // Fill in App ID when app is added to appstore connect!
     let appName: String = "Emojion App"
     let appID: String = "1628565468"
@@ -217,7 +218,23 @@ struct SettingsView: View {
                     }
                 }
             }
+            if checkTodayIsSpecialDay(day: 16, month: 4) {
+                HStack {
+                    Spacer()
+                    Button("🎁", action: {
+                        self.showConfetti = true
+                    })
+                    .buttonStyle(GrowingIconButtonStyle())
+                    Spacer()
+                }
+                // Needed to fix bug of section acting as a big button.
+                .buttonStyle(BorderlessButtonStyle())
+                // Removes white form section backgroung
+                .listRowBackground(Color.clear)
+
+            }
         }
+        .displayConfetti(isActive: $showConfetti)
     }
 }
 

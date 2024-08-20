@@ -65,6 +65,18 @@
 		2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70FB99280F19A100D2A725 /* StarRatingView.swift */; };
 		2F7561442C444A7E008D7BE5 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7561432C444A7E008D7BE5 /* PersistenceController.swift */; };
 		2F7561452C444A7E008D7BE5 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7561432C444A7E008D7BE5 /* PersistenceController.swift */; };
+		2F81BB512C74B193009397DB /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB502C74B193009397DB /* ConfettiView.swift */; };
+		2F81BB522C74B193009397DB /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB502C74B193009397DB /* ConfettiView.swift */; };
+		2F81BB542C74B20B009397DB /* ConfettiContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB532C74B20B009397DB /* ConfettiContainerView.swift */; };
+		2F81BB552C74B20B009397DB /* ConfettiContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB532C74B20B009397DB /* ConfettiContainerView.swift */; };
+		2F81BB572C74B243009397DB /* DisplayConfettiModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB562C74B243009397DB /* DisplayConfettiModifier.swift */; };
+		2F81BB582C74B243009397DB /* DisplayConfettiModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB562C74B243009397DB /* DisplayConfettiModifier.swift */; };
+		2F81BB5A2C74B311009397DB /* CalendarComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB592C74B311009397DB /* CalendarComponents.swift */; };
+		2F81BB5B2C74B311009397DB /* CalendarComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB592C74B311009397DB /* CalendarComponents.swift */; };
+		2F81BB642C74B4B0009397DB /* GrowingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB632C74B4B0009397DB /* GrowingButtonStyle.swift */; };
+		2F81BB652C74B4B0009397DB /* GrowingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB632C74B4B0009397DB /* GrowingButtonStyle.swift */; };
+		2F81BB672C74B4BA009397DB /* GrowingIconButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB662C74B4BA009397DB /* GrowingIconButtonStyle.swift */; };
+		2F81BB682C74B4BA009397DB /* GrowingIconButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB662C74B4BA009397DB /* GrowingIconButtonStyle.swift */; };
 		2FA30EDF2B34CAC100195CA4 /* BiometricService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */; };
 		2FA30EE02B34CAC100195CA4 /* BiometricService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */; };
 		2FA30EE22B34CAF400195CA4 /* BiometricStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EE12B34CAF400195CA4 /* BiometricStore.swift */; };
@@ -161,6 +173,12 @@
 		2F70FB92280E224500D2A725 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		2F70FB99280F19A100D2A725 /* StarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingView.swift; sourceTree = "<group>"; };
 		2F7561432C444A7E008D7BE5 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		2F81BB502C74B193009397DB /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
+		2F81BB532C74B20B009397DB /* ConfettiContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiContainerView.swift; sourceTree = "<group>"; };
+		2F81BB562C74B243009397DB /* DisplayConfettiModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayConfettiModifier.swift; sourceTree = "<group>"; };
+		2F81BB592C74B311009397DB /* CalendarComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarComponents.swift; sourceTree = "<group>"; };
+		2F81BB632C74B4B0009397DB /* GrowingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButtonStyle.swift; sourceTree = "<group>"; };
+		2F81BB662C74B4BA009397DB /* GrowingIconButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingIconButtonStyle.swift; sourceTree = "<group>"; };
 		2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricService.swift; sourceTree = "<group>"; };
 		2FA30EE12B34CAF400195CA4 /* BiometricStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricStore.swift; sourceTree = "<group>"; };
 		2FA30EE42B34CB2300195CA4 /* SyncMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMonitor.swift; sourceTree = "<group>"; };
@@ -215,20 +233,9 @@
 		2F01D8762812D956004583E3 /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				2FA93C032B38E69200A1F994 /* DateRowView.swift */,
-				2F70FB8C280E10FE00D2A725 /* CardRowView.swift */,
-				2FAF0054283D68B10092E8DD /* CalendarRowView.swift */,
-				2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */,
-				2F70FB8F280E141500D2A725 /* EditDetailsComponent.swift */,
-				2F70FB99280F19A100D2A725 /* StarRatingView.swift */,
-				2F01D8B32814697B004583E3 /* FeelingFinderView.swift */,
-				2FB51F9B2B868AF2007757E3 /* EntryDebugButtons.swift */,
-				2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */,
-				2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */,
-				2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */,
-				2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */,
-				2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */,
-				2FA93C1E2B3B93E400A1F994 /* ChartStatsView.swift */,
+				2F81BB4D2C74B12C009397DB /* Buttons */,
+				2F81BB4F2C74B143009397DB /* Styles */,
+				2F81BB4E2C74B13A009397DB /* Views */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -296,6 +303,7 @@
 				2F20BB1D283BF856002512AB /* CalendarView.swift */,
 				2F135771284E0539006C07B2 /* ChartView.swift */,
 				2FFE3984283FD26900DFFA48 /* SettingsView.swift */,
+				2F81BB532C74B20B009397DB /* ConfettiContainerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -358,8 +366,48 @@
 				2F4F147128323D76008D74B0 /* UITextEditor.swift */,
 				2F70FB7D280CD72600D2A725 /* UITextField.swift */,
 				2FA93C212B3F3AF000A1F994 /* WrappingHStack.swift */,
+				2F81BB562C74B243009397DB /* DisplayConfettiModifier.swift */,
+				2F81BB592C74B311009397DB /* CalendarComponents.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2F81BB4D2C74B12C009397DB /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				2FB51F9B2B868AF2007757E3 /* EntryDebugButtons.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		2F81BB4E2C74B13A009397DB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2FA93C032B38E69200A1F994 /* DateRowView.swift */,
+				2F70FB8C280E10FE00D2A725 /* CardRowView.swift */,
+				2FAF0054283D68B10092E8DD /* CalendarRowView.swift */,
+				2F264E982B927F4F00B3F51A /* AddDetailsComponent.swift */,
+				2F70FB8F280E141500D2A725 /* EditDetailsComponent.swift */,
+				2F70FB99280F19A100D2A725 /* StarRatingView.swift */,
+				2F01D8B32814697B004583E3 /* FeelingFinderView.swift */,
+				2FF810ED284785DD0050E533 /* CalendarViewComponent.swift */,
+				2FA93C0F2B3B719700A1F994 /* ChartBarMarkXYView.swift */,
+				2FA93C0C2B3B716400A1F994 /* ChartBarMarkXView.swift */,
+				2FA93C152B3B71D100A1F994 /* ChartLineMarkView.swift */,
+				2FA93C182B3B71DA00A1F994 /* ChartSectorMarkView.swift */,
+				2FA93C1E2B3B93E400A1F994 /* ChartStatsView.swift */,
+				2F81BB502C74B193009397DB /* ConfettiView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2F81BB4F2C74B143009397DB /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				2F81BB632C74B4B0009397DB /* GrowingButtonStyle.swift */,
+				2F81BB662C74B4BA009397DB /* GrowingIconButtonStyle.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -460,9 +508,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F81BB672C74B4BA009397DB /* GrowingIconButtonStyle.swift in Sources */,
 				2FA93C192B3B71DA00A1F994 /* ChartSectorMarkView.swift in Sources */,
 				2FCF6C9B295C8E8D00834252 /* FeelingStats.swift in Sources */,
 				2FA93C102B3B719700A1F994 /* ChartBarMarkXYView.swift in Sources */,
+				2F81BB5A2C74B311009397DB /* CalendarComponents.swift in Sources */,
 				2F01D8B7281477E5004583E3 /* FeelingFinderStore.swift in Sources */,
 				2F70FB9A280F19A100D2A725 /* StarRatingView.swift in Sources */,
 				2F01D8B128146142004583E3 /* FeelingFinder.swift in Sources */,
@@ -487,9 +537,12 @@
 				2FA30EE92B34CFFF00195CA4 /* AuthenticationView.swift in Sources */,
 				2F264E992B927F4F00B3F51A /* AddDetailsComponent.swift in Sources */,
 				2FCF6CA1295C90A400834252 /* ChartStore.swift in Sources */,
+				2F81BB642C74B4B0009397DB /* GrowingButtonStyle.swift in Sources */,
 				2FF810EE284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2FA93C072B38FCC100A1F994 /* Date.swift in Sources */,
 				2FDBE9042B4B1EF00088CAFE /* EntryStoreExtension.swift in Sources */,
+				2F81BB512C74B193009397DB /* ConfettiView.swift in Sources */,
+				2F81BB572C74B243009397DB /* DisplayConfettiModifier.swift in Sources */,
 				2F70FB512808484300D2A725 /* EmojionApp.swift in Sources */,
 				2FA93C222B3F3AF000A1F994 /* WrappingHStack.swift in Sources */,
 				2FFE398B28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
@@ -515,6 +568,7 @@
 				2FA30EDF2B34CAC100195CA4 /* BiometricService.swift in Sources */,
 				2FA30EE22B34CAF400195CA4 /* BiometricStore.swift in Sources */,
 				2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */,
+				2F81BB542C74B20B009397DB /* ConfettiContainerView.swift in Sources */,
 				2F70FB90280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8D280E10FE00D2A725 /* CardRowView.swift in Sources */,
 				2FA30EEC2B34D03B00195CA4 /* LoginView.swift in Sources */,
@@ -525,9 +579,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F81BB682C74B4BA009397DB /* GrowingIconButtonStyle.swift in Sources */,
 				2FA93C1A2B3B71DA00A1F994 /* ChartSectorMarkView.swift in Sources */,
 				2FCF6C9C295C8E8D00834252 /* FeelingStats.swift in Sources */,
 				2FA93C112B3B719700A1F994 /* ChartBarMarkXYView.swift in Sources */,
+				2F81BB5B2C74B311009397DB /* CalendarComponents.swift in Sources */,
 				2F01D8B8281477E5004583E3 /* FeelingFinderStore.swift in Sources */,
 				2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */,
 				2F01D8B228146142004583E3 /* FeelingFinder.swift in Sources */,
@@ -552,9 +608,12 @@
 				2FA30EEA2B34CFFF00195CA4 /* AuthenticationView.swift in Sources */,
 				2F264E9A2B927F4F00B3F51A /* AddDetailsComponent.swift in Sources */,
 				2FCF6CA2295C90A400834252 /* ChartStore.swift in Sources */,
+				2F81BB652C74B4B0009397DB /* GrowingButtonStyle.swift in Sources */,
 				2FF810EF284785DD0050E533 /* CalendarViewComponent.swift in Sources */,
 				2FA93C082B38FCC100A1F994 /* Date.swift in Sources */,
 				2FDBE9052B4B1EF00088CAFE /* EntryStoreExtension.swift in Sources */,
+				2F81BB522C74B193009397DB /* ConfettiView.swift in Sources */,
+				2F81BB582C74B243009397DB /* DisplayConfettiModifier.swift in Sources */,
 				2F70FB522808484300D2A725 /* EmojionApp.swift in Sources */,
 				2FA93C232B3F3AF000A1F994 /* WrappingHStack.swift in Sources */,
 				2FFE398C28410FF600DFFA48 /* PopoverViewModifier.swift in Sources */,
@@ -580,6 +639,7 @@
 				2FA30EE02B34CAC100195CA4 /* BiometricService.swift in Sources */,
 				2FA30EE32B34CAF400195CA4 /* BiometricStore.swift in Sources */,
 				2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */,
+				2F81BB552C74B20B009397DB /* ConfettiContainerView.swift in Sources */,
 				2F70FB91280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8E280E10FE00D2A725 /* CardRowView.swift in Sources */,
 				2FA30EED2B34D03B00195CA4 /* LoginView.swift in Sources */,
