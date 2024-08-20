@@ -66,6 +66,10 @@ struct EmojiPicker: UIViewRepresentable {
         textField.placeholder = placeholder
         textField.delegate = context.coordinator
         textField.autocorrectionType = .no
+        // This keyboard type replaces override var textInputMode Below,
+        // Using this workaround untill i can directly use TextField,
+        // While replacing current selection on character change.
+        textField.keyboardType = (UIKeyboardType(rawValue: 124) ?? . default)
         textField.returnKeyType = .done
         textField.textAlignment = textAlignment
         textField.font = UIFont.preferredFont(forTextStyle: fontStyle)
@@ -111,9 +115,15 @@ internal class EmojiUITextField: UITextField {
         return ""
     }
     
-    override var textInputMode: UITextInputMode? {
+    // This override of textInputMode is replaced by keyboardType above,
+    // Using this workaround untill i can directly use TextField,
+    // While replacing current selection on character change.
+    
+    /*
+     override var textInputMode: UITextInputMode? {
         return .activeInputModes.first(where: { $0.primaryLanguage == "emoji" })
     }
+     */
     
     override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
         return []
