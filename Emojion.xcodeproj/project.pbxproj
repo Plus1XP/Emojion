@@ -77,6 +77,18 @@
 		2F81BB652C74B4B0009397DB /* GrowingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB632C74B4B0009397DB /* GrowingButtonStyle.swift */; };
 		2F81BB672C74B4BA009397DB /* GrowingIconButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB662C74B4BA009397DB /* GrowingIconButtonStyle.swift */; };
 		2F81BB682C74B4BA009397DB /* GrowingIconButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB662C74B4BA009397DB /* GrowingIconButtonStyle.swift */; };
+		2F81BB6A2C74B650009397DB /* HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB692C74B650009397DB /* HStack.swift */; };
+		2F81BB6B2C74B650009397DB /* HStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB692C74B650009397DB /* HStack.swift */; };
+		2F81BB6D2C74B670009397DB /* ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB6C2C74B670009397DB /* ZStack.swift */; };
+		2F81BB6E2C74B670009397DB /* ZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB6C2C74B670009397DB /* ZStack.swift */; };
+		2F81BB702C74B6A0009397DB /* FocusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB6F2C74B6A0009397DB /* FocusField.swift */; };
+		2F81BB712C74B6A0009397DB /* FocusField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB6F2C74B6A0009397DB /* FocusField.swift */; };
+		2F81BB732C74BCEC009397DB /* CancelButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB722C74BCEC009397DB /* CancelButtonStyle.swift */; };
+		2F81BB742C74BCEC009397DB /* CancelButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB722C74BCEC009397DB /* CancelButtonStyle.swift */; };
+		2F81BB762C74BD0A009397DB /* SaveButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB752C74BD0A009397DB /* SaveButtonStyle.swift */; };
+		2F81BB772C74BD0A009397DB /* SaveButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB752C74BD0A009397DB /* SaveButtonStyle.swift */; };
+		2F81BB792C750CB4009397DB /* DeleteEntryDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB782C750CB4009397DB /* DeleteEntryDetailsButton.swift */; };
+		2F81BB7A2C750CB4009397DB /* DeleteEntryDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81BB782C750CB4009397DB /* DeleteEntryDetailsButton.swift */; };
 		2FA30EDF2B34CAC100195CA4 /* BiometricService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */; };
 		2FA30EE02B34CAC100195CA4 /* BiometricService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */; };
 		2FA30EE22B34CAF400195CA4 /* BiometricStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA30EE12B34CAF400195CA4 /* BiometricStore.swift */; };
@@ -179,6 +191,12 @@
 		2F81BB592C74B311009397DB /* CalendarComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarComponents.swift; sourceTree = "<group>"; };
 		2F81BB632C74B4B0009397DB /* GrowingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingButtonStyle.swift; sourceTree = "<group>"; };
 		2F81BB662C74B4BA009397DB /* GrowingIconButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingIconButtonStyle.swift; sourceTree = "<group>"; };
+		2F81BB692C74B650009397DB /* HStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStack.swift; sourceTree = "<group>"; };
+		2F81BB6C2C74B670009397DB /* ZStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZStack.swift; sourceTree = "<group>"; };
+		2F81BB6F2C74B6A0009397DB /* FocusField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusField.swift; sourceTree = "<group>"; };
+		2F81BB722C74BCEC009397DB /* CancelButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelButtonStyle.swift; sourceTree = "<group>"; };
+		2F81BB752C74BD0A009397DB /* SaveButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButtonStyle.swift; sourceTree = "<group>"; };
+		2F81BB782C750CB4009397DB /* DeleteEntryDetailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteEntryDetailsButton.swift; sourceTree = "<group>"; };
 		2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricService.swift; sourceTree = "<group>"; };
 		2FA30EE12B34CAF400195CA4 /* BiometricStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricStore.swift; sourceTree = "<group>"; };
 		2FA30EE42B34CB2300195CA4 /* SyncMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncMonitor.swift; sourceTree = "<group>"; };
@@ -332,6 +350,7 @@
 				2FA30EDE2B34CAC100195CA4 /* BiometricService.swift */,
 				2FB51F9E2B88D2BB007757E3 /* FeelingWheelUpdateV22.swift */,
 				2FB51FA12B8E593F007757E3 /* StarRatingUpdateV22.swift */,
+				2F81BB6F2C74B6A0009397DB /* FocusField.swift */,
 			);
 			path = DataObject;
 			sourceTree = "<group>";
@@ -352,6 +371,8 @@
 				2F70FB80280D6FC600D2A725 /* String.swift */,
 				2F70FB92280E224500D2A725 /* View.swift */,
 				2F7561432C444A7E008D7BE5 /* PersistenceController.swift */,
+				2F81BB692C74B650009397DB /* HStack.swift */,
+				2F81BB6C2C74B670009397DB /* ZStack.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -376,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				2FB51F9B2B868AF2007757E3 /* EntryDebugButtons.swift */,
+				2F81BB782C750CB4009397DB /* DeleteEntryDetailsButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -406,6 +428,8 @@
 			children = (
 				2F81BB632C74B4B0009397DB /* GrowingButtonStyle.swift */,
 				2F81BB662C74B4BA009397DB /* GrowingIconButtonStyle.swift */,
+				2F81BB722C74BCEC009397DB /* CancelButtonStyle.swift */,
+				2F81BB752C74BD0A009397DB /* SaveButtonStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -511,8 +535,10 @@
 				2F81BB672C74B4BA009397DB /* GrowingIconButtonStyle.swift in Sources */,
 				2FA93C192B3B71DA00A1F994 /* ChartSectorMarkView.swift in Sources */,
 				2FCF6C9B295C8E8D00834252 /* FeelingStats.swift in Sources */,
+				2F81BB6D2C74B670009397DB /* ZStack.swift in Sources */,
 				2FA93C102B3B719700A1F994 /* ChartBarMarkXYView.swift in Sources */,
 				2F81BB5A2C74B311009397DB /* CalendarComponents.swift in Sources */,
+				2F81BB762C74BD0A009397DB /* SaveButtonStyle.swift in Sources */,
 				2F01D8B7281477E5004583E3 /* FeelingFinderStore.swift in Sources */,
 				2F70FB9A280F19A100D2A725 /* StarRatingView.swift in Sources */,
 				2F01D8B128146142004583E3 /* FeelingFinder.swift in Sources */,
@@ -563,14 +589,18 @@
 				2F4F147228323D76008D74B0 /* UITextEditor.swift in Sources */,
 				2FFE3985283FD26900DFFA48 /* SettingsView.swift in Sources */,
 				2FA93C1C2B3B883B00A1F994 /* BubbleEffect.swift in Sources */,
+				2F81BB702C74B6A0009397DB /* FocusField.swift in Sources */,
+				2F81BB732C74BCEC009397DB /* CancelButtonStyle.swift in Sources */,
 				2FB51F992B866661007757E3 /* ShakeEffect.swift in Sources */,
 				2FAF0055283D68B10092E8DD /* CalendarRowView.swift in Sources */,
+				2F81BB6A2C74B650009397DB /* HStack.swift in Sources */,
 				2FA30EDF2B34CAC100195CA4 /* BiometricService.swift in Sources */,
 				2FA30EE22B34CAF400195CA4 /* BiometricStore.swift in Sources */,
 				2F70FB6228084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F81BB542C74B20B009397DB /* ConfettiContainerView.swift in Sources */,
 				2F70FB90280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8D280E10FE00D2A725 /* CardRowView.swift in Sources */,
+				2F81BB792C750CB4009397DB /* DeleteEntryDetailsButton.swift in Sources */,
 				2FA30EEC2B34D03B00195CA4 /* LoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,8 +612,10 @@
 				2F81BB682C74B4BA009397DB /* GrowingIconButtonStyle.swift in Sources */,
 				2FA93C1A2B3B71DA00A1F994 /* ChartSectorMarkView.swift in Sources */,
 				2FCF6C9C295C8E8D00834252 /* FeelingStats.swift in Sources */,
+				2F81BB6E2C74B670009397DB /* ZStack.swift in Sources */,
 				2FA93C112B3B719700A1F994 /* ChartBarMarkXYView.swift in Sources */,
 				2F81BB5B2C74B311009397DB /* CalendarComponents.swift in Sources */,
+				2F81BB772C74BD0A009397DB /* SaveButtonStyle.swift in Sources */,
 				2F01D8B8281477E5004583E3 /* FeelingFinderStore.swift in Sources */,
 				2F70FB9B280F19A200D2A725 /* StarRatingView.swift in Sources */,
 				2F01D8B228146142004583E3 /* FeelingFinder.swift in Sources */,
@@ -634,14 +666,18 @@
 				2F4F147328323D76008D74B0 /* UITextEditor.swift in Sources */,
 				2FFE3986283FD26900DFFA48 /* SettingsView.swift in Sources */,
 				2FA93C1D2B3B883B00A1F994 /* BubbleEffect.swift in Sources */,
+				2F81BB712C74B6A0009397DB /* FocusField.swift in Sources */,
+				2F81BB742C74BCEC009397DB /* CancelButtonStyle.swift in Sources */,
 				2FB51F9A2B866661007757E3 /* ShakeEffect.swift in Sources */,
 				2FAF0056283D68B10092E8DD /* CalendarRowView.swift in Sources */,
+				2F81BB6B2C74B650009397DB /* HStack.swift in Sources */,
 				2FA30EE02B34CAC100195CA4 /* BiometricService.swift in Sources */,
 				2FA30EE32B34CAF400195CA4 /* BiometricStore.swift in Sources */,
 				2F70FB6328084B9100D2A725 /* AddEntryView.swift in Sources */,
 				2F81BB552C74B20B009397DB /* ConfettiContainerView.swift in Sources */,
 				2F70FB91280E141500D2A725 /* EditDetailsComponent.swift in Sources */,
 				2F70FB8E280E10FE00D2A725 /* CardRowView.swift in Sources */,
+				2F81BB7A2C750CB4009397DB /* DeleteEntryDetailsButton.swift in Sources */,
 				2FA30EED2B34D03B00195CA4 /* LoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

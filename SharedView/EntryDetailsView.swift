@@ -17,13 +17,27 @@ struct EntryDetailsView: View {
     @State var cachedRating: Int64 = 0
     @State var note: String = ""
     @State var canShowFeelingFinderView: Bool = false
+    @State var isHideKeyboardButtonAcitve: Bool = false
     let entry: Entry
     
     var body: some View {
         //MARK: Refactor & Combine Add & Edit Details Views & Components
-        EditDetailsComponent(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, cachedRating: $cachedRating, note: $note, canShowFeelingFinderView: $canShowFeelingFinderView, entry: entry)
+        EditDetailsComponent(event: $event, emojion: $emojion, feeling: $feeling, rating: $rating, cachedRating: $cachedRating, note: $note, canShowFeelingFinderView: $canShowFeelingFinderView, isHideKeyboardButtonAcitve: $isHideKeyboardButtonAcitve, entry: entry)
             .navigationTitle("Emojion Details")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(
+                trailing:
+                    Button(action: {
+                        withAnimation(.bouncy) {
+                            self.isHideKeyboardButtonAcitve = false
+                        }
+                    }) {
+                        Label("Edit Details", systemImage: "keyboard.chevron.compact.down")
+                            .symbolEffect(.bounce, value: self.isHideKeyboardButtonAcitve)
+                            .foregroundStyle(self.isHideKeyboardButtonAcitve ? .blue : .gray)
+                    }
+                    .disabled(!self.isHideKeyboardButtonAcitve)
+            )
             .presentationDragIndicator(.visible)
             .onAppear(perform: {
                 self.event = entry.event ?? ""

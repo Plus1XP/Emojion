@@ -13,10 +13,14 @@ struct AddDetailsComponent: View {
     @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var entryStore: EntryStore
     @EnvironmentObject var feelingFinderStore: FeelingFinderStore
-    @State var hasEntryChanged: Bool = false
+    @State var canSaveChanges: Bool = false
     @State var canEditStarRating: Bool = true
-    @State var animateXMark: Bool = false
-    @State var animateCheckMark: Bool = false
+    @State var cancelAnimation: Bool = false
+    @State var saveAnimation: Bool = false
+    @State var isHideKeyboardButtonAcitve: Bool = false
+    @State private var canHideEmojiField: Bool = false
+    @State private var canHideFeelingField: Bool = false
+    @State private var canHideRatingField: Bool = false
     @Binding var event: String
     @Binding var emojion : String
     @Binding var feeling: [Int]
@@ -24,104 +28,119 @@ struct AddDetailsComponent: View {
     @Binding var cachedRating: Int64
     @Binding var note: String
     @Binding var canShowFeelingFinderView: Bool
-    @FocusState private var isNoteFocused: Bool
-    @FocusState private var isFieldFocused: Bool
-    var emojionFontSize: CGFloat = 125
+    @FocusState private var isFocus: EntryField?
+    var emojionFontSize: CGFloat = 100
     var starFontSize: CGFloat = 25
     let sectionTitleColor: Color = Color.secondary
+    private let bigScale: CGFloat = 1.1
+    private let normalScale: CGFloat = 1
+    private let smallScale: CGFloat = 0.9
     
     var body: some View {
         VStack {
-            HStack {
+            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
+                // Dummy Button to center Item Title
+                Button(action: {
+                    withAnimation(.bouncy) {
+
+                    }
+                }) {
+                    Label("Edit Details", systemImage: "keyboard.chevron.compact.down")
+                        .labelStyle(.iconOnly)
+                        .padding(.leading)
+                }
+                .hidden()
+                Spacer()
                 TextField("What are you doing?", text: $event, axis: .vertical)
                     .font(.title3)
                     .fontWeight(.semibold)
                     .allowsTightening(true)
                     .multilineTextAlignment(.center)
-                    .focused($isFieldFocused)
-                    .onChange(of: self.event, {
-                        if isFieldFocused {
-                            self.hasEntryChanged = true
-                        }
-                    })
-            }
-            .padding(.top)
-            .padding(.leading)
-            .padding(.trailing)
-            
-            HStack {
-                EmojiPicker(emoji: $emojion, placeholder: "🫥", textAlignment: .center, fontSize: emojionFontSize)
-                    .onReceive(Just(emojion), perform: { _ in
-                        // This allow only emoji
-                        self.emojion = self.emojion.onlyEmoji()
-                        //This allow only emoji and allow only 1 emoji
-                        self.emojion = String(self.emojion.onlyEmoji().prefix(1))
-                    })
-                    .focused($isFieldFocused)
-                    .onChange(of: self.emojion, {
-                        if isFieldFocused {
-                            self.hasEntryChanged = true
-                        }
-                    })
-                    .frame(width: 150, height: 150)
-                /*
-                    .resizable()
-                    .frame(width: 200, height: 200)
-                    .clipShape(Circle())
-                    .overlay(
-                        Circle()
-                            .stroke(lineWidth: 5)
-                            .foregroundColor(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-                    )
-                    .shadow(radius: 10)
-                    .padding()
-                 */
-                    .background(self.emojion == "" ? Circle()
-                        .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-                        .cornerRadius(10.0) : nil
-                    )
-            }
-            
-            HStack {
-                Text(feeling == [0,0,0] ? "What are you feeling?" : feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
-                    .font(feeling == [0,0,0] ? .body : .headline)
-                    .fontWeight(feeling == [0,0,0] ? .regular : .medium)
-                    .foregroundColor(feeling == [0,0,0] ? Color(uiColor: .placeholderText) : Color.primary)
-                    .onTapGesture(perform: {
-                        canShowFeelingFinderView.toggle()
-                    })
-                    .popover(isPresented: $canShowFeelingFinderView) {
-                        HStack {
-                            FeelingFinderView(feeling: $feeling)
-                                .onChange(of: self.feeling, {
-                                    self.hasEntryChanged = true
-                                })
-                        }
-                        .presentationCompactAdaptation(.popover)
-                        .frame(minWidth: 100, maxHeight: 50)
-                        .padding()
-                        .background(.ultraThinMaterial)
+                    .focused($isFocus, equals: .event)
+                    .scaleEffect(self.isFocus == .event ? self.bigScale: self.normalScale)
+                Spacer()
+                Button(action: {
+                    withAnimation(.bouncy) {
+                        self.isHideKeyboardButtonAcitve = false
                     }
-            }
-            .padding(.bottom)
-            
-            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
-                Text("Experience")
-                    .font(.footnote)
-                    .textCase(nil)
-                    .foregroundStyle(self.sectionTitleColor)
+                }) {
+                    Label("Edit Details", systemImage: "keyboard.chevron.compact.down")
+                        .symbolEffect(.bounce, value: self.isHideKeyboardButtonAcitve)
+                        .foregroundStyle(self.isHideKeyboardButtonAcitve ? .blue : .gray)
+                        .labelStyle(.iconOnly)
+                        .padding(.trailing)
+                }
+                .disabled(!self.isHideKeyboardButtonAcitve)
             })
-            HStack {
-                StarRatingView($rating, starFontSize, $canEditStarRating)
-                    .onChange(of: self.rating, {
-                        if self.rating != self.cachedRating {
-                            self.cachedRating = self.rating
-                            self.hasEntryChanged = true
-                        }
-                    })
-
+            .padding(.top)
+            
+            if !self.canHideEmojiField {
+                HStack {
+                    EmojiPicker(emoji: $emojion, placeholder: "🫥", textAlignment: .center, fontSize: emojionFontSize)
+                        .onReceive(Just(emojion), perform: { _ in
+                            // This allow only emoji
+                            self.emojion = self.emojion.onlyEmoji()
+                            //This allow only emoji and allow only 1 emoji
+                            self.emojion = String(self.emojion.onlyEmoji().prefix(1))
+                        })
+                        .focused($isFocus, equals: .emoji)
+                        .scaleEffect(self.isFocus == .emoji ? self.bigScale: self.normalScale)
+                        .frame(width: 125, height: 125)
+                    /*
+                     .resizable()
+                     .frame(width: 200, height: 200)
+                     .clipShape(Circle())
+                     .overlay(
+                     Circle()
+                     .stroke(lineWidth: 5)
+                     .foregroundColor(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                     )
+                     .shadow(radius: 10)
+                     .padding()
+                     */
+                        .background(self.emojion == "" ? Circle()
+                            .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
+                            .cornerRadius(10.0) : nil
+                        )
+                }
             }
-            .padding(.bottom)
+            
+            if !self.canHideFeelingField {
+                HStack {
+                    Text(feeling == [0,0,0] ? "What are you feeling?" : feelingFinderStore.getTertiarySelectedFeelingName(feelingArray: feeling))
+                        .font(feeling == [0,0,0] ? .body : .headline)
+                        .fontWeight(feeling == [0,0,0] ? .regular : .medium)
+                        .foregroundColor(feeling == [0,0,0] ? Color(uiColor: .placeholderText) : Color.primary)
+                        .onTapGesture(perform: {
+                            canShowFeelingFinderView.toggle()
+                        })
+                        .popover(isPresented: $canShowFeelingFinderView) {
+                            HStack {
+                                FeelingFinderView(feeling: $feeling)
+                                    .focused($isFocus, equals: .feeling)
+                            }
+                            .presentationCompactAdaptation(.popover)
+                            .frame(minWidth: 100, maxHeight: 50)
+                            .padding()
+                            .background(.ultraThinMaterial)
+                        }
+                }
+                .padding(.bottom, (self.isFocus != nil) ? 0 : nil)
+            }
+            
+            if !self.canHideRatingField {
+                HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
+                    Text("Experience")
+                        .font(.footnote)
+                        .textCase(nil)
+                        .foregroundStyle(self.sectionTitleColor)
+                })
+                HStack {
+                    StarRatingView($rating, starFontSize, $canEditStarRating)
+                        .focused($isFocus, equals: .rating)
+                }
+                .padding(.bottom, (self.isFocus != nil) ? 0 : nil)
+            }
             
             HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, content: {
                 Text("Notes")
@@ -137,93 +156,124 @@ struct AddDetailsComponent: View {
                         .lineLimit(nil) // <-- tell Text to use as many lines as it needs (so no truncating)
                         .scrollContentBackground(.hidden) // <-- hide native background to see custom color
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading) // <-- tell Text to take the entire space available for ScrollView
-                        .focused($isNoteFocused)
-                    if !self.isNoteFocused && (note == "") {
+                        .focused($isFocus, equals: .note)
+                        .onChange(of: self.isFocus, {
+                            if self.isFocus == .note {
+                                withAnimation(.bouncy) {
+                                    canHideEmojiField = true
+                                    canHideFeelingField = true
+                                    canHideRatingField = true
+                                }
+                            } else {
+                                withAnimation(.bouncy) {
+                                    canHideEmojiField = false
+                                    canHideFeelingField = false
+                                    canHideRatingField = false
+                                }
+                            }
+                        })
+                    if (self.isFocus != .note ) && self.note == "" {
                         Text("What else would you like to add?")
                             .foregroundColor(Color(uiColor: .placeholderText))
                             .multilineTextAlignment(.leading)
                             .allowsHitTesting(false)
                     }
                 })
-                .focused($isFieldFocused)
-                .onChange(of: self.note, {
-                    if isFieldFocused {
-                        self.hasEntryChanged = true
-                    }
-                })
             }
-            .padding()
-            .background(
-                Rectangle()
-                    .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-                    .cornerRadius(10.0)
-            )
+            .withFocusFieldStyle(colorScheme: self.colorScheme, focusState: self.isFocus == .note)
             .padding(.leading)
             .padding(.trailing)
-            .padding(.bottom)
+            .padding(.bottom, (self.isFocus != nil) ? 0 : nil)
             
-            if hasEntryChanged {
+            if self.canSaveChanges {
                 HStack {
                     Spacer()
                     Button(action: {
-                        self.event = ""
-                        self.emojion = "🫥"
-                        self.feeling = [0,0,0]
-                        self.rating = 0
-                        self.cachedRating = 0
-                        self.note = ""
-                        self.animateXMark = true
+                        self.cancelAnimation = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                            self.animateXMark = false
-                            self.hasEntryChanged = false
+                            self.cancelAnimation = false
+                            self.loadEntryFromStore()
+                            self.canSaveChanges = false
+                            self.isHideKeyboardButtonAcitve = false
+                            self.hideKeyboard()
                             self.presentaionMode.wrappedValue.dismiss()
-                            
                         }
                     }, label: {
-                        Image(systemName: self.animateXMark ? "xmark.circle" : "xmark.circle.fill")
-                            .font(.largeTitle)
-                            .foregroundStyle(.red)
-                            .symbolEffect(.bounce, options: .speed(2), value: self.animateXMark)
-                            .symbolEffect(.pulse.wholeSymbol, options: .repeating, value: self.animateXMark)
-                            .contentTransition(.symbolEffect(.replace))
-                            .background(
-                                Circle()
-                                    .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-                                    .cornerRadius(25.0)
-                            )
+                        Image(systemName: self.cancelAnimation ? "xmark.circle" : "xmark.circle.fill")
                     })
+                    .buttonStyle(CancelButtonStyle(cancelAnimation: self.cancelAnimation))
                     Spacer()
                     Button(action: {
-                        entryStore.addNewEntry(event: self.event, emojion: self.emojion, feeling: self.feeling, rating: self.rating, note: self.note)
-                        self.animateCheckMark = true
+                        self.saveAnimation = true
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                            self.animateCheckMark = false
-                            self.hasEntryChanged = false
+                            self.saveAnimation = false
+                            self.saveEntryToStore()
+                            self.canSaveChanges = false
                             self.presentaionMode.wrappedValue.dismiss()
-                            
                         }
                     }, label: {
-                        Image(systemName: self.animateCheckMark ? "checkmark.circle" : "checkmark.circle.fill")
-                            .font(.largeTitle)
-                            .foregroundStyle(.green)
-                            .symbolEffect(.bounce, options: .speed(2), value: self.animateCheckMark)
-                            .symbolEffect(.pulse.wholeSymbol, options: .repeating, value: self.animateCheckMark)
-                            .contentTransition(.symbolEffect(.replace))
-                            .background(
-                                Circle()
-                                    .fill(Color.setFieldBackgroundColor(colorScheme: colorScheme).opacity(1))
-                                    .cornerRadius(25.0)
-                            )
+                        Image(systemName: self.saveAnimation ? "checkmark.circle" : "checkmark.circle.fill")
                     })
+                    .buttonStyle(SaveButtonStyle(saveAnimation: self.saveAnimation))
                     Spacer()
                 }
                 .frame(maxWidth: .infinity)
+                .scaleEffect(self.smallScale)
                 .padding(.leading)
                 .padding(.trailing)
-                .padding(.bottom)
+                .padding(.bottom, (self.isFocus != nil) ? 0 : nil)
+                .disabled(!self.canSaveChanges)
             }
             Spacer()
         }
+        .onAppear(perform: {
+            self.loadEntryFromStore()
+        })
+        .onDisappear(perform: {
+            self.isHideKeyboardButtonAcitve = false
+        })
+        .onChange(of: self.isFocus, {
+            // Added else as selecting an emoji is set to 1 character,
+            // This hides the keyboard while the button is active.
+            if (self.isFocus != nil) {
+                self.isHideKeyboardButtonAcitve = true
+            } else {
+                self.isHideKeyboardButtonAcitve = false
+            }
+        })
+        .onChange(of: self.isHideKeyboardButtonAcitve, {
+            if !self.isHideKeyboardButtonAcitve {
+                self.hideKeyboard()
+            }
+        })
+        .onChange(of: self.hasAnyEntryValueChanged(), {
+            withAnimation(.bouncy, {
+                self.canSaveChanges = self.hasAnyEntryValueChanged()
+            })
+        })
+    }
+    
+    private func hasAnyEntryValueChanged() -> Bool {
+        if self.event != "" || self.emojion != "🫥" || self.feeling != [0,0,0] || self.rating != 0 || self.cachedRating != 0 || self.note != "" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func loadEntryFromStore() -> Void {
+        self.event = ""
+        self.emojion = "🫥"
+        self.feeling = [0,0,0]
+        self.rating = 0
+        self.cachedRating = 0
+        self.note = ""
+        self.entryStore.discardChanges()
+    }
+    
+    private func saveEntryToStore() -> Void {
+        entryStore.addNewEntry(event: self.event, emojion: self.emojion, feeling: self.feeling, rating: self.rating, note: self.note)
+//        self.entryStore.saveChanges()
     }
 }
 
