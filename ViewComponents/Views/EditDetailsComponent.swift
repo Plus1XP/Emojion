@@ -97,8 +97,8 @@ struct EditDetailsComponent: View {
                                     .focused($isFocus, equals: .feeling)
                             }
                             .presentationCompactAdaptation(.popover)
-                            .frame(minWidth: 100, maxHeight: 50)
                             .padding()
+                            .frame(minWidth: 215, alignment: .leading)
                             .background(.ultraThinMaterial)
                         }
                 }

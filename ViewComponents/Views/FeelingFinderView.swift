@@ -28,9 +28,8 @@ struct FeelingFinderView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading, spacing: 25) {
             HStack {
-                Spacer()
                 Text(Image(systemName: "1.circle"))
                 Menu {
                     Picker("Select Primary Feeling", selection: selectedFeeling[0]) {
@@ -39,10 +38,11 @@ struct FeelingFinderView: View {
                                 .foregroundColor(feelingFinderStore.feeling[$0].color)
                         }
                     }
-                } label: {
-                    Text(feelingFinderStore.getPrimarySelectedFeelingName(feelingArray: selectedFeeling.wrappedValue))
-//                        .foregroundColor(store.GetPrimarySelectedFeelingColor(feelingArray: feeling2.wrappedValue))
+                } label: {                    Text(feelingFinderStore.getPrimarySelectedFeelingName(feelingArray: selectedFeeling.wrappedValue))
+                    //                        .foregroundColor(store.GetPrimarySelectedFeelingColor(feelingArray: feeling2.wrappedValue))
                 }
+            }
+            HStack {
                 Text(Image(systemName: "2.circle"))
                 Menu {
                     Picker("Select Secondary Feeling", selection: selectedFeeling[1]) {
@@ -53,8 +53,10 @@ struct FeelingFinderView: View {
                     }
                 } label: {
                     Text(feelingFinderStore.getSecondarySelectedFeelingName(feelingArray: selectedFeeling.wrappedValue))
-//                        .foregroundColor(store.GetPrimarySelectedFeelingColor(feelingArray: feeling2.wrappedValue))
+                    //                        .foregroundColor(store.GetPrimarySelectedFeelingColor(feelingArray: feeling2.wrappedValue))
                 }
+            }
+            HStack {
                 Text(Image(systemName: "3.circle"))
                 Menu {
                     Picker("Select Tertiary Feeling", selection: selectedFeeling[2]) {
@@ -68,8 +70,9 @@ struct FeelingFinderView: View {
 //                        .foregroundColor(store.GetPrimarySelectedFeelingColor(feelingArray: feeling2.wrappedValue))
                 }
             }
-            .font(.system(size: 14))
         }
+        .padding()
+        .font(.title3)
     }
 }
 
