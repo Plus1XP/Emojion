@@ -62,3 +62,10 @@ struct ChartBarMarkXView: View {
         }
     }
 }
+
+#Preview {
+    ChartBarMarkXView()
+        .environmentObject(EntryStore())
+        .environmentObject(ChartStore())
+        .preferredColorScheme(.light)
+}

@@ -80,7 +80,8 @@ struct CalendarRowView: View {
 
 struct CalendarRowView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarRowView(entry: Entry.MockEntry)
+        CalendarRowView(entry: PersistenceController.preview.sampleEntry)
+            .environmentObject(EntryStore())
             .environmentObject(FeelingFinderStore())
     }
 }

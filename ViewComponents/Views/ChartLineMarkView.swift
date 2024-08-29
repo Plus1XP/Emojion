@@ -48,3 +48,10 @@ struct ChartLineMarkView: View {
         .padding(.top, 5)
     }
 }
+
+#Preview {
+    ChartLineMarkView()
+        .environmentObject(EntryStore())
+        .environmentObject(ChartStore())
+        .preferredColorScheme(.light)
+}

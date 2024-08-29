@@ -65,13 +65,17 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(EntryStore())
+            .environmentObject(FeelingFinderStore())
             .environmentObject(CalendarStore())
             .environmentObject(ChartStore())
-            .preferredColorScheme(.dark)
+            .environmentObject(BiometricStore())
+            .preferredColorScheme(.light)
         ContentView()
             .environmentObject(EntryStore())
+            .environmentObject(FeelingFinderStore())
             .environmentObject(CalendarStore())
             .environmentObject(ChartStore())
-            .preferredColorScheme(.light)
+            .environmentObject(BiometricStore())
+            .preferredColorScheme(.dark)
     }
 }

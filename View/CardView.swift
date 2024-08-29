@@ -20,7 +20,7 @@ struct CardView: View {
     var body: some View {
         List(selection: $entryStore.entrySelection) {
             if entryStore.entries.isEmpty {
-                ContentUnavailableView("How are you feeling?...", systemImage: "ellipsis.message")
+                ContentUnavailableView("How are you feeling?...", systemImage: "heart.fill")
             } else {
                 ForEach(entryStore.getSectionHeadersFromSearchResults().keys.sorted(by: { $0 > $1 }), id: \.self) { key in
                     // Removed ! after [key] due to xcode 14.3 update
@@ -212,5 +212,6 @@ struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         CardView()
             .environmentObject(EntryStore())
+            .environmentObject(FeelingFinderStore())
     }
 }

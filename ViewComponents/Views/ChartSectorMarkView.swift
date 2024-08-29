@@ -27,3 +27,10 @@ struct ChartSectorMarkView: View {
         .padding(.top, 5)
     }
 }
+
+#Preview {
+    ChartSectorMarkView()
+        .environmentObject(EntryStore())
+        .environmentObject(ChartStore())
+        .preferredColorScheme(.light)
+}

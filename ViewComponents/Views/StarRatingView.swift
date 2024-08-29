@@ -77,7 +77,7 @@ private func setItemQuantityWithOffset(quantity: Int64) -> Int64 {
 
 struct StarRatingView_Previews: PreviewProvider {
     static var previews: some View {
-        StarRatingView(.constant(Entry.MockEntry.rating), 25)
+        StarRatingView(.constant(PersistenceController.preview.sampleEntry.rating), 25)
     }
 }
 
